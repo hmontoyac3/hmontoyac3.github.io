@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heterogeneous Effects — Research Update</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    /* --- Password screen --- */
+    #lock {
+      max-width: 360px;
+      margin: 15vh auto 0;
+      text-align: center;
+    }
+    #lock h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+    #lock p { font-size: 0.85rem; color: #888; margin-bottom: 1.5rem; }
+    #lock input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+      outline: none;
+    }
+    #lock input:focus { border-color: #999; }
+    #lock button {
+      width: 100%;
+      padding: 0.7rem;
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    #lock button:hover { background: #333; }
+    #lock-error { font-size: 0.82rem; color: #dc2626; margin-top: 0.6rem; display: none; }
+
+    /* --- Content --- */
+    #content { display: none; max-width: 680px; margin: 0 auto; }
+    .back { font-size: 0.85rem; color: #888; text-decoration: none; display: inline-block; margin-bottom: 2rem; }
+    .back:hover { color: #333; }
+    .header { margin-bottom: 2rem; }
+    .header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .header-meta { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.5rem; }
+    .badge {
+      font-size: 0.72rem; font-weight: 500;
+      padding: 0.2rem 0.6rem; border-radius: 20px;
+    }
+    .badge-exploration { background: #dbeafe; color: #1e40af; }
+    .meta { font-size: 0.82rem; color: #888; }
+
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.4rem; }
+
+    .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .status-item { background: white; border: 1px solid #e5e5e5; border-radius: 6px; padding: 1rem; }
+    .status-label { font-size: 0.75rem; color: #888; margin-bottom: 0.2rem; }
+    .status-value { font-size: 0.95rem; font-weight: 500; }
+
+    .category-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; }
+    .category-item { background: white; border: 1px solid #e5e5e5; border-radius: 6px; padding: 1rem; }
+    .category-label { font-size: 0.75rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .category-vars { font-size: 0.78rem; color: #666; line-height: 1.6; }
+
+    .log-entry { padding: 0.8rem 0; border-bottom: 1px solid #f0f0f0; }
+    .log-entry:last-child { border-bottom: none; }
+    .log-date { font-size: 0.75rem; color: #888; margin-bottom: 0.2rem; }
+    .log-text { font-size: 0.9rem; }
+
+    .next-steps li { font-size: 0.9rem; margin-bottom: 0.5rem; padding-left: 1rem; list-style: none; }
+    .next-steps li::before { content: "→ "; color: #888; }
+
+    .doc-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.88rem; color: #1a1a1a; text-decoration: none;
+      background: white; border: 1px solid #e5e5e5; border-radius: 6px;
+      padding: 0.5rem 1rem; margin-right: 0.6rem; margin-bottom: 0.5rem;
+    }
+    .doc-link:hover { border-color: #999; }
+  </style>
+</head>
+<body>
+
+  <!-- PASSWORD SCREEN -->
+  <div id="lock">
+    <h2>Heterogeneous Effects</h2>
+    <p>This page is for collaborators only.</p>
+    <input type="password" id="pwd" placeholder="Password" onkeydown="if(event.key==='Enter') unlock()" />
+    <button onclick="unlock()">Enter</button>
+    <div id="lock-error">Incorrect password.</div>
+  </div>
+
+  <!-- CONTENT (hidden until unlocked) -->
+  <div id="content">
+    <a class="back" href="/research/">&larr; Research</a>
+
+    <div class="header">
+      <h1>Heterogeneous Effects of Theory-Based Training</h1>
+      <p style="font-size:0.9rem; color:#555; margin-top:0.3rem;">A systematic framework for who benefits and why.</p>
+      <div class="header-meta">
+        <span class="badge badge-exploration">Exploration</span>
+        <span class="meta">With Alfonso Gambardella &middot; IdeaBoosterLab RCT data</span>
+      </div>
+    </div>
+
+    <section>
+      <h2>Status</h2>
+      <div class="status-grid">
+        <div class="status-item">
+          <div class="status-label">Method</div>
+          <div class="status-value">Random forest + HTE</div>
+        </div>
+        <div class="status-item">
+          <div class="status-label">Data</div>
+          <div class="status-value">5 RCTs — access pending</div>
+        </div>
+        <div class="status-item">
+          <div class="status-label">Stage</div>
+          <div class="status-value">Exploratory — variable selection</div>
+        </div>
+        <div class="status-item">
+          <div class="status-label">Reference</div>
+          <div class="status-value">McKenzie et al. VoxDevLit 2025</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Framework — Three Categories</h2>
+      <div class="category-grid">
+        <div class="category-item">
+          <div class="category-label">Person-level</div>
+          <div class="category-vars">SDM capability, ambiguity aversion, learning orientation, experience, illusion of control</div>
+        </div>
+        <div class="category-item">
+          <div class="category-label">Venture-level</div>
+          <div class="category-vars">BM development stage, sector, team composition, idea scope</div>
+        </div>
+        <div class="category-item">
+          <div class="category-label">Dosage</div>
+          <div class="category-vars">Attendance, sessions completed, mentor engagement</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documents</h2>
+      <a class="doc-link" href="/research/heterogeneity-effects/onepager_v2.pdf">One-pager v2</a>
+      <a class="doc-link" href="/research/heterogeneity-effects/onepager_v1.pdf">One-pager v1 (cognitive moderators)</a>
+    </section>
+
+    <section>
+      <h2>Progress Log</h2>
+      <!-- ADD NEW ENTRIES AT THE TOP. Format: date + one or two lines of what you did. -->
+      <div class="log-entry">
+        <div class="log-date">2026-04-24</div>
+        <div class="log-text">Two conversations with Alfonso. Framework agreed: three categories (person, venture, dosage). Method: random forest exploration first, then HTE. Alfonso sharing Titanic example and RF class notes. Data access proposal to Diego in progress.</div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">2026-04-23</div>
+        <div class="log-text">One-pager v2 sent to Alfonso. He responded in 3 minutes — positive. Meeting scheduled same day.</div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">2026-04-22</div>
+        <div class="log-text">One-pager v1 drafted (cognitive moderators angle). Confirmed with Diego: unc_aversion, risk_aversion, learning_orientation present in at least 5 RCTs (Italy, Colombia, Netherlands, Spain, UK).</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Next Steps</h2>
+      <ul class="next-steps">
+        <li>Request data snapshot from Diego (variable list ready)</li>
+        <li>Refresh random forest — review Alfonso's class notes when received</li>
+        <li>Read Chernozhukov, Duflo et al. (Econometrica 2025) in detail</li>
+        <li>Run RF separately by category on snapshot</li>
+        <li>Send intermediate results to Alfonso</li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    // Change this password to whatever you want
+    const PASSWORD = "het2026";
+
+    function unlock() {
+      const input = document.getElementById('pwd').value;
+      if (input === PASSWORD) {
+        document.getElementById('lock').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+        sessionStorage.setItem('het-unlocked', 'true');
+      } else {
+        document.getElementById('lock-error').style.display = 'block';
+      }
+    }
+
+    // Stay unlocked within session
+    if (sessionStorage.getItem('het-unlocked') === 'true') {
+      document.getElementById('lock').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

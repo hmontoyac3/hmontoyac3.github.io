@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research — Helena Montoya Calero</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .container { max-width: 560px; width: 100%; }
+    .back { font-size: 0.85rem; color: #888; margin-bottom: 2rem; text-decoration: none; }
+    .back:hover { color: #333; }
+    h1 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .subtitle { font-size: 0.9rem; color: #888; margin-bottom: 2.5rem; }
+    a.card {
+      display: block;
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    a.card:hover { border-color: #aaa; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem; }
+    .card-title { font-size: 1rem; font-weight: 600; }
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-writing { background: #fef3c7; color: #92400e; }
+    .badge-exploration { background: #dbeafe; color: #1e40af; }
+    .badge-analysis { background: #d1fae5; color: #065f46; }
+    .card-sub { font-size: 0.85rem; color: #888; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="/">&larr; Home</a>
+    <h1>Research</h1>
+    <p class="subtitle">Active working papers — access restricted</p>
+
+    <a class="card" href="/research/sdm-instrument/">
+      <div class="card-header">
+        <div class="card-title">SDM Instrument</div>
+        <span class="badge badge-writing">Writing</span>
+      </div>
+      <div class="card-sub">Is scientific decision-making individual or organizational? ICC decomposition, N=7,786 managers.</div>
+    </a>
+
+    <a class="card" href="/research/heterogeneity-effects/">
+      <div class="card-header">
+        <div class="card-title">Heterogeneous Effects</div>
+        <span class="badge badge-exploration">Exploration</span>
+      </div>
+      <div class="card-sub">For whom does theory-based training work? Systematic framework with random forest and HTE.</div>
+    </a>
+
+  </div>
+</body>
+</html>

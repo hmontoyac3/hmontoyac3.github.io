@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDM Instrument — Research Update</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    /* --- Password screen --- */
+    #lock {
+      max-width: 360px;
+      margin: 15vh auto 0;
+      text-align: center;
+    }
+    #lock h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+    #lock p { font-size: 0.85rem; color: #888; margin-bottom: 1.5rem; }
+    #lock input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+      outline: none;
+    }
+    #lock input:focus { border-color: #999; }
+    #lock button {
+      width: 100%;
+      padding: 0.7rem;
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    #lock button:hover { background: #333; }
+    #lock-error { font-size: 0.82rem; color: #dc2626; margin-top: 0.6rem; display: none; }
+
+    /* --- Content --- */
+    #content { display: none; max-width: 680px; margin: 0 auto; }
+    .back { font-size: 0.85rem; color: #888; text-decoration: none; display: inline-block; margin-bottom: 2rem; }
+    .back:hover { color: #333; }
+    .header { margin-bottom: 2rem; }
+    .header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .header-meta { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.5rem; }
+    .badge {
+      font-size: 0.72rem; font-weight: 500;
+      padding: 0.2rem 0.6rem; border-radius: 20px;
+    }
+    .badge-writing { background: #fef3c7; color: #92400e; }
+    .meta { font-size: 0.82rem; color: #888; }
+
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.4rem; }
+
+    .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .status-item { background: white; border: 1px solid #e5e5e5; border-radius: 6px; padding: 1rem; }
+    .status-label { font-size: 0.75rem; color: #888; margin-bottom: 0.2rem; }
+    .status-value { font-size: 0.95rem; font-weight: 500; }
+
+    .log-entry { padding: 0.8rem 0; border-bottom: 1px solid #f0f0f0; }
+    .log-entry:last-child { border-bottom: none; }
+    .log-date { font-size: 0.75rem; color: #888; margin-bottom: 0.2rem; }
+    .log-text { font-size: 0.9rem; }
+
+    .next-steps li { font-size: 0.9rem; margin-bottom: 0.5rem; padding-left: 1rem; list-style: none; }
+    .next-steps li::before { content: "→ "; color: #888; }
+
+    .doc-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.88rem; color: #1a1a1a; text-decoration: none;
+      background: white; border: 1px solid #e5e5e5; border-radius: 6px;
+      padding: 0.5rem 1rem; margin-right: 0.6rem; margin-bottom: 0.5rem;
+    }
+    .doc-link:hover { border-color: #999; }
+  </style>
+</head>
+<body>
+
+  <!-- PASSWORD SCREEN -->
+  <div id="lock">
+    <h2>SDM Instrument</h2>
+    <p>This page is for collaborators only.</p>
+    <input type="password" id="pwd" placeholder="Password" onkeydown="if(event.key==='Enter') unlock()" />
+    <button onclick="unlock()">Enter</button>
+    <div id="lock-error">Incorrect password.</div>
+  </div>
+
+  <!-- CONTENT (hidden until unlocked) -->
+  <div id="content">
+    <a class="back" href="/research/">&larr; Research</a>
+
+    <div class="header">
+      <h1>SDM Instrument</h1>
+      <p style="font-size:0.9rem; color:#555; margin-top:0.3rem;">Is scientific decision-making individual or organizational?</p>
+      <div class="header-meta">
+        <span class="badge badge-writing">Writing</span>
+        <span class="meta">With Arnaldo Camuffo &middot; Target: Research Policy (Research Note)</span>
+      </div>
+    </div>
+
+    <section>
+      <h2>Status</h2>
+      <div class="status-grid">
+        <div class="status-item">
+          <div class="status-label">Method</div>
+          <div class="status-value">ICC decomposition</div>
+        </div>
+        <div class="status-item">
+          <div class="status-label">Sample</div>
+          <div class="status-value">N = 7,786 managers, 50+ firms</div>
+        </div>
+        <div class="status-item">
+          <div class="status-label">Stage</div>
+          <div class="status-value">Reformulating to RN format</div>
+        </div>
+        <div class="status-item">
+          <div class="status-label">Data</div>
+          <div class="status-value">Clean, pipeline ready</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documents</h2>
+      <a class="doc-link" href="#">One-pager (coming soon)</a>
+      <a class="doc-link" href="#">Draft PDF (coming soon)</a>
+    </section>
+
+    <section>
+      <h2>Progress Log</h2>
+      <div class="log-entry">
+        <div class="log-date">2026-04-24</div>
+        <div class="log-text">Page live. Paper in reformulation to Research Note format per Arnaldo's suggestion. Full pipeline and datasets in place.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Next Steps</h2>
+      <ul class="next-steps">
+        <li>Clarify Research Note format requirements with Arnaldo</li>
+        <li>Confirm timeline for submission</li>
+        <li>Final reformulation of framing and contribution section</li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    // Change this password to whatever you want
+    const PASSWORD = "sdm2026";
+
+    function unlock() {
+      const input = document.getElementById('pwd').value;
+      if (input === PASSWORD) {
+        document.getElementById('lock').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+        sessionStorage.setItem('sdm-unlocked', 'true');
+      } else {
+        document.getElementById('lock-error').style.display = 'block';
+      }
+    }
+
+    // Stay unlocked within session
+    if (sessionStorage.getItem('sdm-unlocked') === 'true') {
+      document.getElementById('lock').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
