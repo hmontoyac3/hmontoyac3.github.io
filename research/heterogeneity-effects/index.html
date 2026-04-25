@@ -268,10 +268,10 @@
   </div>
 
   <script>
-    const PASSWORD = "het2026";
+    const PASSWORDS = ["Alfonso", "Arnaldo"];
     function unlock() {
       const input = document.getElementById('pwd').value;
-      if (input === PASSWORD) {
+      if (PASSWORDS.includes(input)) {
         document.getElementById('lock').style.display = 'none';
         document.getElementById('content').style.display = 'block';
         sessionStorage.setItem('het-unlocked', 'true');
