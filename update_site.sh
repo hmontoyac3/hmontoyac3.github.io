@@ -21,11 +21,11 @@ if [ -f "$HET/onepager_v2.pdf" ]; then
   cp "$HET/onepager_v2.pdf" "$REPO/research/heterogeneity-effects/onepager_v2.pdf"
 fi
 
-# PDFs — SDM Instrument (add path when ready)
-# SDM="$RESEARCH/..."
-# if [ -f "$SDM/draft.pdf" ]; then
-#   cp "$SDM/draft.pdf" "$REPO/research/sdm-instrument/draft.pdf"
-# fi
+# PDFs — SDM Instrument
+SDM="$RESEARCH/SDM Paper1/SDM-paper1"
+if [ -f "$SDM/main.pdf" ]; then
+  cp "$SDM/main.pdf" "$REPO/research/sdm-instrument/draft.pdf"
+fi
 
 # Push
 cd "$REPO"
