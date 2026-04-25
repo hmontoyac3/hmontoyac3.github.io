@@ -11,65 +11,173 @@
       background: #fafafa;
       color: #1a1a1a;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
+      padding: 2.5rem 2rem;
     }
-    .container { max-width: 560px; width: 100%; }
-    .back { font-size: 0.85rem; color: #888; margin-bottom: 2rem; text-decoration: none; }
+    .container { max-width: 680px; margin: 0 auto; }
+
+    .back { font-size: 0.85rem; color: #888; text-decoration: none; display: inline-block; margin-bottom: 2.5rem; }
     .back:hover { color: #333; }
-    h1 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .subtitle { font-size: 0.9rem; color: #888; margin-bottom: 2.5rem; }
-    a.card {
-      display: block;
+
+    .page-header { margin-bottom: 2.5rem; }
+    .page-header h1 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .page-header p { font-size: 0.9rem; color: #888; }
+
+    .paper {
       background: white;
       border: 1px solid #e5e5e5;
       border-radius: 8px;
-      padding: 1.4rem 1.6rem;
-      margin-bottom: 1rem;
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      padding: 1.6rem;
+      margin-bottom: 1.2rem;
     }
-    a.card:hover { border-color: #aaa; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-    .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem; }
-    .card-title { font-size: 1rem; font-weight: 600; }
-    .badge {
+
+    .paper-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.8rem; }
+    .paper-title { font-size: 1rem; font-weight: 600; }
+    .paper-meta { font-size: 0.82rem; color: #888; margin-top: 0.2rem; }
+
+    .paper-desc { font-size: 0.88rem; color: #444; line-height: 1.6; margin-bottom: 1.2rem; }
+
+    /* Phases */
+    .phases {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.4rem;
+    }
+    .phase {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      position: relative;
+    }
+    .phase:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 9px;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background: #e5e5e5;
+      z-index: 0;
+    }
+    .phase.done:not(:last-child)::after { background: #1a1a1a; }
+    .phase.active:not(:last-child)::after { background: #e5e5e5; }
+    .phase-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #e5e5e5;
+      border: 2px solid #e5e5e5;
+      z-index: 1;
+      position: relative;
+    }
+    .phase.done .phase-dot { background: #1a1a1a; border-color: #1a1a1a; }
+    .phase.active .phase-dot {
+      background: white;
+      border-color: #1a1a1a;
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.08);
+    }
+    .phase-label {
+      font-size: 0.65rem;
+      color: #bbb;
+      margin-top: 0.35rem;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .phase.done .phase-label { color: #666; }
+    .phase.active .phase-label { color: #1a1a1a; font-weight: 600; }
+
+    .paper-footer { display: flex; align-items: center; justify-content: space-between; }
+    .paper-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .tag {
       font-size: 0.72rem;
-      font-weight: 500;
+      background: #f3f4f6;
+      color: #555;
       padding: 0.2rem 0.6rem;
       border-radius: 20px;
-      letter-spacing: 0.02em;
     }
-    .badge-writing { background: #fef3c7; color: #92400e; }
-    .badge-exploration { background: #dbeafe; color: #1e40af; }
-    .badge-analysis { background: #d1fae5; color: #065f46; }
-    .card-sub { font-size: 0.85rem; color: #888; }
+    .detail-link {
+      font-size: 0.82rem;
+      color: #888;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      white-space: nowrap;
+    }
+    .detail-link:hover { color: #1a1a1a; }
   </style>
 </head>
 <body>
   <div class="container">
     <a class="back" href="/">&larr; Home</a>
-    <h1>Research</h1>
-    <p class="subtitle">Active working papers — access restricted</p>
 
-    <a class="card" href="/research/sdm-instrument/">
-      <div class="card-header">
-        <div class="card-title">SDM Instrument</div>
-        <span class="badge badge-writing">Writing</span>
-      </div>
-      <div class="card-sub">Is scientific decision-making individual or organizational? ICC decomposition, N=7,786 managers.</div>
-    </a>
+    <div class="page-header">
+      <h1>Research</h1>
+      <p>Working papers in progress &middot; Helena Montoya Calero &middot; Bocconi University</p>
+    </div>
 
-    <a class="card" href="/research/heterogeneity-effects/">
-      <div class="card-header">
-        <div class="card-title">Heterogeneous Effects</div>
-        <span class="badge badge-exploration">Exploration</span>
+    <!-- Paper 1: SDM Instrument -->
+    <div class="paper">
+      <div class="paper-header">
+        <div>
+          <div class="paper-title">SDM Instrument</div>
+          <div class="paper-meta">With Arnaldo Camuffo &middot; Target: Research Policy</div>
+        </div>
       </div>
-      <div class="card-sub">For whom does theory-based training work? Systematic framework with random forest and HTE.</div>
-    </a>
+
+      <p class="paper-desc">Is scientific decision-making an individual trait or an organizational one? Using ICC variance decomposition on a sample of 7,786 managers across 50+ firms, this paper establishes SDM as a stable individual-level capability — the measurement foundation for a broader research agenda on decision-making under uncertainty.</p>
+
+      <div class="phases">
+        <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Concept</div></div>
+        <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Data</div></div>
+        <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Exploration</div></div>
+        <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Analysis</div></div>
+        <div class="phase active"><div class="phase-dot"></div><div class="phase-label">Writing</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Revision</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Submitted</div></div>
+      </div>
+
+      <div class="paper-footer">
+        <div class="paper-tags">
+          <span class="tag">ICC decomposition</span>
+          <span class="tag">Decision-making</span>
+          <span class="tag">Individual traits</span>
+        </div>
+        <a class="detail-link" href="/research/sdm-instrument/">Details &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Paper 2: Heterogeneous Effects -->
+    <div class="paper">
+      <div class="paper-header">
+        <div>
+          <div class="paper-title">Heterogeneous Effects of Theory-Based Training</div>
+          <div class="paper-meta">With Alfonso Gambardella &middot; IdeaBoosterLab RCT data</div>
+        </div>
+      </div>
+
+      <p class="paper-desc">Theory-based entrepreneurship training works on average — but for whom? This paper proposes a systematic taxonomy of heterogeneous treatment effects organized into three categories: person-level, venture-level, and dosage. Using random forest for exploration and HTE regressions across 5 pooled RCTs, it provides the first systematic account of which entrepreneur and startup characteristics moderate training response.</p>
+
+      <div class="phases">
+        <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Concept</div></div>
+        <div class="phase active"><div class="phase-dot"></div><div class="phase-label">Data</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Exploration</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Analysis</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Writing</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Revision</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Submitted</div></div>
+      </div>
+
+      <div class="paper-footer">
+        <div class="paper-tags">
+          <span class="tag">RCT</span>
+          <span class="tag">Random forest</span>
+          <span class="tag">HTE</span>
+          <span class="tag">Entrepreneurship</span>
+        </div>
+        <a class="detail-link" href="/research/heterogeneity-effects/">Details &rarr;</a>
+      </div>
+    </div>
 
   </div>
 </body>
