@@ -13,7 +13,7 @@
       min-height: 100vh;
       padding: 2.5rem 2rem;
     }
-    .container { max-width: 680px; margin: 0 auto; }
+    .container { max-width: 640px; margin: 0 auto; }
 
     .back { font-size: 0.85rem; color: #888; text-decoration: none; display: inline-block; margin-bottom: 2.5rem; }
     .back:hover { color: #333; }
@@ -26,21 +26,17 @@
       background: white;
       border: 1px solid #e5e5e5;
       border-radius: 8px;
-      padding: 1.6rem;
+      padding: 1.5rem 1.6rem;
       margin-bottom: 1.2rem;
     }
 
-    .paper-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.8rem; }
-    .paper-title { font-size: 1rem; font-weight: 600; }
-    .paper-meta { font-size: 0.82rem; color: #888; margin-top: 0.2rem; }
-
-    .paper-desc { font-size: 0.88rem; color: #444; line-height: 1.6; margin-bottom: 1.2rem; }
+    .paper-title { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; }
 
     /* Phases */
     .phases {
       display: flex;
       align-items: flex-start;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.2rem;
     }
     .phase {
       display: flex;
@@ -86,22 +82,22 @@
     .phase.done .phase-label { color: #666; }
     .phase.active .phase-label { color: #1a1a1a; font-weight: 600; }
 
-    .paper-footer { display: flex; align-items: center; justify-content: space-between; }
-    .paper-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .tag {
-      font-size: 0.72rem;
-      background: #f3f4f6;
-      color: #555;
-      padding: 0.2rem 0.6rem;
-      border-radius: 20px;
+    .now {
+      font-size: 0.83rem;
+      color: #444;
+      background: #f7f7f7;
+      border-left: 3px solid #1a1a1a;
+      padding: 0.5rem 0.8rem;
+      border-radius: 0 4px 4px 0;
+      margin-bottom: 1.1rem;
     }
+    .now-label { font-size: 0.68rem; color: #888; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
+
+    .paper-footer { display: flex; justify-content: flex-end; }
     .detail-link {
       font-size: 0.82rem;
       color: #888;
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
       white-space: nowrap;
     }
     .detail-link:hover { color: #1a1a1a; }
@@ -113,19 +109,12 @@
 
     <div class="page-header">
       <h1>Research</h1>
-      <p>Working papers in progress &middot; Helena Montoya Calero &middot; Bocconi University</p>
+      <p>Helena Montoya Calero &middot; Bocconi University</p>
     </div>
 
     <!-- Paper 1: SDM Instrument -->
     <div class="paper">
-      <div class="paper-header">
-        <div>
-          <div class="paper-title">SDM Instrument</div>
-          <div class="paper-meta">With Arnaldo Camuffo &middot; Target: Research Policy</div>
-        </div>
-      </div>
-
-      <p class="paper-desc">This paper develops and validates a survey instrument for measuring Scientific Decision-Making (SDM) in managers. Validation combines CFA across competing factor structures, experimental priming (scientific vs. intuitive vs. placebo), and behavioral prediction via vignette tasks. Deployed across N=9,467 managers in 61 organizations. A key application finding: firm-level variance in SDM is only 1.45%, supporting SDM as an individual-level trait.</p>
+      <div class="paper-title">SDM Instrument</div>
 
       <div class="phases">
         <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Concept</div></div>
@@ -137,27 +126,19 @@
         <div class="phase"><div class="phase-dot"></div><div class="phase-label">Submitted</div></div>
       </div>
 
+      <div class="now">
+        <div class="now-label">Working on</div>
+        Reformulating to Research Note format. Clarifying framing and contribution section.
+      </div>
+
       <div class="paper-footer">
-        <div class="paper-tags">
-          <span class="tag">Instrument development</span>
-          <span class="tag">CFA</span>
-          <span class="tag">Experimental validation</span>
-          <span class="tag">Formative construct</span>
-        </div>
         <a class="detail-link" href="/research/sdm-instrument/">Details &rarr;</a>
       </div>
     </div>
 
     <!-- Paper 2: Heterogeneous Effects -->
     <div class="paper">
-      <div class="paper-header">
-        <div>
-          <div class="paper-title">Heterogeneous Effects of Theory-Based Training</div>
-          <div class="paper-meta">With Alfonso Gambardella &middot; IdeaBoosterLab RCT data</div>
-        </div>
-      </div>
-
-      <p class="paper-desc">Theory-based entrepreneurship training works on average — but for whom? This paper proposes a systematic taxonomy of heterogeneous treatment effects organized into three categories: person-level, venture-level, and dosage. Using random forest for exploration and HTE regressions across 5 pooled RCTs, it provides the first systematic account of which entrepreneur and startup characteristics moderate training response.</p>
+      <div class="paper-title">Heterogeneous Effects of Theory-Based Training</div>
 
       <div class="phases">
         <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Concept</div></div>
@@ -169,13 +150,12 @@
         <div class="phase"><div class="phase-dot"></div><div class="phase-label">Submitted</div></div>
       </div>
 
+      <div class="now">
+        <div class="now-label">Working on</div>
+        Requesting data snapshot from Diego. Waiting for RF class notes.
+      </div>
+
       <div class="paper-footer">
-        <div class="paper-tags">
-          <span class="tag">RCT</span>
-          <span class="tag">Random forest</span>
-          <span class="tag">HTE</span>
-          <span class="tag">Entrepreneurship</span>
-        </div>
         <a class="detail-link" href="/research/heterogeneity-effects/">Details &rarr;</a>
       </div>
     </div>
