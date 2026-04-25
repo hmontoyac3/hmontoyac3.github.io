@@ -52,16 +52,65 @@
     .header { margin-bottom: 2rem; }
     .header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.3rem; }
     .header-meta { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.5rem; }
-    .badge {
-      font-size: 0.72rem; font-weight: 500;
-      padding: 0.2rem 0.6rem; border-radius: 20px;
-    }
-    .badge-exploration { background: #dbeafe; color: #1e40af; }
     .meta { font-size: 0.82rem; color: #888; }
 
     section { margin-bottom: 2rem; }
     section h2 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.4rem; }
 
+    /* --- Phases --- */
+    .phases {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+    .phase {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      min-width: 72px;
+      position: relative;
+    }
+    .phase:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background: #e5e5e5;
+      z-index: 0;
+    }
+    .phase.done:not(:last-child)::after,
+    .phase.active:not(:last-child)::after { background: #1a1a1a; }
+    .phase-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #e5e5e5;
+      border: 2px solid #e5e5e5;
+      z-index: 1;
+      position: relative;
+    }
+    .phase.done .phase-dot { background: #1a1a1a; border-color: #1a1a1a; }
+    .phase.active .phase-dot {
+      background: white;
+      border-color: #1a1a1a;
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.08);
+    }
+    .phase-label {
+      font-size: 0.7rem;
+      color: #aaa;
+      margin-top: 0.4rem;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .phase.done .phase-label { color: #555; }
+    .phase.active .phase-label { color: #1a1a1a; font-weight: 600; }
+
+    /* --- Status grid --- */
     .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
     .status-item { background: white; border: 1px solid #e5e5e5; border-radius: 6px; padding: 1rem; }
     .status-label { font-size: 0.75rem; color: #888; margin-bottom: 0.2rem; }
@@ -91,7 +140,6 @@
 </head>
 <body>
 
-  <!-- PASSWORD SCREEN -->
   <div id="lock">
     <h2>Heterogeneous Effects</h2>
     <p>This page is for collaborators only.</p>
@@ -100,7 +148,6 @@
     <div id="lock-error">Incorrect password.</div>
   </div>
 
-  <!-- CONTENT (hidden until unlocked) -->
   <div id="content">
     <a class="back" href="/research/">&larr; Research</a>
 
@@ -108,10 +155,43 @@
       <h1>Heterogeneous Effects of Theory-Based Training</h1>
       <p style="font-size:0.9rem; color:#555; margin-top:0.3rem;">A systematic framework for who benefits and why.</p>
       <div class="header-meta">
-        <span class="badge badge-exploration">Exploration</span>
         <span class="meta">With Alfonso Gambardella &middot; IdeaBoosterLab RCT data</span>
       </div>
     </div>
+
+    <section>
+      <h2>Phase</h2>
+      <div class="phases">
+        <div class="phase done">
+          <div class="phase-dot"></div>
+          <div class="phase-label">Concept</div>
+        </div>
+        <div class="phase active">
+          <div class="phase-dot"></div>
+          <div class="phase-label">Data</div>
+        </div>
+        <div class="phase">
+          <div class="phase-dot"></div>
+          <div class="phase-label">Exploration</div>
+        </div>
+        <div class="phase">
+          <div class="phase-dot"></div>
+          <div class="phase-label">Analysis</div>
+        </div>
+        <div class="phase">
+          <div class="phase-dot"></div>
+          <div class="phase-label">Writing</div>
+        </div>
+        <div class="phase">
+          <div class="phase-dot"></div>
+          <div class="phase-label">Revision</div>
+        </div>
+        <div class="phase">
+          <div class="phase-dot"></div>
+          <div class="phase-label">Submitted</div>
+        </div>
+      </div>
+    </section>
 
     <section>
       <h2>Status</h2>
@@ -126,7 +206,7 @@
         </div>
         <div class="status-item">
           <div class="status-label">Stage</div>
-          <div class="status-value">Exploratory — variable selection</div>
+          <div class="status-value">Variable selection</div>
         </div>
         <div class="status-item">
           <div class="status-label">Reference</div>
@@ -156,42 +236,39 @@
     <section>
       <h2>Documents</h2>
       <a class="doc-link" href="/research/heterogeneity-effects/onepager_v2.pdf">One-pager v2</a>
-      <a class="doc-link" href="/research/heterogeneity-effects/onepager_v1.pdf">One-pager v1 (cognitive moderators)</a>
+      <a class="doc-link" href="/research/heterogeneity-effects/onepager_v1.pdf">One-pager v1</a>
     </section>
 
     <section>
       <h2>Progress Log</h2>
-      <!-- ADD NEW ENTRIES AT THE TOP. Format: date + one or two lines of what you did. -->
       <div class="log-entry">
         <div class="log-date">2026-04-24</div>
         <div class="log-text">Two conversations with Alfonso. Framework agreed: three categories (person, venture, dosage). Method: random forest exploration first, then HTE. Alfonso sharing Titanic example and RF class notes. Data access proposal to Diego in progress.</div>
       </div>
       <div class="log-entry">
         <div class="log-date">2026-04-23</div>
-        <div class="log-text">One-pager v2 sent to Alfonso. He responded in 3 minutes — positive. Meeting scheduled same day.</div>
+        <div class="log-text">One-pager v2 sent to Alfonso. He responded in 3 minutes. Meeting same day.</div>
       </div>
       <div class="log-entry">
         <div class="log-date">2026-04-22</div>
-        <div class="log-text">One-pager v1 drafted (cognitive moderators angle). Confirmed with Diego: unc_aversion, risk_aversion, learning_orientation present in at least 5 RCTs (Italy, Colombia, Netherlands, Spain, UK).</div>
+        <div class="log-text">One-pager v1 drafted (cognitive moderators angle). Diego confirmed: unc_aversion, risk_aversion, learning_orientation present in 5 RCTs (Italy, Colombia, Netherlands, Spain, UK).</div>
       </div>
     </section>
 
     <section>
       <h2>Next Steps</h2>
       <ul class="next-steps">
-        <li>Request data snapshot from Diego (variable list ready)</li>
-        <li>Refresh random forest — review Alfonso's class notes when received</li>
-        <li>Read Chernozhukov, Duflo et al. (Econometrica 2025) in detail</li>
-        <li>Run RF separately by category on snapshot</li>
+        <li>Request data snapshot from Diego</li>
+        <li>Review Alfonso's random forest class notes when received</li>
+        <li>Read Chernozhukov, Duflo et al. (Econometrica 2025)</li>
+        <li>Run RF by category on snapshot</li>
         <li>Send intermediate results to Alfonso</li>
       </ul>
     </section>
   </div>
 
   <script>
-    // Change this password to whatever you want
     const PASSWORD = "het2026";
-
     function unlock() {
       const input = document.getElementById('pwd').value;
       if (input === PASSWORD) {
@@ -202,8 +279,6 @@
         document.getElementById('lock-error').style.display = 'block';
       }
     }
-
-    // Stay unlocked within session
     if (sessionStorage.getItem('het-unlocked') === 'true') {
       document.getElementById('lock').style.display = 'none';
       document.getElementById('content').style.display = 'block';
