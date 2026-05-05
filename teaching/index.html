@@ -13,7 +13,7 @@
       min-height: 100vh;
       padding: 2.5rem 2rem;
     }
-    .container { max-width: 680px; margin: 0 auto; }
+    .container { max-width: 640px; margin: 0 auto; }
 
     .back { font-size: 0.85rem; color: #888; text-decoration: none; display: inline-block; margin-bottom: 2.5rem; }
     .back:hover { color: #5B7FA6; }
@@ -22,32 +22,26 @@
     .page-header h1 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem; }
     .page-header p { font-size: 0.9rem; color: #888; }
 
-    /* Section title */
-    .section-title {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: #aaa;
-      margin-bottom: 0.9rem;
-      margin-top: 2.2rem;
-    }
-    .section-title:first-of-type { margin-top: 0; }
-
-    /* Seminar card */
-    .seminar {
+    .card {
       background: white;
       border: 1px solid #e5e5e5;
       border-radius: 8px;
       padding: 1.5rem 1.6rem;
       margin-bottom: 1.2rem;
     }
-    .seminar-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
-    .seminar-meta { font-size: 0.82rem; color: #888; margin-bottom: 1rem; }
-    .seminar-desc { font-size: 0.88rem; color: #444; line-height: 1.6; margin-bottom: 1rem; }
-    .seminar-desc:last-child { margin-bottom: 0; }
+    .card-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .card-meta { font-size: 0.82rem; color: #888; margin-bottom: 1rem; }
+    .card-desc { font-size: 0.88rem; color: #444; line-height: 1.65; }
 
-    /* Tags */
-    .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #aaa;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tag {
       font-size: 0.73rem;
       background: #f4f4f4;
@@ -66,50 +60,7 @@
       border: 1px dashed #ccc;
     }
 
-    .label {
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: #aaa;
-      margin-top: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Platform modules grid */
-    .modules {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0.8rem;
-      margin-top: 1rem;
-    }
-    @media (max-width: 560px) { .modules { grid-template-columns: 1fr; } }
-
-    .module {
-      background: #f8f8f8;
-      border: 1px solid #e8e8e8;
-      border-radius: 6px;
-      padding: 1rem 1.1rem;
-    }
-    .module-name {
-      font-size: 0.88rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-    .module-desc {
-      font-size: 0.78rem;
-      color: #666;
-      line-height: 1.5;
-      margin-bottom: 0.7rem;
-    }
-    .module-link {
-      font-size: 0.75rem;
-      color: #5B7FA6;
-      text-decoration: none;
-    }
-    .module-link:hover { text-decoration: underline; }
-
-    /* Highlighted project block */
-    .project-block {
+    .ai-card {
       background: white;
       border: 1px solid #e5e5e5;
       border-left: 3px solid #5B7FA6;
@@ -117,23 +68,10 @@
       padding: 1.5rem 1.6rem;
       margin-bottom: 1.2rem;
     }
-    .project-block h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.2rem; }
-    .project-block .proj-meta { font-size: 0.82rem; color: #888; margin-bottom: 1rem; }
-    .project-block p { font-size: 0.88rem; color: #444; line-height: 1.6; margin-bottom: 0.8rem; }
-    .project-block p:last-child { margin-bottom: 0; }
-
-    /* AI block */
-    .ai-block {
-      background: white;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
-      padding: 1.5rem 1.6rem;
-      margin-bottom: 1.2rem;
-    }
-    .ai-block h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
-    .ai-block .ai-sub { font-size: 0.85rem; color: #888; margin-bottom: 1rem; }
-    .ai-block p { font-size: 0.88rem; color: #444; line-height: 1.6; margin-bottom: 0.8rem; }
-    .ai-block p:last-child { margin-bottom: 0; }
+    .ai-card h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .ai-card .ai-sub { font-size: 0.85rem; color: #888; margin-bottom: 1rem; }
+    .ai-card p { font-size: 0.88rem; color: #444; line-height: 1.65; margin-bottom: 0.8rem; }
+    .ai-card p:last-of-type { margin-bottom: 0; }
   </style>
 </head>
 <body>
@@ -145,100 +83,40 @@
       <p>Helena Montoya Calero &middot; Bocconi University</p>
     </div>
 
-    <!-- ── SEMINARS ── -->
-    <div class="section-title">Seminars</div>
-
-    <!-- Seminar 1: Leadership & Managerial Skills -->
-    <div class="seminar">
-      <div class="seminar-title">Leadership &amp; Managerial Skills</div>
-      <div class="seminar-meta">Bocconi University &middot; Spring 2026 &middot; Master level</div>
-      <div class="seminar-desc">
+    <div class="card">
+      <div class="card-title">Leadership &amp; Managerial Skills</div>
+      <div class="card-meta">Bocconi University &middot; Master level &middot; Spring 2026</div>
+      <div class="card-desc">
         Practitioner-oriented seminar on the core skills that shape effective managers.
-        All sessions are built around live exercises — no lecture slides projected at students.
-        Each module runs through a custom interactive platform designed for real-time participation.
+        All sessions are built around live exercises — no slides projected at students.
+        Each module runs on a custom interactive platform designed for real-time participation.
       </div>
-
-      <div class="label">Modules</div>
+      <div class="label">Topics</div>
       <div class="tag-row">
         <span class="tag">Communication</span>
         <span class="tag">Teamwork</span>
         <span class="tag">Negotiation</span>
         <span class="tag">Individual pitch</span>
       </div>
-
-      <div class="label">Live platforms</div>
-      <div class="modules">
-
-        <div class="module">
-          <div class="module-name">Negotiation</div>
-          <div class="module-desc">
-            Two scenarios (distributive &amp; integrative). Students access role cards via QR code on their phones. Results enter a live dashboard that auto-generates charts.
-          </div>
-          <a class="module-link" href="https://github.com/hmontoyac3/negotiation-class" target="_blank">View on GitHub &rarr;</a>
-        </div>
-
-        <div class="module">
-          <div class="module-name">Communication</div>
-          <div class="module-desc">
-            Students build a landing page in 25 min using AI, then pitch it Shark Tank-style. Session 3 collects live reflections via Firebase that appear as a word cloud on the projector.
-          </div>
-          <a class="module-link" href="https://github.com/hmontoyac3/communication-class" target="_blank">View on GitHub &rarr;</a>
-        </div>
-
-        <div class="module">
-          <div class="module-name">Teams</div>
-          <div class="module-desc">
-            Lost at Sea live scorer compares individual vs. group performance. Olympic Challenge includes timed rounds and a jury scoring leaderboard displayed in real time.
-          </div>
-        </div>
-
-      </div>
     </div>
 
-    <!-- Seminar 2: Effective Communication -->
-    <div class="seminar">
-      <div class="seminar-title">Effective Communication</div>
-      <div class="seminar-meta">Bocconi University &middot; Master level &middot; Seminar</div>
-      <div class="seminar-desc">
-        Seminar focused on developing clear, structured, and persuasive communication skills
+    <div class="card">
+      <div class="card-title">Effective Communication</div>
+      <div class="card-meta">Bocconi University &middot; Master level &middot; Seminar</div>
+      <div class="card-desc">
+        Seminar focused on developing clear, structured, and persuasive communication
         for academic and professional contexts at the master level.
       </div>
     </div>
 
-    <!-- ── PROJECTS ── -->
-    <div class="section-title">Projects</div>
-
-    <div class="project-block">
-      <h2>Redesigning Managerial Skills for All Bachelor Students</h2>
-      <div class="proj-meta">In collaboration with BUILT &middot; Bocconi University &middot; Ongoing</div>
+    <div class="ai-card">
+      <h2>AI in the Classroom</h2>
+      <div class="ai-sub">Integrating AI actively — as a tool, not a shortcut</div>
       <p>
-        Working with BUILT (Bocconi University) and faculty to redesign the Managerial Skills seminar
-        at scale — for the full undergraduate population. The redesign integrates AI tools more deeply
-        into every session while keeping a clear pedagogical line:
-        AI can help generate presentations, websites, and materials, but it is the student
-        who must present, convince, and negotiate.
-        Human skills are non-negotiable; AI is the scaffold, not the substitute.
-      </p>
-      <div class="label">Focus areas</div>
-      <div class="tag-row">
-        <span class="tag">AI-augmented pedagogy</span>
-        <span class="tag">Presentation skills</span>
-        <span class="tag">Negotiation</span>
-        <span class="tag">Live participation tools</span>
-        <span class="tag">Scale design</span>
-      </div>
-    </div>
-
-    <!-- ── AI IN THE CLASSROOM ── -->
-    <div class="section-title">AI in the Classroom</div>
-
-    <div class="ai-block">
-      <h2>Tools I use &amp; tools in development</h2>
-      <div class="ai-sub">Comfortable with AI — integrating it actively, not passively</div>
-      <p>
-        I integrate AI tools in my teaching as both a practical resource and a subject of critical
-        reflection. Students use them during sessions, but always in service of skills they must
-        own themselves.
+        I integrate AI tools into my teaching both as practical resources and as objects of
+        critical reflection. Students use them during sessions, always in service of skills
+        they must own themselves. I am also developing tools to bring AI further into
+        seminar design and classroom dynamics.
       </p>
       <div class="label">In use</div>
       <div class="tag-row">

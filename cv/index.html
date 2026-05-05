@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Helena Montoya Calero</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 2.5rem 2rem;
+    }
+    .container { max-width: 640px; margin: 0 auto; }
+
+    .back { font-size: 0.85rem; color: #888; text-decoration: none; display: inline-block; margin-bottom: 2.5rem; }
+    .back:hover { color: #5B7FA6; }
+
+    /* Header */
+    .cv-header {
+      margin-bottom: 2.5rem;
+    }
+    .cv-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .cv-header .position { font-size: 0.95rem; color: #555; margin-bottom: 1rem; }
+    .cv-header .contact {
+      font-size: 0.82rem;
+      color: #888;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1.2rem;
+      align-items: center;
+    }
+    .cv-header .contact a { color: #888; text-decoration: none; }
+    .cv-header .contact a:hover { color: #5B7FA6; }
+
+    .pdf-link {
+      display: inline-block;
+      margin-top: 1.1rem;
+      font-size: 0.8rem;
+      color: #5B7FA6;
+      text-decoration: none;
+      border: 1px solid #d0dce8;
+      border-radius: 4px;
+      padding: 0.3rem 0.8rem;
+      background: #f6f9fc;
+    }
+    .pdf-link:hover { background: #edf2f8; }
+
+    /* Section */
+    .section { margin-bottom: 2rem; }
+    .section-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: #aaa;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Entry card */
+    .entry {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.2rem;
+    }
+    .entry-title { font-size: 0.93rem; font-weight: 600; }
+    .entry-date { font-size: 0.78rem; color: #999; white-space: nowrap; flex-shrink: 0; }
+    .entry-sub {
+      font-size: 0.82rem;
+      color: #888;
+      margin-bottom: 0.7rem;
+    }
+    .entry-body {
+      font-size: 0.85rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    .entry-body + .entry-body { margin-top: 0.35rem; }
+
+    /* Paper entry — left accent */
+    .paper {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-left: 3px solid #5B7FA6;
+      border-radius: 0 8px 8px 0;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+    .paper-title { font-size: 0.93rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .paper-authors { font-size: 0.8rem; color: #888; margin-bottom: 0.6rem; }
+    .paper-desc { font-size: 0.85rem; color: #444; line-height: 1.6; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.7rem; }
+    .tag {
+      font-size: 0.71rem;
+      background: #f4f4f4;
+      border-radius: 4px;
+      padding: 0.2rem 0.5rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="/">&larr; Home</a>
+
+    <!-- Header -->
+    <div class="cv-header">
+      <h1>Helena Montoya Calero</h1>
+      <div class="position">PhD Candidate &middot; Bocconi University &middot; ION Management Science Lab</div>
+      <div class="contact">
+        <span>Milan, Italy</span>
+        <a href="mailto:hmontoyac3@gmail.com">hmontoyac3@gmail.com</a>
+        <a href="https://helenamontoyacalero.com">helenamontoyacalero.com</a>
+        <a href="https://www.linkedin.com/in/helena-montoya-calero-194071178/" target="_blank">LinkedIn</a>
+      </div>
+      <a class="pdf-link" href="/cv.pdf" target="_blank">Download PDF &darr;</a>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <div class="section-label">Education</div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Bocconi University</span>
+          <span class="entry-date">2023 — present</span>
+        </div>
+        <div class="entry-sub">PhD in Management · Focus: Decision-Making under Uncertainty · Milan, Italy</div>
+        <div class="entry-body">Advisors: Alfonso Gambardella and Arnaldo Camuffo · ION Management Science Lab</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Université Catholique de Louvain</span>
+          <span class="entry-date">2019 — 2021</span>
+        </div>
+        <div class="entry-sub">Master 120 in Economics, Research track · Louvain, Belgium</div>
+        <div class="entry-body">Thesis: Measuring equality of opportunity based on individual responsibility — comparison Belgium and Colombia. Advisor: François Maniquet.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">EAFIT University</span>
+          <span class="entry-date">2014 — 2018</span>
+        </div>
+        <div class="entry-sub">Economics Bachelor · Medellín, Colombia</div>
+      </div>
+    </div>
+
+    <!-- Working Papers -->
+    <div class="section">
+      <div class="section-label">Working Papers</div>
+
+      <div class="paper">
+        <div class="paper-title">Measuring Scientific Decision-Making in Organizations</div>
+        <div class="paper-authors">with Arnaldo Camuffo, Alfonso Gambardella, and Thomaz Teodorovicz</div>
+        <div class="paper-desc">24-item survey instrument measuring scientific decision-making practices across three dimensions: Causal Reasoning, Evidence Evaluation, and Adaptive Learning. Applied to 3,178 managers across 54 firms.</div>
+        <div class="tag-row">
+          <span class="tag">Target: Research Policy</span>
+          <span class="tag">N = 3,178</span>
+          <span class="tag">54 firms</span>
+        </div>
+      </div>
+
+      <div class="paper">
+        <div class="paper-title">Heterogeneous Effects of Theory-Based Entrepreneurship Training</div>
+        <div class="paper-authors">with Arnaldo Camuffo and Alfonso Gambardella</div>
+        <div class="paper-desc">Examines heterogeneous treatment effects of theory-based training programs across five RCTs (Italy, Colombia, Netherlands, Spain, UK) using Random Forest and causal inference methods.</div>
+        <div class="tag-row">
+          <span class="tag">5 RCTs</span>
+          <span class="tag">In progress</span>
+        </div>
+      </div>
+
+      <div class="paper">
+        <div class="paper-title">Extracting Interpretable Models from Large Language Models for Organizational Data</div>
+        <div class="paper-authors">with Said Kazemi</div>
+        <div class="paper-desc">Compares classical econometric approaches (LASSO) with LLM-based methods for predicting ordinal organizational variables. Explores linear probing, prompt-ensemble, and linear distillation techniques.</div>
+        <div class="tag-row">
+          <span class="tag">LLMs</span>
+          <span class="tag">In progress</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+      <div class="section-label">Experience</div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">ION Management Science Lab, Bocconi University</span>
+          <span class="entry-date">Jun 2023 — present</span>
+        </div>
+        <div class="entry-sub">Research Assistant · Milan, Italy</div>
+        <div class="entry-body">Decision-Making under Uncertainty, Management Science, field experiments. PIs: Alfonso Gambardella and Arnaldo Camuffo.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Fundación Éxito</span>
+          <span class="entry-date">Sep 2021 — May 2022</span>
+        </div>
+        <div class="entry-sub">Research Associate · Medellín, Colombia</div>
+        <div class="entry-body">Data management, quantitative analysis, data visualization, qualitative research, and pilot design.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Innovations for Poverty Action (IPA)</span>
+          <span class="entry-date">Apr 2020 — Jun 2021</span>
+        </div>
+        <div class="entry-sub">Research Associate · Medellín, Colombia</div>
+        <div class="entry-body">PI: Christopher Blattman (University of Chicago). Projects on criminal governance (Gang Rule) and youth decision-making in contexts of violence (Recruitment).</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">EAFIT University</span>
+          <span class="entry-date">2016 — 2020</span>
+        </div>
+        <div class="entry-sub">Research Assistant · Medellín, Colombia</div>
+        <div class="entry-body">Research on labor discrimination in migration, citizen security, and cooperative experiment design. Collaborated with PIs at EAFIT, Los Andes, and the World Bank.</div>
+      </div>
+    </div>
+
+    <!-- Conferences -->
+    <div class="section">
+      <div class="section-label">Conferences &amp; Presentations</div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Utah Winter Strategy Seminar</span>
+          <span class="entry-date">Jan 2025</span>
+        </div>
+        <div class="entry-sub">Deer Valley, Utah</div>
+        <div class="entry-body">Theory-Based View: A Scientific Approach to Value Creation</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">2nd Annual Bayesian Entrepreneurship Conference</span>
+          <span class="entry-date">2025</span>
+        </div>
+        <div class="entry-sub">Bocconi University · Milan, Italy</div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+      <div class="section-label">Skills</div>
+      <div class="entry">
+        <div class="entry-body">
+          <strong>Programming &amp; data:</strong> Python, R, STATA, LaTeX, GIS, API integration, LLMs
+        </div>
+        <div class="entry-body" style="margin-top:0.4rem;">
+          <strong>Methods:</strong> Causal inference, field experiments, machine learning, NLP
+        </div>
+        <div class="entry-body" style="margin-top:0.4rem;">
+          <strong>Languages:</strong> Spanish (native) &middot; English (TOEFL 97)
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
