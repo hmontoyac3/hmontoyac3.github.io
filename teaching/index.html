@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teaching — Helena Montoya Calero</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 2.5rem 2rem;
+    }
+    .container { max-width: 640px; margin: 0 auto; }
+
+    .back { font-size: 0.85rem; color: #888; text-decoration: none; display: inline-block; margin-bottom: 2.5rem; }
+    .back:hover { color: #5B7FA6; }
+
+    .page-header { margin-bottom: 2.5rem; }
+    .page-header h1 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .page-header p { font-size: 0.9rem; color: #888; }
+
+    .seminar {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 1.5rem 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .seminar-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .seminar-meta { font-size: 0.82rem; color: #888; margin-bottom: 1rem; }
+
+    .seminar-desc {
+      font-size: 0.88rem;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .topic {
+      font-size: 0.75rem;
+      background: #f4f4f4;
+      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      color: #555;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #aaa;
+      margin-bottom: 0.6rem;
+    }
+
+    /* AI Tools section */
+    .ai-block {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-left: 3px solid #5B7FA6;
+      border-radius: 0 8px 8px 0;
+      padding: 1.5rem 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+    .ai-block h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .ai-block .ai-sub { font-size: 0.85rem; color: #888; margin-bottom: 1rem; }
+    .ai-block p {
+      font-size: 0.88rem;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 0.9rem;
+    }
+    .ai-block p:last-child { margin-bottom: 0; }
+
+    .tool-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+    }
+    .tool {
+      font-size: 0.75rem;
+      border: 1px solid #d0dce8;
+      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      color: #5B7FA6;
+      background: #f6f9fc;
+    }
+    .tool.wip {
+      border-style: dashed;
+      color: #888;
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="/">&larr; Home</a>
+
+    <div class="page-header">
+      <h1>Teaching</h1>
+      <p>Helena Montoya Calero &middot; Bocconi University</p>
+    </div>
+
+    <!-- Seminar 1 -->
+    <div class="seminar">
+      <div class="seminar-title">Leadership &amp; Managerial Skills</div>
+      <div class="seminar-meta">Bocconi University &middot; Spring 2026 &middot; Seminar</div>
+      <div class="seminar-desc">
+        Practitioner-oriented seminar on the core skills that shape effective managers.
+        Emphasis on applied exercises, peer feedback, and reflection throughout the sessions.
+      </div>
+      <div class="section-label">Topics</div>
+      <div class="topics">
+        <span class="topic">Communication</span>
+        <span class="topic">Teamwork</span>
+        <span class="topic">Negotiation</span>
+        <span class="topic">Individual pitch</span>
+      </div>
+    </div>
+
+    <!-- Seminar 2 -->
+    <div class="seminar">
+      <div class="seminar-title">Effective Communication</div>
+      <div class="seminar-meta">Bocconi University &middot; Master level &middot; Seminar</div>
+      <div class="seminar-desc">
+        Seminar focused on developing clear, structured, and persuasive communication skills
+        for academic and professional contexts at the master level.
+      </div>
+    </div>
+
+    <!-- AI Tools -->
+    <div class="ai-block">
+      <h2>AI in the Classroom</h2>
+      <div class="ai-sub">Tools I use &amp; tools in progress</div>
+      <p>
+        I am comfortable working with AI tools and integrate them actively into my teaching —
+        both as pedagogical resources and as objects of critical discussion with students.
+      </p>
+      <p>
+        I am currently developing tools that bring AI capabilities into seminar design and
+        classroom dynamics. More details will appear here as they take shape.
+      </p>
+      <div class="section-label">In use</div>
+      <div class="tool-row">
+        <span class="tool">Claude</span>
+        <span class="tool">ChatGPT</span>
+        <span class="tool">Cursor</span>
+        <span class="tool">NotebookLM</span>
+      </div>
+      <div class="section-label" style="margin-top:0.9rem;">In development</div>
+      <div class="tool-row">
+        <span class="tool wip">Tool 1 — coming soon</span>
+        <span class="tool wip">Tool 2 — coming soon</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
