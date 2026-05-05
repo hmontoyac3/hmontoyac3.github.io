@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Helena Montoya Calero</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 2.5rem 2rem;
+    }
+    .container { max-width: 640px; margin: 0 auto; }
+
+    .back { font-size: 0.85rem; color: #888; text-decoration: none; display: inline-block; margin-bottom: 2.5rem; }
+    .back:hover { color: #5B7FA6; }
+
+    .page-header { margin-bottom: 2.5rem; }
+    .page-header h1 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .page-header p { font-size: 0.9rem; color: #888; }
+
+    /* Project card */
+    .project {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-left: 3px solid #5B7FA6;
+      border-radius: 0 8px 8px 0;
+      padding: 1.5rem 1.6rem;
+      margin-bottom: 1.4rem;
+    }
+    .project h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .project-meta { font-size: 0.82rem; color: #888; margin-bottom: 1rem; }
+    .project p { font-size: 0.88rem; color: #444; line-height: 1.65; margin-bottom: 0.85rem; }
+    .project p:last-of-type { margin-bottom: 0; }
+
+    .label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #aaa;
+      margin-top: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      font-size: 0.73rem;
+      background: #f4f4f4;
+      border-radius: 4px;
+      padding: 0.22rem 0.55rem;
+      color: #555;
+    }
+
+    /* Module grid for teaching platforms */
+    .plain-project {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 1.5rem 1.6rem;
+      margin-bottom: 1.4rem;
+    }
+    .plain-project h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .plain-project .project-meta { font-size: 0.82rem; color: #888; margin-bottom: 1rem; }
+    .plain-project p { font-size: 0.88rem; color: #444; line-height: 1.65; margin-bottom: 0.85rem; }
+
+    .modules {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 0.6rem;
+    }
+    @media (max-width: 540px) { .modules { grid-template-columns: 1fr; } }
+
+    .module {
+      background: #f8f8f8;
+      border: 1px solid #e8e8e8;
+      border-radius: 6px;
+      padding: 1rem 1.1rem;
+    }
+    .module-name { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .module-desc { font-size: 0.78rem; color: #666; line-height: 1.5; margin-bottom: 0.65rem; }
+    .module-link { font-size: 0.75rem; color: #5B7FA6; text-decoration: none; }
+    .module-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="/">&larr; Home</a>
+
+    <div class="page-header">
+      <h1>Projects</h1>
+      <p>Helena Montoya Calero &middot; Bocconi University</p>
+    </div>
+
+    <!-- BUILT Project -->
+    <div class="project">
+      <h2>Redesigning Managerial Skills for All Bachelor Students</h2>
+      <div class="project-meta">In collaboration with BUILT &middot; Bocconi University &middot; Ongoing</div>
+      <p>
+        Working with BUILT (Bocconi University) and faculty to redesign the Managerial Skills
+        seminar at scale — for the full undergraduate population. The goal is a curriculum that
+        integrates AI tools deeply into every session while holding a clear line:
+        AI can help generate presentations, websites, and materials,
+        but students are the ones who must present, convince, and negotiate.
+        Human skills are non-negotiable; AI is the scaffold, not the substitute.
+      </p>
+      <div class="label">Focus areas</div>
+      <div class="tag-row">
+        <span class="tag">AI-augmented pedagogy</span>
+        <span class="tag">Presentation skills</span>
+        <span class="tag">Negotiation</span>
+        <span class="tag">Live participation tools</span>
+        <span class="tag">Scale design</span>
+      </div>
+    </div>
+
+    <!-- SDM Survey Project -->
+    <div class="project">
+      <h2>SDM Survey Project</h2>
+      <div class="project-meta">ION Management Science Lab &middot; Bocconi University &middot; 2023–2026</div>
+      <p>
+        During the first three years of my PhD, I worked on the Scientific Decision-Making
+        survey project at the ION Management Science Lab, led by Alfonso Gambardella and
+        Arnaldo Camuffo. The project developed and deployed a field-ready instrument to
+        measure structured decision-making practices in organizations, applied to a sample
+        of 3,178 managers across 54 firms.
+      </p>
+      <div class="label">Outputs</div>
+      <div class="tag-row">
+        <span class="tag">Survey instrument (24 items)</span>
+        <span class="tag">Field data collection</span>
+        <span class="tag">Working paper</span>
+        <span class="tag">Target: Research Policy</span>
+      </div>
+    </div>
+
+    <!-- Teaching Platforms -->
+    <div class="plain-project">
+      <h2>Live Participation Platforms for the Classroom</h2>
+      <div class="project-meta">Leadership &amp; Managerial Skills Seminar &middot; Bocconi University &middot; Spring 2026</div>
+      <p>
+        Three custom-built interactive platforms — one per seminar module — designed
+        for real-time student participation. No slides projected at students;
+        instead, live boards guide exercises while students engage via their phones
+        through QR codes, submission forms, and live data feeds.
+      </p>
+      <div class="label">Modules</div>
+      <div class="modules">
+
+        <div class="module">
+          <div class="module-name">Negotiation</div>
+          <div class="module-desc">
+            Two scenarios (distributive &amp; integrative). Students access role cards via QR code.
+            Live results board auto-generates charts as data comes in.
+          </div>
+          <a class="module-link" href="https://github.com/hmontoyac3/negotiation-class" target="_blank">View on GitHub &rarr;</a>
+        </div>
+
+        <div class="module">
+          <div class="module-name">Communication</div>
+          <div class="module-desc">
+            Students build a landing page in 25 min with AI, then pitch it Shark Tank-style.
+            Session 3 collects live reflections via Firebase, displayed as a word cloud.
+          </div>
+          <a class="module-link" href="https://github.com/hmontoyac3/communication-class" target="_blank">View on GitHub &rarr;</a>
+        </div>
+
+        <div class="module">
+          <div class="module-name">Teams</div>
+          <div class="module-desc">
+            Lost at Sea live scorer compares individual vs. group performance.
+            Olympic Challenge includes timed rounds and a jury leaderboard.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
