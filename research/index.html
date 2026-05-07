@@ -102,6 +102,22 @@
       white-space: nowrap;
     }
     .detail-link:hover { color: #5B7FA6; }
+
+    /* Paused state */
+    .paper.paused { opacity: 0.6; }
+    .phase.paused .phase-dot { background: #d4d4d4; border-color: #d4d4d4; }
+    .phase.paused:not(:last-child)::after { background: #e5e5e5; }
+    .paused-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #999;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-bottom: 0.9rem;
+    }
   </style>
 </head>
 <body>
@@ -158,6 +174,27 @@
 
       <div class="paper-footer">
         <a class="detail-link" href="/research/heterogeneity-effects/">Details &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Paper 3: LLMs -->
+    <div class="paper paused">
+      <div class="paper-title">Extracting Interpretable Models from Large Language Models for Organizational Data</div>
+      <div class="paused-badge">Paused</div>
+
+      <div class="phases">
+        <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Concept</div></div>
+        <div class="phase paused"><div class="phase-dot"></div><div class="phase-label">Data</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Exploration</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Analysis</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Writing</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Revision</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Submitted</div></div>
+      </div>
+
+      <div class="now">
+        <div class="now-label">With</div>
+        Said Kazemi
       </div>
     </div>
 
