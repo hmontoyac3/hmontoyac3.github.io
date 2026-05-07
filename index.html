@@ -6,10 +6,9 @@
   <title>Helena Montoya Calero</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #fdf8f4;
+      background: #fafafa;
       color: #1a1a1a;
       min-height: 100vh;
       display: flex;
@@ -17,208 +16,85 @@
       align-items: center;
       justify-content: center;
       padding: 2rem;
-      overflow: hidden;
-      position: relative;
     }
-
-    /* ── Orbs ── */
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(90px);
-      opacity: 0.18;
-      pointer-events: none;
-      animation: drift ease-in-out infinite alternate;
-    }
-    .orb-1 {
-      width: 560px; height: 560px;
-      background: #C4603A;
-      top: -180px; left: -160px;
-      animation-duration: 20s;
-    }
-    .orb-2 {
-      width: 400px; height: 400px;
-      background: #E8A84A;
-      bottom: -120px; right: -80px;
-      animation-duration: 16s;
-      animation-direction: alternate-reverse;
-    }
-    .orb-3 {
-      width: 300px; height: 300px;
-      background: #5B7FA6;
-      top: 50%; left: 55%;
-      animation-duration: 24s;
-    }
-    @keyframes drift {
-      0%   { transform: translate(0, 0) scale(1); }
-      50%  { transform: translate(35px, 45px) scale(1.06); }
-      100% { transform: translate(-20px, 25px) scale(0.97); }
-    }
-
-    /* ── Container ── */
-    .container {
-      max-width: 540px;
-      width: 100%;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ── Header ── */
-    .header { margin-bottom: 2.2rem; }
-
-    h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-      opacity: 0;
-      animation: fadeUp 0.6s ease forwards 0.05s;
-    }
-
-    /* terracotta accent line under name */
-    .name-accent {
-      width: 36px;
-      height: 3px;
-      background: #C4603A;
-      border-radius: 2px;
-      margin-bottom: 0.9rem;
-      opacity: 0;
-      animation: fadeUp 0.5s ease forwards 0.2s;
-    }
-
-    .subtitle {
-      font-size: 0.88rem;
-      color: #888;
-      margin-bottom: 1.1rem;
-      opacity: 0;
-      animation: fadeUp 0.6s ease forwards 0.25s;
-    }
-    .bio {
-      font-size: 0.92rem;
-      color: #555;
-      line-height: 1.7;
-      opacity: 0;
-      animation: fadeUp 0.6s ease forwards 0.35s;
-    }
-
-    /* ── Cards ── */
-    .cards { margin-top: 2.2rem; }
+    .container { max-width: 560px; width: 100%; }
+    h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .subtitle { font-size: 0.95rem; color: #666; margin-bottom: 1.4rem; }
+    .bio { font-size: 0.9rem; color: #444; line-height: 1.65; margin-bottom: 2.5rem; }
 
     a.card {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(0,0,0,0.07);
-      border-radius: 12px;
-      padding: 1.2rem 1.5rem;
-      margin-bottom: 0.75rem;
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1rem;
       text-decoration: none;
       color: inherit;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
-      opacity: 0;
-      animation: fadeUp 0.55s ease forwards;
+      transition: border-color 0.15s, box-shadow 0.15s;
     }
-    a.card:nth-child(1) { animation-delay: 0.45s; }
-    a.card:nth-child(2) { animation-delay: 0.55s; }
-    a.card:nth-child(3) { animation-delay: 0.65s; }
-    a.card:nth-child(4) { animation-delay: 0.75s; }
+    a.card:hover { border-color: #5B7FA6; box-shadow: 0 2px 8px rgba(91,127,166,0.08); }
+    .card-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .card-sub { font-size: 0.85rem; color: #888; }
+    .card-arrow { font-size: 0.9rem; color: #ccc; transition: color 0.15s, transform 0.15s; flex-shrink: 0; }
+    a.card:hover .card-arrow { color: #5B7FA6; transform: translateX(3px); }
 
-    a.card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(196,96,58,0.1), 0 2px 8px rgba(0,0,0,0.05);
-      border-color: rgba(196,96,58,0.25);
-    }
-
-    .card-left { display: flex; align-items: center; }
-
-    .card-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
-    .card-sub { font-size: 0.8rem; color: #999; }
-
-    .card-arrow {
-      font-size: 1rem;
-      color: #ccc;
-      transition: color 0.2s, transform 0.2s;
-      flex-shrink: 0;
-    }
-    a.card:hover .card-arrow { color: #C4603A; transform: translateX(4px); }
-
-    /* ── Footer ── */
     .footer {
-      margin-top: 1.8rem;
-      font-size: 0.8rem;
+      margin-top: 2rem;
+      font-size: 0.82rem;
+      text-align: center;
       display: flex;
       justify-content: center;
       gap: 1.4rem;
-      opacity: 0;
-      animation: fadeUp 0.55s ease forwards 0.85s;
     }
-    .footer a { color: #aaa; text-decoration: none; transition: color 0.15s; }
-    .footer a:hover { color: #C4603A; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    .footer a { color: #999; text-decoration: none; }
+    .footer a:hover { color: #5B7FA6; }
   </style>
 </head>
 <body>
-
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-
   <div class="container">
+    <h1>Helena Montoya Calero</h1>
+    <p class="subtitle">PhD Candidate &middot; Bocconi University &middot; ION Management Science Lab</p>
+    <p class="bio">
+      I study decision-making under uncertainty in entrepreneurship and management.
+      My research is advised by Alfonso Gambardella and Arnaldo Camuffo.
+    </p>
 
-    <div class="header">
-      <h1>Helena Montoya<br>Calero</h1>
-      <div class="name-accent"></div>
-      <p class="subtitle">PhD Candidate &middot; Bocconi University &middot; ION Management Science Lab</p>
-      <p class="bio">
-        I study decision-making under uncertainty in entrepreneurship and management.
-        My research is advised by Alfonso Gambardella and Arnaldo Camuffo.
-      </p>
-    </div>
-
-    <div class="cards">
-      <a class="card" href="/research/">
-        <div class="card-left">
-          <div class="card-title">Research</div>
-          <div class="card-sub">Active projects &amp; working papers</div>
-        </div>
-        <span class="card-arrow">→</span>
-      </a>
-      <a class="card" href="/teaching/">
-        <div class="card-left">
-          <div class="card-title">Teaching</div>
-          <div class="card-sub">Seminars &amp; AI in the classroom</div>
-        </div>
-        <span class="card-arrow">→</span>
-      </a>
-      <a class="card" href="/projects/">
-        <div class="card-left">
-          <div class="card-title">Projects</div>
-          <div class="card-sub">Pedagogical design &amp; tools</div>
-        </div>
-        <span class="card-arrow">→</span>
-      </a>
-      <a class="card" href="/cv/">
-        <div class="card-left">
-          <div class="card-title">CV</div>
-          <div class="card-sub">Curriculum vitae</div>
-        </div>
-        <span class="card-arrow">→</span>
-      </a>
-    </div>
+    <a class="card" href="/research/">
+      <div>
+        <div class="card-title">Research</div>
+        <div class="card-sub">Active projects &amp; working papers</div>
+      </div>
+      <span class="card-arrow">→</span>
+    </a>
+    <a class="card" href="/teaching/">
+      <div>
+        <div class="card-title">Teaching</div>
+        <div class="card-sub">Seminars &amp; AI in the classroom</div>
+      </div>
+      <span class="card-arrow">→</span>
+    </a>
+    <a class="card" href="/projects/">
+      <div>
+        <div class="card-title">Projects</div>
+        <div class="card-sub">Pedagogical design &amp; tools</div>
+      </div>
+      <span class="card-arrow">→</span>
+    </a>
+    <a class="card" href="/cv/">
+      <div>
+        <div class="card-title">CV</div>
+        <div class="card-sub">Curriculum vitae</div>
+      </div>
+      <span class="card-arrow">→</span>
+    </a>
 
     <div class="footer">
       <a href="mailto:helena.montoya@phd.unibocconi.it">helena.montoya@phd.unibocconi.it</a>
       <a href="https://www.linkedin.com/in/helena-montoya-calero-194071178/" target="_blank">LinkedIn</a>
     </div>
-
   </div>
 </body>
 </html>
