@@ -46,16 +46,23 @@
     #lock-error { font-size: 0.82rem; color: #dc2626; margin-top: 0.6rem; display: none; }
 
     /* --- Content --- */
-    #content { display: none; max-width: 680px; margin: 0 auto; }
+    #content { display: none; max-width: 700px; margin: 0 auto; }
     .back { font-size: 0.85rem; color: #888; text-decoration: none; display: inline-block; margin-bottom: 2rem; }
     .back:hover { color: #333; }
     .header { margin-bottom: 2rem; }
     .header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .header-meta { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.5rem; }
-    .meta { font-size: 0.82rem; color: #888; }
 
-    section { margin-bottom: 2rem; }
-    section h2 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.4rem; }
+    section { margin-bottom: 2.2rem; }
+    section h2 {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.4rem;
+    }
 
     /* --- Phases --- */
     .phases {
@@ -83,59 +90,108 @@
       background: #e5e5e5;
       z-index: 0;
     }
-    .phase.done:not(:last-child)::after,
-    .phase.active:not(:last-child)::after { background: #1a1a1a; }
+    .phase.done:not(:last-child)::after { background: #1a1a1a; }
+    .phase.active:not(:last-child)::after { background: #e5e5e5; }
     .phase-dot {
-      width: 20px;
-      height: 20px;
+      width: 20px; height: 20px;
       border-radius: 50%;
       background: #e5e5e5;
       border: 2px solid #e5e5e5;
-      z-index: 1;
-      position: relative;
+      z-index: 1; position: relative;
     }
     .phase.done .phase-dot { background: #1a1a1a; border-color: #1a1a1a; }
     .phase.active .phase-dot {
-      background: white;
-      border-color: #1a1a1a;
+      background: white; border-color: #1a1a1a;
       box-shadow: 0 0 0 3px rgba(0,0,0,0.08);
     }
     .phase-label {
-      font-size: 0.7rem;
-      color: #aaa;
-      margin-top: 0.4rem;
-      text-align: center;
-      line-height: 1.3;
+      font-size: 0.7rem; color: #aaa;
+      margin-top: 0.4rem; text-align: center; line-height: 1.3;
     }
     .phase.done .phase-label { color: #555; }
     .phase.active .phase-label { color: #1a1a1a; font-weight: 600; }
 
-    /* --- Status grid --- */
-    .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-    .status-item { background: white; border: 1px solid #e5e5e5; border-radius: 6px; padding: 1rem; }
-    .status-label { font-size: 0.75rem; color: #888; margin-bottom: 0.2rem; }
-    .status-value { font-size: 0.95rem; font-weight: 500; }
+    /* --- Stat boxes --- */
+    .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; }
+    .stat-box {
+      background: white; border: 1px solid #e5e5e5; border-radius: 6px;
+      padding: 0.9rem 1rem; text-align: center;
+    }
+    .stat-num { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.02em; }
+    .stat-label { font-size: 0.72rem; color: #888; margin-top: 0.2rem; }
 
+    /* --- Data coverage rows --- */
+    .coverage-table { width: 100%; border-collapse: collapse; }
+    .coverage-table tr { border-bottom: 1px solid #f0f0f0; }
+    .coverage-table tr:last-child { border-bottom: none; }
+    .coverage-table td { padding: 0.65rem 0; vertical-align: middle; }
+    .cov-name { font-size: 0.85rem; width: 44%; }
+    .cov-bar-wrap { width: 32%; padding-right: 1rem; }
+    .cov-bar-bg {
+      height: 5px; border-radius: 3px; background: #f0f0f0; overflow: hidden;
+    }
+    .cov-bar-fill { height: 100%; border-radius: 3px; background: #1a1a1a; }
+    .cov-bar-fill.partial { background: #aaa; }
+    .cov-bar-fill.pending { background: #e5e5e5; }
+    .cov-tag {
+      font-size: 0.72rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .tag-ready { background: #f0f0f0; color: #555; }
+    .tag-partial { background: #fff7ed; color: #92400e; }
+    .tag-pending { background: #fef2f2; color: #991b1b; }
+    .cov-vars { font-size: 0.75rem; color: #888; margin-top: 0.15rem; }
+
+    /* --- Two-col layout for available/missing --- */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .col-box {
+      background: white; border: 1px solid #e5e5e5; border-radius: 6px; padding: 1rem;
+    }
+    .col-box h3 { font-size: 0.75rem; font-weight: 600; margin-bottom: 0.7rem; }
+    .col-box ul { list-style: none; }
+    .col-box ul li { font-size: 0.8rem; color: #555; padding: 0.2rem 0; padding-left: 0.9rem; position: relative; }
+    .col-box ul li::before { content: "·"; position: absolute; left: 0; color: #bbb; }
+    .col-box ul li.high::before { color: #dc2626; content: "▲"; font-size: 0.6rem; top: 0.25rem; }
+
+    /* --- Category grid --- */
     .category-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; }
-    .category-item { background: white; border: 1px solid #e5e5e5; border-radius: 6px; padding: 1rem; }
+    .category-item {
+      background: white; border: 1px solid #e5e5e5; border-radius: 6px; padding: 1rem;
+    }
     .category-label { font-size: 0.75rem; font-weight: 600; margin-bottom: 0.4rem; }
     .category-vars { font-size: 0.78rem; color: #666; line-height: 1.6; }
 
+    /* --- Log --- */
     .log-entry { padding: 0.8rem 0; border-bottom: 1px solid #f0f0f0; }
     .log-entry:last-child { border-bottom: none; }
     .log-date { font-size: 0.75rem; color: #888; margin-bottom: 0.2rem; }
-    .log-text { font-size: 0.9rem; }
+    .log-text { font-size: 0.88rem; line-height: 1.55; }
 
-    .next-steps li { font-size: 0.9rem; margin-bottom: 0.5rem; padding-left: 1rem; list-style: none; }
+    /* --- Next steps --- */
+    .next-steps li {
+      font-size: 0.88rem; margin-bottom: 0.5rem;
+      padding-left: 1rem; list-style: none; line-height: 1.4;
+    }
     .next-steps li::before { content: "→ "; color: #888; }
 
+    /* --- Docs --- */
     .doc-link {
       display: inline-flex; align-items: center; gap: 0.4rem;
-      font-size: 0.88rem; color: #1a1a1a; text-decoration: none;
+      font-size: 0.85rem; color: #1a1a1a; text-decoration: none;
       background: white; border: 1px solid #e5e5e5; border-radius: 6px;
-      padding: 0.5rem 1rem; margin-right: 0.6rem; margin-bottom: 0.5rem;
+      padding: 0.45rem 0.9rem; margin-right: 0.5rem; margin-bottom: 0.5rem;
     }
     .doc-link:hover { border-color: #999; }
+    .doc-link.external::after { content: " ↗"; font-size: 0.75rem; color: #aaa; }
+
+    @media (max-width: 520px) {
+      .stat-row { grid-template-columns: repeat(2, 1fr); }
+      .category-grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -153,14 +209,25 @@
 
     <div class="header">
       <h1>Heterogeneous Effects of Theory-Based Training</h1>
-      <p style="font-size:0.9rem; color:#555; margin-top:0.3rem;">A systematic framework for who benefits and why.</p>
+      <p style="font-size:0.88rem; color:#555; margin-top:0.35rem; line-height:1.5;">
+        Theory-based entrepreneurship training works on average — <em>for whom, and why?</em><br>
+        8 pooled RCTs &middot; ~6,700 founders &middot; GenericML + interaction OLS
+      </p>
     </div>
 
+    <!-- WORKING ON -->
     <section>
       <h2>Working on</h2>
-      <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.6;">Reviewing RF class notes. Data snapshot requested to Diego (5 RCTs: Italy, Colombia, Netherlands, Spain, UK). Variable selection in progress.</p>
+      <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65;">
+        Data received from Diego (May 2026): full 8-RCT pooled dataset, 199 variables.
+        Variable audit complete — inventory mapped, cleaning scripts written, <code>ERC_RED_HMC_clean.dta</code> ready.
+        Starting Wave 1 analysis (balance, ATE, GenericML) with the ~30 moderators already available
+        while waiting for the behavioral battery (ambiguity aversion, learning orientation, competitiveness)
+        from the raw country files.
+      </p>
     </section>
 
+    <!-- PHASE -->
     <section>
       <h2>Phase</h2>
       <div class="phases">
@@ -168,11 +235,11 @@
           <div class="phase-dot"></div>
           <div class="phase-label">Concept</div>
         </div>
-        <div class="phase active">
+        <div class="phase done">
           <div class="phase-dot"></div>
           <div class="phase-label">Data</div>
         </div>
-        <div class="phase">
+        <div class="phase active">
           <div class="phase-dot"></div>
           <div class="phase-label">Exploration</div>
         </div>
@@ -195,34 +262,150 @@
       </div>
     </section>
 
+    <!-- DATASET -->
     <section>
-      <h2>Status</h2>
-      <div class="status-grid">
-        <div class="status-item">
-          <div class="status-label">Method</div>
-          <div class="status-value">Random forest + HTE</div>
+      <h2>Dataset</h2>
+
+      <div class="stat-row" style="margin-bottom:1.4rem;">
+        <div class="stat-box">
+          <div class="stat-num">8</div>
+          <div class="stat-label">RCTs pooled</div>
         </div>
-        <div class="status-item">
-          <div class="status-label">Data</div>
-          <div class="status-value">5 RCTs — access pending</div>
+        <div class="stat-box">
+          <div class="stat-num">6,732</div>
+          <div class="stat-label">founder-periods</div>
         </div>
-        <div class="status-item">
-          <div class="status-label">Stage</div>
-          <div class="status-value">Variable selection</div>
+        <div class="stat-box">
+          <div class="stat-num">199</div>
+          <div class="stat-label">variables received</div>
         </div>
-        <div class="status-item">
-          <div class="status-label">Reference</div>
-          <div class="status-value">McKenzie et al. VoxDevLit 2025</div>
+        <div class="stat-box">
+          <div class="stat-num">~30</div>
+          <div class="stat-label">moderators ready</div>
+        </div>
+      </div>
+
+      <p style="font-size:0.78rem; color:#888; margin-bottom:0.9rem;">Variable coverage by category — after cleaning</p>
+      <table class="coverage-table">
+        <tr>
+          <td class="cov-name">
+            <strong>Demographics &amp; experience</strong>
+            <div class="cov-vars">age, gender, education, work &amp; managerial experience, prior startups</div>
+          </td>
+          <td class="cov-bar-wrap">
+            <div class="cov-bar-bg"><div class="cov-bar-fill" style="width:100%"></div></div>
+          </td>
+          <td><span class="cov-tag tag-ready">Full coverage</span></td>
+        </tr>
+        <tr>
+          <td class="cov-name">
+            <strong>Illusion of control</strong>
+            <div class="cov-vars">ioc composite (published, clean)</div>
+          </td>
+          <td class="cov-bar-wrap">
+            <div class="cov-bar-bg"><div class="cov-bar-fill" style="width:100%"></div></div>
+          </td>
+          <td><span class="cov-tag tag-ready">Full coverage</span></td>
+        </tr>
+        <tr>
+          <td class="cov-name">
+            <strong>Uncertainty beliefs</strong>
+            <div class="cov-vars">future_ev_influence/orient, P(unforeseeable event) 6M &amp; 2Y</div>
+          </td>
+          <td class="cov-bar-wrap">
+            <div class="cov-bar-bg"><div class="cov-bar-fill partial" style="width:50%"></div></div>
+          </td>
+          <td><span class="cov-tag tag-partial">~50% of obs</span></td>
+        </tr>
+        <tr>
+          <td class="cov-name">
+            <strong>Idea scope</strong>
+            <div class="cov-vars">idea_breadth, idea_distant, new_ideas</div>
+          </td>
+          <td class="cov-bar-wrap">
+            <div class="cov-bar-bg"><div class="cov-bar-fill partial" style="width:12%"></div></div>
+          </td>
+          <td><span class="cov-tag tag-partial">8–50% of obs</span></td>
+        </tr>
+        <tr>
+          <td class="cov-name">
+            <strong>Venture characteristics</strong>
+            <div class="cov-vars">stage, sector, team size, time commitment, idea aspiration</div>
+          </td>
+          <td class="cov-bar-wrap">
+            <div class="cov-bar-bg"><div class="cov-bar-fill" style="width:100%"></div></div>
+          </td>
+          <td><span class="cov-tag tag-ready">Full coverage</span></td>
+        </tr>
+        <tr>
+          <td class="cov-name">
+            <strong>Dosage</strong>
+            <div class="cov-vars">attendance, coaching contacts</div>
+          </td>
+          <td class="cov-bar-wrap">
+            <div class="cov-bar-bg"><div class="cov-bar-fill" style="width:100%"></div></div>
+          </td>
+          <td><span class="cov-tag tag-ready">Full coverage</span></td>
+        </tr>
+        <tr>
+          <td class="cov-name">
+            <strong>Outcomes</strong>
+            <div class="cov-vars">sales, pivoting, SDM scores, dropout</div>
+          </td>
+          <td class="cov-bar-wrap">
+            <div class="cov-bar-bg"><div class="cov-bar-fill" style="width:100%"></div></div>
+          </td>
+          <td><span class="cov-tag tag-ready">Full coverage</span></td>
+        </tr>
+        <tr>
+          <td class="cov-name">
+            <strong>Behavioral battery</strong>
+            <div class="cov-vars">ambiguity aversion, risk aversion, learning orientation, competitiveness</div>
+          </td>
+          <td class="cov-bar-wrap">
+            <div class="cov-bar-bg"><div class="cov-bar-fill pending" style="width:0%"></div></div>
+          </td>
+          <td><span class="cov-tag tag-pending">Pending — raw files</span></td>
+        </tr>
+      </table>
+
+      <div class="two-col" style="margin-top:1.2rem;">
+        <div class="col-box">
+          <h3>Available now (Wave 1)</h3>
+          <ul>
+            <li>age, gender, education</li>
+            <li>work &amp; managerial experience</li>
+            <li>illusion of control (ioc)</li>
+            <li>uncertainty beliefs (5 vars)</li>
+            <li>new ideas, idea breadth</li>
+            <li>venture stage, sector, team</li>
+            <li>attendance, coaching contacts</li>
+            <li>all outcomes</li>
+          </ul>
+        </div>
+        <div class="col-box">
+          <h3>Pending — raw country files</h3>
+          <ul>
+            <li class="high">ambiguity aversion (Ellsberg urn)</li>
+            <li class="high">risk aversion</li>
+            <li class="high">learning orientation (6 items)</li>
+            <li class="high">competitiveness (7 items)</li>
+            <li>growth aspiration, motivation</li>
+            <li>endowment effect</li>
+            <li>probabilistic calibration</li>
+            <li>feedback signals</li>
+          </ul>
         </div>
       </div>
     </section>
 
+    <!-- FRAMEWORK -->
     <section>
       <h2>Framework — Three Categories</h2>
       <div class="category-grid">
         <div class="category-item">
           <div class="category-label">Person-level</div>
-          <div class="category-vars">SDM capability, ambiguity aversion, learning orientation, experience, illusion of control</div>
+          <div class="category-vars">SDM capability, ambiguity aversion, learning orientation, experience, illusion of control, uncertainty beliefs</div>
         </div>
         <div class="category-item">
           <div class="category-label">Venture-level</div>
@@ -233,42 +416,65 @@
           <div class="category-vars">Attendance, sessions completed, mentor engagement</div>
         </div>
       </div>
+      <p style="font-size:0.8rem; color:#888; margin-top:0.8rem; line-height:1.5;">
+        Method: GenericML (Chernozhukov et al., <em>Econometrica</em> 2025) run separately by category &mdash;
+        variable importance to select moderators &rarr; interaction OLS. Reference: McKenzie et al., VoxDevLit 2025.
+      </p>
     </section>
 
+    <!-- DOCUMENTS -->
     <section>
       <h2>Documents</h2>
+      <a class="doc-link external" href="https://www.overleaf.com/project/69ef61a0e6ef2a97a0c2406b" target="_blank">Overleaf (latest draft)</a>
+      <a class="doc-link" href="/research/heterogeneity-effects/onepager_v4.pdf">One-pager v4</a>
+      <a class="doc-link" href="/research/heterogeneity-effects/onepager_v3.pdf">One-pager v3</a>
       <a class="doc-link" href="/research/heterogeneity-effects/onepager_v2.pdf">One-pager v2</a>
       <a class="doc-link" href="/research/heterogeneity-effects/onepager_v1.pdf">One-pager v1</a>
     </section>
 
+    <!-- LOG -->
     <section>
       <h2>Progress Log</h2>
+
+      <div class="log-entry">
+        <div class="log-date">2026-05-11</div>
+        <div class="log-text">Full variable audit complete. 199 variables mapped to source instruments (baseline survey, DP3 follow-up, baseline interview, generated). Cleaning scripts written (<code>03_clean_existing_variables_HM.do</code>). <code>ERC_RED_HMC_clean.dta</code> ready. Wave 1 analysis starting.</div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">2026-05-11</div>
+        <div class="log-text">Data received from Diego: <code>ERC_RED_HMC_toclean.dta</code> — 8 RCTs, 6,732 observations, 199 variables. Green+Red pooled dataset. Behavioral battery (ambiguity aversion, risk aversion, learning orientation) not in the merged file — requires recovery from raw country-level Qualtrics exports.</div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">2026-04-27</div>
+        <div class="log-text">Variable list finalized and sent to Diego. Requested: full behavioral battery (unc_aversion, risk_aversion, learning_orientation, competitiveness), venture characteristics, dosage, SDM scores, and outcomes. Also asked for Diego's GenericML code as template.</div>
+      </div>
       <div class="log-entry">
         <div class="log-date">2026-04-25</div>
-        <div class="log-text">RF class notes received. Data snapshot requested to Diego. Reviewing notes and selecting variables by category.</div>
+        <div class="log-text">RF class notes received from Alfonso. Data snapshot requested to Diego (5 RCTs: Italy, Colombia, Netherlands, Spain, UK). Variable selection in progress.</div>
       </div>
       <div class="log-entry">
         <div class="log-date">2026-04-24</div>
-        <div class="log-text">Two conversations with Alfonso. Framework agreed: three categories (person, venture, dosage). Method: random forest exploration first, then HTE. Data access proposal to Diego in progress.</div>
+        <div class="log-text">Two conversations with Alfonso. Framework agreed: three categories (person, venture, dosage). Method: random forest exploration first, then HTE regressions. Alfonso proposed GenericML (Chernozhukov et al., 2025). Data access proposal to Diego in progress.</div>
       </div>
       <div class="log-entry">
         <div class="log-date">2026-04-23</div>
-        <div class="log-text">One-pager v2 sent to Alfonso. He responded in 3 minutes. Meeting same day.</div>
+        <div class="log-text">One-pager v2 sent to Alfonso. He responded in 3 minutes. Meeting same day. He called it potentially a "foundational paper for the lab."</div>
       </div>
       <div class="log-entry">
         <div class="log-date">2026-04-22</div>
-        <div class="log-text">One-pager v1 drafted (cognitive moderators angle). Diego confirmed: unc_aversion, risk_aversion, learning_orientation present in 5 RCTs (Italy, Colombia, Netherlands, Spain, UK).</div>
+        <div class="log-text">One-pager v1 drafted (cognitive moderators angle). Diego confirmed: unc_aversion, risk_aversion, learning_orientation present in 5 RCTs.</div>
       </div>
     </section>
 
+    <!-- NEXT STEPS -->
     <section>
       <h2>Next Steps</h2>
       <ul class="next-steps">
-        <li>Finish reviewing RF class notes</li>
-        <li>Receive data snapshot from Diego</li>
-        <li>Read Chernozhukov, Duflo et al. (Econometrica 2025)</li>
-        <li>Run RF by category on snapshot</li>
-        <li>Send intermediate results to Alfonso</li>
+        <li>Balance table by treatment arm (script 04)</li>
+        <li>ATE estimation — main outcomes (script 05)</li>
+        <li>GenericML Wave 1 — person, venture, dosage Z vectors (scripts 06–08)</li>
+        <li>Follow up with Diego on behavioral battery recovery feasibility</li>
+        <li>Send Wave 1 preliminary results to Alfonso</li>
       </ul>
     </section>
   </div>
