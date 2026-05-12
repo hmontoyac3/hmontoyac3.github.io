@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CV — Helena Montoya Calero</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 22mm 20mm 22mm 20mm;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10pt;
+      line-height: 1.55;
+      color: #1a1a1a;
+      background: white;
+    }
+
+    /* ── Header ── */
+    .header {
+      margin-bottom: 20pt;
+    }
+    .header h1 {
+      font-size: 20pt;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      margin-bottom: 3pt;
+    }
+    .header .position {
+      font-size: 9.5pt;
+      color: #555;
+      margin-bottom: 7pt;
+    }
+    .header .contact {
+      font-size: 8.5pt;
+      color: #777;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 14pt;
+    }
+    .header .contact a { color: #777; text-decoration: none; }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 15pt;
+    }
+    .section-title {
+      font-size: 7.5pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #999;
+      padding-bottom: 3pt;
+      border-bottom: 0.75pt solid #ddd;
+      margin-bottom: 9pt;
+    }
+
+    /* ── Entry ── */
+    .entry {
+      display: grid;
+      grid-template-columns: 1fr 72pt;
+      gap: 0 10pt;
+      margin-bottom: 9pt;
+    }
+    .entry:last-child { margin-bottom: 0; }
+
+    .entry-left {}
+    .entry-right {
+      text-align: right;
+      padding-top: 0.5pt;
+    }
+
+    .entry-title {
+      font-size: 9.5pt;
+      font-weight: 600;
+    }
+    .entry-sub {
+      font-size: 8.5pt;
+      color: #666;
+      margin-top: 1pt;
+    }
+    .entry-body {
+      font-size: 8.5pt;
+      color: #444;
+      margin-top: 2.5pt;
+    }
+    .entry-date {
+      font-size: 8pt;
+      color: #999;
+      white-space: nowrap;
+    }
+
+    /* ── Paper entry ── */
+    .paper {
+      margin-bottom: 9pt;
+    }
+    .paper:last-child { margin-bottom: 0; }
+    .paper-title {
+      font-size: 9.5pt;
+      font-weight: 600;
+    }
+    .paper-authors {
+      font-size: 8.5pt;
+      color: #777;
+      margin-top: 1pt;
+    }
+    .paper-desc {
+      font-size: 8.5pt;
+      color: #444;
+      margin-top: 2.5pt;
+    }
+    .paper-tags {
+      font-size: 7.5pt;
+      color: #aaa;
+      margin-top: 2pt;
+    }
+
+    /* ── Skills ── */
+    .skills-row {
+      font-size: 8.5pt;
+      color: #444;
+      margin-bottom: 4pt;
+    }
+    .skills-row strong { color: #1a1a1a; }
+    .skills-row:last-child { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Helena Montoya Calero</h1>
+    <div class="position">PhD Candidate &middot; Bocconi University &middot; ION Management Science Lab</div>
+    <div class="contact">
+      <span>Milan, Italy</span>
+      <span>helena.montoya@phd.unibocconi.it</span>
+      <span>helenamontoyacalero.com</span>
+      <span>LinkedIn: helena-montoya-calero</span>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="section">
+    <div class="section-title">Education</div>
+
+    <div class="entry">
+      <div class="entry-left">
+        <div class="entry-title">Bocconi University</div>
+        <div class="entry-sub">PhD in Management · Focus: Decision-Making under Uncertainty · Milan, Italy</div>
+        <div class="entry-body">Advisors: Alfonso Gambardella and Arnaldo Camuffo · ION Management Science Lab</div>
+      </div>
+      <div class="entry-right">
+        <div class="entry-date">2023 — present</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-left">
+        <div class="entry-title">Université Catholique de Louvain</div>
+        <div class="entry-sub">Master 120 in Economics, Research track · Louvain, Belgium</div>
+        <div class="entry-body">Thesis: Measuring equality of opportunity based on individual responsibility — comparison Belgium and Colombia. Advisor: François Maniquet.</div>
+      </div>
+      <div class="entry-right">
+        <div class="entry-date">2019 — 2021</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-left">
+        <div class="entry-title">EAFIT University</div>
+        <div class="entry-sub">Economics Bachelor · Medellín, Colombia</div>
+      </div>
+      <div class="entry-right">
+        <div class="entry-date">2014 — 2018</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Working Papers -->
+  <div class="section">
+    <div class="section-title">Working Papers</div>
+
+    <div class="paper">
+      <div class="paper-title">Measuring Scientific Decision-Making in Organizations</div>
+      <div class="paper-authors">with Arnaldo Camuffo, Alfonso Gambardella, and Thomaz Teodorovicz</div>
+      <div class="paper-desc">24-item survey instrument measuring scientific decision-making practices across three dimensions: Causal Reasoning, Evidence Evaluation, and Adaptive Learning. Applied to 3,178 managers across 54 firms.</div>
+      <div class="paper-tags">N = 3,178 &nbsp;·&nbsp; 54 firms</div>
+    </div>
+
+    <div class="paper">
+      <div class="paper-title">Heterogeneous Effects of Theory-Based Entrepreneurship Training</div>
+      <div class="paper-authors">with Arnaldo Camuffo and Alfonso Gambardella</div>
+      <div class="paper-desc">Examines heterogeneous treatment effects of theory-based training programs across five RCTs (Italy, Colombia, Netherlands, Spain, UK) using Random Forest and causal inference methods.</div>
+      <div class="paper-tags">5 RCTs &nbsp;·&nbsp; In progress</div>
+    </div>
+
+    <div class="paper">
+      <div class="paper-title">Extracting Interpretable Models from Large Language Models for Organizational Data</div>
+      <div class="paper-authors">with Said Kazemi</div>
+      <div class="paper-desc">Compares classical econometric approaches (LASSO) with LLM-based methods for predicting ordinal organizational variables. Explores linear probing, prompt-ensemble, and linear distillation techniques.</div>
+      <div class="paper-tags">LLMs &nbsp;·&nbsp; In progress</div>
+    </div>
+  </div>
+
+  <!-- Experience -->
+  <div class="section">
+    <div class="section-title">Experience</div>
+
+    <div class="entry">
+      <div class="entry-left">
+        <div class="entry-title">ION Management Science Lab, Bocconi University</div>
+        <div class="entry-sub">Research Assistant · Milan, Italy</div>
+        <div class="entry-body">Decision-Making under Uncertainty, Management Science, field experiments. PIs: Alfonso Gambardella and Arnaldo Camuffo.</div>
+      </div>
+      <div class="entry-right">
+        <div class="entry-date">Jun 2023 — present</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-left">
+        <div class="entry-title">Fundación Éxito</div>
+        <div class="entry-sub">Research Associate · Medellín, Colombia</div>
+        <div class="entry-body">Data management, quantitative analysis, data visualization, qualitative research, and pilot design.</div>
+      </div>
+      <div class="entry-right">
+        <div class="entry-date">Sep 2021 — May 2022</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-left">
+        <div class="entry-title">Innovations for Poverty Action (IPA)</div>
+        <div class="entry-sub">Research Associate · Medellín, Colombia</div>
+        <div class="entry-body">PI: Christopher Blattman (University of Chicago). Projects on criminal governance (Gang Rule) and youth decision-making in contexts of violence (Recruitment).</div>
+      </div>
+      <div class="entry-right">
+        <div class="entry-date">Apr 2020 — Jun 2021</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-left">
+        <div class="entry-title">EAFIT University</div>
+        <div class="entry-sub">Research Assistant · Medellín, Colombia</div>
+        <div class="entry-body">Research on labor discrimination in migration, citizen security, and cooperative experiment design. Collaborated with PIs at EAFIT, Los Andes, and the World Bank.</div>
+      </div>
+      <div class="entry-right">
+        <div class="entry-date">2016 — 2020</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conferences -->
+  <div class="section">
+    <div class="section-title">Conferences &amp; Presentations</div>
+
+    <div class="entry">
+      <div class="entry-left">
+        <div class="entry-title">Utah Winter Strategy Seminar</div>
+        <div class="entry-sub">Deer Valley, Utah</div>
+        <div class="entry-body">Theory-Based View: A Scientific Approach to Value Creation</div>
+      </div>
+      <div class="entry-right">
+        <div class="entry-date">Jan 2025</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-left">
+        <div class="entry-title">2nd Annual Bayesian Entrepreneurship Conference</div>
+        <div class="entry-sub">Bocconi University · Milan, Italy</div>
+      </div>
+      <div class="entry-right">
+        <div class="entry-date">2025</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <div class="section-title">Skills</div>
+    <div class="skills-row"><strong>Programming &amp; data:</strong> Python, R, STATA, LaTeX, GIS, API integration, LLMs</div>
+    <div class="skills-row"><strong>Methods:</strong> Causal inference, field experiments, machine learning, NLP</div>
+    <div class="skills-row"><strong>Languages:</strong> Spanish (native) &middot; English (TOEFL 97)</div>
+  </div>
+
+</body>
+</html>
