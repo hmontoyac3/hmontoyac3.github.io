@@ -186,9 +186,9 @@
     }
     .doc-link:hover { border-color: #999; }
     .doc-link.external::after { content: " ↗"; font-size: 0.75rem; color: #aaa; }
-    .doc-group { display: inline-flex; align-items: center; gap: 0.3rem; margin-right: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
-    .doc-group-label { font-size: 0.82rem; color: #888; padding-right: 0.2rem; }
-    .doc-link.sub { margin-right: 0; margin-bottom: 0; }
+    .doc-row { display: flex; gap: 1.8rem; flex-wrap: wrap; align-items: flex-start; }
+    .doc-cluster { display: flex; flex-direction: column; gap: 0.35rem; }
+    .doc-cluster-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #aaa; margin-bottom: 0.1rem; }
     .doc-link.disabled { color: #bbb; border-color: #eee; pointer-events: none; cursor: default; }
     .doc-link.disabled::after { color: #ddd; }
 
@@ -219,18 +219,6 @@
         8 pooled RCTs &middot; ~6,700 founders &middot; GenericML + interaction OLS
       </p>
     </div>
-
-    <!-- WORKING ON -->
-    <section>
-      <h2>Working on</h2>
-      <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65;">
-        Data received from Diego (May 2026): full 8-RCT pooled dataset, 199 variables.
-        Variable audit complete — inventory mapped, cleaning scripts written, <code>ERC_RED_HMC_clean.dta</code> ready.
-        Starting Wave 1 analysis (balance, ATE, GenericML) with the ~30 moderators already available
-        while waiting for the behavioral battery (ambiguity aversion, learning orientation, competitiveness)
-        from the raw country files.
-      </p>
-    </section>
 
     <!-- PHASE -->
     <section>
@@ -267,9 +255,32 @@
       </div>
     </section>
 
+    <!-- DOCUMENTS -->
+    <section>
+      <h2>Documents</h2>
+      <div class="doc-row">
+        <div class="doc-cluster">
+          <div class="doc-cluster-label">Writing</div>
+          <a class="doc-link external" href="https://www.overleaf.com/project/69ef61a0e6ef2a97a0c2406b" target="_blank">Overleaf</a>
+        </div>
+        <div class="doc-cluster">
+          <div class="doc-cluster-label">Analysis log</div>
+          <a class="doc-link external" href="/research/heterogeneity-effects/log.html" target="_blank">RF exploration</a>
+          <a class="doc-link external disabled" href="#" title="Coming soon">DML</a>
+        </div>
+        <div class="doc-cluster">
+          <div class="doc-cluster-label">One-pagers</div>
+          <a class="doc-link" href="/research/heterogeneity-effects/onepager_v4.pdf">v4</a>
+          <a class="doc-link" href="/research/heterogeneity-effects/onepager_v3.pdf">v3</a>
+          <a class="doc-link" href="/research/heterogeneity-effects/onepager_v2.pdf">v2</a>
+          <a class="doc-link" href="/research/heterogeneity-effects/onepager_v1.pdf">v1</a>
+        </div>
+      </div>
+    </section>
+
     <!-- DATASET -->
     <section>
-      <h2>Dataset</h2>
+      <h2>Variables</h2>
 
       <div class="stat-row" style="margin-bottom:1.4rem;">
         <div class="stat-box">
@@ -427,19 +438,16 @@
       </p>
     </section>
 
-    <!-- DOCUMENTS -->
+    <!-- WORKING ON -->
     <section>
-      <h2>Documents</h2>
-      <a class="doc-link external" href="https://www.overleaf.com/project/69ef61a0e6ef2a97a0c2406b" target="_blank">Overleaf (latest draft)</a>
-      <span class="doc-group">
-        <span class="doc-group-label">Analysis log</span>
-        <a class="doc-link external sub" href="/research/heterogeneity-effects/log.html" target="_blank">RF exploration</a>
-        <a class="doc-link external sub disabled" href="#" title="Coming soon">DML</a>
-      </span>
-      <a class="doc-link" href="/research/heterogeneity-effects/onepager_v4.pdf">One-pager v4</a>
-      <a class="doc-link" href="/research/heterogeneity-effects/onepager_v3.pdf">One-pager v3</a>
-      <a class="doc-link" href="/research/heterogeneity-effects/onepager_v2.pdf">One-pager v2</a>
-      <a class="doc-link" href="/research/heterogeneity-effects/onepager_v1.pdf">One-pager v1</a>
+      <h2>Working on</h2>
+      <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65;">
+        Data received from Diego (May 2026): full 8-RCT pooled dataset, 199 variables.
+        Variable audit complete — inventory mapped, cleaning scripts written, <code>ERC_RED_HMC_clean.dta</code> ready.
+        Starting Wave 1 analysis (balance, ATE, GenericML) with the ~30 moderators already available
+        while waiting for the behavioral battery (ambiguity aversion, learning orientation, competitiveness)
+        from the raw country files.
+      </p>
     </section>
 
     <!-- LOG -->
