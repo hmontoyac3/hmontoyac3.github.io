@@ -186,6 +186,11 @@
     }
     .doc-link:hover { border-color: #999; }
     .doc-link.external::after { content: " ↗"; font-size: 0.75rem; color: #aaa; }
+    .doc-group { display: inline-flex; align-items: center; gap: 0.3rem; margin-right: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+    .doc-group-label { font-size: 0.82rem; color: #888; padding-right: 0.2rem; }
+    .doc-link.sub { margin-right: 0; margin-bottom: 0; }
+    .doc-link.disabled { color: #bbb; border-color: #eee; pointer-events: none; cursor: default; }
+    .doc-link.disabled::after { color: #ddd; }
 
     @media (max-width: 520px) {
       .stat-row { grid-template-columns: repeat(2, 1fr); }
@@ -426,7 +431,11 @@
     <section>
       <h2>Documents</h2>
       <a class="doc-link external" href="https://www.overleaf.com/project/69ef61a0e6ef2a97a0c2406b" target="_blank">Overleaf (latest draft)</a>
-      <a class="doc-link external" href="/research/heterogeneity-effects/log.html" target="_blank">Analysis log</a>
+      <span class="doc-group">
+        <span class="doc-group-label">Analysis log</span>
+        <a class="doc-link external sub" href="/research/heterogeneity-effects/log.html" target="_blank">RF exploration</a>
+        <a class="doc-link external sub disabled" href="#" title="Coming soon">DML</a>
+      </span>
       <a class="doc-link" href="/research/heterogeneity-effects/onepager_v4.pdf">One-pager v4</a>
       <a class="doc-link" href="/research/heterogeneity-effects/onepager_v3.pdf">One-pager v3</a>
       <a class="doc-link" href="/research/heterogeneity-effects/onepager_v2.pdf">One-pager v2</a>
