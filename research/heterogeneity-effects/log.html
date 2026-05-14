@@ -25,6 +25,8 @@
   header .links a{font-size:.82rem;color:var(--accent);text-decoration:none;
     border:1px solid var(--border);border-radius:4px;padding:.25rem .6rem;background:var(--accent-light)}
   header .links a:hover{background:#dceaf5}
+  header .links button{font-size:.82rem;color:var(--accent);text-decoration:none;border:1px solid var(--border);border-radius:4px;padding:.25rem .6rem;background:var(--accent-light);cursor:pointer;font-family:inherit}
+  header .links button:hover{background:#dceaf5}
   main{max-width:var(--max);margin:0 auto;padding:2rem 1.5rem 4rem}
   section{margin-bottom:2.8rem}
   h2{font-size:.9rem;font-weight:600;color:var(--accent);text-transform:uppercase;
@@ -101,7 +103,7 @@
     <div class="links">
       <a href="https://github.com/hmontoyac3/heterogeneous-effects" target="_blank">↗ GitHub repo</a>
       <a href="https://github.com/hmontoyac3/heterogeneous-effects/tree/main/02_analysis/scripts" target="_blank">↗ Analysis scripts</a>
-      <a href="#" onclick="history.back(); return false;">← Back</a>
+      <button onclick="history.back()">← Back</button>
     </div>
   </div>
 </header>
