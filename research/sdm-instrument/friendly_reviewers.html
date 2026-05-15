@@ -14,10 +14,10 @@
       --terra: #C4622D;
       --green: #1A5E35;
       --green-bg: #D5F5E3;
-      --red:   #7B1C1C;
-      --red-bg:#FDECEA;
       --gold:  #7D6608;
-      --gold-bg:#FEF9E7;
+      --gold-bg: #FEF9E7;
+      --blue:  #1A5276;
+      --blue-bg: #D6E8F5;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,45 +26,49 @@
       font-family: 'Inter', sans-serif;
       background: var(--ivory);
       color: var(--navy);
-      max-width: 680px;
+      max-width: 640px;
       margin: 0 auto;
       padding: 56px 24px 80px;
       line-height: 1.6;
     }
 
-    header {
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid var(--navy);
+    header { margin-bottom: 32px; }
+
+    header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 6px; }
+
+    .intro {
+      font-size: 0.9rem;
+      color: #4A5568;
+      line-height: 1.65;
+      padding: 16px 18px;
+      background: #fff;
+      border-left: 3px solid var(--terra);
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 36px;
     }
 
-    header h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 4px; }
-    header p  { font-size: 0.85rem; color: var(--mid); }
-
-    /* ── SECTION LABEL ── */
     .label {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
       color: var(--mid);
-      margin: 36px 0 12px;
+      margin: 32px 0 10px;
     }
 
-    /* ── ROWS ── */
     .row {
       display: flex;
-      align-items: baseline;
       gap: 12px;
-      padding: 12px 0;
+      padding: 11px 0;
       border-bottom: 1px solid var(--light);
+      align-items: baseline;
     }
 
     .row:last-child { border-bottom: none; }
 
     .badge {
       flex-shrink: 0;
-      font-size: 0.68rem;
+      font-size: 0.67rem;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -73,45 +77,30 @@
       white-space: nowrap;
     }
 
-    .b-yes    { background: var(--green-bg); color: var(--green); }
-    .b-scope  { background: #D6E8F5; color: #1A5276; }
-    .b-caution{ background: var(--gold-bg);  color: var(--gold); }
-    .b-no     { background: var(--red-bg);   color: var(--red); }
+    .b-yes  { background: var(--green-bg); color: var(--green); }
+    .b-rp   { background: var(--blue-bg);  color: var(--blue); }
+    .b-caution { background: var(--gold-bg); color: var(--gold); }
 
     .row-body { flex: 1; }
+    .row-name { font-size: 0.93rem; font-weight: 600; }
+    .row-inst { font-size: 0.77rem; color: var(--mid); }
+    .row-why  { font-size: 0.81rem; color: #4A5568; margin-top: 1px; }
 
-    .row-name {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--navy);
+    .divider {
+      border: none;
+      border-top: 1px dashed #C4CEDA;
+      margin: 28px 0 0;
     }
 
-    .row-inst {
-      font-size: 0.78rem;
-      color: var(--mid);
-    }
-
-    .row-why {
-      font-size: 0.82rem;
-      color: #4A5568;
-      margin-top: 2px;
-    }
-
-    /* ── MISSING NOTE ── */
-    .missing {
-      margin-top: 36px;
-      padding: 14px 16px;
-      border: 1px dashed #A0AEC0;
-      border-radius: 6px;
+    .other-note {
       font-size: 0.82rem;
       color: var(--mid);
-      line-height: 1.55;
+      margin: 10px 0 16px;
+      font-style: italic;
     }
-
-    .missing strong { color: var(--navy); }
 
     footer {
-      margin-top: 48px;
+      margin-top: 44px;
       font-size: 0.75rem;
       color: var(--mid);
       border-top: 1px solid var(--light);
@@ -123,106 +112,100 @@
 
 <header>
   <h1>Friendly Reviewers — SDM Paper</h1>
-  <p>Research Policy Research Note · May 2026</p>
 </header>
 
+<div class="intro">
+  Putting together a list of people we could reach out to for pre-submission feedback. Daniela Scur is an obvious one given we've worked with her. Does anyone know someone else on this list, or have a connection that would make reaching out make sense?
+</div>
 
-<!-- CONTACT -->
-<p class="label">Contact these</p>
+
+<!-- STRONG FITS -->
+<p class="label">Strong fits — content + design match</p>
 
 <div class="row">
-  <span class="badge b-yes">Full review</span>
+  <span class="badge b-yes">Known</span>
   <div class="row-body">
     <div class="row-name">Daniela Scur</div>
     <div class="row-inst">Cornell University (Dyson)</div>
-    <div class="row-why">Building the Scientific Labs Management Survey. Best content fit on the list — understands your design immediately. For content, not RP format.</div>
+    <div class="row-why">Building the Scientific Labs Management Survey — same design logic as ours. Obvious first contact.</div>
   </div>
 </div>
 
 <div class="row">
-  <span class="badge b-yes">Full review</span>
+  <span class="badge b-yes">Full fit</span>
+  <div class="row-body">
+    <div class="row-name">Tae-Yeol Kim</div>
+    <div class="row-inst">CEIBS, Shanghai</div>
+    <div class="row-why">RP 2024 — multi-level survey, 93 firms, Likert instruments measuring managerial practices. Closest design match to ours among recent RP authors.</div>
+  </div>
+</div>
+
+<div class="row">
+  <span class="badge b-yes">Full fit</span>
   <div class="row-body">
     <div class="row-name">Timothy Devinney</div>
     <div class="row-inst">Alliance Manchester Business School</div>
-    <div class="row-why">Co-authored Coltman et al. (2008) — already in your bib. Best bridge between measurement methodology and RP audience.</div>
+    <div class="row-why">Co-authored Coltman et al. (2008) — already in our bib. Works on formative measurement and org performance. Bridges methodology and RP audience well.</div>
   </div>
 </div>
 
 <div class="row">
-  <span class="badge b-yes">Theory framing</span>
+  <span class="badge b-yes">Theory fit</span>
   <div class="row-body">
     <div class="row-name">Nicolai J. Foss</div>
     <div class="row-inst">Copenhagen Business School</div>
-    <div class="row-why">Org theory + management practices. RP-adjacent. Would stress-test the construct definition.</div>
+    <div class="row-why">Org theory + management practices, already cited in our paper. Would stress-test the construct definition.</div>
+  </div>
+</div>
+
+
+<!-- RP POOL -->
+<p class="label">Published recently in RP with survey data — likely in the reviewer pool</p>
+<p class="other-note">These are the profiles a RP Associate Editor would actually assign our paper to. Worth a reach-out if anyone has a connection.</p>
+
+<div class="row">
+  <span class="badge b-rp">RP 2023</span>
+  <div class="row-body">
+    <div class="row-name">Vartuhi Tonoyan &amp; Christopher Boudreaux</div>
+    <div class="row-inst">CSU Fresno / Florida Atlantic University</div>
+    <div class="row-why">Survey of 7,848 managers across 29 countries measuring HRM practices and innovation. Purpose-designed multi-firm instrument.</div>
   </div>
 </div>
 
 <div class="row">
-  <span class="badge b-scope">Scope check only</span>
+  <span class="badge b-rp">RP 2022–24</span>
   <div class="row-body">
-    <div class="row-name">Paul Nightingale</div>
-    <div class="row-inst">SPRU, Sussex · RP UK Editor</div>
-    <div class="row-why">One email: "does this fit RP Short Communication format?" Full review would create an editorial conflict.</div>
+    <div class="row-name">Christian Rammer &amp; Bettina Peters</div>
+    <div class="row-inst">ZEW Mannheim</div>
+    <div class="row-why">Multiple RP papers using Community Innovation Survey data. Core of the RP empirical reviewer pool for firm-level survey work in Europe.</div>
   </div>
 </div>
 
 <div class="row">
-  <span class="badge b-caution">§2 only</span>
+  <span class="badge b-rp">RP 2025</span>
   <div class="row-body">
-    <div class="row-name">Jeffrey R. Edwards</div>
-    <div class="row-inst">UNC Kenan-Flagler</div>
-    <div class="row-why">"The Fallacy of Formative Measurement" (ORM, 2011). Send only the formative measurement paragraphs — stress-test before a methodological reviewer finds it.</div>
+    <div class="row-name">Jens Horbach</div>
+    <div class="row-inst">TH Augsburg</div>
+    <div class="row-why">RP 2025 — CIS-based firm survey on innovation and climate change. Recent RP publication, active in the reviewer pool.</div>
   </div>
 </div>
 
 
-<!-- DO NOT CONTACT -->
-<p class="label">Other ideas — but probably not the right contact for this</p>
-
-<div class="row">
-  <span class="badge b-no">Editorial conflict</span>
-  <div class="row-body">
-    <div class="row-name">Salter, Veugelers, Jaffe, Feldman, Coad, Bergek, Beaudry, Yaqub</div>
-    <div class="row-inst">RP Editors / Editorial Board</div>
-    <div class="row-why">Contacting them as friendly reviewers burns them as potential handling editors. RP's board is not large.</div>
-  </div>
-</div>
-
-<div class="row">
-  <span class="badge b-no">Not accessible</span>
-  <div class="row-body">
-    <div class="row-name">Bloom, Sadun, Van Reenen</div>
-    <div class="row-inst">Stanford / Harvard / LSE</div>
-    <div class="row-why">They are the literature you cite — not the reviewers who will read your paper. A RP AE sends this to someone who cites them.</div>
-  </div>
-</div>
-
-<div class="row">
-  <span class="badge b-no">Wrong pool for RP</span>
-  <div class="row-body">
-    <div class="row-name">Hair, Sarstedt, Ringle, MacKenzie, Podsakoff, Aguinis</div>
-    <div class="row-inst">PLS-SEM / ORM methodologists</div>
-    <div class="row-why">Their feedback would produce a paper for JBR or AMJ, not Research Policy. RP reviewers don't ask for AVE tables and HTMT ratios.</div>
-  </div>
-</div>
-
-<div class="row">
-  <span class="badge b-no">Wrong audience</span>
-  <div class="row-body">
-    <div class="row-name">Rousseau, Jepsen, Cassar</div>
-    <div class="row-inst">Evidence-Based Management</div>
-    <div class="row-why">RP doesn't engage with the EBM literature. Their feedback would pull the framing away from innovation studies.</div>
+<!-- SCOPE CHECK -->
+<hr class="divider">
+<div style="margin-top: 16px;">
+  <div class="row">
+    <span class="badge b-caution">Scope check</span>
+    <div class="row-body">
+      <div class="row-name">Paul Nightingale</div>
+      <div class="row-inst">SPRU, Sussex · RP UK Editor</div>
+      <div class="row-why">One email only: "does this fit RP Short Communication format?" — contacting him for a full review would create an editorial conflict.</div>
+    </div>
   </div>
 </div>
 
 
-<!-- MISSING -->
-<div class="missing">
-  <strong>What's missing from this list:</strong> empirical researchers who have recently published survey-based work in Research Policy. That's who a RP AE would actually assign this to — and their feedback would most accurately simulate peer review.
-</div>
-
-
-<footer>SDM Paper 1 · Research Policy Research Note · Updated May 2026</footer>
+<footer>SDM Paper 1 · Research Policy Research Note · May 2026</footer>
 
 </body>
 </html>
