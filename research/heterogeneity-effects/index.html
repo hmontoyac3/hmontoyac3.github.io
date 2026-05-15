@@ -271,6 +271,7 @@
         <div class="doc-cluster">
           <div class="doc-cluster-label">One-pagers</div>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v5_hte_results.pdf">v5 — First HTE Results</a>
+          <a class="doc-link" href="/research/heterogeneity-effects/onepager_v6_diagnostics.pdf">v6 — Diagnostic Results (D1/D3/D4)</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v4.pdf">v4</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v3.pdf">v3</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v2.pdf">v2</a>
@@ -443,12 +444,12 @@
     <section>
       <h2>Working on</h2>
       <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65;">
-        First GenericML scan complete (May 2026). 12 moderators tested across venture, belief-calibration,
-        and cognitive dimensions — BLP/GATES/CLAN, 250 splits, paper-correct implementation (Chernozhukov et al., <em>Econometrica</em> 2025).
-        ATE confirmed: +0.60–0.68 SD in periods 1–2 (p&nbsp;&lt;&nbsp;0.001).
-        No single moderator significant at 5%; FEI borderline (p&nbsp;=&nbsp;0.084) confirmed as site artifact after within-site residualization.
-        CLAN portrait consistent: high-benefit founder is committed, experienced on the idea, and underestimates environmental uncertainty.
-        Next: present results to PI; request cognitive battery (ambiguity aversion, risk aversion, learning orientation) from Diego.
+        Three diagnostic analyses complete (May 2026). Main scanner (v5) found all 12 moderators null on &Delta;SI.
+        Diagnostics tested attrition structure (D1), behavioral outcomes — pivot, sales, dropout (D3), and the theory component specifically — T&amp;E vs Evidence-Based (D4).
+        All diagnostic routes closed: Rutas 1 (different Y), 2 (fade-out dynamics), and 3 (theory-component fit) are not viable.
+        The ATE fade-out in periods 3–5 is a selection artifact: the control arm loses 77% of its sample by period 3; treated arms lose 50–55%.
+        One route remains open: Ruta 4 (methodological — RF&thinsp;&ne;&thinsp;causal moderation) and Ruta 0 (original) pending cognitive battery from Diego.
+        Waiting for Diego: risk aversion, uncertainty aversion, learning orientation, competitiveness (17 variables).
       </p>
     </section>
 
@@ -456,6 +457,10 @@
     <section>
       <h2>Progress Log</h2>
 
+      <div class="log-entry">
+        <div class="log-date">2026-05-15</div>
+        <div class="log-text">Three diagnostic analyses run. D1 (attrition): control arm retains only 22.6% by period 3 vs 44.4% T&amp;E and 50.8% EB — logit AME ≈ −0.32pp differential attrition (p &lt; 10⁻¹⁰). ATE "fade-out" is control-group recovery, not treated-group reversion. D3 (multiple outcomes): pivoting_any ATE = +0.17 (p = 0.004) but HTE null for all moderators × outcomes. Sales: no ATE. D4 (T&amp;E vs EB): ATE ≈ 0, all 24 HTE cells null — theory component has no differential fit. Rutas 1, 2, 3 closed. Open: Ruta 4 (methodological) and Ruta 0 pending cognitive battery. Onepager v6 written.</div>
+      </div>
       <div class="log-entry">
         <div class="log-date">2026-05-15</div>
         <div class="log-text">GenericML scanner expanded to 12 moderators (venture stage, belief calibration, idea scope, planning horizon + prior 4 cognitive). All 250/250 valid splits per cell. Key findings: (1) all moderators null at 5%; (2) FEI borderline (p&nbsp;=&nbsp;0.084) disappears within-site (fei_resid p&nbsp;=&nbsp;0.358) — site artifact confirmed; (3) CLAN portrait consistent across moderators: committed, experienced, low-uncertainty-perceiving founder benefits most. Onepager v5 written. Cognitive battery (risk/ambiguity, learning orientation) identified as the critical remaining gap — requires Diego.</div>
@@ -502,11 +507,11 @@
     <section>
       <h2>Next Steps</h2>
       <ul class="next-steps">
-        <li>Present first results to PI (Alfonso) — onepager v5 ready</li>
-        <li>Request cognitive battery from Diego: <code>risk_aversion</code>, <code>unc_aversion</code>, <code>learning_orientation_1–6</code>, <code>competitiveness_1–7</code> (17 variables, baseline survey raw files)</li>
-        <li>Decide with PI: which moderators go to confirmatory pre-registration?</li>
-        <li>Attrition analysis: table of N by period × arm to characterize ATE fade-out (P3 onwards)</li>
-        <li>Expand to multiple outcomes (pivot, termination) once cognitive family is available</li>
+        <li>Present diagnostic results to PI (Alfonso) — onepager v6 ready</li>
+        <li>Push Diego (via Alfonso) for cognitive battery: <code>risk_aversion</code>, <code>unc_aversion</code>, <code>learning_orientation_1–6</code>, <code>competitiveness_1–7</code> (17 variables)</li>
+        <li>If Diego delivers: run cognitive battery through GenericML scanner — closes Ruta 0</li>
+        <li>If cognitive battery also null: commit to Ruta 4 (methodological paper — RF&thinsp;&ne;&thinsp;causal moderation + CLAN portrait)</li>
+        <li>Decide pre-registration scope with Alfonso after cognitive battery result</li>
       </ul>
     </section>
   </div>
