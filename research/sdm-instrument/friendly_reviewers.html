@@ -3,23 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SDM Paper — Friendly Reviewers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
+  <title>SDM — Friendly Reviewers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ivory: #F9F7F3;
       --navy:  #1C2B3A;
-      --navy2: #2E4259;
-      --terra: #C4622D;
-      --gold:  #D4A84B;
       --mid:   #6B7A8D;
       --light: #E8E4DC;
+      --terra: #C4622D;
       --green: #1A5E35;
       --green-bg: #D5F5E3;
-      --yellow: #7D6608;
-      --yellow-bg: #FEF9E7;
-      --red: #7B1C1C;
-      --red-bg: #FDECEA;
+      --red:   #7B1C1C;
+      --red-bg:#FDECEA;
+      --gold:  #7D6608;
+      --gold-bg:#FEF9E7;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,896 +26,203 @@
       font-family: 'Inter', sans-serif;
       background: var(--ivory);
       color: var(--navy);
-      padding: 48px 24px 80px;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
       line-height: 1.6;
     }
 
-    .page-header {
-      max-width: 960px;
-      margin: 0 auto 48px;
+    header {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
       border-bottom: 2px solid var(--navy);
-      padding-bottom: 24px;
     }
 
-    .page-header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: var(--navy);
-      margin-bottom: 6px;
-    }
+    header h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 4px; }
+    header p  { font-size: 0.85rem; color: var(--mid); }
 
-    .page-header p { font-size: 0.92rem; color: var(--mid); }
-
-    .page-header .meta {
-      margin-top: 10px;
-      font-size: 0.82rem;
-      color: var(--terra);
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    /* ── PRIORITY BOX ── */
-    .priority-box {
-      max-width: 960px;
-      margin: 0 auto 48px;
-      background: var(--navy);
-      color: #fff;
-      border-radius: 10px;
-      padding: 28px 32px;
-    }
-
-    .priority-box h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      margin-bottom: 6px;
-      color: var(--gold);
-    }
-
-    .priority-box .box-note {
-      font-size: 0.8rem;
-      color: #8FA3B8;
-      margin-bottom: 20px;
-    }
-
-    .priority-list {
-      list-style: none;
-      counter-reset: plist;
-    }
-
-    .priority-list li {
-      counter-increment: plist;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      margin-bottom: 14px;
-      font-size: 0.88rem;
-      line-height: 1.55;
-    }
-
-    .priority-list li::before {
-      content: counter(plist);
-      min-width: 26px;
-      height: 26px;
-      background: var(--terra);
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* ── SECTION LABEL ── */
+    .label {
+      font-size: 0.7rem;
       font-weight: 700;
-      font-size: 0.78rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .priority-list strong { color: var(--gold); }
-    .priority-list .scope { color: #8FA3B8; font-size: 0.78rem; font-style: italic; }
-    .priority-list span { color: #C8D3DC; }
-
-    /* ── ALERT BOX ── */
-    .alert-box {
-      max-width: 960px;
-      margin: 0 auto 40px;
-      background: #FFF8ED;
-      border: 1px solid #E8C97A;
-      border-left: 4px solid var(--gold);
-      border-radius: 8px;
-      padding: 16px 20px;
-      font-size: 0.85rem;
-      color: #5A4010;
-      line-height: 1.6;
-    }
-
-    .alert-box strong { color: #7D6608; }
-
-    /* ── SECTION ── */
-    .section {
-      max-width: 960px;
-      margin: 0 auto 48px;
-    }
-
-    .section-header {
-      margin-bottom: 20px;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      color: var(--navy2);
-      margin-bottom: 4px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--light);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .section-verdict {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 3px 9px;
-      border-radius: 20px;
-    }
-
-    .verdict-use   { background: var(--green-bg); color: var(--green); }
-    .verdict-caution { background: var(--yellow-bg); color: var(--yellow); }
-    .verdict-skip  { background: var(--red-bg); color: var(--red); }
-
-    .section-subtitle {
-      font-size: 0.82rem;
       color: var(--mid);
-      margin-top: 8px;
+      margin: 36px 0 12px;
     }
 
-    /* ── CARDS ── */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 18px;
+    /* ── ROWS ── */
+    .row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--light);
     }
 
-    .card {
-      background: #fff;
-      border: 1px solid var(--light);
-      border-radius: 8px;
-      padding: 20px;
-      position: relative;
-      transition: box-shadow 0.15s;
-    }
+    .row:last-child { border-bottom: none; }
 
-    .card:hover { box-shadow: 0 4px 18px rgba(28,43,58,0.1); }
-
-    .card.card-skip {
-      background: #FAFAFA;
-      opacity: 0.75;
-    }
-
-    .card-verdict-badge {
-      position: absolute;
-      top: 14px;
-      right: 14px;
+    .badge {
+      flex-shrink: 0;
       font-size: 0.68rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       padding: 2px 8px;
       border-radius: 20px;
+      white-space: nowrap;
     }
 
-    .badge-use     { background: var(--green-bg); color: var(--green); }
-    .badge-caution { background: var(--yellow-bg); color: var(--yellow); }
-    .badge-skip    { background: var(--red-bg); color: var(--red); }
-    .badge-scope   { background: #D6E8F5; color: #1A5276; }
+    .b-yes    { background: var(--green-bg); color: var(--green); }
+    .b-scope  { background: #D6E8F5; color: #1A5276; }
+    .b-caution{ background: var(--gold-bg);  color: var(--gold); }
+    .b-no     { background: var(--red-bg);   color: var(--red); }
 
-    .card-name {
-      font-size: 1rem;
+    .row-body { flex: 1; }
+
+    .row-name {
+      font-size: 0.95rem;
       font-weight: 600;
       color: var(--navy);
-      margin-bottom: 2px;
-      padding-right: 70px;
     }
 
-    .card-inst {
-      font-size: 0.8rem;
+    .row-inst {
+      font-size: 0.78rem;
       color: var(--mid);
-      margin-bottom: 10px;
     }
 
-    .card-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 500;
-      background: var(--light);
-      color: var(--navy2);
-      border-radius: 4px;
-      padding: 2px 7px;
-      margin: 2px 2px 8px 0;
-    }
-
-    .card-tag.rp   { background: #D6E8F5; color: #1A5276; }
-    .card-tag.wms  { background: var(--yellow-bg); color: var(--yellow); }
-    .card-tag.meth { background: var(--green-bg); color: var(--green); }
-    .card-tag.ebm  { background: #F5E6FA; color: #6C3483; }
-
-    .card-why {
+    .row-why {
       font-size: 0.82rem;
       color: #4A5568;
-      line-height: 1.55;
-      margin-top: 6px;
+      margin-top: 2px;
     }
 
-    .card-rp-role {
-      margin-top: 10px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: #1A5276;
-      background: #D6E8F5;
-      padding: 4px 10px;
-      border-radius: 4px;
-      display: inline-block;
-    }
-
-    .card-caveat {
-      margin-top: 10px;
-      font-size: 0.76rem;
-      color: #7D6608;
-      background: var(--yellow-bg);
-      border-left: 3px solid #D4A84B;
-      padding: 6px 10px;
-      border-radius: 0 4px 4px 0;
-      line-height: 1.45;
-    }
-
-    .card-skip-reason {
-      margin-top: 10px;
-      font-size: 0.76rem;
-      color: var(--red);
-      background: var(--red-bg);
-      border-left: 3px solid #E57373;
-      padding: 6px 10px;
-      border-radius: 0 4px 4px 0;
-      line-height: 1.45;
-    }
-
-    /* ── MISSING BOX ── */
-    .missing-box {
-      max-width: 960px;
-      margin: 0 auto 48px;
+    /* ── MISSING NOTE ── */
+    .missing {
+      margin-top: 36px;
+      padding: 14px 16px;
       border: 1px dashed #A0AEC0;
-      border-radius: 8px;
-      padding: 24px 28px;
-      background: #fff;
-    }
-
-    .missing-box h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      color: var(--navy2);
-      margin-bottom: 8px;
-    }
-
-    .missing-box p {
-      font-size: 0.85rem;
-      color: #4A5568;
-      line-height: 1.6;
-    }
-
-    /* ── FINAL TABLE ── */
-    .final-table {
-      max-width: 960px;
-      margin: 0 auto 48px;
-    }
-
-    .final-table h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      color: var(--navy2);
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--light);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.84rem;
-    }
-
-    th {
-      text-align: left;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      border-radius: 6px;
+      font-size: 0.82rem;
       color: var(--mid);
-      padding: 8px 12px;
-      border-bottom: 2px solid var(--light);
+      line-height: 1.55;
     }
 
-    td {
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--light);
-      vertical-align: top;
-      line-height: 1.5;
-    }
-
-    tr:last-child td { border-bottom: none; }
-
-    .tname { font-weight: 600; color: var(--navy); }
-    .tinst { font-size: 0.78rem; color: var(--mid); }
-
-    .tv-use    { color: var(--green); font-weight: 600; }
-    .tv-caution{ color: var(--yellow); font-weight: 600; }
-    .tv-skip   { color: var(--red); font-weight: 600; }
+    .missing strong { color: var(--navy); }
 
     footer {
-      max-width: 960px;
-      margin: 0 auto;
-      font-size: 0.78rem;
+      margin-top: 48px;
+      font-size: 0.75rem;
       color: var(--mid);
       border-top: 1px solid var(--light);
-      padding-top: 16px;
+      padding-top: 14px;
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="page-header">
-  <p class="meta">SDM Paper 1 — Research Policy (Research Note)</p>
-  <h1>Friendly Reviewer Candidates</h1>
-  <p>24 candidates evaluated from two perspectives: original list (content + methodology fit) and RP reviewer audit (who a RP Associate Editor would actually assign this to).</p>
-  <p style="margin-top:8px; font-size:0.8rem; color:var(--mid);">Updated May 2026 · 24 candidates · RP reviewer audit applied</p>
+<header>
+  <h1>Friendly Reviewers — SDM Paper</h1>
+  <p>Research Policy Research Note · May 2026</p>
 </header>
 
 
-<!-- PRIORITY BOX — revised after RP audit -->
-<div class="priority-box">
-  <h2>Revised contact order — after RP reviewer audit</h2>
-  <p class="box-note">The original list was over-indexed on methodology, under-indexed on RP fit. This is the corrected ranking.</p>
-  <ol class="priority-list">
-    <li>
-      <div>
-        <strong>Paul Nightingale</strong> — SPRU, Sussex · RP UK Editor<br>
-        <span>Scope check only: "does this fit RP Short Communication format?" — one email, one question. Do not send full manuscript; this would create an editorial conflict.</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <strong>Daniela Scur</strong> — Cornell University (Dyson)<br>
-        <span>Full content review. The single most specific fit on the entire list. Understands the multi-firm survey design, knows the WMS conversation RP reviewers will use to evaluate your paper. Does not know RP's format requirements — use her for content, not structure.</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <strong>Timothy Devinney</strong> — Alliance Manchester Business School<br>
-        <span>Best bridge between measurement methodology and RP audience. Co-authored formative measurement work (Coltman et al. 2008) already in your bib. Does not pull the paper toward OB/PLS territory.</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <strong>Nicolai J. Foss</strong> — Copenhagen Business School<br>
-        <span>Theoretical framing of the construct only. RP-adjacent empirical work on management practices. Would tell you if the SDM construct definition holds up at the org-theory level.</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <strong>Jeffrey R. Edwards</strong> — UNC Kenan-Flagler<br>
-        <span class="scope">§2 only — do not send full manuscript.</span><br>
-        <span>Send only the formative measurement paragraphs. His critique (ORM, 2011) is what a methodologically sophisticated RP reviewer might invoke. Not a RP profile himself.</span>
-      </div>
-    </li>
-  </ol>
-</div>
+<!-- CONTACT -->
+<p class="label">Contact these</p>
 
-
-<!-- ALERT -->
-<div class="alert-box">
-  <strong>Key finding from RP audit:</strong> Groups 3 (PLS-SEM specialists) and 4 (EBM researchers) are misaligned with RP's actual reviewer pool. Incorporating their feedback would pull the paper toward ORM/OB framing. Contact them only for the specific sections noted — not for full manuscript review.
-</div>
-
-
-<!-- GROUP 1: RP EDITORS -->
-<div class="section">
-  <div class="section-header">
-    <h2 class="section-title">
-      Group 1 — Research Policy Editorial Board
-      <span class="section-verdict verdict-caution">Scope check only</span>
-    </h2>
-    <p class="section-subtitle">On the RP masthead — but contacting them as friendly reviewers creates editorial conflicts. Exception: Nightingale for a format/scope question.</p>
+<div class="row">
+  <span class="badge b-yes">Full review</span>
+  <div class="row-body">
+    <div class="row-name">Daniela Scur</div>
+    <div class="row-inst">Cornell University (Dyson)</div>
+    <div class="row-why">Building the Scientific Labs Management Survey. Best content fit on the list — understands your design immediately. For content, not RP format.</div>
   </div>
-  <div class="cards">
+</div>
 
-    <div class="card">
-      <span class="card-verdict-badge badge-use">Use — scope only</span>
-      <div class="card-name">Paul Nightingale</div>
-      <div class="card-inst">SPRU, University of Sussex</div>
-      <span class="card-tag rp">UK Editor — RP</span>
-      <span class="card-tag">Innovation measurement</span>
-      <p class="card-why">Stated interest in innovation measurement. Former ESRC Director of Strategy. Paper fits his RP remit more than any other editor.</p>
-      <div class="card-caveat">One email, one question: scope/format check only. Full manuscript would create editorial conflict.</div>
-      <div class="card-rp-role">UK Editor, Research Policy</div>
-    </div>
+<div class="row">
+  <span class="badge b-yes">Full review</span>
+  <div class="row-body">
+    <div class="row-name">Timothy Devinney</div>
+    <div class="row-inst">Alliance Manchester Business School</div>
+    <div class="row-why">Co-authored Coltman et al. (2008) — already in your bib. Best bridge between measurement methodology and RP audience.</div>
+  </div>
+</div>
 
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Conflict risk</span>
-      <div class="card-name">Ammon Salter</div>
-      <div class="card-inst">Warwick Business School</div>
-      <span class="card-tag rp">Co-Editor — RP</span>
-      <span class="card-tag">R&D decision-making</span>
-      <p class="card-why">Co-Editor handling innovation management submissions. Strong content fit with SDM terrain.</p>
-      <div class="card-skip-reason">Do not approach as friendly reviewer — burns him as potential handling editor. RP's editorial board is not large.</div>
-      <div class="card-rp-role">Co-Editor, Research Policy</div>
-    </div>
+<div class="row">
+  <span class="badge b-yes">Theory framing</span>
+  <div class="row-body">
+    <div class="row-name">Nicolai J. Foss</div>
+    <div class="row-inst">Copenhagen Business School</div>
+    <div class="row-why">Org theory + management practices. RP-adjacent. Would stress-test the construct definition.</div>
+  </div>
+</div>
 
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Conflict risk</span>
-      <div class="card-name">Reinhilde Veugelers</div>
-      <div class="card-inst">KU Leuven; Bruegel</div>
-      <span class="card-tag rp">Editor — RP</span>
-      <span class="card-tag">Innovation indicators</span>
-      <p class="card-why">Specialist in innovation indicators and STI measurement. Natural sympathizer for a new measurement instrument.</p>
-      <div class="card-skip-reason">Same editorial conflict issue. Do not approach for friendly review.</div>
-      <div class="card-rp-role">Editor, Research Policy</div>
-    </div>
+<div class="row">
+  <span class="badge b-scope">Scope check only</span>
+  <div class="row-body">
+    <div class="row-name">Paul Nightingale</div>
+    <div class="row-inst">SPRU, Sussex · RP UK Editor</div>
+    <div class="row-why">One email: "does this fit RP Short Communication format?" Full review would create an editorial conflict.</div>
+  </div>
+</div>
 
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Conflict risk</span>
-      <div class="card-name">Adam Jaffe</div>
-      <div class="card-inst">Brandeis University; NBER</div>
-      <span class="card-tag rp">Editor — RP</span>
-      <span class="card-tag">STI measurement</span>
-      <p class="card-why">Co-authored "Measuring Science, Technology, and Innovation: A Review." Deep expertise in R&D measurement.</p>
-      <div class="card-skip-reason">Editorial conflict. Do not approach.</div>
-      <div class="card-rp-role">Editor, Research Policy</div>
-    </div>
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Conflict risk</span>
-      <div class="card-name">Maryann Feldman</div>
-      <div class="card-inst">UNC Chapel Hill; Kenan Institute</div>
-      <span class="card-tag rp">Editor — RP</span>
-      <span class="card-tag">Innovation policy</span>
-      <p class="card-why">Former NSF Science of Science Director. Policy-facing work makes her sympathetic to empirical measurement instruments.</p>
-      <div class="card-skip-reason">Editorial conflict. Do not approach.</div>
-      <div class="card-rp-role">Editor, Research Policy</div>
-    </div>
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Conflict risk</span>
-      <div class="card-name">Alex Coad</div>
-      <div class="card-inst">Waseda Business School, Tokyo</div>
-      <span class="card-tag rp">Editor — RP</span>
-      <span class="card-tag">Firm performance</span>
-      <p class="card-why">100+ peer-reviewed articles. Firm-level measurement of performance and growth.</p>
-      <div class="card-skip-reason">Editorial conflict. Do not approach.</div>
-      <div class="card-rp-role">Editor, Research Policy</div>
-    </div>
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Conflict risk</span>
-      <div class="card-name">Anna Bergek</div>
-      <div class="card-inst">Chalmers University of Technology</div>
-      <span class="card-tag rp">RP Editorial Board</span>
-      <span class="card-tag">Innovation systems</span>
-      <p class="card-why">Operationalized functional approaches to innovation system dynamics — attuned to measuring abstract organizational constructs.</p>
-      <div class="card-skip-reason">Editorial conflict. Do not approach.</div>
-      <div class="card-rp-role">Editorial Board, Research Policy</div>
-    </div>
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Conflict risk</span>
-      <div class="card-name">Catherine Beaudry</div>
-      <div class="card-inst">Polytechnique Montréal</div>
-      <span class="card-tag rp">RP Editorial Board</span>
-      <span class="card-tag">R&D networks</span>
-      <p class="card-why">Canada Research Chair on Innovation. Engineering + quantitative background. Co-PI at 4POINT0.</p>
-      <div class="card-skip-reason">Editorial conflict. Do not approach.</div>
-      <div class="card-rp-role">Editorial Board, Research Policy</div>
-    </div>
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Conflict risk</span>
-      <div class="card-name">Ohid Yaqub</div>
-      <div class="card-inst">SPRU, University of Sussex</div>
-      <span class="card-tag rp">RP Editorial Board</span>
-      <span class="card-tag">STI policy</span>
-      <p class="card-why">STI policy, management, finance. SPRU base shared with Nightingale.</p>
-      <div class="card-skip-reason">Editorial conflict. Do not approach.</div>
-      <div class="card-rp-role">Editorial Board, Research Policy</div>
-    </div>
-
+<div class="row">
+  <span class="badge b-caution">§2 only</span>
+  <div class="row-body">
+    <div class="row-name">Jeffrey R. Edwards</div>
+    <div class="row-inst">UNC Kenan-Flagler</div>
+    <div class="row-why">"The Fallacy of Formative Measurement" (ORM, 2011). Send only the formative measurement paragraphs — stress-test before a methodological reviewer finds it.</div>
   </div>
 </div>
 
 
-<!-- GROUP 2: WMS -->
-<div class="section">
-  <div class="section-header">
-    <h2 class="section-title">
-      Group 2 — World Management Survey Tradition
-      <span class="section-verdict verdict-use">Scur — yes</span>
-    </h2>
-    <p class="section-subtitle">Scur is the right contact. Bloom, Sadun, Van Reenen are the literature you cite — not accessible for friendly review.</p>
+<!-- DO NOT CONTACT -->
+<p class="label">Do not contact</p>
+
+<div class="row">
+  <span class="badge b-no">Editorial conflict</span>
+  <div class="row-body">
+    <div class="row-name">Salter, Veugelers, Jaffe, Feldman, Coad, Bergek, Beaudry, Yaqub</div>
+    <div class="row-inst">RP Editors / Editorial Board</div>
+    <div class="row-why">Contacting them as friendly reviewers burns them as potential handling editors. RP's board is not large.</div>
   </div>
-  <div class="cards">
+</div>
 
-    <div class="card">
-      <span class="card-verdict-badge badge-use">Full review</span>
-      <div class="card-name">Daniela Scur</div>
-      <div class="card-inst">Cornell University (Dyson)</div>
-      <span class="card-tag wms">WMS tradition</span>
-      <span class="card-tag">Scientific Labs Survey</span>
-      <p class="card-why">Building the Scientific Labs Management Survey — instrument for management practices in biomedical labs. Co-author of "WMS at 18." Understands your multi-firm survey design and knows how RP will position your paper relative to the WMS conversation.</p>
-      <div class="card-caveat">She does not know RP's Short Communication format. Use for content feedback, not structural compliance.</div>
-    </div>
+<div class="row">
+  <span class="badge b-no">Not accessible</span>
+  <div class="row-body">
+    <div class="row-name">Bloom, Sadun, Van Reenen</div>
+    <div class="row-inst">Stanford / Harvard / LSE</div>
+    <div class="row-why">They are the literature you cite — not the reviewers who will read your paper. A RP AE sends this to someone who cites them.</div>
+  </div>
+</div>
 
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Not accessible</span>
-      <div class="card-name">Raffaella Sadun</div>
-      <div class="card-inst">Harvard Business School</div>
-      <span class="card-tag wms">WMS tradition</span>
-      <p class="card-why">Co-founder WMS, MOPS, MOPS-H. Expert on measuring management practices at scale.</p>
-      <div class="card-skip-reason">Too senior for a cold email. They are the literature you cite — not the reviewers who will read your paper.</div>
-    </div>
+<div class="row">
+  <span class="badge b-no">Wrong pool for RP</span>
+  <div class="row-body">
+    <div class="row-name">Hair, Sarstedt, Ringle, MacKenzie, Podsakoff, Aguinis</div>
+    <div class="row-inst">PLS-SEM / ORM methodologists</div>
+    <div class="row-why">Their feedback would produce a paper for JBR or AMJ, not Research Policy. RP reviewers don't ask for AVE tables and HTMT ratios.</div>
+  </div>
+</div>
 
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Not accessible</span>
-      <div class="card-name">Nicholas Bloom</div>
-      <div class="card-inst">Stanford GSB; NBER</div>
-      <span class="card-tag wms">WMS tradition</span>
-      <p class="card-why">Co-creator WMS. Foundational QJE paper established the multi-firm survey template your paper follows.</p>
-      <div class="card-skip-reason">Too senior for a cold email. A RP AE would not send this paper to Bloom — they would send it to someone who cites Bloom.</div>
-    </div>
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Not accessible</span>
-      <div class="card-name">John Van Reenen</div>
-      <div class="card-inst">LSE / POID; MIT IDE</div>
-      <span class="card-tag wms">WMS tradition</span>
-      <p class="card-why">Co-founder WMS. Established systematic link between management practices and firm performance.</p>
-      <div class="card-skip-reason">Same as Bloom and Sadun. Cite them, don't cold-email them.</div>
-    </div>
-
+<div class="row">
+  <span class="badge b-no">Wrong audience</span>
+  <div class="row-body">
+    <div class="row-name">Rousseau, Jepsen, Cassar</div>
+    <div class="row-inst">Evidence-Based Management</div>
+    <div class="row-why">RP doesn't engage with the EBM literature. Their feedback would pull the framing away from innovation studies.</div>
   </div>
 </div>
 
 
-<!-- GROUP 3: FORMATIVE MEASUREMENT -->
-<div class="section">
-  <div class="section-header">
-    <h2 class="section-title">
-      Group 3 — Formative Measurement Specialists
-      <span class="section-verdict verdict-skip">Wrong pool for RP</span>
-    </h2>
-    <p class="section-subtitle">These are ORM/PLS-SEM specialists. RP does not use PLS-SEM reporting standards. Their feedback would push the paper toward JBR or EMJ territory. Exception: Edwards for §2 only.</p>
-  </div>
-  <div class="cards">
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Wrong pool</span>
-      <div class="card-name">Joe F. Hair Jr.</div>
-      <div class="card-inst">University of South Alabama</div>
-      <span class="card-tag meth">PLS-SEM #1 world</span>
-      <p class="card-why">World authority on PLS-SEM. Co-author PLS-SEM Primer (4th ed., 2026). Clarivate Highly Cited Researcher 2018–2024.</p>
-      <div class="card-skip-reason">Incorporating his feedback would produce a paper that looks like it belongs in Journal of Business Research, not Research Policy. RP reviewers will not recognize AVE tables and HTMT ratios as relevant.</div>
-    </div>
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Wrong pool</span>
-      <div class="card-name">Marko Sarstedt</div>
-      <div class="card-inst">LMU Munich</div>
-      <span class="card-tag meth">Formative models</span>
-      <span class="card-tag meth">PLS-SEM</span>
-      <p class="card-why">Co-author (with Hair & Ringle) of the PLS-SEM Primer. Expert in outer weights, VIF, convergent validity via redundancy analysis.</p>
-      <div class="card-skip-reason">Same misalignment as Hair. Would pull the paper into PLS reporting territory that RP does not require.</div>
-    </div>
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Wrong pool</span>
-      <div class="card-name">Christian M. Ringle</div>
-      <div class="card-inst">Hamburg University of Technology (TUHH)</div>
-      <span class="card-tag meth">SmartPLS co-developer</span>
-      <p class="card-why">Co-developer of SmartPLS software. Highly Cited Researcher since 2018. Covers both theory and execution of formative model specification.</p>
-      <div class="card-skip-reason">Wrong pool for RP. Do not contact.</div>
-    </div>
-
-    <div class="card">
-      <span class="card-verdict-badge badge-caution">§2 only</span>
-      <div class="card-name">Jeffrey R. Edwards</div>
-      <div class="card-inst">UNC Kenan-Flagler Business School</div>
-      <span class="card-tag meth">Formative critique</span>
-      <p class="card-why">Author of "The Fallacy of Formative Measurement" (ORM, 2011). The most cited critical piece on formative models in management. Fellow of AoM, APA, SIOP.</p>
-      <div class="card-caveat">Send §2 only — the formative measurement paragraphs. His critique is what a methodologically sophisticated RP reviewer might invoke. Not a RP profile himself. Do not send full manuscript.</div>
-    </div>
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Wrong pool</span>
-      <div class="card-name">Scott B. MacKenzie</div>
-      <div class="card-inst">Indiana University (Kelley)</div>
-      <span class="card-tag meth">Measurement spec</span>
-      <p class="card-why">Co-authored seminal criteria for formative vs. reflective specification (JAP, 2005, with Podsakoff & Jarvis).</p>
-      <div class="card-skip-reason">OB/psychology methodology. Would give you a better paper for AMJ or ORM — not RP.</div>
-    </div>
-
-  </div>
+<!-- MISSING -->
+<div class="missing">
+  <strong>What's missing from this list:</strong> empirical researchers who have recently published survey-based work in Research Policy. That's who a RP AE would actually assign this to — and their feedback would most accurately simulate peer review.
 </div>
 
 
-<!-- GROUP 4: EBM -->
-<div class="section">
-  <div class="section-header">
-    <h2 class="section-title">
-      Group 4 — Evidence-Based Management
-      <span class="section-verdict verdict-skip">Misaligned with RP</span>
-    </h2>
-    <p class="section-subtitle">RP does not engage with the EBM literature. The five benchmark RP Short Communications do not cite EBM work. Their feedback would pull the paper away from RP framing.</p>
-  </div>
-  <div class="cards">
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Wrong audience</span>
-      <div class="card-name">Denise M. Rousseau</div>
-      <div class="card-inst">Carnegie Mellon (Heinz + Tepper)</div>
-      <span class="card-tag ebm">EBM founder</span>
-      <p class="card-why">Founder of Evidence-Based Management. Former AoM President. Co-author of the EBM-SUS instrument.</p>
-      <div class="card-skip-reason">EBM is a different conversation from RP's innovation studies framing. Her feedback would push the paper toward OB and away from RP. SDM is the construct; EBM is not the framing this paper uses.</div>
-    </div>
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Wrong audience</span>
-      <div class="card-name">Denise M. Jepsen</div>
-      <div class="card-inst">Macquarie University, Sydney</div>
-      <span class="card-tag ebm">PEU scale</span>
-      <p class="card-why">Co-authored with Rousseau the Perceived Evidence Use scale (PLoS One, 2022) — multi-sample validation, test-retest, discriminant validity.</p>
-      <div class="card-skip-reason">RP audience does not know PLoS One / IJOA instruments. Citing her instruments would open discriminant validity questions that do not exist if you don't raise them.</div>
-    </div>
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Wrong audience</span>
-      <div class="card-name">Vincent Cassar</div>
-      <div class="card-inst">University of Malta</div>
-      <span class="card-tag ebm">EBM-SUS</span>
-      <p class="card-why">Co-author of EBM-SUS (with Rousseau & Bezzina). Measures four evidence sources in managerial decision-making.</p>
-      <div class="card-skip-reason">Same misalignment as Rousseau and Jepsen. Pass.</div>
-    </div>
-
-  </div>
-</div>
-
-
-<!-- GROUP 5: CONSTRUCT VALIDITY -->
-<div class="section">
-  <div class="section-header">
-    <h2 class="section-title">
-      Group 5 — Construct Validity &amp; Survey Methods
-      <span class="section-verdict verdict-caution">Mixed — two yes, two no</span>
-    </h2>
-    <p class="section-subtitle">Devinney and Foss are RP-adjacent and useful. Podsakoff and Aguinis are psychology/ORM methodologists — wrong pool.</p>
-  </div>
-  <div class="cards">
-
-    <div class="card">
-      <span class="card-verdict-badge badge-use">Use — full review</span>
-      <div class="card-name">Timothy M. Devinney</div>
-      <div class="card-inst">Alliance Manchester Business School</div>
-      <span class="card-tag">Org performance measurement</span>
-      <span class="card-tag">Formative + RP bridge</span>
-      <p class="card-why">Co-authored "Measuring Organizational Performance: Towards Methodological Best Practice" (JOM, 2009). Also co-authored Coltman et al. (2008) on formative measurement — already cited in your bib. Best bridge between measurement methodology and RP audience on the entire list. Elected Fellow of the British Academy (2025).</p>
-    </div>
-
-    <div class="card">
-      <span class="card-verdict-badge badge-use">Use — theory framing</span>
-      <div class="card-name">Nicolai J. Foss</div>
-      <div class="card-inst">Copenhagen Business School</div>
-      <span class="card-tag">Microfoundations</span>
-      <span class="card-tag">Management practices</span>
-      <p class="card-why">Leading theorist on organizational design and microfoundations of strategy. Empirical work on management practices and innovation (with Keld Laursen) is RP-adjacent. Would tell you if the SDM construct definition holds up at the org-theory level. Already cited in your bib (colombo2021delegation).</p>
-    </div>
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Wrong pool</span>
-      <div class="card-name">Philip M. Podsakoff</div>
-      <div class="card-inst">University of Florida (Warrington)</div>
-      <span class="card-tag">Common method bias</span>
-      <p class="card-why">Author of the landmark common method bias paper (JAP, 2003) and 2024 update. Co-authored scale development best practices.</p>
-      <div class="card-skip-reason">Psychology/ORM methodologist. Would give you a better paper for AMJ — not RP. Their CMB concerns are already addressed in your design.</div>
-    </div>
-
-    <div class="card card-skip">
-      <span class="card-verdict-badge badge-skip">Wrong pool</span>
-      <div class="card-name">Herman Aguinis</div>
-      <div class="card-inst">George Washington University</div>
-      <span class="card-tag">ORM methods</span>
-      <p class="card-why">Former Editor-in-Chief of Organizational Research Methods. Clarivate top-100 most impactful. Published on multi-level survey designs.</p>
-      <div class="card-skip-reason">ORM profile. Would push the paper toward psychometric rigor that RP does not require.</div>
-    </div>
-
-  </div>
-</div>
-
-
-<!-- MISSING FROM LIST -->
-<div class="missing-box">
-  <h2>What's missing from the list</h2>
-  <p>The list has no one from the most useful profile for RP specifically: <strong>empirical researchers who have recently published survey-based or observational work in Research Policy</strong>. That is who a RP Associate Editor would actually assign this to — innovation economists who use survey data at the firm level (CIS-based, OECD STAN), scholars who have published in RP on management practices and productivity using multi-firm observational designs. These are the people whose feedback would most accurately simulate what peer review will look like. They are absent from the list entirely.</p>
-</div>
-
-
-<!-- FINAL TABLE -->
-<div class="final-table">
-  <h2>Summary — all 24 candidates</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Institution</th>
-        <th>RP verdict</th>
-        <th>Use for</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="tname">Paul Nightingale</span><br><span class="tinst">SPRU, Sussex</span></td>
-        <td>UK Editor RP</td>
-        <td class="tv-use">Scope check only</td>
-        <td>Format/scope question — one email</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Daniela Scur</span><br><span class="tinst">Cornell (Dyson)</span></td>
-        <td>WMS tradition</td>
-        <td class="tv-use">Full content review</td>
-        <td>Instrument design, WMS positioning</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Timothy Devinney</span><br><span class="tinst">Alliance Manchester</span></td>
-        <td>Org performance + formative</td>
-        <td class="tv-use">Full review</td>
-        <td>Measurement + RP bridge</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Nicolai J. Foss</span><br><span class="tinst">Copenhagen Business School</span></td>
-        <td>Org theory / mgmt practices</td>
-        <td class="tv-use">Theory framing</td>
-        <td>Construct definition, microfoundations</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Jeffrey R. Edwards</span><br><span class="tinst">UNC Kenan-Flagler</span></td>
-        <td>ORM methodologist</td>
-        <td class="tv-caution">§2 only</td>
-        <td>Stress-test formative specification</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Ammon Salter</span><br><span class="tinst">Warwick Business School</span></td>
-        <td>Co-Editor RP</td>
-        <td class="tv-skip">Conflict risk</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Reinhilde Veugelers</span><br><span class="tinst">KU Leuven</span></td>
-        <td>Editor RP</td>
-        <td class="tv-skip">Conflict risk</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Adam Jaffe</span><br><span class="tinst">Brandeis / NBER</span></td>
-        <td>Editor RP</td>
-        <td class="tv-skip">Conflict risk</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Maryann Feldman</span><br><span class="tinst">UNC Chapel Hill</span></td>
-        <td>Editor RP</td>
-        <td class="tv-skip">Conflict risk</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Alex Coad</span><br><span class="tinst">Waseda University</span></td>
-        <td>Editor RP</td>
-        <td class="tv-skip">Conflict risk</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Anna Bergek</span><br><span class="tinst">Chalmers</span></td>
-        <td>RP Editorial Board</td>
-        <td class="tv-skip">Conflict risk</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Catherine Beaudry</span><br><span class="tinst">Polytechnique Montréal</span></td>
-        <td>RP Editorial Board</td>
-        <td class="tv-skip">Conflict risk</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Ohid Yaqub</span><br><span class="tinst">SPRU, Sussex</span></td>
-        <td>RP Editorial Board</td>
-        <td class="tv-skip">Conflict risk</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Raffaella Sadun</span><br><span class="tinst">Harvard Business School</span></td>
-        <td>WMS tradition</td>
-        <td class="tv-skip">Not accessible</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Nicholas Bloom</span><br><span class="tinst">Stanford GSB</span></td>
-        <td>WMS tradition</td>
-        <td class="tv-skip">Not accessible</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">John Van Reenen</span><br><span class="tinst">LSE / POID</span></td>
-        <td>WMS tradition</td>
-        <td class="tv-skip">Not accessible</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Joe F. Hair Jr.</span><br><span class="tinst">U of South Alabama</span></td>
-        <td>PLS-SEM</td>
-        <td class="tv-skip">Wrong pool</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Marko Sarstedt</span><br><span class="tinst">LMU Munich</span></td>
-        <td>PLS-SEM</td>
-        <td class="tv-skip">Wrong pool</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Christian M. Ringle</span><br><span class="tinst">TUHH Hamburg</span></td>
-        <td>PLS-SEM</td>
-        <td class="tv-skip">Wrong pool</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Scott B. MacKenzie</span><br><span class="tinst">Indiana University</span></td>
-        <td>ORM methodologist</td>
-        <td class="tv-skip">Wrong pool</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Denise M. Rousseau</span><br><span class="tinst">Carnegie Mellon</span></td>
-        <td>EBM</td>
-        <td class="tv-skip">Wrong audience</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Denise M. Jepsen</span><br><span class="tinst">Macquarie University</span></td>
-        <td>EBM</td>
-        <td class="tv-skip">Wrong audience</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Vincent Cassar</span><br><span class="tinst">University of Malta</span></td>
-        <td>EBM</td>
-        <td class="tv-skip">Wrong audience</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Philip M. Podsakoff</span><br><span class="tinst">University of Florida</span></td>
-        <td>ORM methodologist</td>
-        <td class="tv-skip">Wrong pool</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><span class="tname">Herman Aguinis</span><br><span class="tinst">George Washington U</span></td>
-        <td>ORM methodologist</td>
-        <td class="tv-skip">Wrong pool</td>
-        <td>—</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<footer>
-  <p>SDM Paper 1 · Research Policy Research Note · Updated May 2026 after RP reviewer audit · hmontoyac3/SDM-paper1</p>
-</footer>
+<footer>SDM Paper 1 · Research Policy Research Note · Updated May 2026</footer>
 
 </body>
 </html>
