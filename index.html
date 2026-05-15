@@ -20,7 +20,7 @@
     .container { max-width: 560px; width: 100%; }
     h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.3rem; }
     .subtitle { font-size: 0.95rem; color: #666; margin-bottom: 1.4rem; }
-    .bio { font-size: 0.9rem; color: #444; line-height: 1.65; margin-bottom: 2.5rem; }
+    .bio { font-size: 0.9rem; color: #444; line-height: 1.65; margin-bottom: 1.1rem; }
 
     a.card {
       display: flex;
@@ -41,6 +41,13 @@
     .card-arrow { font-size: 0.9rem; color: #ccc; transition: color 0.15s, transform 0.15s; flex-shrink: 0; }
     a.card:hover .card-arrow { color: #5B7FA6; transform: translateX(3px); }
 
+    .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.1rem; margin-bottom: 2.5rem; }
+    .tag {
+      font-size: 0.75rem; color: #666;
+      border: 1px solid #e0e0e0; border-radius: 4px;
+      padding: 0.2rem 0.6rem; background: white;
+    }
+
     .footer {
       margin-top: 2rem;
       font-size: 0.82rem;
@@ -58,9 +65,19 @@
     <h1>Helena Montoya Calero</h1>
     <p class="subtitle">PhD Candidate &middot; Bocconi University &middot; ION Management Science Lab</p>
     <p class="bio">
-      I study decision-making under uncertainty in entrepreneurship and management.
-      My research is advised by Alfonso Gambardella and Arnaldo Camuffo.
+      I study decision-making under uncertainty in entrepreneurship and development.
+      My research focuses on treatment effect heterogeneity — who responds to interventions, and why.
+      Advised by Alfonso Gambardella and Arnaldo Camuffo.
     </p>
+    <div class="tags">
+      <span class="tag">Heterogeneous effects</span>
+      <span class="tag">Decision-making</span>
+      <span class="tag">Development</span>
+      <span class="tag">RCTs</span>
+      <span class="tag">Machine learning</span>
+      <span class="tag">LLMs</span>
+      <span class="tag">Data analysis</span>
+    </div>
 
     <a class="card" href="/research/">
       <div>
