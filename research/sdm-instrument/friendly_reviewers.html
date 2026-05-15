@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SDM Paper — Friendly Reviewers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ivory: #F9F7F3;
+      --navy:  #1C2B3A;
+      --navy2: #2E4259;
+      --terra: #C4622D;
+      --gold:  #D4A84B;
+      --mid:   #6B7A8D;
+      --light: #E8E4DC;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--ivory);
+      color: var(--navy);
+      padding: 48px 24px 80px;
+      line-height: 1.6;
+    }
+
+    .page-header {
+      max-width: 960px;
+      margin: 0 auto 48px;
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 24px;
+    }
+
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .page-header p {
+      font-size: 0.92rem;
+      color: var(--mid);
+    }
+
+    .page-header .meta {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--terra);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      max-width: 960px;
+      margin: 0 auto 48px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--navy2);
+      margin-bottom: 4px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--light);
+    }
+
+    .section-subtitle {
+      font-size: 0.82rem;
+      color: var(--mid);
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--light);
+      border-radius: 8px;
+      padding: 20px;
+      position: relative;
+      transition: box-shadow 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 18px rgba(28,43,58,0.1);
+    }
+
+    .card-priority {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    .priority-high {
+      background: #FEE9DC;
+      color: var(--terra);
+    }
+
+    .priority-mid {
+      background: #FDF3D8;
+      color: #9A7020;
+    }
+
+    .card-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 2px;
+      padding-right: 60px;
+    }
+
+    .card-inst {
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 10px;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      background: var(--light);
+      color: var(--navy2);
+      border-radius: 4px;
+      padding: 2px 7px;
+      margin: 2px 2px 8px 0;
+    }
+
+    .card-tag.rp {
+      background: #D6E8F5;
+      color: #1A5276;
+    }
+
+    .card-tag.formative {
+      background: #D5F5E3;
+      color: #1A5E35;
+    }
+
+    .card-tag.ebm {
+      background: #F5E6FA;
+      color: #6C3483;
+    }
+
+    .card-tag.wms {
+      background: #FEF9E7;
+      color: #7D6608;
+    }
+
+    .card-why {
+      font-size: 0.82rem;
+      color: #4A5568;
+      line-height: 1.55;
+      margin-top: 6px;
+    }
+
+    .card-rp-role {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #1A5276;
+      background: #D6E8F5;
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .priority-box {
+      max-width: 960px;
+      margin: 0 auto 48px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 10px;
+      padding: 28px 32px;
+    }
+
+    .priority-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: var(--gold);
+    }
+
+    .priority-list {
+      list-style: none;
+      counter-reset: plist;
+    }
+
+    .priority-list li {
+      counter-increment: plist;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .priority-list li::before {
+      content: counter(plist);
+      min-width: 26px;
+      height: 26px;
+      background: var(--terra);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.78rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .priority-list strong {
+      color: var(--gold);
+    }
+
+    .priority-list span {
+      color: #C8D3DC;
+    }
+
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      font-size: 0.78rem;
+      color: var(--mid);
+      border-top: 1px solid var(--light);
+      padding-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <p class="meta">SDM Paper 1 — Research Policy (Research Note)</p>
+  <h1>Friendly Reviewer Candidates</h1>
+  <p>Researchers who have published in Research Policy, work on formative measurement, management practice surveys, or evidence-based management — and would give meaningful pre-submission feedback.</p>
+  <p style="margin-top:8px; font-size:0.8rem; color:var(--mid);">Generated May 2026 · 24 candidates · 6 groups</p>
+</header>
+
+
+<!-- PRIORITY BOX -->
+<div class="priority-box">
+  <h2>Recommended contact order</h2>
+  <ol class="priority-list">
+    <li>
+      <div><strong>Paul Nightingale</strong> — SPRU, Sussex · RP UK Editor<br>
+      <span>Stated interest in innovation measurement. Your paper fits his RP remit directly. Pre-submission email is standard.</span></div>
+    </li>
+    <li>
+      <div><strong>Ammon Salter</strong> — Warwick Business School · RP Co-Editor<br>
+      <span>R&D decision-making, innovation management. As co-editor, a friendly pre-submission consult is common practice.</span></div>
+    </li>
+    <li>
+      <div><strong>Daniela Scur</strong> — Cornell University (Dyson)<br>
+      <span>Building the Scientific Labs Management Survey. The single most specific fit. Would understand your design immediately. High potential for future collaboration.</span></div>
+    </li>
+    <li>
+      <div><strong>Marko Sarstedt</strong> — LMU Munich<br>
+      <span>Formative model evaluation specialist. PLS-SEM co-author. His sign-off on the formative specification neutralizes Reviewer 2 in advance.</span></div>
+    </li>
+    <li>
+      <div><strong>Jeffrey R. Edwards</strong> — UNC Kenan-Flagler<br>
+      <span>Author of "The Fallacy of Formative Measurement." If you can satisfy his objections, §2 is airtight before submission.</span></div>
+    </li>
+    <li>
+      <div><strong>Denise Jepsen or Vincent Cassar</strong> — Macquarie / Malta<br>
+      <span>Built the closest existing instruments to SDM (PEU scale, EBM-SUS). Would clarify how to differentiate your instrument from prior work.</span></div>
+    </li>
+  </ol>
+</div>
+
+
+<!-- GROUP 1: RP EDITORS -->
+<div class="section">
+  <h2 class="section-title">Group 1 — Research Policy Editorial Board</h2>
+  <p class="section-subtitle">Directly on the RP masthead. Pre-submission feedback requests are standard and expected.</p>
+  <div class="cards">
+
+    <div class="card">
+      <span class="card-priority priority-high">Contact first</span>
+      <div class="card-name">Paul Nightingale</div>
+      <div class="card-inst">SPRU, University of Sussex</div>
+      <span class="card-tag rp">UK Editor — RP</span>
+      <span class="card-tag">Innovation measurement</span>
+      <span class="card-tag">Science policy</span>
+      <p class="card-why">Explicit stated interest in innovation measurement at RP. Former ESRC Director of Strategy. Your paper fits his RP remit more than any other editor.</p>
+      <div class="card-rp-role">UK Editor, Research Policy</div>
+    </div>
+
+    <div class="card">
+      <span class="card-priority priority-high">Contact first</span>
+      <div class="card-name">Ammon Salter</div>
+      <div class="card-inst">Warwick Business School</div>
+      <span class="card-tag rp">Co-Editor — RP</span>
+      <span class="card-tag">R&D decision-making</span>
+      <span class="card-tag">Open innovation</span>
+      <p class="card-why">Co-Editor of RP handling innovation management submissions. Research on R&D decision-making and industry-science links maps directly onto SDM terrain.</p>
+      <div class="card-rp-role">Co-Editor, Research Policy</div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Reinhilde Veugelers</div>
+      <div class="card-inst">KU Leuven; Bruegel</div>
+      <span class="card-tag rp">Editor — RP</span>
+      <span class="card-tag">Innovation indicators</span>
+      <span class="card-tag">STI measurement</span>
+      <p class="card-why">Specialist in technological novelty and innovation indicators. Natural sympathizer for a paper introducing a new organizational measurement instrument.</p>
+      <div class="card-rp-role">Editor, Research Policy</div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Adam Jaffe</div>
+      <div class="card-inst">Brandeis University; NBER</div>
+      <span class="card-tag rp">Editor — RP</span>
+      <span class="card-tag">STI measurement</span>
+      <span class="card-tag">R&D indicators</span>
+      <p class="card-why">Co-authored "Measuring Science, Technology, and Innovation: A Review" (with Bronwyn Hall). Deep expertise in R&D measurement — directly aligned with a paper on an organizational measurement instrument.</p>
+      <div class="card-rp-role">Editor, Research Policy</div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Maryann Feldman</div>
+      <div class="card-inst">UNC Chapel Hill; Kenan Institute</div>
+      <span class="card-tag rp">Editor — RP</span>
+      <span class="card-tag">Innovation policy</span>
+      <span class="card-tag">Commercialization</span>
+      <p class="card-why">Former NSF Science of Science and Innovation Policy Program Director. Global Award for Entrepreneurship Research (2013). Policy-facing work makes her sympathetic to empirical measurement instruments.</p>
+      <div class="card-rp-role">Editor, Research Policy</div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Alex Coad</div>
+      <div class="card-inst">Waseda Business School, Tokyo</div>
+      <span class="card-tag rp">Editor — RP</span>
+      <span class="card-tag">Firm performance</span>
+      <span class="card-tag">Growth measurement</span>
+      <p class="card-why">Over 100 peer-reviewed articles. Interest in firm-level measurement of performance and growth. Previously at SPRU, Aalborg, Max Planck.</p>
+      <div class="card-rp-role">Editor, Research Policy</div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Anna Bergek</div>
+      <div class="card-inst">Chalmers University of Technology</div>
+      <span class="card-tag rp">RP Editorial Board</span>
+      <span class="card-tag">Innovation systems</span>
+      <span class="card-tag">Tech dynamics</span>
+      <p class="card-why">Has operationalized "functional approaches" to analyzing innovation system dynamics — methodologically attuned to challenges of measuring abstract organizational constructs.</p>
+      <div class="card-rp-role">Editorial Board, Research Policy</div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Catherine Beaudry</div>
+      <div class="card-inst">Polytechnique Montréal</div>
+      <span class="card-tag rp">RP Editorial Board</span>
+      <span class="card-tag">R&D networks</span>
+      <span class="card-tag">Innovation ecosystems</span>
+      <p class="card-why">Canada Research Chair on Innovation. Engineering + quantitative background. Co-PI at 4POINT0 data partnership. Methodologically engaged reviewer.</p>
+      <div class="card-rp-role">Editorial Board, Research Policy</div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Ohid Yaqub</div>
+      <div class="card-inst">SPRU, University of Sussex</div>
+      <span class="card-tag rp">RP Editorial Board</span>
+      <span class="card-tag">STI policy</span>
+      <span class="card-tag">Management</span>
+      <p class="card-why">STI policy, management, and finance. SPRU base shared with Nightingale — natural internal channel if approaching Sussex.</p>
+      <div class="card-rp-role">Editorial Board, Research Policy</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- GROUP 2: WMS TRADITION -->
+<div class="section">
+  <h2 class="section-title">Group 2 — World Management Survey Tradition</h2>
+  <p class="section-subtitle">The closest existing design to yours: large-N, multi-firm, field-deployed management practice instrument.</p>
+  <div class="cards">
+
+    <div class="card">
+      <span class="card-priority priority-high">Best fit overall</span>
+      <div class="card-name">Daniela Scur</div>
+      <div class="card-inst">Cornell University (Dyson)</div>
+      <span class="card-tag wms">WMS tradition</span>
+      <span class="card-tag">Scientific Labs Survey</span>
+      <span class="card-tag">Mgmt practice instruments</span>
+      <p class="card-why">Building the <em>Scientific Labs Management Survey</em> — measuring management practices in biomedical labs. Co-author of "WMS at 18." The single most specific thematic fit in the field. Would understand your design logic immediately.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Raffaella Sadun</div>
+      <div class="card-inst">Harvard Business School</div>
+      <span class="card-tag wms">WMS tradition</span>
+      <span class="card-tag">MOPS / Hospital survey</span>
+      <span class="card-tag">Management at scale</span>
+      <p class="card-why">Co-founder of WMS, Executive Time Use Study, and MOPS-H. One of the definitive experts on measuring management practices across large firm samples. McKinsey Award winner (HBR, with Bloom & Van Reenen).</p>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Nicholas Bloom</div>
+      <div class="card-inst">Stanford GSB; NBER</div>
+      <span class="card-tag wms">WMS tradition</span>
+      <span class="card-tag">Multi-firm measurement</span>
+      <p class="card-why">Co-creator of WMS. Foundational paper (QJE) established the exact template your paper follows: N-large, multi-firm, field survey, management practices. Clarivate top-1% cited.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-name">John Van Reenen</div>
+      <div class="card-inst">LSE / POID; MIT IDE</div>
+      <span class="card-tag wms">WMS tradition</span>
+      <span class="card-tag">Management–productivity</span>
+      <p class="card-why">Co-founder WMS. Established how management practices can be measured systematically and linked to firm performance. Expertise in management quality → productivity aligns with SDM's eventual outcome research agenda.</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- GROUP 3: FORMATIVE MEASUREMENT -->
+<div class="section">
+  <h2 class="section-title">Group 3 — Formative Measurement Specialists</html>
+  <p class="section-subtitle">Critical for bulletproofing §2 and §4 before submission. Their feedback anticipates what Reviewer 2 will say.</p>
+  <div class="cards">
+
+    <div class="card">
+      <span class="card-priority priority-high">Methodology check</span>
+      <div class="card-name">Marko Sarstedt</div>
+      <div class="card-inst">LMU Munich (Ludwig Maximilian)</div>
+      <span class="card-tag formative">Formative models</span>
+      <span class="card-tag formative">PLS-SEM</span>
+      <p class="card-why">Co-author (with Hair & Ringle) of the PLS-SEM Primer (8 languages). Wrote "Evaluation of Formative Measurement Models" chapter. Specific expertise: outer weights, VIF, convergent validity via redundancy analysis. Most accessible of the PLS trio.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Joe F. Hair Jr.</div>
+      <div class="card-inst">University of South Alabama</div>
+      <span class="card-tag formative">PLS-SEM #1 world</span>
+      <span class="card-tag formative">Formative measurement</span>
+      <p class="card-why">World's #1 authority on PLS-SEM. Co-author of PLS-SEM Primer (4th ed., 2026). Clarivate Highly Cited Researcher 2018–2024. His name in the acknowledgments is a methodological shield against reviewer critique.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Christian M. Ringle</div>
+      <div class="card-inst">Hamburg University of Technology (TUHH)</div>
+      <span class="card-tag formative">SmartPLS co-developer</span>
+      <span class="card-tag formative">PLS-SEM</span>
+      <p class="card-why">Co-developer of SmartPLS software. Highly Cited Researcher since 2018. Covers both theory and execution of formative model specification — has literally built the tool researchers use to estimate these models.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-priority priority-high">Pre-empt Reviewer 2</span>
+      <div class="card-name">Jeffrey R. Edwards</div>
+      <div class="card-inst">UNC Kenan-Flagler Business School</div>
+      <span class="card-tag formative">Formative critique</span>
+      <span class="card-tag">Construct validation</span>
+      <p class="card-why">Author of "The Fallacy of Formative Measurement" (ORM, 2011) — the most cited critical piece on formative models in management. Fellow of AoM, APA, SIOP. If you satisfy his objections, your methodology section is airtight.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Scott B. MacKenzie</div>
+      <div class="card-inst">Indiana University (Kelley)</div>
+      <span class="card-tag formative">Measurement spec</span>
+      <span class="card-tag">Scale development</span>
+      <p class="card-why">Co-authored the seminal criteria for formative vs. reflective specification (JAP, 2005, with Podsakoff & Jarvis). Cited in virtually every management paper using a formative model. Work on formative construct development maps directly onto your 24-item instrument.</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- GROUP 4: EBM -->
+<div class="section">
+  <h2 class="section-title">Group 4 — Evidence-Based Management</h2>
+  <p class="section-subtitle">Closest to your construct domain. They would clarify how SDM differentiates from existing EBM instruments.</p>
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-name">Denise M. Rousseau</div>
+      <div class="card-inst">Carnegie Mellon (Heinz + Tepper)</div>
+      <span class="card-tag ebm">EBM founder</span>
+      <span class="card-tag ebm">EBM-SUS instrument</span>
+      <p class="card-why">Founder of the Evidence-Based Management field. Former AoM President. Co-author of the EBM-SUS — the closest existing instrument to your SDM measure. Would understand immediately what you are doing and why it matters.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-priority priority-mid">Closest instrument match</span>
+      <div class="card-name">Denise M. Jepsen</div>
+      <div class="card-inst">Macquarie University, Sydney</div>
+      <span class="card-tag ebm">PEU scale</span>
+      <span class="card-tag ebm">Evidence use measurement</span>
+      <p class="card-why">Co-authored with Rousseau the <em>Perceived Evidence Use</em> scale (PLoS One, 2022) — multi-sample validation, test-retest, discriminant validity vs. LMX and transformational leadership. The validation approach most analogous to yours.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-priority priority-mid">Closest instrument match</span>
+      <div class="card-name">Vincent Cassar</div>
+      <div class="card-inst">University of Malta</div>
+      <span class="card-tag ebm">EBM-SUS</span>
+      <span class="card-tag ebm">Evidence use in decisions</span>
+      <p class="card-why">Co-author of EBM-SUS (with Rousseau & Bezzina). Measures four evidence sources in managerial decision-making with explicit attention to convergent and discriminant validity. Probably the most technically matched reviewer for your validation sections.</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- GROUP 5: CONSTRUCT VALIDITY -->
+<div class="section">
+  <h2 class="section-title">Group 5 — Construct Validity & Survey Design</h2>
+  <p class="section-subtitle">Would scrutinize CMB, multi-level design, and construct definition — essential pre-submission feedback.</p>
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-name">Philip M. Podsakoff</div>
+      <div class="card-inst">University of Florida (Warrington)</div>
+      <span class="card-tag">Common method bias</span>
+      <span class="card-tag">Construct validity</span>
+      <p class="card-why">Author of the landmark common method bias paper (JAP, 2003) and 2024 update. Co-authored scale development and construct validation best practices. Would scrutinize survey design for CMB threats — essential to address before peer review.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Herman Aguinis</div>
+      <div class="card-inst">George Washington University</div>
+      <span class="card-tag">ORM methods</span>
+      <span class="card-tag">Multi-level design</span>
+      <p class="card-why">Former Editor-in-Chief of Organizational Research Methods. Clarivate top-100 most impactful in Economics & Business every year since 2018. Published on multi-level survey designs across large firm samples — directly relevant to your 54-firm design.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Nicolai J. Foss</div>
+      <div class="card-inst">Copenhagen Business School</div>
+      <span class="card-tag">Microfoundations</span>
+      <span class="card-tag">HRM surveys</span>
+      <p class="card-why">Leading theorist on organizational design and microfoundations of strategy. Survey work on HR practices and innovation (with Keld Laursen). His perspective on how individual behaviors aggregate to organizational outcomes is foundational for SDM's theoretical framing.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Timothy M. Devinney</div>
+      <div class="card-inst">Alliance Manchester Business School</div>
+      <span class="card-tag">Org performance measurement</span>
+      <span class="card-tag">Survey methods</span>
+      <p class="card-why">Co-authored "Measuring Organizational Performance: Towards Methodological Best Practice" (JOM, 2009) — one of the most cited papers on validating multi-dimensional organizational constructs in field samples. Elected Fellow of the British Academy (2025).</p>
+    </div>
+
+  </div>
+</div>
+
+
+<footer>
+  <p>SDM Paper 1 · Research Policy Research Note · Generated May 2026 · hmontoyac3/SDM-paper1</p>
+</footer>
+
+</body>
+</html>
