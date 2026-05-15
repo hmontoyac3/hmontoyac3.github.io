@@ -232,11 +232,11 @@
           <div class="phase-dot"></div>
           <div class="phase-label">Data</div>
         </div>
-        <div class="phase active">
+        <div class="phase done">
           <div class="phase-dot"></div>
           <div class="phase-label">Exploration</div>
         </div>
-        <div class="phase">
+        <div class="phase active">
           <div class="phase-dot"></div>
           <div class="phase-label">Analysis</div>
         </div>
@@ -270,6 +270,7 @@
         </div>
         <div class="doc-cluster">
           <div class="doc-cluster-label">One-pagers</div>
+          <a class="doc-link" href="/research/heterogeneity-effects/onepager_v5_hte_results.pdf">v5 — First HTE Results</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v4.pdf">v4</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v3.pdf">v3</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v2.pdf">v2</a>
@@ -442,11 +443,12 @@
     <section>
       <h2>Working on</h2>
       <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65;">
-        Data received from Diego (May 2026): full 8-RCT pooled dataset, 199 variables.
-        Variable audit complete — inventory mapped, cleaning scripts written, <code>ERC_RED_HMC_clean.dta</code> ready.
-        Starting Wave 1 analysis (balance, ATE, GenericML) with the ~30 moderators already available
-        while waiting for the behavioral battery (ambiguity aversion, learning orientation, competitiveness)
-        from the raw country files.
+        First GenericML scan complete (May 2026). 12 moderators tested across venture, belief-calibration,
+        and cognitive dimensions — BLP/GATES/CLAN, 250 splits, paper-correct implementation (Chernozhukov et al., <em>Econometrica</em> 2025).
+        ATE confirmed: +0.60–0.68 SD in periods 1–2 (p&nbsp;&lt;&nbsp;0.001).
+        No single moderator significant at 5%; FEI borderline (p&nbsp;=&nbsp;0.084) confirmed as site artifact after within-site residualization.
+        CLAN portrait consistent: high-benefit founder is committed, experienced on the idea, and underestimates environmental uncertainty.
+        Next: present results to PI; request cognitive battery (ambiguity aversion, risk aversion, learning orientation) from Diego.
       </p>
     </section>
 
@@ -454,6 +456,18 @@
     <section>
       <h2>Progress Log</h2>
 
+      <div class="log-entry">
+        <div class="log-date">2026-05-15</div>
+        <div class="log-text">GenericML scanner expanded to 12 moderators (venture stage, belief calibration, idea scope, planning horizon + prior 4 cognitive). All 250/250 valid splits per cell. Key findings: (1) all moderators null at 5%; (2) FEI borderline (p&nbsp;=&nbsp;0.084) disappears within-site (fei_resid p&nbsp;=&nbsp;0.358) — site artifact confirmed; (3) CLAN portrait consistent across moderators: committed, experienced, low-uncertainty-perceiving founder benefits most. Onepager v5 written. Cognitive battery (risk/ambiguity, learning orientation) identified as the critical remaining gap — requires Diego.</div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">2026-05-14</div>
+        <div class="log-text">GenericML (BLP/GATES/CLAN) first run complete. 4 moderators × 2 periods × 250 splits. Implementation verified against Chernozhukov et al. (2025) paper algorithm (no intercept in BLP/GATES, per-split CLAN aggregation, vectorized HC1 SEs). Result: IoC RF-predictive but causally null (β₂ = −0.008, p = 0.66). FEI borderline (p = 0.084), partially confounded with sites. DML analysis log published.</div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">2026-05-13</div>
+        <div class="log-text">RF exploratory analysis complete. Two scripts: pooled RF on SI level (Script 01) and RF on ΔSI by arm × period (Script 02). Divergence figure produced. Shortlist for DML: IoC (T&amp;E arm consistently high importance P1–P5), future_ev_influence (crossing pattern). Variables with zero importance excluded (number_firms_worked, startup_founded, etc.).</div>
+      </div>
       <div class="log-entry">
         <div class="log-date">2026-05-11</div>
         <div class="log-text">Full variable audit complete. 199 variables mapped to source instruments (baseline survey, DP3 follow-up, baseline interview, generated). Cleaning scripts written (<code>03_clean_existing_variables_HM.do</code>). <code>ERC_RED_HMC_clean.dta</code> ready. Wave 1 analysis starting.</div>
@@ -488,11 +502,11 @@
     <section>
       <h2>Next Steps</h2>
       <ul class="next-steps">
-        <li>Balance table by treatment arm (script 04)</li>
-        <li>ATE estimation — main outcomes (script 05)</li>
-        <li>GenericML Wave 1 — person, venture, dosage Z vectors (scripts 06–08)</li>
-        <li>Follow up with Diego on behavioral battery recovery feasibility</li>
-        <li>Send Wave 1 preliminary results to Alfonso</li>
+        <li>Present first results to PI (Alfonso) — onepager v5 ready</li>
+        <li>Request cognitive battery from Diego: <code>risk_aversion</code>, <code>unc_aversion</code>, <code>learning_orientation_1–6</code>, <code>competitiveness_1–7</code> (17 variables, baseline survey raw files)</li>
+        <li>Decide with PI: which moderators go to confirmatory pre-registration?</li>
+        <li>Attrition analysis: table of N by period × arm to characterize ATE fade-out (P3 onwards)</li>
+        <li>Expand to multiple outcomes (pivot, termination) once cognitive family is available</li>
       </ul>
     </section>
   </div>
