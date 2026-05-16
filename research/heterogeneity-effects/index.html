@@ -444,13 +444,26 @@
     <section>
       <h2>Working on</h2>
       <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65;">
-        Comprehensive outcome scan complete (D5, D6, D7 — May 2026). Tested 8 outcomes &times; 5 periods &times; 12 moderators.
-        D5 (manual lasso, 480 cells): all null in P1&ndash;P2. D6 (5-learner ensemble: lasso, elastic net, ridge, RF, SVM): all null.
-        D7 (official GenericML package, 6 learners incl. XGBoost, 120 cells): <strong>two borderline hits on log(sales+1) at P2</strong> —
-        <em>fei_resid</em> (&beta;&thinsp;=&thinsp;0.19, p&thinsp;=&thinsp;0.036) and <em>months_working_1</em> (&beta;&thinsp;=&thinsp;0.54, p&thinsp;=&thinsp;0.096).
-        These are the only signals to survive the most rigorous spec. Currently exploring: CLAN portrait of high-benefit group,
-        GATES quintile pattern, robustness to lasso-only spec, and descriptive validation.
-        On &Delta;SI and pivots: zero HTE across all specs. Claim of uniform learning is very robust.
+        <strong>HTE verdict (May 2026):</strong> Individual-level heterogeneity is null across all methods &mdash;
+        D5 (480 cells, lasso BLP), D6 (5-learner ensemble), D7 (official GenericML, 6 learners incl. XGBoost).
+        Two D7 borderline hits on log(sales) at P2 (<em>fei_resid</em>, <em>months_working_1</em>) do not survive lasso-only spec
+        (p&thinsp;&gt;&thinsp;0.5 both): artifacts of better B(Z) estimation, not real HTE.
+        Site-level HTE (Ruta 5): ATEs differ significantly across sites 9&ndash;13 (Wald p&thinsp;=&thinsp;0.0006 for &Delta;SI P1),
+        but this replicates Jannace et al.&rsquo;s appendix and is explained by known implementation quality differences
+        (attendance proxy r &asymp; 1 with site ATE). Not a new contribution.
+      </p>
+      <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65; margin-top:0.6rem;">
+        <strong>Five new routes under analysis:</strong>
+        (1) <strong>Mediation</strong>: Does T&rarr;&Delta;SI&rarr;pivot/sales hold? Test whether scientific thinking improvement
+        is the mechanism linking training to behavioral outcomes (Baron&ndash;Kenny + causal mediation).
+        (2) <strong>Translation HTE</strong>: Among treated founders, who converts learning into action?
+        OLS within treated arm: pivot&thinsp;~&thinsp;&Delta;SI&thinsp;&times;&thinsp;moderator &mdash; identifies whether some types translate better.
+        (3) <strong>Null as theory test</strong>: SDM is designed to move <em>everyone</em> uniformly;
+        the homogeneous ATE is a structural prediction of the intervention, not a failure to find HTE.
+        (4) <strong>Control arm dynamics</strong>: Why does &Delta;SI go negative in control at P1&ndash;P3?
+        Within-control OLS: which founder characteristics predict SI decline?
+        (5) <strong>Attrition as outcome</strong>: Does training differentially retain certain founder types?
+        HTE on program dropout across the same 12 moderators.
         Still waiting for Diego&rsquo;s cognitive battery (risk aversion, uncertainty aversion, learning orientation, competitiveness).
       </p>
     </section>
@@ -459,6 +472,10 @@
     <section>
       <h2>Progress Log</h2>
 
+      <div class="log-entry">
+        <div class="log-date">2026-05-16</div>
+        <div class="log-text">HTE verdict closed. D7 two hits (fei_resid &times; log_sales P2: &beta;&thinsp;=&thinsp;0.19, p&thinsp;=&thinsp;0.036; months_working_1 &times; log_sales P2: &beta;&thinsp;=&thinsp;0.54, p&thinsp;=&thinsp;0.096) do not survive lasso-only robustness check (p&thinsp;&gt;&thinsp;0.5 both) &mdash; artifacts of better B(Z) estimation with 6 learners, not real HTE. Site-level analysis (Ruta 5, OLS within-site + Wald test): ATEs vary significantly across sites 9&ndash;13 (&Delta;SI P1 Wald p&thinsp;=&thinsp;0.0006; pivot P2 p&thinsp;=&thinsp;0.019), but explained entirely by implementation quality differences known qualitatively. Replicates Jannace et al. appendix; no new contribution. Five new routes identified: (1) mediation T&rarr;&Delta;SI&rarr;behavior, (2) translation HTE within treated arm, (3) null as SDM theory test, (4) control arm dynamics, (5) attrition HTE. Analyses for routes 1, 2, 4, 5 in progress.</div>
+      </div>
       <div class="log-entry">
         <div class="log-date">2026-05-16</div>
         <div class="log-text">D7 deep dive: two hits from D7 confirmed under exploration. fei_resid (belief in unknown external factors, site-residualized) &times; log(sales+1) at P2: &beta;&thinsp;=&thinsp;0.19 (p&thinsp;=&thinsp;0.036) with 6-learner GenericML. months_working_1 &times; log(sales+1) at P2: &beta;&thinsp;=&thinsp;0.54 (p&thinsp;=&thinsp;0.096). Running CLAN portrait, GATES quintile analysis, and robustness vs lasso-only to determine whether signals are real or artifacts of better B(Z) estimation. All &Delta;SI and pivot results remain null across all specs.</div>
