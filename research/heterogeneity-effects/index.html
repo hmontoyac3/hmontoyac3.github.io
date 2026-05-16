@@ -442,29 +442,41 @@
 
     <!-- WORKING ON -->
     <section>
-      <h2>Working on</h2>
+      <h2>Where we stand — May 2026</h2>
+
       <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65;">
-        <strong>HTE verdict (May 2026):</strong> Individual-level heterogeneity is null across all methods &mdash;
-        D5 (480 cells, lasso BLP), D6 (5-learner ensemble), D7 (official GenericML, 6 learners incl. XGBoost).
-        Two D7 borderline hits on log(sales) at P2 (<em>fei_resid</em>, <em>months_working_1</em>) do not survive lasso-only spec
-        (p&thinsp;&gt;&thinsp;0.5 both): artifacts of better B(Z) estimation, not real HTE.
-        Site-level HTE (Ruta 5): ATEs differ significantly across sites 9&ndash;13 (Wald p&thinsp;=&thinsp;0.0006 for &Delta;SI P1),
-        but this replicates Jannace et al.&rsquo;s appendix and is explained by known implementation quality differences
-        (attendance proxy r &asymp; 1 with site ATE). Not a new contribution.
+        <strong>What we have.</strong>
+        (1) <strong>Mediation confirmed:</strong> T&rarr;&Delta;SI&rarr;pivot is a real causal chain.
+        &Delta;SI mediates 21% of the pivot ATE at P1 (Sobel p&thinsp;=&thinsp;0.006) and 26% at P2 (p&thinsp;=&thinsp;0.009).
+        Direct effect of T on pivot survives (&beta;&thinsp;&asymp;&thinsp;0.12). Scientific thinking is a genuine mechanism.
+        (2) <strong>Control arm deterioration:</strong> 59&ndash;65% of control founders have negative &Delta;SI at P1&ndash;P2.
+        Training partly prevents a natural deterioration of scientific thinking, not just adds to it.
+        Founders who believe more in unknown external factors (&ldquo;future_ev_influence&rdquo;) decline most without training.
+        (3) <strong>Attrition:</strong> training retains founders dramatically (T=37% dropout before P2 vs C=68%).
+        Retention benefit is uniform; only exception: high-exit-probability founders benefit less.
+        (4) <strong>Individual HTE is null</strong> across all 12 moderators, all methods (480+ cells, 3 estimators).
+        Uniform learning is robust — all founder types improve equally.
       </p>
+
       <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65; margin-top:0.6rem;">
-        <strong>Five new routes under analysis:</strong>
-        (1) <strong>Mediation</strong>: Does T&rarr;&Delta;SI&rarr;pivot/sales hold? Test whether scientific thinking improvement
-        is the mechanism linking training to behavioral outcomes (Baron&ndash;Kenny + causal mediation).
-        (2) <strong>Translation HTE</strong>: Among treated founders, who converts learning into action?
-        OLS within treated arm: pivot&thinsp;~&thinsp;&Delta;SI&thinsp;&times;&thinsp;moderator &mdash; identifies whether some types translate better.
-        (3) <strong>Null as theory test</strong>: SDM is designed to move <em>everyone</em> uniformly;
-        the homogeneous ATE is a structural prediction of the intervention, not a failure to find HTE.
-        (4) <strong>Control arm dynamics</strong>: Why does &Delta;SI go negative in control at P1&ndash;P3?
-        Within-control OLS: which founder characteristics predict SI decline?
-        (5) <strong>Attrition as outcome</strong>: Does training differentially retain certain founder types?
-        HTE on program dropout across the same 12 moderators.
-        Still waiting for Diego&rsquo;s cognitive battery (risk aversion, uncertainty aversion, learning orientation, competitiveness).
+        <strong>Literature context: pivots.</strong>
+        Camuffo &amp; Gambardella have already published pivots as an outcome in three papers:
+        <em>Management Science</em> 2020 (treated founders pivot 2&times; more; secondary outcome);
+        <em>SMJ</em> 2024 large-scale replication (nonlinear effect — trained firms pivot 1&ndash;2 times focusedly, neither zero nor excessively);
+        <em>Strategy Science</em> 2024 (Valentine, Novelli, Agarwal — pivot <em>types</em> via qualitative coding of 1,600+ interviews: theorization &times; experimentation produces purposeful pivots);
+        <em>SMJ</em> 2024 (Novelli &amp; Spina — HTE on <em>performance</em> by business model maturity, with pivot as mechanism, not outcome).
+        What has <em>not</em> been published: HTE on the pivot effect using individual-level psychological moderators.
+        The mediation chain T&rarr;&Delta;SI&rarr;pivot is also not formally established in any of these papers.
+      </p>
+
+      <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65; margin-top:0.6rem;">
+        <strong>Way forward.</strong>
+        The paper needs Diego&rsquo;s cognitive battery (risk aversion, uncertainty aversion, learning orientation, competitiveness — 17 items)
+        to test the most theory-grounded moderators. With that data: either (a) a signal emerges and this becomes
+        a proper heterogeneity paper (&ldquo;founders with higher tolerance for ambiguity benefit more&rdquo;),
+        or (b) null is confirmed and the contribution shifts to mechanism — the T&rarr;&Delta;SI&rarr;pivot mediation
+        combined with the prevention-of-deterioration story in the control arm, framed as a validation of SDM design.
+        Either framing is publishable; the cognitive battery determines which.
       </p>
     </section>
 
@@ -472,6 +484,10 @@
     <section>
       <h2>Progress Log</h2>
 
+      <div class="log-entry">
+        <div class="log-date">2026-05-16</div>
+        <div class="log-text">Literature audit on pivots. Camuffo &amp; Gambardella have published pivots as outcome in three papers: (1) <em>Management Science</em> 2020: treated pivots 2&times; more (26 vs 12), secondary outcome; (2) <em>SMJ</em> 2024 (large-scale replication, N=759): nonlinear effect — trained founders pivot 1&ndash;2 times focusedly, not zero or excessively, no individual HTE; (3) <em>Strategy Science</em> 2024 (Valentine, Novelli, Agarwal): pivot types via qualitative+ML coding of 1,600+ interviews, theorization &times; experimentation &rarr; purposeful pivots; (4) <em>SMJ</em> 2024 (Novelli &amp; Spina): HTE on performance by business model maturity, pivot as mechanism. Gap: HTE on pivot effect using psychological moderators and formal T&rarr;&Delta;SI&rarr;pivot mediation are both unpublished. Onepager v7 written synthesizing all analyses and way forward.</div>
+      </div>
       <div class="log-entry">
         <div class="log-date">2026-05-16</div>
         <div class="log-text">Four new routes completed. <strong>Route 1 (Mediation T&rarr;&Delta;SI&rarr;pivot)</strong>: strong partial mediation confirmed. &Delta;SI mediates 21% of the pivot effect at P1 (ACME&thinsp;=&thinsp;0.033, Sobel p&thinsp;=&thinsp;0.006) and 26% at P2 (ACME&thinsp;=&thinsp;0.039, Sobel p&thinsp;=&thinsp;0.009); direct effect of T on pivot remains significant (c&prime;&thinsp;&asymp;&thinsp;0.12). No mediation on log_sales (total effect on sales is null). Scientific thinking improvement is a genuine mechanism for behavioral change. <strong>Route 2 (Translation HTE)</strong>: within treated arm, &Delta;SI&thinsp;&rarr;&thinsp;pivot is significant at P1 for 92% of moderator runs. Planning orientation moderates translation: high-planning founders translate learning into pivots more at P1 (&beta;&thinsp;=&thinsp;+0.049, p&thinsp;=&thinsp;0.015) but reverse by P2 (&beta;&thinsp;=&thinsp;&minus;0.086, p&thinsp;&lt;&thinsp;0.001); IoC borderline at P2 (p&thinsp;=&thinsp;0.066). <strong>Route 4 (Control dynamics)</strong>: 59&ndash;65% of control arm has negative &Delta;SI at P1&ndash;P2. Predictors of deeper decline: future_ev_influence (&beta;&thinsp;=&thinsp;&minus;0.37, p&thinsp;=&thinsp;0.041) and months_working_1 (&beta;&thinsp;=&thinsp;&minus;0.009, p&thinsp;=&thinsp;0.086) &mdash; founders who believe in unknown external factors deteriorate more without training. <strong>Route 5 (Attrition HTE)</strong>: training reduces dropout by 31pp before P2 (T=37% vs C=68%). Attrition benefit is uniform across founder types; one exception: high exit-probability founders benefit less from retention (Int&thinsp;&beta;&thinsp;=&thinsp;+0.113, p&thinsp;=&thinsp;0.012 for dropout-by-P3).</div>
