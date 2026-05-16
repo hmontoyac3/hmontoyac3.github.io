@@ -444,12 +444,14 @@
     <section>
       <h2>Working on</h2>
       <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65;">
-        Three diagnostic analyses complete (May 2026). Main scanner (v5) found all 12 moderators null on &Delta;SI.
-        Diagnostics tested attrition structure (D1), behavioral outcomes — pivot, sales, dropout (D3), and the theory component specifically — T&amp;E vs Evidence-Based (D4).
-        All diagnostic routes closed: Rutas 1 (different Y), 2 (fade-out dynamics), and 3 (theory-component fit) are not viable.
-        The ATE fade-out in periods 3–5 is a selection artifact: the control arm loses 77% of its sample by period 3; treated arms lose 50–55%.
-        One route remains open: Ruta 4 (methodological — RF&thinsp;&ne;&thinsp;causal moderation) and Ruta 0 (original) pending cognitive battery from Diego.
-        Waiting for Diego: risk aversion, uncertainty aversion, learning orientation, competitiveness (17 variables).
+        Comprehensive outcome scan complete (D5, D6, D7 — May 2026). Tested 8 outcomes &times; 5 periods &times; 12 moderators.
+        D5 (manual lasso, 480 cells): all null in P1&ndash;P2. D6 (5-learner ensemble: lasso, elastic net, ridge, RF, SVM): all null.
+        D7 (official GenericML package, 6 learners incl. XGBoost, 120 cells): <strong>two borderline hits on log(sales+1) at P2</strong> —
+        <em>fei_resid</em> (&beta;&thinsp;=&thinsp;0.19, p&thinsp;=&thinsp;0.036) and <em>months_working_1</em> (&beta;&thinsp;=&thinsp;0.54, p&thinsp;=&thinsp;0.096).
+        These are the only signals to survive the most rigorous spec. Currently exploring: CLAN portrait of high-benefit group,
+        GATES quintile pattern, robustness to lasso-only spec, and descriptive validation.
+        On &Delta;SI and pivots: zero HTE across all specs. Claim of uniform learning is very robust.
+        Still waiting for Diego&rsquo;s cognitive battery (risk aversion, uncertainty aversion, learning orientation, competitiveness).
       </p>
     </section>
 
@@ -457,6 +459,14 @@
     <section>
       <h2>Progress Log</h2>
 
+      <div class="log-entry">
+        <div class="log-date">2026-05-16</div>
+        <div class="log-text">D7 deep dive: two hits from D7 confirmed under exploration. fei_resid (belief in unknown external factors, site-residualized) &times; log(sales+1) at P2: &beta;&thinsp;=&thinsp;0.19 (p&thinsp;=&thinsp;0.036) with 6-learner GenericML. months_working_1 &times; log(sales+1) at P2: &beta;&thinsp;=&thinsp;0.54 (p&thinsp;=&thinsp;0.096). Running CLAN portrait, GATES quintile analysis, and robustness vs lasso-only to determine whether signals are real or artifacts of better B(Z) estimation. All &Delta;SI and pivot results remain null across all specs.</div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">2026-05-16</div>
+        <div class="log-text">D5 comprehensive scan complete (8 outcomes &times; 5 periods &times; 12 moderators = 480 cells, manual lasso BLP). D6 scan complete (5-learner ensemble: lasso, elastic net, ridge, RF, SVM — 96 cells). Both confirm zero credible HTE on &Delta;SI, SI level, pivoting, sales dummy, or dropout in P1&ndash;P2. Only borderline signals in P3&ndash;P5 (all flagged attrition caution). GenericML package (mlr3 + 6 learners incl. XGBoost) installed after resolving mbedtls dependency chain.</div>
+      </div>
       <div class="log-entry">
         <div class="log-date">2026-05-15</div>
         <div class="log-text">Three diagnostic analyses run. D1 (attrition): control arm retains only 22.6% by period 3 vs 44.4% T&amp;E and 50.8% EB — logit AME ≈ −0.32pp differential attrition (p &lt; 10⁻¹⁰). ATE "fade-out" is control-group recovery, not treated-group reversion. D3 (multiple outcomes): pivoting_any ATE = +0.17 (p = 0.004) but HTE null for all moderators × outcomes. Sales: no ATE. D4 (T&amp;E vs EB): ATE ≈ 0, all 24 HTE cells null — theory component has no differential fit. Rutas 1, 2, 3 closed. Open: Ruta 4 (methodological) and Ruta 0 pending cognitive battery. Onepager v6 written.</div>
