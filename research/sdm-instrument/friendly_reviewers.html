@@ -11,124 +11,123 @@
       font-family: 'Inter', sans-serif;
       background: #F9F7F3;
       color: #1C2B3A;
-      max-width: 780px;
+      max-width: 600px;
       margin: 0 auto;
       padding: 52px 24px 72px;
     }
     h1 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; }
-    .intro { font-size: 0.85rem; color: #6B7A8D; margin-bottom: 32px; }
+    .intro { font-size: 0.86rem; color: #6B7A8D; margin-bottom: 36px; line-height: 1.6; }
 
-    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
-
-    thead th {
-      text-align: left;
-      font-size: 0.67rem; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: #6B7A8D;
-      padding: 0 12px 10px 0;
-      border-bottom: 2px solid #1C2B3A;
-    }
-
-    tbody tr { border-bottom: 1px solid #E8E4DC; }
-    tbody tr:last-child { border-bottom: none; }
-    td { padding: 12px 12px 12px 0; vertical-align: top; line-height: 1.5; }
-
-    .name { font-weight: 700; font-size: 0.95rem; white-space: nowrap; }
-    .inst { font-size: 0.75rem; color: #6B7A8D; margin-top: 1px; }
-
-    .pro { color: #1A5E35; }
-    .con { color: #7B1C1C; }
-
-    .section-row td {
-      padding-top: 20px;
-      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.08em;
+    .group-label {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.09em;
       text-transform: uppercase; color: #6B7A8D;
-      border-bottom: none;
+      border-bottom: 1px solid #E8E4DC;
+      padding-bottom: 6px; margin: 32px 0 0;
     }
 
-    footer { font-size: 0.74rem; color: #9AA5B1; margin-top: 36px; }
+    .person {
+      padding: 16px 0;
+      border-bottom: 1px solid #E8E4DC;
+    }
+    .person:last-child { border-bottom: none; }
+
+    .person-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1C2B3A;
+    }
+    .person-inst {
+      font-size: 0.78rem;
+      color: #6B7A8D;
+      margin-bottom: 5px;
+    }
+    .person-why {
+      font-size: 0.88rem;
+      color: #1C2B3A;
+      line-height: 1.55;
+    }
+    .person-caveat {
+      font-size: 0.78rem;
+      color: #9AA5B1;
+      margin-top: 4px;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    footer { font-size: 0.74rem; color: #9AA5B1; margin-top: 40px; }
   </style>
 </head>
 <body>
 
 <h1>Friendly Reviewers — SDM Paper</h1>
-<p class="intro">Scouting people for pre-submission feedback. Daniela is the obvious contact. Does anyone know someone else here?</p>
+<p class="intro">Scouting people for pre-submission feedback. Daniela is the obvious one. Does anyone know someone else here, or have a connection that makes a reach-out natural?</p>
 
-<table>
-  <thead>
-    <tr>
-      <th style="width:22%">Who</th>
-      <th style="width:39%">✓ Good for</th>
-      <th style="width:39%">✗ Not good for</th>
-    </tr>
-  </thead>
-  <tbody>
 
-    <!-- FULL REVIEW -->
-    <tr class="section-row"><td colspan="3">Full manuscript review</td></tr>
+<div class="group-label">Full manuscript review</div>
 
-    <tr>
-      <td><div class="name">Daniela Scur</div><div class="inst">Cornell (Dyson)</div></td>
-      <td class="pro">Does SDM capture something real? Construct validity. Cross-national (Italy/Brazil). Closest analog — building a management survey for R&D labs.</td>
-      <td class="con">Formative model spec. CFA/PLS. RP format. Her instrument (WMS) is reflective, interview-based.</td>
-    </tr>
+<div class="person">
+  <div class="person-name">Daniela Scur</div>
+  <div class="person-inst">Cornell University (Dyson)</div>
+  <div class="person-why">Building the Scientific Labs Management Survey — a management practice instrument for R&D labs. She'd immediately understand what we're doing and why it matters.</div>
+  <div class="person-caveat">Won't help with the formative model or RP format — her instrument (WMS) is reflective and interview-based, and she publishes in economics journals.</div>
+</div>
 
-    <tr>
-      <td><div class="name">Timothy Devinney</div><div class="inst">Alliance Manchester</div></td>
-      <td class="pro">Formative vs. reflective — co-wrote Coltman et al. (2008), already in our bib. Published in RP (2019). Best bridge between measurement and RP.</td>
-      <td class="con">Post-2010 PLS-SEM updates. Current work has shifted to MNE/populism.</td>
-    </tr>
+<div class="person">
+  <div class="person-name">Timothy Devinney</div>
+  <div class="person-inst">Alliance Manchester Business School</div>
+  <div class="person-why">Co-wrote Coltman et al. (2008) on formative vs. reflective measurement — the paper already in our bib. Published in RP (2019). Best person to stress-test whether our formative spec is defensible.</div>
+  <div class="person-caveat">Current work has shifted to MNE strategy. May not be up to date on post-2010 PLS-SEM advances. Still active — elected Fellow of the British Academy 2025.</div>
+</div>
 
-    <tr>
-      <td><div class="name">Nicolai J. Foss</div><div class="inst">Copenhagen BS</div></td>
-      <td class="pro">Decision delegation + innovation theory. Published manager survey in RP (2021). Knows the journal.</td>
-      <td class="con">Measurement models. May push for more theory than a Research Note can carry.</td>
-    </tr>
+<div class="person">
+  <div class="person-name">Nicolai J. Foss</div>
+  <div class="person-inst">Copenhagen Business School</div>
+  <div class="person-why">Published a manager survey on decision delegation and innovation in RP (2021). Would tell us if the theoretical contribution holds for RP and whether SDM is framed right as a construct.</div>
+  <div class="person-caveat">Won't engage the measurement model. Risk: may push for more theory than a Research Note can carry.</div>
+</div>
 
-    <tr>
-      <td><div class="name">Tonoyan &amp; Boudreaux</div><div class="inst">CSU Fresno / FAU</div></td>
-      <td class="pro">Multi-country manager survey in RP (2023, 29 countries). Italy/Brazil framing. Know RP standards.</td>
-      <td class="con">Formative measurement. Their instrument is binary/categorical, not Likert.</td>
-    </tr>
+<div class="person">
+  <div class="person-name">Vartuhi Tonoyan &amp; Christopher Boudreaux</div>
+  <div class="person-inst">CSU Fresno / Florida Atlantic University</div>
+  <div class="person-why">Published a multi-country manager survey in RP (2023, 29 countries, 7,848 respondents). Good for checking the Italy/Brazil cross-national framing and whether the paper is positioned correctly for RP.</div>
+  <div class="person-caveat">Their instrument is binary/categorical — won't have much to say about the Likert scale or formative model.</div>
+</div>
 
-    <!-- ONE QUESTION -->
-    <tr class="section-row"><td colspan="3">One specific question — not full review</td></tr>
 
-    <tr>
-      <td><div class="name">Paul Nightingale</div><div class="inst">SPRU, Sussex · RP Editor</div></td>
-      <td class="pro">Scope check: does this fit RP Short Communication format?</td>
-      <td class="con">Full review = editorial conflict. Nothing on the instrument itself.</td>
-    </tr>
+<div class="group-label">One specific question — not full review</div>
 
-    <tr>
-      <td><div class="name">Rammer &amp; Peters</div><div class="inst">ZEW Mannheim</div></td>
-      <td class="pro">Is the paper framed correctly for RP? Regular RP authors who know the editorial culture.</td>
-      <td class="con">CIS firm-level data only — nothing to say about a Likert instrument or formative model.</td>
-    </tr>
+<div class="person">
+  <div class="person-name">Paul Nightingale</div>
+  <div class="person-inst">SPRU, Sussex · RP UK Editor</div>
+  <div class="person-why">One email: "does a measurement instrument paper fit RP Short Communication format?" He'd know immediately.</div>
+  <div class="person-caveat">Anything more creates an editorial conflict. His value is the gate, not the content.</div>
+</div>
 
-    <!-- LOWER FIT -->
-    <tr class="section-row"><td colspan="3">Other ideas — lower fit</td></tr>
+<div class="person">
+  <div class="person-name">Christian Rammer &amp; Bettina Peters</div>
+  <div class="person-inst">ZEW Mannheim</div>
+  <div class="person-why">Regular RP authors — good for one question: "is this framed correctly for the journal?"</div>
+  <div class="person-caveat">CIS firm-level data only. Nothing to say about a Likert instrument or formative model.</div>
+</div>
 
-    <tr>
-      <td><div class="name">Jeffrey R. Edwards</div><div class="inst">UNC Kenan-Flagler</div></td>
-      <td class="pro">Wrote the main critique of formative models (ORM 2011). Engage his paper in §2.</td>
-      <td class="con">Likely semi-retired, may not respond. No RP or SDM expertise.</td>
-    </tr>
 
-    <tr>
-      <td><div class="name">Tae-Yeol Kim</div><div class="inst">CEIBS Shanghai</div></td>
-      <td class="pro">Multi-level RP paper (2024), knows the journal.</td>
-      <td class="con">Tests causal chain with established reflective scales — different paper type from ours.</td>
-    </tr>
+<div class="group-label">Other ideas — lower fit</div>
 
-    <tr>
-      <td><div class="name">Jens Horbach</div><div class="inst">TH Augsburg</div></td>
-      <td class="pro">Recent RP author (2025).</td>
-      <td class="con">Eco-innovation with CIS firm data. Design too different from ours.</td>
-    </tr>
+<div class="person">
+  <div class="person-name">Jeffrey R. Edwards · UNC Kenan-Flagler</div>
+  <div class="person-why">Wrote the main critique of formative models (ORM 2011). Better to engage his paper directly in §2 than reach out — he appears to be semi-retired.</div>
+</div>
 
-  </tbody>
-</table>
+<div class="person">
+  <div class="person-name">Tae-Yeol Kim · CEIBS Shanghai</div>
+  <div class="person-why">Multi-level RP paper (2024), but tests a causal chain with established reflective scales. Different type of paper from ours.</div>
+</div>
+
+<div class="person">
+  <div class="person-name">Jens Horbach · TH Augsburg</div>
+  <div class="person-why">Recent RP author (2025), but eco-innovation with CIS firm data. Design too different.</div>
+</div>
+
 
 <footer>SDM Paper 1 · Research Policy Research Note · May 2026</footer>
 
