@@ -6,190 +6,105 @@
   <title>SDM — Friendly Reviewers</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --ivory: #F9F7F3;
-      --navy:  #1C2B3A;
-      --mid:   #6B7A8D;
-      --light: #E8E4DC;
-      --terra: #C4622D;
-      --green: #1A5E35; --green-bg: #D5F5E3;
-      --gold:  #7D6608; --gold-bg:  #FEF9E7;
-      --blue:  #1A5276; --blue-bg:  #D6E8F5;
-      --red:   #7B1C1C; --red-bg:   #FDECEA;
-    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--ivory);
-      color: var(--navy);
-      max-width: 620px;
+      background: #F9F7F3;
+      color: #1C2B3A;
+      max-width: 580px;
       margin: 0 auto;
       padding: 52px 24px 72px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
-    h1 { font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; }
-    .intro {
-      font-size: 0.87rem; color: #4A5568; padding: 13px 16px;
-      background: #fff; border-left: 3px solid var(--terra);
-      border-radius: 0 5px 5px 0; margin-bottom: 34px;
-    }
-    .label {
+    h1 { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
+    .intro { font-size: 0.87rem; color: #4A5568; margin-bottom: 36px; }
+
+    .group { margin-bottom: 32px; }
+    .group-label {
       font-size: 0.67rem; font-weight: 700; letter-spacing: 0.09em;
-      text-transform: uppercase; color: var(--mid); margin: 28px 0 8px;
+      text-transform: uppercase; color: #6B7A8D;
+      border-bottom: 1px solid #E8E4DC;
+      padding-bottom: 6px; margin-bottom: 16px;
     }
-    .row { padding: 12px 0; border-bottom: 1px solid var(--light); }
-    .row:last-child { border-bottom: none; }
-    .row-top { display: flex; gap: 9px; align-items: baseline; margin-bottom: 2px; }
-    .badge {
-      flex-shrink: 0; font-size: 0.66rem; font-weight: 700;
-      letter-spacing: 0.04em; text-transform: uppercase;
-      padding: 2px 7px; border-radius: 20px; white-space: nowrap;
-    }
-    .b-yes     { background: var(--green-bg); color: var(--green); }
-    .b-scope   { background: var(--blue-bg);  color: var(--blue); }
-    .b-caution { background: var(--gold-bg);  color: var(--gold); }
-    .b-no      { background: var(--red-bg);   color: var(--red); }
-    .row-name  { font-size: 0.92rem; font-weight: 600; }
-    .row-inst  { font-size: 0.76rem; color: var(--mid); margin-bottom: 5px; }
-    .chips     { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
-    .chip {
-      font-size: 0.73rem; padding: 2px 9px; border-radius: 20px; line-height: 1.5;
-    }
-    .chip-yes { background: var(--green-bg); color: var(--green); }
-    .chip-no  { background: var(--red-bg);   color: var(--red); }
-    .row-note { font-size: 0.76rem; color: var(--mid); margin-top: 5px; font-style: italic; }
-    footer {
-      margin-top: 40px; font-size: 0.74rem; color: var(--mid);
-      border-top: 1px solid var(--light); padding-top: 12px;
-    }
+
+    .person { margin-bottom: 18px; }
+    .person-name { font-size: 0.95rem; font-weight: 600; }
+    .person-inst { font-size: 0.8rem; color: #6B7A8D; }
+    .person-ask  { font-size: 0.85rem; color: #1C2B3A; margin-top: 2px; }
+    .person-note { font-size: 0.8rem; color: #9AA5B1; margin-top: 1px; font-style: italic; }
+
+    footer { font-size: 0.74rem; color: #9AA5B1; margin-top: 40px; }
   </style>
 </head>
 <body>
 
 <h1>Friendly Reviewers — SDM Paper</h1>
+<p class="intro">Scouting people for pre-submission feedback. Daniela is the obvious contact. Does anyone know someone else on this list?</p>
 
-<div class="intro">
-  Putting together a list for pre-submission feedback. Daniela is the obvious one — does anyone have a connection to someone else here?
-</div>
+<div class="group">
+  <div class="group-label">Full manuscript review</div>
 
-
-<p class="label">Contact these</p>
-
-<div class="row">
-  <div class="row-top">
-    <span class="badge b-yes">Known</span>
-    <span class="row-name">Daniela Scur</span>
+  <div class="person">
+    <div class="person-name">Daniela Scur</div>
+    <div class="person-inst">Cornell University (Dyson)</div>
+    <div class="person-ask">Building a management survey for R&D labs. Best content fit — would read the construct and sample design critically.</div>
   </div>
-  <div class="row-inst">Cornell University (Dyson)</div>
-  <div class="chips">
-    <span class="chip chip-yes">Does SDM measure something real?</span>
-    <span class="chip chip-yes">Italy/Brazil cross-national validity</span>
-    <span class="chip chip-no">Formative model / CFA / PLS</span>
-    <span class="chip chip-no">RP format norms</span>
-  </div>
-</div>
 
-<div class="row">
-  <div class="row-top">
-    <span class="badge b-yes">Full review</span>
-    <span class="row-name">Timothy Devinney</span>
+  <div class="person">
+    <div class="person-name">Timothy Devinney</div>
+    <div class="person-inst">Alliance Manchester Business School</div>
+    <div class="person-ask">Co-wrote the formative measurement paper already in our bib (Coltman et al. 2008). Published in RP (2019). Best for the measurement model.</div>
+    <div class="person-note">Active — elected Fellow of the British Academy 2025.</div>
   </div>
-  <div class="row-inst">Alliance Manchester Business School</div>
-  <div class="chips">
-    <span class="chip chip-yes">Formative vs. reflective — wrote Coltman et al. (2008), already in our bib</span>
-    <span class="chip chip-yes">Published in RP (2019)</span>
-    <span class="chip chip-no">Post-2010 PLS-SEM advances</span>
-  </div>
-  <div class="row-note">Active — elected Fellow of the British Academy 2025.</div>
-</div>
 
-<div class="row">
-  <div class="row-top">
-    <span class="badge b-yes">Theory framing</span>
-    <span class="row-name">Nicolai J. Foss</span>
+  <div class="person">
+    <div class="person-name">Nicolai J. Foss</div>
+    <div class="person-inst">Copenhagen Business School</div>
+    <div class="person-ask">Published a manager survey on decision delegation in RP (2021). Good for the theoretical framing and whether RP will buy the contribution.</div>
+    <div class="person-note">Watch out: may push for more theory than a Research Note can carry.</div>
   </div>
-  <div class="row-inst">Copenhagen Business School</div>
-  <div class="chips">
-    <span class="chip chip-yes">Decision delegation + innovation — RP 2021 manager survey</span>
-    <span class="chip chip-no">Measurement models</span>
-    <span class="chip chip-no">Risk: may push theory beyond Research Note scope</span>
+
+  <div class="person">
+    <div class="person-name">Vartuhi Tonoyan &amp; Christopher Boudreaux</div>
+    <div class="person-inst">CSU Fresno / Florida Atlantic University</div>
+    <div class="person-ask">Published a multi-country manager survey in RP (2023, 29 countries). Good for cross-national framing and whether the Italy/Brazil sample is defensible.</div>
   </div>
 </div>
 
-<div class="row">
-  <div class="row-top">
-    <span class="badge b-yes">Cross-national</span>
-    <span class="row-name">Vartuhi Tonoyan &amp; Christopher Boudreaux</span>
-  </div>
-  <div class="row-inst">CSU Fresno / Florida Atlantic University</div>
-  <div class="chips">
-    <span class="chip chip-yes">Manager surveys across countries — RP 2023</span>
-    <span class="chip chip-yes">Italy/Brazil framing, know RP standards</span>
-    <span class="chip chip-no">Formative measurement / PLS-SEM</span>
-  </div>
-</div>
+<div class="group">
+  <div class="group-label">One specific question — not full review</div>
 
-
-<p class="label">Scope check — one email only</p>
-
-<div class="row">
-  <div class="row-top">
-    <span class="badge b-scope">RP UK Editor</span>
-    <span class="row-name">Paul Nightingale</span>
+  <div class="person">
+    <div class="person-name">Paul Nightingale</div>
+    <div class="person-inst">SPRU, Sussex · RP UK Editor</div>
+    <div class="person-ask">Ask only: "does a measurement instrument paper fit RP Short Communication format?" Anything more creates an editorial conflict.</div>
   </div>
-  <div class="row-inst">SPRU, Sussex</div>
-  <div class="chips">
-    <span class="chip chip-yes">Does this fit RP Short Communication format?</span>
-    <span class="chip chip-no">Full review = editorial conflict</span>
+
+  <div class="person">
+    <div class="person-name">Christian Rammer &amp; Bettina Peters</div>
+    <div class="person-inst">ZEW Mannheim</div>
+    <div class="person-ask">Regular RP authors. Good for one question: "is this framed correctly for RP?" Nothing to say about the instrument itself.</div>
   </div>
 </div>
 
+<div class="group">
+  <div class="group-label">Other ideas — lower fit</div>
 
-<p class="label">Specific use only</p>
+  <div class="person">
+    <div class="person-name">Jeffrey R. Edwards · UNC Kenan-Flagler</div>
+    <div class="person-ask">Wrote the main critique of formative models (ORM 2011). Useful to engage his paper in §2 — but likely semi-retired, may not respond.</div>
+  </div>
 
-<div class="row">
-  <div class="row-top">
-    <span class="badge b-caution">§2 only</span>
-    <span class="row-name">Jeffrey R. Edwards</span>
+  <div class="person">
+    <div class="person-name">Tae-Yeol Kim · CEIBS Shanghai</div>
+    <div class="person-ask">Multi-level RP paper (2024), but with established reflective scales. Different paper type from ours.</div>
   </div>
-  <div class="row-inst">UNC Kenan-Flagler</div>
-  <div class="chips">
-    <span class="chip chip-yes">Stress-test formative spec — "Fallacy of Formative Measurement" (ORM 2011)</span>
-    <span class="chip chip-no">May be semi-retired. Engage his paper, not him.</span>
-  </div>
-</div>
 
-<div class="row">
-  <div class="row-top">
-    <span class="badge b-caution">RP positioning only</span>
-    <span class="row-name">Christian Rammer &amp; Bettina Peters</span>
-  </div>
-  <div class="row-inst">ZEW Mannheim</div>
-  <div class="chips">
-    <span class="chip chip-yes">Is the paper framed correctly for RP?</span>
-    <span class="chip chip-no">CIS firm-level data — nothing to say about the instrument</span>
+  <div class="person">
+    <div class="person-name">Jens Horbach · TH Augsburg</div>
+    <div class="person-ask">RP 2025, but eco-innovation with CIS firm data. Design too different.</div>
   </div>
 </div>
-
-
-<p class="label">Other ideas — probably not the right fit</p>
-
-<div class="row">
-  <div class="row-top">
-    <span class="badge b-no">Lower fit than it looks</span>
-    <span class="row-name">Tae-Yeol Kim · CEIBS Shanghai · RP 2024</span>
-  </div>
-  <div class="row-inst">Multi-level survey, 93 firms — but tests a causal chain with established reflective scales, not a new formative instrument.</div>
-</div>
-
-<div class="row">
-  <div class="row-top">
-    <span class="badge b-no">Weakest fit</span>
-    <span class="row-name">Jens Horbach · TH Augsburg · RP 2025</span>
-  </div>
-  <div class="row-inst">Eco-innovation, CIS data. Same profile as Rammer/Peters with less overlap.</div>
-</div>
-
 
 <footer>SDM Paper 1 · Research Policy Research Note · May 2026</footer>
 
