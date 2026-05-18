@@ -270,6 +270,7 @@
         </div>
         <div class="doc-cluster">
           <div class="doc-cluster-label">One-pagers</div>
+          <a class="doc-link" href="/research/heterogeneity-effects/methodology_note.pdf">Methodology note — RF vs OLS vs GenericML BLP</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v9_synthesis.pdf">v9 — Full Synthesis (evidence map, sub-index structure, way forward)</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v8_newangles.pdf">v8 — New Heterogeneity Angles (variance, sub-indices, pivot count)</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v7_mechanism_routes.pdf">v7 — Mechanism, Pivot Literature &amp; Way Forward</a>
@@ -494,6 +495,10 @@
     <section>
       <h2>Progress Log</h2>
 
+      <div class="log-entry">
+        <div class="log-date">2026-05-18</div>
+        <div class="log-text">Methodology note written. Explains the three-method sequence used for HTE detection: (1) Random Forest — predictive variable importance only, no causal inference, no p-values; used to shortlist moderators. Limitation: high RF importance ≠ HTE (IoC is top RF predictor but BLP β₂ = −0.008, p = 0.66). (2) OLS interactions — transparent and interpretable, but subject to multiple testing inflation (480 cells at α=0.05 → ~24 expected false positives) and low power under non-linear heterogeneity. (3) GenericML BLP (Chernozhukov et al., Econometrica 2025) — separates estimation of heterogeneous effect index B(Z) via ML from causal inference via held-out regression; 100–250 sample splits eliminate overfitting; valid p-values for β₂ (HTE coefficient). Three specs run: D5 (lasso B(Z)), D6 (5-learner ensemble), D7 (6-learner official package). Robustness logic: D7 hits disappear under lasso-only → overfitting noise, not real signal.</div>
+      </div>
       <div class="log-entry">
         <div class="log-date">2026-05-18</div>
         <div class="log-text">SI sub-index deep exploration (script 18). Four analyses. (A) <strong>Trajectories</strong>: two families emerge structurally. Empirical family (evidence, evaluation, decision) — large ATEs at P1&ndash;P2 (d&asymp;0.5) but collapse to near-zero or negative by P3+. Theoretical family (theory, hyp-testing) — smaller ATEs (d&asymp;0.33&ndash;0.42) but persist through P3&ndash;P5. (B) <strong>Correlation structure</strong>: evidence/evaluation/decision tightly bundled (r&asymp;0.88&ndash;0.94); theory/hyp-testing form a separate cluster (r=0.69). Training does not integrate sub-indices — inter-sub-index correlation identical T vs C at P1 (0.516 vs 0.525). (C) <strong>Sub-index mediation</strong> (T&rarr;&Delta;sub&rarr;pivot): Theory does not mediate at all (Sobel p=0.67 at P1, 0.45 at P2). All mediation runs through the empirical family: Evidence (16&ndash;25%), Evaluation (18&ndash;27%), Decision (17&ndash;22%) — all Sobel p&lt;0.05. The learning that drives pivots is empirical and temporary, not theoretical and persistent. (D) <strong>HTE on sub-indices</strong>: future_ev_influence and months_working_1 consistently moderate the empirical family at P1 (Evidence β&asymp;0.37&ndash;0.45, p&lt;0.02 both) — founders who believe in unknown external factors and more experienced founders absorb evidence training more. Does not survive multiple-hypothesis correction but pattern is consistent. Onepager v9 written (v7+v8+script 18 merged).</div>
