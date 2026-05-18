@@ -12,167 +12,80 @@
       --mid:   #6B7A8D;
       --light: #E8E4DC;
       --terra: #C4622D;
-      --green: #1A5E35;
-      --green-bg: #D5F5E3;
-      --gold:  #7D6608;
-      --gold-bg: #FEF9E7;
-      --blue:  #1A5276;
-      --blue-bg: #D6E8F5;
-      --red:   #7B1C1C;
-      --red-bg:#FDECEA;
+      --green: #1A5E35; --green-bg: #D5F5E3;
+      --gold:  #7D6608; --gold-bg:  #FEF9E7;
+      --blue:  #1A5276; --blue-bg:  #D6E8F5;
+      --red:   #7B1C1C; --red-bg:   #FDECEA;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: 'Inter', sans-serif;
       background: var(--ivory);
       color: var(--navy);
-      max-width: 660px;
+      max-width: 620px;
       margin: 0 auto;
-      padding: 56px 24px 80px;
+      padding: 52px 24px 72px;
       line-height: 1.6;
     }
-
-    header { margin-bottom: 32px; }
-    header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 6px; }
-
+    h1 { font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; }
     .intro {
-      font-size: 0.88rem;
-      color: #4A5568;
-      line-height: 1.65;
-      padding: 14px 18px;
-      background: #fff;
-      border-left: 3px solid var(--terra);
-      border-radius: 0 6px 6px 0;
-      margin-bottom: 36px;
+      font-size: 0.87rem; color: #4A5568; padding: 13px 16px;
+      background: #fff; border-left: 3px solid var(--terra);
+      border-radius: 0 5px 5px 0; margin-bottom: 34px;
     }
-
     .label {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin: 32px 0 10px;
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; color: var(--mid); margin: 28px 0 8px;
     }
-
-    .row {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--light);
-    }
+    .row { padding: 12px 0; border-bottom: 1px solid var(--light); }
     .row:last-child { border-bottom: none; }
-
-    .row-top {
-      display: flex;
-      gap: 10px;
-      align-items: baseline;
-      margin-bottom: 5px;
-    }
-
+    .row-top { display: flex; gap: 9px; align-items: baseline; margin-bottom: 2px; }
     .badge {
-      flex-shrink: 0;
-      font-size: 0.67rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      padding: 2px 8px;
-      border-radius: 20px;
-      white-space: nowrap;
+      flex-shrink: 0; font-size: 0.66rem; font-weight: 700;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 2px 7px; border-radius: 20px; white-space: nowrap;
     }
-
     .b-yes     { background: var(--green-bg); color: var(--green); }
     .b-scope   { background: var(--blue-bg);  color: var(--blue); }
     .b-caution { background: var(--gold-bg);  color: var(--gold); }
     .b-no      { background: var(--red-bg);   color: var(--red); }
-
-    .row-name { font-size: 0.93rem; font-weight: 600; }
-    .row-inst { font-size: 0.77rem; color: var(--mid); margin-bottom: 4px; }
-
-    .fit-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      margin-top: 6px;
+    .row-name  { font-size: 0.92rem; font-weight: 600; }
+    .row-inst  { font-size: 0.76rem; color: var(--mid); margin-bottom: 5px; }
+    .chips     { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+    .chip {
+      font-size: 0.73rem; padding: 2px 9px; border-radius: 20px; line-height: 1.5;
     }
-
-    .fit-box {
-      font-size: 0.78rem;
-      line-height: 1.45;
-      padding: 7px 10px;
-      border-radius: 5px;
-    }
-
-    .fit-yes {
-      background: var(--green-bg);
-      color: #1A3D26;
-    }
-
-    .fit-no {
-      background: var(--red-bg);
-      color: #5B1111;
-    }
-
-    .fit-box strong {
-      display: block;
-      font-size: 0.67rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 2px;
-      opacity: 0.7;
-    }
-
-    .row-note {
-      font-size: 0.78rem;
-      color: var(--mid);
-      margin-top: 6px;
-      font-style: italic;
-    }
-
-    .row-why {
-      font-size: 0.81rem;
-      color: #4A5568;
-      margin-top: 2px;
-    }
-
+    .chip-yes { background: var(--green-bg); color: var(--green); }
+    .chip-no  { background: var(--red-bg);   color: var(--red); }
+    .row-note { font-size: 0.76rem; color: var(--mid); margin-top: 5px; font-style: italic; }
     footer {
-      margin-top: 44px;
-      font-size: 0.75rem;
-      color: var(--mid);
-      border-top: 1px solid var(--light);
-      padding-top: 14px;
+      margin-top: 40px; font-size: 0.74rem; color: var(--mid);
+      border-top: 1px solid var(--light); padding-top: 12px;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Friendly Reviewers — SDM Paper</h1>
-</header>
+<h1>Friendly Reviewers — SDM Paper</h1>
 
 <div class="intro">
-  Putting together a list of people we could reach out to for pre-submission feedback. Daniela is an obvious one. Does anyone know someone else here, or have a connection that would make a reach-out natural?
+  Putting together a list for pre-submission feedback. Daniela is the obvious one — does anyone have a connection to someone else here?
 </div>
 
 
-<!-- CONTACT -->
 <p class="label">Contact these</p>
 
 <div class="row">
   <div class="row-top">
-    <span class="badge b-yes">Known — full review</span>
+    <span class="badge b-yes">Known</span>
     <span class="row-name">Daniela Scur</span>
   </div>
   <div class="row-inst">Cornell University (Dyson)</div>
-  <div class="fit-grid">
-    <div class="fit-box fit-yes">
-      <strong>Can help with</strong>
-      Does SDM measure something real? Cross-national validity (Italy/Brazil). Whether the construct is distinguishable from WMS-style management quality.
-    </div>
-    <div class="fit-box fit-no">
-      <strong>Cannot help with</strong>
-      Formative model spec, CFA/PLS, RP format norms. She reviews for economics journals, not RP. Her instrument (WMS) is reflective/interview-based.
-    </div>
+  <div class="chips">
+    <span class="chip chip-yes">Does SDM measure something real?</span>
+    <span class="chip chip-yes">Italy/Brazil cross-national validity</span>
+    <span class="chip chip-no">Formative model / CFA / PLS</span>
+    <span class="chip chip-no">RP format norms</span>
   </div>
 </div>
 
@@ -182,15 +95,10 @@
     <span class="row-name">Timothy Devinney</span>
   </div>
   <div class="row-inst">Alliance Manchester Business School</div>
-  <div class="fit-grid">
-    <div class="fit-box fit-yes">
-      <strong>Can help with</strong>
-      Formative vs. reflective justification — wrote Coltman et al. (2008), already in our bib. Published in RP (2019). Best bridge between measurement methodology and RP audience.
-    </div>
-    <div class="fit-box fit-no">
-      <strong>Cannot help with</strong>
-      Post-2010 PLS-SEM advances (HTMT, newer formative ID strategies). His current work has shifted to MNE strategy and populism — not active in measurement debates.
-    </div>
+  <div class="chips">
+    <span class="chip chip-yes">Formative vs. reflective — wrote Coltman et al. (2008), already in our bib</span>
+    <span class="chip chip-yes">Published in RP (2019)</span>
+    <span class="chip chip-no">Post-2010 PLS-SEM advances</span>
   </div>
   <div class="row-note">Active — elected Fellow of the British Academy 2025.</div>
 </div>
@@ -201,68 +109,53 @@
     <span class="row-name">Nicolai J. Foss</span>
   </div>
   <div class="row-inst">Copenhagen Business School</div>
-  <div class="fit-grid">
-    <div class="fit-box fit-yes">
-      <strong>Can help with</strong>
-      Management practices surveys, decision delegation and innovation theory. Published in RP (2021) with a manager survey on delegation. Knows the journal.
-    </div>
-    <div class="fit-box fit-no">
-      <strong>Cannot help with</strong>
-      Measurement models (SEM, formative/reflective). Risk: may push to deepen theory beyond Research Note scope.
-    </div>
+  <div class="chips">
+    <span class="chip chip-yes">Decision delegation + innovation — RP 2021 manager survey</span>
+    <span class="chip chip-no">Measurement models</span>
+    <span class="chip chip-no">Risk: may push theory beyond Research Note scope</span>
   </div>
 </div>
 
 <div class="row">
   <div class="row-top">
-    <span class="badge b-yes">Cross-national fit</span>
+    <span class="badge b-yes">Cross-national</span>
     <span class="row-name">Vartuhi Tonoyan &amp; Christopher Boudreaux</span>
   </div>
   <div class="row-inst">CSU Fresno / Florida Atlantic University</div>
-  <div class="fit-grid">
-    <div class="fit-box fit-yes">
-      <strong>Can help with</strong>
-      Multi-country manager surveys (29 countries, 7,848 respondents — RP 2023). Italy/Brazil institutional framing. Know RP's standards. Manager-as-respondent logic.
-    </div>
-    <div class="fit-box fit-no">
-      <strong>Cannot help with</strong>
-      Formative measurement, PLS-SEM, psychometric validation. Their instrument is binary/categorical (WBES), not Likert.
-    </div>
+  <div class="chips">
+    <span class="chip chip-yes">Manager surveys across countries — RP 2023</span>
+    <span class="chip chip-yes">Italy/Brazil framing, know RP standards</span>
+    <span class="chip chip-no">Formative measurement / PLS-SEM</span>
   </div>
 </div>
 
 
-<!-- SCOPE ONLY -->
-<p class="label">Scope check — one email, not full review</p>
+<p class="label">Scope check — one email only</p>
 
 <div class="row">
   <div class="row-top">
-    <span class="badge b-scope">RP editor — scope only</span>
+    <span class="badge b-scope">RP UK Editor</span>
     <span class="row-name">Paul Nightingale</span>
   </div>
-  <div class="row-inst">SPRU, Sussex · RP UK Editor</div>
-  <div class="row-why">Ask one question: "does this fit RP Short Communication format?" Full review would be an editorial conflict. His value is the gate, not the content.</div>
+  <div class="row-inst">SPRU, Sussex</div>
+  <div class="chips">
+    <span class="chip chip-yes">Does this fit RP Short Communication format?</span>
+    <span class="chip chip-no">Full review = editorial conflict</span>
+  </div>
 </div>
 
 
-<!-- SPECIFIC USE -->
 <p class="label">Specific use only</p>
 
 <div class="row">
   <div class="row-top">
-    <span class="badge b-caution">§2 only — may be semi-retired</span>
+    <span class="badge b-caution">§2 only</span>
     <span class="row-name">Jeffrey R. Edwards</span>
   </div>
   <div class="row-inst">UNC Kenan-Flagler</div>
-  <div class="fit-grid">
-    <div class="fit-box fit-yes">
-      <strong>Can help with</strong>
-      The six specific critiques of formative models in his ORM 2011 paper: dimensionality, internal consistency, identification, measurement error, construct validity, causality direction.
-    </div>
-    <div class="fit-box fit-no">
-      <strong>Cannot help with</strong>
-      RP scope, SDM substance, Italy/Brazil context. No publications visible post-2018 — may not respond. Better to engage his paper directly in §2 than wait for him.
-    </div>
+  <div class="chips">
+    <span class="chip chip-yes">Stress-test formative spec — "Fallacy of Formative Measurement" (ORM 2011)</span>
+    <span class="chip chip-no">May be semi-retired. Engage his paper, not him.</span>
   </div>
 </div>
 
@@ -272,42 +165,33 @@
     <span class="row-name">Christian Rammer &amp; Bettina Peters</span>
   </div>
   <div class="row-inst">ZEW Mannheim</div>
-  <div class="fit-grid">
-    <div class="fit-box fit-yes">
-      <strong>Can help with</strong>
-      Whether the paper is positioned correctly for RP. They publish there regularly with firm-level survey data and know the editorial culture well.
-    </div>
-    <div class="fit-box fit-no">
-      <strong>Cannot help with</strong>
-      Anything on the instrument itself. Their work is CIS firm-level data — binary/categorical, no Likert scales, no formative constructs, firm as unit (not manager).
-    </div>
+  <div class="chips">
+    <span class="chip chip-yes">Is the paper framed correctly for RP?</span>
+    <span class="chip chip-no">CIS firm-level data — nothing to say about the instrument</span>
   </div>
 </div>
 
 
-<!-- OTHER IDEAS -->
-<p class="label">Other ideas — but probably not the right contact for this</p>
+<p class="label">Other ideas — probably not the right fit</p>
 
 <div class="row">
   <div class="row-top">
     <span class="badge b-no">Lower fit than it looks</span>
-    <span class="row-name">Tae-Yeol Kim</span>
+    <span class="row-name">Tae-Yeol Kim · CEIBS Shanghai · RP 2024</span>
   </div>
-  <div class="row-inst">CEIBS, Shanghai · RP 2024</div>
-  <div class="row-why">Surface similarity: multi-level survey, 93 firms, Likert instruments in RP 2024. But his paper tests a causal mediation chain using established reflective scales (KEYS, Scott & Bruce). Very different from developing and validating a new formative instrument. Feedback he could give is on multilevel modeling and RP framing — not instrument development.</div>
+  <div class="row-inst">Multi-level survey, 93 firms — but tests a causal chain with established reflective scales, not a new formative instrument.</div>
 </div>
 
 <div class="row">
   <div class="row-top">
     <span class="badge b-no">Weakest fit</span>
-    <span class="row-name">Jens Horbach</span>
+    <span class="row-name">Jens Horbach · TH Augsburg · RP 2025</span>
   </div>
-  <div class="row-inst">TH Augsburg · RP 2025</div>
-  <div class="row-why">Eco-innovation specialist using CIS firm-level data. RP veteran but structurally different research design. Minimal added value over Rammer/Peters.</div>
+  <div class="row-inst">Eco-innovation, CIS data. Same profile as Rammer/Peters with less overlap.</div>
 </div>
 
 
-<footer>SDM Paper 1 · Research Policy Research Note · Updated May 2026</footer>
+<footer>SDM Paper 1 · Research Policy Research Note · May 2026</footer>
 
 </body>
 </html>
