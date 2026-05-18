@@ -18,6 +18,8 @@
       --gold-bg: #FEF9E7;
       --blue:  #1A5276;
       --blue-bg: #D6E8F5;
+      --red:   #7B1C1C;
+      --red-bg:#FDECEA;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,21 +28,20 @@
       font-family: 'Inter', sans-serif;
       background: var(--ivory);
       color: var(--navy);
-      max-width: 640px;
+      max-width: 660px;
       margin: 0 auto;
       padding: 56px 24px 80px;
       line-height: 1.6;
     }
 
     header { margin-bottom: 32px; }
-
     header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 6px; }
 
     .intro {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: #4A5568;
       line-height: 1.65;
-      padding: 16px 18px;
+      padding: 14px 18px;
       background: #fff;
       border-left: 3px solid var(--terra);
       border-radius: 0 6px 6px 0;
@@ -57,14 +58,17 @@
     }
 
     .row {
-      display: flex;
-      gap: 12px;
-      padding: 11px 0;
+      padding: 14px 0;
       border-bottom: 1px solid var(--light);
-      align-items: baseline;
     }
-
     .row:last-child { border-bottom: none; }
+
+    .row-top {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      margin-bottom: 5px;
+    }
 
     .badge {
       flex-shrink: 0;
@@ -77,26 +81,58 @@
       white-space: nowrap;
     }
 
-    .b-yes  { background: var(--green-bg); color: var(--green); }
-    .b-rp   { background: var(--blue-bg);  color: var(--blue); }
-    .b-caution { background: var(--gold-bg); color: var(--gold); }
+    .b-yes     { background: var(--green-bg); color: var(--green); }
+    .b-scope   { background: var(--blue-bg);  color: var(--blue); }
+    .b-caution { background: var(--gold-bg);  color: var(--gold); }
+    .b-no      { background: var(--red-bg);   color: var(--red); }
 
-    .row-body { flex: 1; }
     .row-name { font-size: 0.93rem; font-weight: 600; }
-    .row-inst { font-size: 0.77rem; color: var(--mid); }
-    .row-why  { font-size: 0.81rem; color: #4A5568; margin-top: 1px; }
+    .row-inst { font-size: 0.77rem; color: var(--mid); margin-bottom: 4px; }
 
-    .divider {
-      border: none;
-      border-top: 1px dashed #C4CEDA;
-      margin: 28px 0 0;
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-top: 6px;
     }
 
-    .other-note {
-      font-size: 0.82rem;
+    .fit-box {
+      font-size: 0.78rem;
+      line-height: 1.45;
+      padding: 7px 10px;
+      border-radius: 5px;
+    }
+
+    .fit-yes {
+      background: var(--green-bg);
+      color: #1A3D26;
+    }
+
+    .fit-no {
+      background: var(--red-bg);
+      color: #5B1111;
+    }
+
+    .fit-box strong {
+      display: block;
+      font-size: 0.67rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+      opacity: 0.7;
+    }
+
+    .row-note {
+      font-size: 0.78rem;
       color: var(--mid);
-      margin: 10px 0 16px;
+      margin-top: 6px;
       font-style: italic;
+    }
+
+    .row-why {
+      font-size: 0.81rem;
+      color: #4A5568;
+      margin-top: 2px;
     }
 
     footer {
@@ -115,97 +151,163 @@
 </header>
 
 <div class="intro">
-  Putting together a list of people we could reach out to for pre-submission feedback. Daniela Scur is an obvious one given we've worked with her. Does anyone know someone else on this list, or have a connection that would make reaching out make sense?
+  Putting together a list of people we could reach out to for pre-submission feedback. Daniela is an obvious one. Does anyone know someone else here, or have a connection that would make a reach-out natural?
 </div>
 
 
-<!-- STRONG FITS -->
-<p class="label">Strong fits — content + design match</p>
+<!-- CONTACT -->
+<p class="label">Contact these</p>
 
 <div class="row">
-  <span class="badge b-yes">Known</span>
-  <div class="row-body">
-    <div class="row-name">Daniela Scur</div>
-    <div class="row-inst">Cornell University (Dyson)</div>
-    <div class="row-why">Building the Scientific Labs Management Survey — same design logic as ours. Obvious first contact.</div>
+  <div class="row-top">
+    <span class="badge b-yes">Known — full review</span>
+    <span class="row-name">Daniela Scur</span>
+  </div>
+  <div class="row-inst">Cornell University (Dyson)</div>
+  <div class="fit-grid">
+    <div class="fit-box fit-yes">
+      <strong>Can help with</strong>
+      Does SDM measure something real? Cross-national validity (Italy/Brazil). Whether the construct is distinguishable from WMS-style management quality.
+    </div>
+    <div class="fit-box fit-no">
+      <strong>Cannot help with</strong>
+      Formative model spec, CFA/PLS, RP format norms. She reviews for economics journals, not RP. Her instrument (WMS) is reflective/interview-based.
+    </div>
   </div>
 </div>
 
 <div class="row">
-  <span class="badge b-yes">Full fit</span>
-  <div class="row-body">
-    <div class="row-name">Tae-Yeol Kim</div>
-    <div class="row-inst">CEIBS, Shanghai</div>
-    <div class="row-why">RP 2024 — multi-level survey, 93 firms, Likert instruments measuring managerial practices. Closest design match to ours among recent RP authors.</div>
+  <div class="row-top">
+    <span class="badge b-yes">Full review</span>
+    <span class="row-name">Timothy Devinney</span>
+  </div>
+  <div class="row-inst">Alliance Manchester Business School</div>
+  <div class="fit-grid">
+    <div class="fit-box fit-yes">
+      <strong>Can help with</strong>
+      Formative vs. reflective justification — wrote Coltman et al. (2008), already in our bib. Published in RP (2019). Best bridge between measurement methodology and RP audience.
+    </div>
+    <div class="fit-box fit-no">
+      <strong>Cannot help with</strong>
+      Post-2010 PLS-SEM advances (HTMT, newer formative ID strategies). His current work has shifted to MNE strategy and populism — not active in measurement debates.
+    </div>
+  </div>
+  <div class="row-note">Active — elected Fellow of the British Academy 2025.</div>
+</div>
+
+<div class="row">
+  <div class="row-top">
+    <span class="badge b-yes">Theory framing</span>
+    <span class="row-name">Nicolai J. Foss</span>
+  </div>
+  <div class="row-inst">Copenhagen Business School</div>
+  <div class="fit-grid">
+    <div class="fit-box fit-yes">
+      <strong>Can help with</strong>
+      Management practices surveys, decision delegation and innovation theory. Published in RP (2021) with a manager survey on delegation. Knows the journal.
+    </div>
+    <div class="fit-box fit-no">
+      <strong>Cannot help with</strong>
+      Measurement models (SEM, formative/reflective). Risk: may push to deepen theory beyond Research Note scope.
+    </div>
   </div>
 </div>
 
 <div class="row">
-  <span class="badge b-yes">Full fit</span>
-  <div class="row-body">
-    <div class="row-name">Timothy Devinney</div>
-    <div class="row-inst">Alliance Manchester Business School</div>
-    <div class="row-why">Co-authored Coltman et al. (2008) — already in our bib. Works on formative measurement and org performance. Bridges methodology and RP audience well.</div>
+  <div class="row-top">
+    <span class="badge b-yes">Cross-national fit</span>
+    <span class="row-name">Vartuhi Tonoyan &amp; Christopher Boudreaux</span>
   </div>
-</div>
-
-<div class="row">
-  <span class="badge b-yes">Theory fit</span>
-  <div class="row-body">
-    <div class="row-name">Nicolai J. Foss</div>
-    <div class="row-inst">Copenhagen Business School</div>
-    <div class="row-why">Org theory + management practices, already cited in our paper. Would stress-test the construct definition.</div>
-  </div>
-</div>
-
-
-<!-- RP POOL -->
-<p class="label">Published recently in RP with survey data — likely in the reviewer pool</p>
-<p class="other-note">These are the profiles a RP Associate Editor would actually assign our paper to. Worth a reach-out if anyone has a connection.</p>
-
-<div class="row">
-  <span class="badge b-rp">RP 2023</span>
-  <div class="row-body">
-    <div class="row-name">Vartuhi Tonoyan &amp; Christopher Boudreaux</div>
-    <div class="row-inst">CSU Fresno / Florida Atlantic University</div>
-    <div class="row-why">Survey of 7,848 managers across 29 countries measuring HRM practices and innovation. Purpose-designed multi-firm instrument.</div>
-  </div>
-</div>
-
-<div class="row">
-  <span class="badge b-rp">RP 2022–24</span>
-  <div class="row-body">
-    <div class="row-name">Christian Rammer &amp; Bettina Peters</div>
-    <div class="row-inst">ZEW Mannheim</div>
-    <div class="row-why">Multiple RP papers using Community Innovation Survey data. Core of the RP empirical reviewer pool for firm-level survey work in Europe.</div>
-  </div>
-</div>
-
-<div class="row">
-  <span class="badge b-rp">RP 2025</span>
-  <div class="row-body">
-    <div class="row-name">Jens Horbach</div>
-    <div class="row-inst">TH Augsburg</div>
-    <div class="row-why">RP 2025 — CIS-based firm survey on innovation and climate change. Recent RP publication, active in the reviewer pool.</div>
-  </div>
-</div>
-
-
-<!-- SCOPE CHECK -->
-<hr class="divider">
-<div style="margin-top: 16px;">
-  <div class="row">
-    <span class="badge b-caution">Scope check</span>
-    <div class="row-body">
-      <div class="row-name">Paul Nightingale</div>
-      <div class="row-inst">SPRU, Sussex · RP UK Editor</div>
-      <div class="row-why">One email only: "does this fit RP Short Communication format?" — contacting him for a full review would create an editorial conflict.</div>
+  <div class="row-inst">CSU Fresno / Florida Atlantic University</div>
+  <div class="fit-grid">
+    <div class="fit-box fit-yes">
+      <strong>Can help with</strong>
+      Multi-country manager surveys (29 countries, 7,848 respondents — RP 2023). Italy/Brazil institutional framing. Know RP's standards. Manager-as-respondent logic.
+    </div>
+    <div class="fit-box fit-no">
+      <strong>Cannot help with</strong>
+      Formative measurement, PLS-SEM, psychometric validation. Their instrument is binary/categorical (WBES), not Likert.
     </div>
   </div>
 </div>
 
 
-<footer>SDM Paper 1 · Research Policy Research Note · May 2026</footer>
+<!-- SCOPE ONLY -->
+<p class="label">Scope check — one email, not full review</p>
+
+<div class="row">
+  <div class="row-top">
+    <span class="badge b-scope">RP editor — scope only</span>
+    <span class="row-name">Paul Nightingale</span>
+  </div>
+  <div class="row-inst">SPRU, Sussex · RP UK Editor</div>
+  <div class="row-why">Ask one question: "does this fit RP Short Communication format?" Full review would be an editorial conflict. His value is the gate, not the content.</div>
+</div>
+
+
+<!-- SPECIFIC USE -->
+<p class="label">Specific use only</p>
+
+<div class="row">
+  <div class="row-top">
+    <span class="badge b-caution">§2 only — may be semi-retired</span>
+    <span class="row-name">Jeffrey R. Edwards</span>
+  </div>
+  <div class="row-inst">UNC Kenan-Flagler</div>
+  <div class="fit-grid">
+    <div class="fit-box fit-yes">
+      <strong>Can help with</strong>
+      The six specific critiques of formative models in his ORM 2011 paper: dimensionality, internal consistency, identification, measurement error, construct validity, causality direction.
+    </div>
+    <div class="fit-box fit-no">
+      <strong>Cannot help with</strong>
+      RP scope, SDM substance, Italy/Brazil context. No publications visible post-2018 — may not respond. Better to engage his paper directly in §2 than wait for him.
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="row-top">
+    <span class="badge b-caution">RP positioning only</span>
+    <span class="row-name">Christian Rammer &amp; Bettina Peters</span>
+  </div>
+  <div class="row-inst">ZEW Mannheim</div>
+  <div class="fit-grid">
+    <div class="fit-box fit-yes">
+      <strong>Can help with</strong>
+      Whether the paper is positioned correctly for RP. They publish there regularly with firm-level survey data and know the editorial culture well.
+    </div>
+    <div class="fit-box fit-no">
+      <strong>Cannot help with</strong>
+      Anything on the instrument itself. Their work is CIS firm-level data — binary/categorical, no Likert scales, no formative constructs, firm as unit (not manager).
+    </div>
+  </div>
+</div>
+
+
+<!-- OTHER IDEAS -->
+<p class="label">Other ideas — but probably not the right contact for this</p>
+
+<div class="row">
+  <div class="row-top">
+    <span class="badge b-no">Lower fit than it looks</span>
+    <span class="row-name">Tae-Yeol Kim</span>
+  </div>
+  <div class="row-inst">CEIBS, Shanghai · RP 2024</div>
+  <div class="row-why">Surface similarity: multi-level survey, 93 firms, Likert instruments in RP 2024. But his paper tests a causal mediation chain using established reflective scales (KEYS, Scott & Bruce). Very different from developing and validating a new formative instrument. Feedback he could give is on multilevel modeling and RP framing — not instrument development.</div>
+</div>
+
+<div class="row">
+  <div class="row-top">
+    <span class="badge b-no">Weakest fit</span>
+    <span class="row-name">Jens Horbach</span>
+  </div>
+  <div class="row-inst">TH Augsburg · RP 2025</div>
+  <div class="row-why">Eco-innovation specialist using CIS firm-level data. RP veteran but structurally different research design. Minimal added value over Rammer/Peters.</div>
+</div>
+
+
+<footer>SDM Paper 1 · Research Policy Research Note · Updated May 2026</footer>
 
 </body>
 </html>
