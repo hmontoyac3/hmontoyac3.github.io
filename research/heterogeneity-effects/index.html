@@ -215,8 +215,8 @@
     <div class="header">
       <h1>Heterogeneous Effects of Theory-Based Training</h1>
       <p style="font-size:0.88rem; color:#555; margin-top:0.35rem; line-height:1.5;">
-        Theory-based entrepreneurship training works on average — <em>for whom, and why?</em><br>
-        8 pooled RCTs &middot; ~6,700 founders &middot; GenericML + interaction OLS
+        Theory-based entrepreneurship training deposits knowledge uniformly — <em>who converts it into performance?</em><br>
+        8 pooled RCTs &middot; ~6,700 founders &middot; 14 outcomes &middot; 26 moderators &middot; GenericML + OLS
       </p>
     </div>
 
@@ -269,13 +269,18 @@
           <a class="doc-link external" href="/research/heterogeneity-effects/dml.html">DML</a>
         </div>
         <div class="doc-cluster">
+          <div class="doc-cluster-label">Slides</div>
+          <a class="doc-link" href="/research/heterogeneity-effects/seminar_slides_v2.pdf">Seminar slides v2 — Integrated findings (01+02)</a>
+        </div>
+        <div class="doc-cluster">
           <div class="doc-cluster-label">One-pagers</div>
-          <a class="doc-link" href="/research/heterogeneity-effects/methodology_note.pdf">Methodology note — RF vs OLS vs GenericML BLP</a>
+          <a class="doc-link" href="/research/heterogeneity-effects/onepager_v10_integrated.pdf">v10 — Integrated findings: who learns vs who performs</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v9_synthesis.pdf">v9 — Full Synthesis (evidence map, sub-index structure, way forward)</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v8_newangles.pdf">v8 — New Heterogeneity Angles (variance, sub-indices, pivot count)</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v7_mechanism_routes.pdf">v7 — Mechanism, Pivot Literature &amp; Way Forward</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v5_hte_results.pdf">v5 — First HTE Results</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v6_diagnostics.pdf">v6 — Diagnostic Results (D1/D3/D4)</a>
+          <a class="doc-link" href="/research/heterogeneity-effects/methodology_note.pdf">Methodology note — RF vs OLS vs GenericML BLP</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v4.pdf">v4</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v3.pdf">v3</a>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v2.pdf">v2</a>
@@ -449,45 +454,59 @@
       <h2>Where we stand — May 2026</h2>
 
       <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65;">
-        <strong>What we have.</strong>
-        (1) <strong>Mediation confirmed:</strong> T&rarr;&Delta;SI&rarr;pivot is a real causal chain.
-        &Delta;SI mediates 21% of the pivot ATE at P1 (Sobel p&thinsp;=&thinsp;0.006) and 26% at P2 (p&thinsp;=&thinsp;0.009).
-        Direct effect of T on pivot survives (&beta;&thinsp;&asymp;&thinsp;0.12). Scientific thinking is a genuine mechanism.
-        (2) <strong>Control arm deterioration:</strong> 59&ndash;65% of control founders have negative &Delta;SI at P1&ndash;P2.
-        Training partly prevents a natural deterioration of scientific thinking, not just adds to it.
-        Founders who believe more in unknown external factors (&ldquo;future_ev_influence&rdquo;) decline most without training.
-        (3) <strong>Attrition:</strong> training retains founders dramatically (T=37% dropout before P2 vs C=68%).
-        Retention benefit is uniform; only exception: high-exit-probability founders benefit less.
-        (4) <strong>Individual HTE is null</strong> across all 12 moderators, all methods (480+ cells, 3 estimators).
-        Uniform learning is robust — all founder types improve equally.
+        <strong>The central argument (Analysis 02, May 19).</strong>
+        Theory-based training deposits knowledge uniformly — everyone absorbs it similarly.
+        But performance conversion is massively heterogeneous.
+        The bottleneck is not learning capacity; it is the human capital and strategic posture
+        that determine whether a founder can act on what they learned.
       </p>
 
       <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65; margin-top:0.6rem;">
-        <strong>Literature context: pivots.</strong>
-        Camuffo &amp; Gambardella have already published pivots as an outcome in three papers:
-        <em>Management Science</em> 2020 (treated founders pivot 2&times; more; secondary outcome);
-        <em>SMJ</em> 2024 large-scale replication (nonlinear effect — trained firms pivot 1&ndash;2 times focusedly, neither zero nor excessively);
-        <em>Strategy Science</em> 2024 (Valentine, Novelli, Agarwal — pivot <em>types</em> via qualitative coding of 1,600+ interviews: theorization &times; experimentation produces purposeful pivots);
-        <em>SMJ</em> 2024 (Novelli &amp; Spina — HTE on <em>performance</em> by business model maturity, with pivot as mechanism, not outcome).
-        What has <em>not</em> been published: HTE on the pivot effect using individual-level psychological moderators.
-        The mediation chain T&rarr;&Delta;SI&rarr;pivot is also not formally established in any of these papers.
+        <strong>Learning HTE (Analysis 01 + 02 combined).</strong>
+        SI empirics (evidence, evaluation, decision-making): truly uniform. No HTE in 26 moderators.
+        SI theory (causal framework, hypothesis generation): moderate HTE &mdash; &beta;&sub;2;&thinsp;=&thinsp;0.54** (p=0.013).
+        Open, flexible founders with higher exit/pivot probability absorb more causal theory.
+        Two-family structure: empirical sub-indices large at P1&ndash;P2 then collapse; theoretical smaller but persist.
+        Empirical family mediates pivoting (16&ndash;27%, Sobel p&lt;0.01); theoretical family does not.
+        60% of control founders deteriorate in scientific thinking without training.
       </p>
 
       <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65; margin-top:0.6rem;">
-        <strong>New angles (May 2026).</strong>
-        Five non-HTE heterogeneity dimensions tested (script 17):
-        (1) <strong>Variance of &Delta;SI</strong>: training does not equalise or polarise — SD identical T vs C (Bartlett p=0.29). The uniform mean is a uniform distribution.
-        (2) <strong>Trajectory maintenance P1&rarr;P2</strong>: gains fade equally for everyone (ATE on maintenance = 0.016, p=0.87). No founder type sustains learning better.
-        (3) <strong>SI sub-index composition</strong>: all five sub-indices move significantly, but <em>Evidence collection</em> (d=0.53) and <em>Evaluation</em> (d=0.48) move most; <em>Theory/hypothesis generation</em> least (d=0.33). The empirical side of SDM is more teachable than the theoretical side.
-        (4) <strong>Pivot count and quality</strong>: training adds +1.04 pivots on average (p&lt;0.001); treated founders are 34pp more likely to pivot &ge;2 times (57.7% vs 24.1%). Category distribution shifts toward more substantive pivots (categories 2&ndash;3). Replicates SMJ 2024 nonlinear pattern with individual-level data.
-        (5) <strong>&Delta;SI &times; attrition</strong>: learning does not predict retention. Marginal signal: within treated arm, higher &Delta;SI slightly <em>increases</em> dropout by P3 (T&times;&Delta;SI p=0.085) &mdash; learning more may liberate founders to exit with conviction, not retain them.
+        <strong>Performance HTE (Analysis 02).</strong>
+        GenericML BLP &beta;&sub;2;&thinsp;=&thinsp;0.51&ndash;0.94*** for log sales, productivity, TFP &mdash; massive heterogeneity.
+        Average ATE &approx; 0 vs Control; driven entirely by HTE.
+        GATES median split: G1 bottom 50% is significantly <em>negative</em> vs Control on productivity and TFP
+        (G1 TFP = &minus;1.09**, G2 TFP = +1.44***, gap = +2.45***).
+        TE vs EB comparison (CGJ replication): G1 near-zero, G2 = +0.94*** log sales, gap p=0.036.
+        Theory training does not just fail to help G1 &mdash; it can misallocate their attention.
       </p>
+
       <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65; margin-top:0.6rem;">
-        <strong>Way forward.</strong>
-        Still waiting for Diego&rsquo;s cognitive battery (risk aversion, uncertainty aversion, learning orientation, competitiveness &mdash; 17 items).
-        With that: either HTE paper if signal emerges, or mechanism + null paper if confirmed null.
-        Strongest current contributions without Diego: (a) T&rarr;&Delta;SI&rarr;pivot partial mediation driven entirely by the empirical sub-index family (evidence/evaluation/decision), not theory; (b) two-family SI structure — empirical sub-indices dominate at P1&ndash;P2 then collapse; theoretical sub-indices are smaller but persist; (c) 60% of control arm deteriorates without training (prevention story); (d) pivot count +1.04 (stronger outcome than binary +17pp).
-        Onepager v9 written synthesizing all findings (v7+v8+script 18).
+        <strong>The paradox: two opposite profiles (CLAN).</strong>
+        Who absorbs more SI theory: open, flexible, higher exit/pivot probability, earlier stage.
+        Who performs better: experienced (+4 yrs), older (+3 yrs), committed to their idea (lower pivot/exit probability), focused (low idea breadth), not over-committed in hours.
+        These are opposite profiles on the key moderators. The founder who learns most from the framework
+        is not the one who converts it into performance.
+        OLS triangulation: TFP &times; major_pivot_prob &beta;&sub;INT;&thinsp;=&thinsp;&minus;0.374** (p=0.034), direction matches CLAN.
+        Onepager v10 written integrating both analyses.
+      </p>
+
+      <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65; margin-top:0.6rem;">
+        <strong>Credibility (Analysis 02).</strong>
+        CGJ replication on our 6-site subsample: SI cumulative ATE 2.51*** (CGJ: 2.08***).
+        Performance &beta;&sub;TE; attenuated (site composition + smaller N) but TE&gt;EB ordering preserved in productivity (Wald p=0.02, 0.03).
+        Termination (cross-section OLS): p(TE=EB) = 0.948 &asymp; CGJ 0.964.
+        All behavioral outcomes significant: pivoting +0.132***, exit &minus;2.7pp, attrition &minus;0.178***.
+      </p>
+
+      <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65; margin-top:0.6rem;">
+        <strong>Pending.</strong>
+        (1) Mechanism test: does &Delta;SI at P1 predict G2 membership for performance?
+        Does the G2 founder learn differently, or just convert from the same learning?
+        (2) Cognitive battery (Diego): risk aversion, uncertainty aversion, learning orientation &mdash;
+        the one untested moderator family. Could explain the G1&ndash;G2 conversion gap directly.
+        (3) P1 robustness: restrict pivoting outcomes to P1 before attrition diverges.
+        (4) Targeting: if G1 is hurt, who should be enrolled? Welfare analysis by founder profile.
       </p>
     </section>
 
@@ -495,6 +514,16 @@
     <section>
       <h2>Progress Log</h2>
 
+      <div class="log-entry">
+        <div class="log-date">2026-05-19</div>
+        <div class="log-text"><strong>Analysis 02 complete: HTE scanner across all outcomes.</strong>
+        ITT fix: corrected treatment variable from <code>actual_intervention</code> (actual receipt, recodes 74 no-shows) to <code>intervention</code> (randomized assignment). GenericML scanner (script 03c): 14 outcomes &times; 2 comparisons (TE vs EB, TE vs C) &times; 26 baseline moderators, 250 splits, lasso+rf, panel P1&ndash;P5.
+        <strong>BLP results:</strong> SI empirics &beta;&sub;2; ns (uniform learning). SI theory &beta;&sub;2;&thinsp;=&thinsp;0.54** (p=0.013). Performance: log sales &beta;&sub;2;&thinsp;=&thinsp;0.51***, productivity &beta;&sub;2;&thinsp;=&thinsp;0.67***, TFP &beta;&sub;2;&thinsp;=&thinsp;0.62*** (TE vs EB). TE vs C: &beta;&sub;2; up to 0.94***.
+        <strong>GATES:</strong> G1 near-zero (TE vs EB) or significantly negative (TE vs C: TFP G1&thinsp;=&thinsp;&minus;1.09**, G2&thinsp;=&thinsp;+1.44***, gap&thinsp;=&thinsp;+2.45***). Replicates CGJ: G1&thinsp;=&thinsp;&minus;0.46 ns, G2&thinsp;=&thinsp;+1.65***, ours G1&thinsp;=&thinsp;+0.11 ns, G2&thinsp;=&thinsp;+0.94***, gap p=0.036.
+        <strong>CLAN paradox:</strong> who learns more theory (open, high pivot/exit probability) vs who performs better (experienced, committed, focused, low pivot/exit probability) are opposite profiles.
+        OLS robustness: TFP &times; major_pivot_prob &beta;&sub;INT;&thinsp;=&thinsp;&minus;0.374** (p=0.034).
+        Onepager v10 and seminar slides v2 written integrating analyses 01+02.</div>
+      </div>
       <div class="log-entry">
         <div class="log-date">2026-05-18</div>
         <div class="log-text">Methodology note written. Explains the three-method sequence used for HTE detection: (1) Random Forest — predictive variable importance only, no causal inference, no p-values; used to shortlist moderators. Limitation: high RF importance ≠ HTE (IoC is top RF predictor but BLP β₂ = −0.008, p = 0.66). (2) OLS interactions — transparent and interpretable, but subject to multiple testing inflation (480 cells at α=0.05 → ~24 expected false positives) and low power under non-linear heterogeneity. (3) GenericML BLP (Chernozhukov et al., Econometrica 2025) — separates estimation of heterogeneous effect index B(Z) via ML from causal inference via held-out regression; 100–250 sample splits eliminate overfitting; valid p-values for β₂ (HTE coefficient). Three specs run: D5 (lasso B(Z)), D6 (5-learner ensemble), D7 (6-learner official package). Robustness logic: D7 hits disappear under lasso-only → overfitting noise, not real signal.</div>
@@ -577,11 +606,11 @@
     <section>
       <h2>Next Steps</h2>
       <ul class="next-steps">
-        <li>Present diagnostic results to PI (Alfonso) — onepager v6 ready</li>
-        <li>Push Diego (via Alfonso) for cognitive battery: <code>risk_aversion</code>, <code>unc_aversion</code>, <code>learning_orientation_1–6</code>, <code>competitiveness_1–7</code> (17 variables)</li>
-        <li>If Diego delivers: run cognitive battery through GenericML scanner — closes Ruta 0</li>
-        <li>If cognitive battery also null: commit to Ruta 4 (methodological paper — RF&thinsp;&ne;&thinsp;causal moderation + CLAN portrait)</li>
-        <li>Decide pre-registration scope with Alfonso after cognitive battery result</li>
+        <li><strong>Mechanism test:</strong> does &Delta;SI at P1 predict G2 membership for performance? T&rarr;&Delta;SI&rarr;performance, heterogeneous by founder type</li>
+        <li><strong>Cognitive battery (Diego):</strong> <code>risk_aversion</code>, <code>unc_aversion</code>, <code>learning_orientation_1–6</code> &mdash; only untested moderator family; could explain G1&ndash;G2 conversion gap</li>
+        <li><strong>P1 behavioral robustness:</strong> restrict pivoting analysis to P1 (before attrition diverges from Control)</li>
+        <li><strong>Targeting welfare analysis:</strong> if G1 is hurt by training, who should be enrolled to maximize program ROI?</li>
+        <li>Present integrated findings (onepager v10 + seminar slides v2) to Alfonso</li>
       </ul>
     </section>
   </div>
