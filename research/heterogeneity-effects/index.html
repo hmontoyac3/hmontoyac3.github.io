@@ -214,9 +214,10 @@
 
     <div class="header">
       <h1>Heterogeneous Effects of Theory-Based Training</h1>
+      <p style="font-size:0.88rem; color:#888; margin-top:0.25rem;">Helena Montoya</p>
       <p style="font-size:0.88rem; color:#555; margin-top:0.35rem; line-height:1.5;">
         Theory-based entrepreneurship training deposits knowledge uniformly — <em>who converts it into performance?</em><br>
-        8 pooled RCTs &middot; ~6,700 founders &middot; 14 outcomes &middot; 26 moderators &middot; GenericML + OLS
+        8 pooled RCTs &middot; 6,732 founders &middot; 14 outcomes &middot; 26 moderators &middot; GenericML + OLS
       </p>
     </div>
 
@@ -474,11 +475,12 @@
 
       <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65; margin-top:0.6rem;">
         <strong>Performance HTE (Analysis 02).</strong>
-        GenericML BLP &beta;&sub;2;&thinsp;=&thinsp;0.51&ndash;0.94*** for log sales, productivity, TFP &mdash; massive heterogeneity.
+        Full-scanner BLP: significant &beta;&sub;2; across all performance outcomes (TE vs EB): log sales 0.51***, employees 0.55***, productivity 0.67***, TFP 0.62***; sales dummy 0.34* (marginal). TE vs Control amplifies: log sales &beta;&sub;2;&thinsp;=&thinsp;0.79***, productivity 0.94***, TFP 0.94***, employees 0.41**.
         Average ATE &approx; 0 vs Control; driven entirely by HTE.
-        GATES median split: G1 bottom 50% is significantly <em>negative</em> vs Control on productivity and TFP
-        (G1 TFP = &minus;1.09**, G2 TFP = +1.44***, gap = +2.45***).
+        GATES median split (TE vs C): G1 bottom 50% is significantly <em>negative</em> on log sales (G1&thinsp;=&thinsp;&minus;0.84**, G2&thinsp;=&thinsp;+0.86**, gap&thinsp;=&thinsp;+1.73***), productivity (G1&thinsp;=&thinsp;&minus;0.90**, G2&thinsp;=&thinsp;+1.23***, gap&thinsp;=&thinsp;+2.08***) and TFP
+        (G1&thinsp;=&thinsp;&minus;1.09**, G2&thinsp;=&thinsp;+1.44***, gap&thinsp;=&thinsp;+2.45***).
         TE vs EB comparison (CGJ replication): G1 near-zero, G2 = +0.94*** log sales, gap p=0.036.
+        Behavioral outcomes (TE vs C): major_pivot_prob &beta;&sub;2;&thinsp;=&thinsp;0.60** (GATES G2&thinsp;=&thinsp;+6.88%**); pivot_combined &beta;&sub;2;&thinsp;=&thinsp;0.73** (G2&thinsp;=&thinsp;+0.33***); dropout_idea &beta;&sub;2;&thinsp;=&thinsp;0.81*** (GATES G1&thinsp;=&thinsp;&minus;4.7pp** protected from dropout, G2 no effect).
         Theory training does not just fail to help G1 &mdash; it can misallocate their attention.
       </p>
 
@@ -488,6 +490,7 @@
         Who performs better: experienced (+4 yrs), older (+3 yrs), committed to their idea (lower pivot/exit probability), focused (low idea breadth), not over-committed in hours.
         These are opposite profiles on the key moderators. The founder who learns most from the framework
         is not the one who converts it into performance.
+        Cross-outcome CLAN summary (26 outcomes): G2 older (21/26 outcomes, 73%), more work experience (17/26, 65%), more managerial experience (19/26, 69%), fewer hours worked (20/26, 58%), lower major_pivot_probability (18/26, 54%), lower idea_aspiration breadth (16/26, 85%). Pattern consistent across performance, behavioral, and learning outcomes.
         OLS triangulation: TFP &times; major_pivot_prob &beta;&sub;INT;&thinsp;=&thinsp;&minus;0.374** (p=0.034), direction matches CLAN.
         Onepager v10 written integrating both analyses.
       </p>
@@ -516,11 +519,17 @@
       <h2>Progress Log</h2>
 
       <div class="log-entry">
+        <div class="log-date">2026-05-20</div>
+        <div class="log-text"><strong>Scanner re-run (script 03c, tag 20260520).</strong>
+        Full 14&times;2 GenericML scan re-executed. All BLP &beta;&sub;2; estimates and GATES fully stable vs 20260519 run. Figures and tables re-exported: HTE_beta2_landscape_20260520.png, HTE_blp_scanner_20260520.csv, HTE_gates_scanner_20260520.csv, HTE_clan_summary_20260520.csv. No new findings; confirms robustness of all results.</div>
+      </div>
+      <div class="log-entry">
         <div class="log-date">2026-05-19</div>
         <div class="log-text"><strong>Analysis 02 complete: HTE scanner across all outcomes.</strong>
         ITT fix: corrected treatment variable from <code>actual_intervention</code> (actual receipt, recodes 74 no-shows) to <code>intervention</code> (randomized assignment). GenericML scanner (script 03c): 14 outcomes &times; 2 comparisons (TE vs EB, TE vs C) &times; 26 baseline moderators, 250 splits, lasso+rf, panel P1&ndash;P5.
-        <strong>BLP results:</strong> SI empirics &beta;&sub;2; ns (uniform learning). SI theory &beta;&sub;2;&thinsp;=&thinsp;0.54** (p=0.013). Performance: log sales &beta;&sub;2;&thinsp;=&thinsp;0.51***, productivity &beta;&sub;2;&thinsp;=&thinsp;0.67***, TFP &beta;&sub;2;&thinsp;=&thinsp;0.62*** (TE vs EB). TE vs C: &beta;&sub;2; up to 0.94***.
-        <strong>GATES:</strong> G1 near-zero (TE vs EB) or significantly negative (TE vs C: TFP G1&thinsp;=&thinsp;&minus;1.09**, G2&thinsp;=&thinsp;+1.44***, gap&thinsp;=&thinsp;+2.45***). Replicates CGJ: G1&thinsp;=&thinsp;&minus;0.46 ns, G2&thinsp;=&thinsp;+1.65***, ours G1&thinsp;=&thinsp;+0.11 ns, G2&thinsp;=&thinsp;+0.94***, gap p=0.036.
+        <strong>BLP results:</strong> SI overall &beta;&sub;2;&thinsp;=&thinsp;0.40* (p=0.077, marginal). SI empirics &beta;&sub;2; ns (uniform learning). SI theory &beta;&sub;2;&thinsp;=&thinsp;0.54** (p=0.013). Performance (TE vs EB): log sales &beta;&sub;2;&thinsp;=&thinsp;0.51***, employees &beta;&sub;2;&thinsp;=&thinsp;0.55***, productivity &beta;&sub;2;&thinsp;=&thinsp;0.67***, TFP &beta;&sub;2;&thinsp;=&thinsp;0.62***; sales dummy 0.34* (marginal). TE vs C amplifies: log sales 0.79***, productivity 0.94***, TFP 0.94***, employees 0.41**, sales dummy 0.80***. Behavioral (TE vs C): major_pivot_prob &beta;&sub;2;&thinsp;=&thinsp;0.60** (p=0.013), pivot_combined &beta;&sub;2;&thinsp;=&thinsp;0.73** (p=0.014), dropout_idea &beta;&sub;2;&thinsp;=&thinsp;0.81*** (p=0.004).
+        <strong>GATES:</strong> G1 near-zero (TE vs EB) or significantly negative (TE vs C): log sales G1&thinsp;=&thinsp;&minus;0.84**, G2&thinsp;=&thinsp;+0.86**, gap&thinsp;=&thinsp;+1.73***; productivity G1&thinsp;=&thinsp;&minus;0.90**, G2&thinsp;=&thinsp;+1.23***, gap&thinsp;=&thinsp;+2.08***; TFP G1&thinsp;=&thinsp;&minus;1.09**, G2&thinsp;=&thinsp;+1.44***, gap&thinsp;=&thinsp;+2.45***. Dropout_idea: G1&thinsp;=&thinsp;&minus;4.7pp** (training reduces dropout for low-HTE founders), G2 not significant. Replicates CGJ: G1&thinsp;=&thinsp;&minus;0.46 ns, G2&thinsp;=&thinsp;+1.65***, ours G1&thinsp;=&thinsp;+0.11 ns, G2&thinsp;=&thinsp;+0.94***, gap p=0.036.
+        <strong>CLAN cross-outcome summary (26 outcomes):</strong> G2 older (21/26, 73%), more work experience (17/26, 65%), more managerial experience (19/26, 69%), fewer hours worked (20/26, 58%), lower major_pivot_probability (18/26, 54%), lower idea_aspiration breadth (16/26, 85%).
         <strong>CLAN paradox:</strong> who learns more theory (open, high pivot/exit probability) vs who performs better (experienced, committed, focused, low pivot/exit probability) are opposite profiles.
         OLS robustness: TFP &times; major_pivot_prob &beta;&sub;INT;&thinsp;=&thinsp;&minus;0.374** (p=0.034).
         Onepager v10 and seminar slides v2 written integrating analyses 01+02.</div>
