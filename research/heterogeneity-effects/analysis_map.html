@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTE Paper — Analysis Map</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+:root {
+  --bg:#fafaf8; --surface:#fff; --border:#e5e5e0; --text:#1a1a1a;
+  --muted:#666; --accent:#2c5f8a; --accent-light:#eef4fa;
+  --green:#3a7a3a; --green-bg:#e8f5e8; --green-bd:#7ab87a;
+  --amber:#7a5a00; --amber-bg:#fef9ec; --amber-bd:#d4a017;
+  --red:#7a1a1a; --red-bg:#fdecea; --red-bd:#d9534f;
+  --gray:#555; --gray-bg:#f0f0ec; --gray-bd:#b8b8b0;
+  --max:1100px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+      background:var(--bg);color:var(--text);line-height:1.65;font-size:15px}
+
+/* ── Header ── */
+header{border-bottom:1px solid var(--border);background:var(--surface);padding:2rem 1.5rem 1.5rem}
+header .inner{max-width:var(--max);margin:0 auto}
+header .label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+header h1{font-size:1.4rem;font-weight:600;margin-bottom:.3rem}
+header .sub{color:var(--muted);font-size:.9rem}
+header .links{margin-top:1rem;display:flex;gap:.7rem;flex-wrap:wrap}
+header .links a{font-size:.82rem;color:var(--accent);text-decoration:none;
+  border:1px solid var(--border);border-radius:4px;padding:.25rem .6rem;background:var(--accent-light)}
+header .links a:hover{background:#dceaf5}
+
+/* ── Layout ── */
+main{max-width:var(--max);margin:0 auto;padding:2rem 1.5rem 4rem}
+section{margin-bottom:3rem}
+h2{font-size:.85rem;font-weight:700;color:var(--accent);text-transform:uppercase;
+    letter-spacing:.07em;border-bottom:2px solid var(--accent-light);padding-bottom:.45rem;margin-bottom:1.4rem}
+h3{font-size:.95rem;font-weight:600;margin:1rem 0 .4rem;color:var(--text)}
+p{margin-bottom:.7rem;font-size:.9rem}
+code{font-family:'SF Mono','Fira Code',monospace;font-size:.78rem;
+      background:#f0f0ec;padding:.1rem .35rem;border-radius:3px}
+
+/* ── Status badges ── */
+.badge{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.04em;
+        text-transform:uppercase;padding:.12rem .45rem;border-radius:3px;vertical-align:middle}
+.badge.done{background:var(--green-bg);border:1px solid var(--green-bd);color:var(--green)}
+.badge.pend{background:var(--amber-bg);border:1px solid var(--amber-bd);color:var(--amber)}
+.badge.skip{background:var(--gray-bg);border:1px solid var(--gray-bd);color:var(--gray)}
+
+/* ── Narrative arrow ── */
+.narrative{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;margin:1.2rem 0}
+.narr-box{background:var(--surface);border:1px solid var(--border);border-radius:6px;
+           padding:.55rem 1rem;font-size:.88rem;min-width:280px;position:relative}
+.narr-box.key{border-color:var(--accent);background:var(--accent-light);font-weight:600}
+.narr-arrow{font-size:1.1rem;color:var(--muted);padding-left:.5rem}
+
+/* ── Axes grid ── */
+.axes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.axis-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.axis-head{padding:.7rem 1rem;font-weight:700;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+.axis-card.a .axis-head{background:#e8f0fa;color:#1a3f7a;border-bottom:2px solid #3a6fc4}
+.axis-card.b .axis-head{background:#e8f5e8;color:#1e5c1e;border-bottom:2px solid #5a9e5a}
+.axis-card.c .axis-head{background:#fef0e8;color:#7a3a00;border-bottom:2px solid #e07030}
+.axis-card.d .axis-head{background:#f5e8f5;color:#5a1a7a;border-bottom:2px solid #9a5ac0}
+.axis-body{padding:.7rem 1rem}
+.axis-row{display:flex;justify-content:space-between;align-items:center;
+           padding:.3rem 0;border-bottom:1px solid var(--border);font-size:.84rem}
+.axis-row:last-child{border-bottom:none}
+.axis-row .val{font-weight:500}
+.axis-row .note{font-size:.75rem;color:var(--muted)}
+
+/* ── Mermaid mindmap wrapper ── */
+.mermaid-wrap{background:var(--surface);border:1px solid var(--border);border-radius:8px;
+               padding:1.5rem;overflow:auto;text-align:center}
+.mermaid{font-size:14px}
+
+/* ── Analyses table ── */
+.atbl{width:100%;border-collapse:collapse;font-size:.83rem}
+.atbl th{text-align:left;padding:.45rem .7rem;background:var(--gray-bg);
+           border-bottom:2px solid var(--border);font-weight:600;font-size:.78rem;
+           text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.atbl td{padding:.42rem .7rem;border-bottom:1px solid var(--border);vertical-align:top}
+.atbl tr:hover td{background:#f5f5f2}
+.atbl .id{font-family:'SF Mono','Fira Code',monospace;font-size:.75rem;color:var(--muted)}
+.atbl .prio-high{color:var(--green);font-weight:600}
+.atbl .prio-med{color:var(--amber)}
+.atbl .prio-low{color:var(--gray)}
+
+/* ── Persistence box ── */
+.persist-box{border:2px solid var(--accent);border-radius:8px;padding:1.2rem 1.5rem;
+              background:var(--accent-light)}
+.persist-box h3{color:var(--accent);margin-top:0}
+.persist-row{display:flex;gap:.8rem;margin:.5rem 0;font-size:.88rem;align-items:flex-start}
+.persist-num{min-width:22px;height:22px;background:var(--accent);color:#fff;border-radius:50%;
+              font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;
+              flex-shrink:0;margin-top:2px}
+
+/* ── Paper output ── */
+.paper-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem}
+.pf-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.8rem 1rem}
+.pf-card .pf-section{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;
+                       color:var(--muted);margin-bottom:.25rem;font-weight:600}
+.pf-card .pf-title{font-size:.88rem;font-weight:600;margin-bottom:.3rem}
+.pf-card .pf-feeds{font-size:.76rem;color:var(--muted)}
+.pf-card.main-result{border-color:var(--accent);background:var(--accent-light)}
+.pf-card.main-result .pf-section{color:var(--accent)}
+
+/* ── Legend ── */
+.legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:.8rem;margin-bottom:1.2rem;
+         padding:.6rem .9rem;background:var(--surface);border:1px solid var(--border);border-radius:6px}
+.legend-item{display:flex;align-items:center;gap:.35rem}
+
+footer{text-align:center;font-size:.76rem;color:var(--muted);
+        border-top:1px solid var(--border);padding:1.4rem}
+@media(max-width:650px){
+  header h1{font-size:1.15rem}
+  main{padding:1.2rem 1rem 3rem}
+  .axes-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="label">Working paper · HTE Analysis · 2026-05-28</div>
+    <h1>For whom does scientific-method training work — and why?</h1>
+    <div class="sub">Heterogeneous Treatment Effects · GenericML · BLP + GATES + CLAN · Multi-site RCT (N=1,187)</div>
+    <div class="links">
+      <a href="https://github.com/hmontoyac3/heterogeneous-effects" target="_blank">↗ GitHub repo</a>
+      <a href="https://helenamontoyacalero.com" target="_blank">← Back to website</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ────────────────────────────────────────────────
+     0. THE STORY
+──────────────────────────────────────────────── -->
+<section>
+  <h2>The story we are building</h2>
+  <div class="narrative">
+    <div class="narr-box">Average treatment effect on <strong>performance</strong> = 0 (β₁ not significant in any outcome)</div>
+    <div class="narr-arrow">↓ but</div>
+    <div class="narr-box key">Massive heterogeneity: β₂ = 0.79–0.89*** across all performance outcomes</div>
+    <div class="narr-arrow">↓ so who gains?</div>
+    <div class="narr-box">The <strong>"experienced practitioner" type:</strong> serial entrepreneur, +6yr work exp, older, less formally educated</div>
+    <div class="narr-arrow">↓ and why?</div>
+    <div class="narr-box">Same type absorbs more SI — suggesting a mechanism: theory works when the founder can <em>implement</em> it</div>
+    <div class="narr-arrow">↓ is it robust?</div>
+    <div class="narr-box">Must survive <strong>multiple GATES specs + pre-attrition sample + OLS triangulation</strong> — then it enters the paper</div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────
+     1. MINDMAP
+──────────────────────────────────────────────── -->
+<section>
+  <h2>Full analysis map (mindmap)</h2>
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+mindmap
+  root((**HTE Paper**<br/>For whom does SDM work?))
+    **✅ BASE — Confirmed results**
+      Performance track
+        ATE null β₁ ns all outcomes
+        HTE massive β₂ 0.79–0.89***
+        GATES G1=-0.83 · G2=-0.04 · G3=+1.35
+        CLAN top-5 all p&lt;0.001
+          startup_founded +68pp
+          work_exp_year +6.3yr
+          managerial_exp +3.8yr
+          age +5.8yr
+          education -25pp
+      SI absorption track
+        ATE +1.70*** si_emp vs C
+        HTE significant β₂=0.53–0.67***
+        CLAN vs C: experienced + has product
+        CLAN vs E: educated + first venture
+      Comparison
+        09_clan_comparison.R done
+        5 vars SAME direction
+        education OPPOSITE — interesting tension
+    **🔁 AXES TO VARY**
+      A · Sample
+        P1–P5 ✅ main
+        P1–P2 PENDING pre-attrition
+        P1 only PENDING cross-section
+      B · Outcome Y
+        log_sales ✅
+        any_sales ✅
+        log_emp ✅
+        log_sales_per_emp ✅
+        tfp ✅
+        si_theory_stock ✅
+        si_emp_stock ✅
+        si_thhp_stock PENDING
+      C · Comparison
+        TE vs Control ✅
+        TE vs EB ✅
+      D · GATES quantile spec
+        2-groups ✅
+        3-groups ✅ main
+        4-groups ✅
+        Top20 vs Bot20 PENDING
+    **🔲 COMPLEMENTARY**
+      OLS parametric triangulation
+        D × startup_founded PENDING
+        D × work_exp_year PENDING
+        D × college PENDING
+        D × managerial_exp PENDING
+        D × practitioner_type PENDING
+      Types analysis
+        Define practitioner type
+        ATE by type
+        Type distribution by site
+      Site HTE exploratory
+        Already in Z_i site dummies ✅
+        ATE by site PENDING
+        Composition by site PENDING
+    **📋 PERSISTENCE CRITERION**
+      Survives ≥3 GATES specs
+      Significant in ≥2 outcomes
+      Holds in P1–P2 sample
+      Confirmed by OLS
+      Then it enters the paper
+    **📄 PAPER OUTPUT**
+      §3 BLP table main spec
+      §3 GATES figure G1-G2-G3
+      §3 CLAN portrait of type
+      §4 Mechanism via SI
+      §5 Robustness tables
+      Appendix site analysis
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────
+     2. THE 4 AXES
+──────────────────────────────────────────────── -->
+<section>
+  <h2>The 4 axes of variation — what we can turn</h2>
+  <p>All core analyses run the <strong>same GenericML pipeline</strong>. A finding becomes a paper result only if it persists when we change these 4 knobs.</p>
+
+  <div class="axes-grid">
+
+    <div class="axis-card a">
+      <div class="axis-head">A · Sample (which periods?)</div>
+      <div class="axis-body">
+        <div class="axis-row">
+          <span class="val">P1–P5 (full panel)</span>
+          <span><span class="badge done">done</span></span>
+        </div>
+        <div class="axis-row">
+          <span class="val">P1–P2 <em>(pre-attrition)</em></span>
+          <span><span class="badge pend">pending</span></span>
+        </div>
+        <div class="axis-row">
+          <span class="val">P1 only <em>(cross-section)</em></span>
+          <span><span class="badge pend">pending</span></span>
+        </div>
+        <div class="axis-row">
+          <span class="note">D-003: attrition differential starts P3 (Control 73% vs TE/EB 37%)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="axis-card b">
+      <div class="axis-head">B · Outcome Y</div>
+      <div class="axis-body">
+        <div class="axis-row">
+          <span class="val">log_sales, any_sales, log_emp, log_sales_per_emp, tfp</span>
+          <span><span class="badge done">done</span></span>
+        </div>
+        <div class="axis-row">
+          <span class="val">si_theory_stock, si_emp_stock</span>
+          <span><span class="badge done">done</span></span>
+        </div>
+        <div class="axis-row">
+          <span class="val">si_thhp_stock</span>
+          <span><span class="badge pend">pending</span></span>
+        </div>
+        <div class="axis-row">
+          <span class="val">log_sales winsorized</span>
+          <span><span class="badge pend">robustness</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="axis-card c">
+      <div class="axis-head">C · Comparison arm</div>
+      <div class="axis-body">
+        <div class="axis-row">
+          <span class="val">TE vs Control</span>
+          <span><span class="badge done">done</span></span>
+        </div>
+        <div class="axis-row">
+          <span class="val">TE vs EB</span>
+          <span><span class="badge done">done</span></span>
+        </div>
+        <div class="axis-row">
+          <span class="note">Both comparisons embedded in 07 and 08 scripts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="axis-card d">
+      <div class="axis-head">D · GATES quantile spec</div>
+      <div class="axis-body">
+        <div class="axis-row">
+          <span class="val">2-groups (median split)</span>
+          <span><span class="badge done">done</span></span>
+        </div>
+        <div class="axis-row">
+          <span class="val">3-groups (terciles) <strong>← main</strong></span>
+          <span><span class="badge done">done</span></span>
+        </div>
+        <div class="axis-row">
+          <span class="val">4-groups (quartiles)</span>
+          <span><span class="badge done">done</span></span>
+        </div>
+        <div class="axis-row">
+          <span class="val">Top-20% vs Bottom-20%</span>
+          <span><span class="badge pend">pending</span></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────
+     3. COMPLEMENTARY ANALYSES
+──────────────────────────────────────────────── -->
+<section>
+  <h2>Complementary analyses (beyond GenericML)</h2>
+
+  <div class="legend">
+    <div class="legend-item"><span class="badge done">done</span> completed</div>
+    <div class="legend-item"><span class="badge pend">pending</span> next to run</div>
+    <div class="legend-item"><span class="badge skip">explore</span> exploratory / appendix</div>
+  </div>
+
+  <table class="atbl">
+    <thead>
+      <tr><th>ID</th><th>Analysis</th><th>What it answers</th><th>Status</th><th>Priority</th></tr>
+    </thead>
+    <tbody>
+
+      <tr><td class="id" colspan="5" style="background:var(--gray-bg);font-weight:700;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em">OLS Parametric Triangulation</td></tr>
+      <tr>
+        <td class="id">P-01</td>
+        <td><code>Y ~ D × startup_founded + i.rct + i.period</code></td>
+        <td>Confirms CLAN pattern with interpretable coefficient</td>
+        <td><span class="badge pend">pending</span></td>
+        <td class="prio-high">High</td>
+      </tr>
+      <tr>
+        <td class="id">P-02</td>
+        <td><code>Y ~ D × work_exp_year + controls</code></td>
+        <td>Confirms experience pattern (continuous)</td>
+        <td><span class="badge pend">pending</span></td>
+        <td class="prio-high">High</td>
+      </tr>
+      <tr>
+        <td class="id">P-03</td>
+        <td><code>Y ~ D × college + controls</code></td>
+        <td>Confirms education paradox</td>
+        <td><span class="badge pend">pending</span></td>
+        <td class="prio-high">High</td>
+      </tr>
+      <tr>
+        <td class="id">P-04</td>
+        <td><code>Y ~ D × managerial_exp + controls</code></td>
+        <td>Managerial vs general experience</td>
+        <td><span class="badge pend">pending</span></td>
+        <td class="prio-med">Medium</td>
+      </tr>
+      <tr>
+        <td class="id">P-05</td>
+        <td><code>Y ~ D × practitioner_type + controls</code></td>
+        <td>Composite index: does the "type" have a single effect?</td>
+        <td><span class="badge pend">pending</span></td>
+        <td class="prio-high">High</td>
+      </tr>
+
+      <tr><td class="id" colspan="5" style="background:var(--gray-bg);font-weight:700;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em">Types Analysis — "Reason about types" (Arnaldo)</td></tr>
+      <tr>
+        <td class="id">T-01</td>
+        <td>Define <em>practitioner type</em>: startup_founded=1 AND work_exp &gt; median AND college=0</td>
+        <td>Is there a coherent "type" in the data?</td>
+        <td><span class="badge pend">pending</span></td>
+        <td class="prio-high">High</td>
+      </tr>
+      <tr>
+        <td class="id">T-02</td>
+        <td>Simple ATE by type: E[Y|D=1,type=1] − E[Y|D=0,type=1]</td>
+        <td>How big is the gain for the practitioner type?</td>
+        <td><span class="badge pend">pending</span></td>
+        <td class="prio-high">High</td>
+      </tr>
+      <tr>
+        <td class="id">T-03</td>
+        <td>Distribution of types by RCT site</td>
+        <td>Does site composition explain country-level differences?</td>
+        <td><span class="badge pend">pending</span></td>
+        <td class="prio-med">Medium</td>
+      </tr>
+
+      <tr><td class="id" colspan="5" style="background:var(--gray-bg);font-weight:700;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em">Site-Level HTE — exploratory (CGJ 2025 shows significant site variation)</td></tr>
+      <tr>
+        <td class="id">S-01</td>
+        <td>Site dummies already in Z_i — check if rct appears in top CLAN variables</td>
+        <td>Does site membership predict benefit group?</td>
+        <td><span class="badge done">implicit</span></td>
+        <td class="prio-med">Check outputs</td>
+      </tr>
+      <tr>
+        <td class="id">S-02</td>
+        <td>ATE by site: <code>Y ~ D + D×i.rct + controls</code></td>
+        <td>Is the ATE null uniform across sites? (CGJ: Colombia &gt; India)</td>
+        <td><span class="badge skip">explore</span></td>
+        <td class="prio-med">Medium</td>
+      </tr>
+      <tr>
+        <td class="id">S-03</td>
+        <td>Type distribution by site — does practitioner type cluster by country?</td>
+        <td>Compositional explanation for site-level differences</td>
+        <td><span class="badge skip">explore</span></td>
+        <td class="prio-low">After T-01</td>
+      </tr>
+
+      <tr><td class="id" colspan="5" style="background:var(--gray-bg);font-weight:700;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em">Mechanism</td></tr>
+      <tr>
+        <td class="id">M-01</td>
+        <td>CLAN comparison: performance vs SI absorption (09_clan_comparison.R)</td>
+        <td>Do the same people benefit in both tracks?</td>
+        <td><span class="badge done">done</span></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="id">M-04</td>
+        <td>Narrative mechanism: same type in both tracks → same story</td>
+        <td>Informal mediation without IV: theory works when implementable</td>
+        <td><span class="badge pend">pending</span></td>
+        <td class="prio-high">High (paper §4)</td>
+      </tr>
+
+    </tbody>
+  </table>
+</section>
+
+<!-- ────────────────────────────────────────────────
+     4. PERSISTENCE CRITERION
+──────────────────────────────────────────────── -->
+<section>
+  <h2>Persistence criterion — what enters the paper (D-016)</h2>
+  <div class="persist-box">
+    <h3 style="margin-bottom:.8rem">A finding enters the paper if it passes all 4 filters:</h3>
+    <div class="persist-row">
+      <div class="persist-num">1</div>
+      <div><strong>GATES robustness:</strong> appears in ≥3 quantile specs (2g / 3g / 4g)</div>
+    </div>
+    <div class="persist-row">
+      <div class="persist-num">2</div>
+      <div><strong>Outcome breadth:</strong> significant in ≥2 outcomes of the same track</div>
+    </div>
+    <div class="persist-row">
+      <div class="persist-num">3</div>
+      <div><strong>Sample robustness:</strong> survives when restricted to P1–P2 (pre-attrition)</div>
+    </div>
+    <div class="persist-row">
+      <div class="persist-num">4</div>
+      <div><strong>Parametric confirmation:</strong> confirmed with OLS interaction (interpretable β)</div>
+    </div>
+    <p style="margin-top:1rem;font-size:.85rem;color:var(--accent);font-weight:600">
+      Target: 2–3 robust patterns. Not a boilerplate list of effects.
+    </p>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:.3rem">
+      Current candidates: <code>startup_founded</code> · <code>work_experience_year</code> · <code>managerial_exp</code> · <code>age</code> · <code>education/college</code> (all *** in ≥4 performance outcomes)
+    </p>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────
+     5. PAPER OUTPUT MAP
+──────────────────────────────────────────────── -->
+<section>
+  <h2>What each analysis feeds into the paper</h2>
+  <div class="paper-flow">
+    <div class="pf-card main-result">
+      <div class="pf-section">§3 — Main Results</div>
+      <div class="pf-title">BLP table</div>
+      <div class="pf-feeds">07_performance_hte.R + 08_si_hte.R<br>β₁ (ATE) and β₂ (HTE test) all outcomes × comparisons</div>
+    </div>
+    <div class="pf-card main-result">
+      <div class="pf-section">§3 — Main Results</div>
+      <div class="pf-title">GATES figure (3g)</div>
+      <div class="pf-feeds">G1 / G2 / G3 bars for log_sales<br>Shows who gains and who doesn't</div>
+    </div>
+    <div class="pf-card main-result">
+      <div class="pf-section">§3 — Main Results</div>
+      <div class="pf-title">CLAN — portrait of the type</div>
+      <div class="pf-feeds">Top 3 persistent CLAN vars<br>The "experienced practitioner" profile</div>
+    </div>
+    <div class="pf-card">
+      <div class="pf-section">§3 — Robustness in-text</div>
+      <div class="pf-title">OLS parametric table</div>
+      <div class="pf-feeds">11_ols_interactions.do<br>D × var_CLAN coefficients, interpretable magnitudes</div>
+    </div>
+    <div class="pf-card">
+      <div class="pf-section">§3 — Types</div>
+      <div class="pf-title">ATE by practitioner type</div>
+      <div class="pf-feeds">12_types_analysis.R<br>"Type gains X log_sales; non-type gains 0"</div>
+    </div>
+    <div class="pf-card">
+      <div class="pf-section">§4 — Mechanism</div>
+      <div class="pf-title">SI mechanism narrative</div>
+      <div class="pf-feeds">09_clan_comparison.R<br>Same type absorbs more SI → can implement theory</div>
+    </div>
+    <div class="pf-card">
+      <div class="pf-section">§5 — Robustness</div>
+      <div class="pf-title">P1–P2 robustness</div>
+      <div class="pf-feeds">10_robustness_p1p2.R<br>CLAN patterns survive pre-attrition sample</div>
+    </div>
+    <div class="pf-card">
+      <div class="pf-section">Appendix</div>
+      <div class="pf-title">Site-level HTE</div>
+      <div class="pf-feeds">13_site_hte.R (if warranted)<br>Composition of types by country</div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────
+     6. EXECUTION ORDER
+──────────────────────────────────────────────── -->
+<section>
+  <h2>Execution order</h2>
+  <table class="atbl">
+    <thead>
+      <tr><th>#</th><th>Task</th><th>Script</th><th>Block</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="id">1</td><td>Verify <code>i.rct</code> in 05_ols_interaction_robustness.do</td><td>quick check</td><td>A — robustness</td></tr>
+      <tr><td class="id">2</td><td>Rerun 07+08 with P1–P2 only</td><td>10_robustness_p1p2.R</td><td>A — robustness</td></tr>
+      <tr><td class="id">3</td><td>Add top-20%/bottom-20% to 07 and 08</td><td>edit 07_performance_hte.R + 08_si_hte.R</td><td>A — robustness</td></tr>
+      <tr><td class="id">4</td><td>OLS interaction table (top-5 CLAN vars, all outcomes, with i.rct)</td><td>11_ols_interactions.do</td><td>A — robustness</td></tr>
+      <tr><td class="id">5</td><td>Define practitioner type + ATE by type</td><td>12_types_analysis.R</td><td>B — types</td></tr>
+      <tr><td class="id">6</td><td>Site-level ATE + type distribution by site</td><td>12_types_analysis.R (add section)</td><td>B — types</td></tr>
+      <tr><td class="id">7</td><td>Add si_thhp_stock to 08_si_hte.R</td><td>edit 08_si_hte.R</td><td>C — completeness</td></tr>
+      <tr><td class="id">8</td><td>Causal Forest (optional, pre-submission)</td><td>new script</td><td>D — final robustness</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ────────────────────────────────────────────────
+     7. NOTE ON rct / SITE HANDLING
+──────────────────────────────────────────────── -->
+<section>
+  <h2>Note on rct / site controls</h2>
+  <p>
+    <strong>In GenericML (07 and 08):</strong> site dummies are in Z_i (lines 38–44 of 07_performance_hte.R).
+    Y is residualized on <em>period</em> FE only — not site FE. This is deliberate: absorbing site variation in Y
+    would prevent studying cross-site heterogeneity (CGJ 2025, p.66 explicit note).
+    Site effects are absorbed within the ML nuisance models.
+  </p>
+  <p>
+    <strong>In OLS triangulation (Stata):</strong> <code>i.rct</code> must be included in all interaction specs.
+    Verify in 05_ols_interaction_robustness.do before running 11_ols_interactions.do.
+  </p>
+  <p>
+    <strong>CGJ 2025 reference:</strong> finds significant site heterogeneity (p=0.001 in CLAN).
+    Colombia and Italy show highest effects; India and China lowest. Check if this aligns
+    with the practitioner-type composition by site once T-01 is done.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  HTE Paper · Helena Montoya · Updated 2026-05-28 ·
+  <a href="https://github.com/hmontoyac3/heterogeneous-effects" style="color:inherit">hmontoyac3/heterogeneous-effects</a>
+</footer>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'neutral',
+    mindmap: { padding: 20 },
+    themeVariables: {
+      primaryColor: '#eef4fa',
+      primaryBorderColor: '#2c5f8a',
+      primaryTextColor: '#1a1a1a',
+      lineColor: '#2c5f8a'
+    }
+  });
+</script>
+</body>
+</html>
