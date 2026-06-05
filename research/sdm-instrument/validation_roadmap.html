@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SDM Validation Roadmap</title>
+<style>
+  :root {
+    --blue: #1F3864;
+    --green: #2E8B57;
+    --amber: #E6A817;
+    --orange: #D05A00;
+    --purple: #5B2D8E;
+    --gray: #f5f5f5;
+    --border: #ddd;
+    --text: #2c2c2c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text);
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    line-height: 1.5;
+    background: #fff;
+  }
+  h1 { font-size: 1.6rem; color: var(--blue); margin-bottom: 4px; }
+  h2 { font-size: 1.25rem; color: var(--blue); margin: 36px 0 12px; border-bottom: 2px solid var(--blue); padding-bottom: 4px; }
+  h3 { font-size: 1rem; color: #444; margin: 20px 0 8px; }
+  .subtitle { color: #666; font-size: .85rem; margin-bottom: 24px; }
+  p, li { font-size: .88rem; }
+  p { margin-bottom: 10px; }
+  strong { color: var(--blue); }
+  hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  /* Heatmap table */
+  .heatmap { width: 100%; border-collapse: collapse; font-size: .78rem; margin: 16px 0 24px; }
+  .heatmap th, .heatmap td { padding: 6px 8px; text-align: center; border: 1px solid var(--border); }
+  .heatmap thead th { background: var(--blue); color: #fff; font-weight: 600; }
+  .heatmap .tier-label { background: #e8edf3; font-weight: 700; text-align: left; color: var(--blue); font-size: .75rem; }
+  .heatmap .criterion { text-align: left; font-weight: 500; }
+  .heatmap .sdm-col { background: #eef2f9; border-left: 3px solid var(--blue); border-right: 3px solid var(--blue); font-weight: 700; }
+  .heatmap .sdm-col-head { background: var(--blue); color: #fff; border-left: 3px solid var(--blue); border-right: 3px solid var(--blue); }
+  .heatmap .sdm-detail { text-align: left; font-size: .72rem; color: #555; font-weight: 400; }
+  .heatmap .star { color: var(--orange); font-weight: 700; }
+  .full { color: var(--green); }
+  .partial { color: var(--amber); }
+  .missing { color: #bbb; }
+  .bench-col { background: var(--gray); }
+  .legend { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; font-size: .8rem; margin: 10px 0 14px; color: #555; }
+  .legend span { white-space: nowrap; }
+
+  /* Generic tables */
+  table.clean { width: 100%; border-collapse: collapse; font-size: .82rem; margin: 12px 0 20px; }
+  table.clean th { background: var(--blue); color: #fff; padding: 8px 10px; text-align: left; font-weight: 600; }
+  table.clean td { padding: 7px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.clean tr:nth-child(even) td { background: #fafafa; }
+
+  /* Decision tree */
+  .tree { display: flex; flex-direction: column; align-items: center; gap: 16px; margin: 20px 0 28px; }
+  .state-box {
+    background: var(--blue); color: #fff; border-radius: 8px; padding: 16px 24px;
+    font-size: .82rem; max-width: 420px; width: 100%;
+  }
+  .state-box .check { color: #7fdb7f; }
+  .state-box .half { color: var(--amber); }
+  .state-box .miss { color: #ff8888; }
+  .paths { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; width: 100%; }
+  .path-card {
+    border-radius: 8px; padding: 14px; font-size: .78rem;
+    border: 2px solid; display: flex; flex-direction: column; gap: 6px;
+  }
+  .path-card h4 { font-size: .85rem; margin-bottom: 2px; }
+  .path-card .meta { font-size: .72rem; color: #666; }
+  .path-card ul { padding-left: 16px; margin: 0; }
+  .path-card li { margin-bottom: 2px; }
+  .path0 { border-color: var(--green); background: #f0f9f4; }
+  .path0 h4 { color: var(--green); }
+  .pathA { border-color: var(--amber); background: #fdf8ec; }
+  .pathA h4 { color: var(--amber); }
+  .pathB { border-color: var(--orange); background: #fdf2ea; }
+  .pathB h4 { color: var(--orange); }
+  .pathC { border-color: var(--purple); background: #f5f0fa; }
+  .pathC h4 { color: var(--purple); }
+  .journal-box {
+    border-radius: 6px; padding: 10px 14px; font-size: .78rem;
+    font-weight: 600; text-align: center; color: #fff;
+  }
+  .j-green { background: var(--green); }
+  .j-amber { background: var(--amber); color: var(--text); }
+  .j-orange { background: var(--orange); }
+  .j-purple { background: var(--purple); }
+  .arrow { font-size: 1.2rem; color: #999; }
+
+  /* Boiling water */
+  .temp-hot { background: #ffe0cc; }
+  .temp-warmhot { background: #fff0cc; }
+  .temp-warm { background: #fffbe6; }
+  .temp-best { background: #e6f7ee; }
+
+  @media (max-width: 768px) {
+    .paths { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 500px) {
+    .paths { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>SDM Journal Submission Options — Discussion Note</h1>
+<p class="subtitle">2026-06-05 | Branch: validation-analysis</p>
+
+<hr>
+
+<!-- ==================== PANEL 1: HEATMAP ==================== -->
+<h2>Panel 1: Benchmark Heatmap</h2>
+<p>Two traditions represented: <strong>formative instrument papers</strong> (Chandler, Cacciotti, Spieth21) and <strong>composite/index tradition</strong> (Bloom &amp; Van Reenen, Furman et al.).</p>
+<div class="legend">
+  <span><span class="full">●</span> Criterion present / we have it</span>
+  <span><span class="partial">◑</span> Partially present / partly available</span>
+  <span><span class="missing">○</span> Not present / they do not have it</span>
+</div>
+
+<table class="heatmap">
+<thead>
+  <tr>
+    <th style="text-align:left">Criterion</th>
+    <th class="bench-col">Chandler<br><span style="font-weight:400;font-size:.65rem">JBV '11</span></th>
+    <th class="bench-col">Cacciotti<br><span style="font-weight:400;font-size:.65rem">JBV '20</span></th>
+    <th class="bench-col">Spieth21<br><span style="font-weight:400;font-size:.65rem">JMS '21</span></th>
+    <th class="bench-col">B&amp;VR<br><span style="font-weight:400;font-size:.65rem">QJE '07</span></th>
+    <th class="bench-col">Furman<br><span style="font-weight:400;font-size:.65rem">RP '02</span></th>
+    <th class="sdm-col-head">SDM</th>
+  </tr>
+</thead>
+<tbody>
+  <tr><td colspan="7" class="tier-label">TIER 1 — MINIMUM</td></tr>
+  <tr>
+    <td class="criterion">1. Theoretical non-interchangeability</td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="sdm-col"><span class="full">●</span><br><span class="sdm-detail">Theory grounded</span></td>
+  </tr>
+  <tr>
+    <td class="criterion">2. Content validity</td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="partial">◑</span></td>
+    <td class="sdm-col"><span class="full">●</span><br><span class="sdm-detail">40-item pool from literature + 12 manager interviews + LLM</span></td>
+  </tr>
+  <tr>
+    <td class="criterion">3. VIF / non-redundancy</td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="partial">◑</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="sdm-col"><span class="full">●</span> <span class="star">★</span><br><span class="sdm-detail">VIF 1.02–1.23 across all 24 items</span></td>
+  </tr>
+  <tr>
+    <td class="criterion">4. CFA / model diagnostic</td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="sdm-col"><span class="full">●</span><br><span class="sdm-detail">3-factor reflective CFA: CFI=.418, TLI=.355, RMSEA=.054. Framed correctly as expected misspecification</span></td>
+  </tr>
+
+  <tr><td colspan="7" class="tier-label">TIER 2 — GOOD MANAGEMENT PAPER</td></tr>
+  <tr>
+    <td class="criterion">5. Experimental sensitivity</td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="sdm-col"><span class="full">●</span> <span class="star">★★</span><br><span class="sdm-detail">η²=.43, p&lt;.001</span></td>
+  </tr>
+  <tr>
+    <td class="criterion">6. Robustness alt weights</td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="sdm-col"><span class="full">●</span><br><span class="sdm-detail">App A5.2: equal item weights, equal dimension weights, minimum operator</span></td>
+  </tr>
+  <tr>
+    <td class="criterion">7. Within-study criterion</td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="sdm-col"><span class="partial">◑</span><br><span class="sdm-detail">Vignette r=.19***, N=2,745. But same-team, same-occasion / within-step r=.052 &gt; between-step r=.023 (structural coherence)</span></td>
+  </tr>
+  <tr>
+    <td class="criterion">8. Nomological validity</td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="sdm-col"><span class="partial">◑</span><br><span class="sdm-detail">AL Tier 1 b=0.16*** with firm FE, wild bootstrap, Holm correction. No only one possible explanation</span></td>
+  </tr>
+
+  <tr><td colspan="7" class="tier-label">TIER 3 — TOP JOURNALS</td></tr>
+  <tr>
+    <td class="criterion">9. External criterion</td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="sdm-col"><span class="missing">○</span></td>
+  </tr>
+  <tr>
+    <td class="criterion">10. Convergent w/ est. scales</td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="full">●</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="bench-col"><span class="missing">○</span></td>
+    <td class="sdm-col"><span class="missing">○</span></td>
+  </tr>
+</tbody>
+</table>
+
+<hr>
+
+<!-- ==================== BOILING WATER ==================== -->
+<h2>The Boiling Water Problem</h2>
+<p style="font-style:italic;color:#666;margin-bottom:16px;">We made a thermometer, we need not another thermometer to validate ours but boiling water to tell us that the thermometer is indeed signaling 100 degrees</p>
+
+<p>At this stage, we do not have a completed boiling-water solution with the data currently available. This is defensible for <strong>RP Research Note</strong>, since no benchmark paper in the formative instrument tradition has boiling water either.</p>
+
+<h3>What we CAN do with Prolific / students (ranked by water temperature)</h3>
+<p style="font-size:.78rem;color:#666;margin-bottom:10px;">Note: Prolific can also mean small new data gathering with students. If students are used, monetary cost may drop to $0; timing would depend on access and logistics.</p>
+<table class="clean">
+<thead>
+  <tr><th>Option</th><th>Temperature</th><th>Cost (rough approx.)</th><th>Time (rough approx.)</th><th>What it adds</th><th>Feasibility</th></tr>
+</thead>
+<tbody>
+  <tr class="temp-hot">
+    <td><strong>1. Camuffo RCT assessment protocol on Prolific / students</strong></td><td>Hot</td><td>$0-300</td><td>3-6 weeks</td>
+    <td>Criterion validity: independent protocol designed by different team scores same construct</td>
+    <td>doable</td>
+  </tr>
+  <tr class="temp-warmhot">
+    <td><strong>2. Prolific / students + external decision task</strong></td><td>Warm-hot</td><td>$0-300</td><td>4-5 weeks</td>
+    <td>Quasi-criterion: someone external to the team designs another vignette-like measure</td>
+    <td>doable, but the scenarios must NOT be designed by our team. Could adapt from Bazerman &amp; Moore (2013) or Kahneman-style decision cases</td>
+  </tr>
+  <tr class="temp-warm">
+    <td><strong>3. Prolific / students AOT/NFC only</strong></td><td>Warm</td><td>$0-250</td><td>3-4 weeks</td>
+    <td>Measures other constructs close to SDM, for example AOT, NFC, among others</td>
+    <td>doable</td>
+  </tr>
+  <tr class="temp-best">
+    <td><strong>4. All three in one Prolific / student session</strong></td><td>Warm-to-hot</td><td>$0-350</td><td>4-5 weeks</td>
+    <td>Convergent measures + best available criterion (Camuffo protocol OR external decision task)</td>
+    <td>Best - one small data gathering exercise, ~20 min, covers Row 9 + Row 10</td>
+  </tr>
+</tbody>
+</table>
+
+<hr>
+
+<!-- ==================== PANEL 2: DECISION TREE ==================== -->
+<h2>Panel 2: Decision Tree</h2>
+
+<div class="tree">
+  <div class="state-box">
+    <strong>SDM — Current State</strong><br><br>
+    <span class="check">✓</span> VIF 1.02–1.23 (best-in-class)<br>
+    <span class="check">✓</span> Priming RCT η²=.43 (unique)<br>
+    <span class="check">✓</span> Content validity 3 stages<br>
+    <span class="check">✓</span> Robustness alt weights (A5.2)<br>
+    <span class="half">◑</span> Vignette r=.19 (same-team)<br>
+    <span class="half">◑</span> Hierarchy gradient (3 alt mech)<br>
+    <span class="miss">✗</span> External criterion validity<br>
+    <span class="miss">✗</span> Convergent validity
+  </div>
+
+  <div class="arrow">▼</div>
+
+  <div class="paths">
+    <div class="path-card path0">
+      <h4>Path 0 — Writing fixes</h4>
+      <div class="meta">$0 · 2 days</div>
+      <ul>
+        <li>Cite B&amp;VR '07 as tradition</li>
+        <li>Within-step r → §4 main text</li>
+        <li>Response-style bias → §4 main text</li>
+        <li>Explicit composite/index framing</li>
+      </ul>
+    </div>
+    <div class="path-card pathA">
+      <h4>Path A — Small new data gathering</h4>
+      <div class="meta">$0-350 · 3-5 weeks</div>
+      <ul>
+        <li>SDM + AOT + NFC + best available criterion*</li>
+        <li>Gives: Row 10 + best Row 9 available</li>
+      </ul>
+    </div>
+    <div class="path-card pathB">
+      <h4>Path B — External innovation/performance data</h4>
+      <div class="meta">$0-500 · 4-8 weeks</div>
+      <ul>
+        <li>Collect external variables: innovation or performance, e.g., patents or databases such as Orbis</li>
+        <li>Gives: SUBSTANTIVE FINDING (not Row 9)</li>
+        <li>Step 1: check data availability and match rate</li>
+      </ul>
+    </div>
+    <div class="path-card pathC">
+      <h4>Path C — A + B combined</h4>
+      <div class="meta">$0-600 · 2-3 months</div>
+      <ul>
+        <li>Convergent + best available criterion + substantive finding</li>
+        <li>Step 1: check external data availability and match rate</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="arrow">▼</div>
+
+  <div class="paths">
+    <div><div class="journal-box j-green">RP Research Note (IF ~9)<br>R&amp;D Management (IF ~4)</div></div>
+    <div><div class="journal-box j-amber">ORM** (IF ~8.5)<br>BJM (IF ~4)</div></div>
+    <div><div class="journal-box j-orange">RP Full Article (IF ~9)<br>JPIM (IF ~6.5)</div></div>
+    <div><div class="journal-box j-purple">JMS (IF ~7.5)<br>RP Full Article (IF ~9)</div></div>
+  </div>
+</div>
+
+<p style="font-size:.75rem;color:#888;">* "Best available criterion" = Camuffo RCT assessment protocol or external vignette-like decision task designed by a non-team member. Prolific can be replaced by students as a small new data gathering exercise. NOT boiling water — but the hottest water any comparable instrument paper has achieved.<br><br>
+** ORM also requires: respond to Edwards (2011). True boiling water (behavioral traces) is unrealistic for any first instrument paper. ORM may accept hot water + honest limitations.</p>
+
+</body>
+</html>
