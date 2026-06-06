@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Action Plan — T-A-H Meeting 2026-06-06</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+    .nav { font-size: 0.83rem; color: #888; margin-bottom: 2rem; display: flex; gap: 0.8rem; }
+    .nav a { color: #888; text-decoration: none; }
+    .nav a:hover { color: #333; }
+    .nav span { color: #ccc; }
+
+    h1 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.82rem; color: #888; margin-bottom: 2rem; }
+
+    h2 {
+      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #888;
+      border-bottom: 1px solid #eee; padding-bottom: 0.4rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .decisions ol { padding-left: 1.2rem; }
+    .decisions li { font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.6rem; }
+    .decisions strong { font-weight: 600; }
+
+    .task { margin-bottom: 1.5rem; background: white; border: 1px solid #e5e5e5; border-radius: 8px; padding: 1rem 1.2rem; }
+    .task-header { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.5rem; }
+    .task-tag { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #888; background: #f3f3f3; border-radius: 4px; padding: 0.15rem 0.5rem; }
+    .task-title { font-size: 0.95rem; font-weight: 600; }
+    .task-owner { font-size: 0.75rem; color: #888; }
+    .task p, .task li { font-size: 0.88rem; line-height: 1.6; color: #333; }
+    .task ul { padding-left: 1.1rem; margin-top: 0.4rem; }
+    .task ul li { margin-bottom: 0.2rem; }
+    .task table { width: 100%; border-collapse: collapse; margin-top: 0.6rem; font-size: 0.83rem; }
+    .task th { text-align: left; font-weight: 600; padding: 0.4rem 0.6rem; background: #f7f7f7; border: 1px solid #e5e5e5; }
+    .task td { padding: 0.4rem 0.6rem; border: 1px solid #e5e5e5; vertical-align: top; line-height: 1.5; }
+    .task .blocking { margin-top: 0.6rem; }
+    .task .blocking p { font-size: 0.8rem; color: #888; font-weight: 600; margin-bottom: 0.3rem; }
+    .task .blocking li { font-size: 0.83rem; color: #555; list-style: none; }
+    .task .blocking li::before { content: "□ "; }
+
+    .not-doing ul { padding-left: 0; list-style: none; }
+    .not-doing li { font-size: 0.88rem; padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0; color: #555; }
+    .not-doing li::before { content: "✕  "; color: #ccc; }
+    .not-doing li:last-child { border-bottom: none; }
+
+    .timeline table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .timeline th { text-align: left; font-weight: 600; padding: 0.5rem 0.6rem; background: #f7f7f7; border: 1px solid #e5e5e5; }
+    .timeline td { padding: 0.5rem 0.6rem; border: 1px solid #e5e5e5; vertical-align: top; line-height: 1.5; }
+    .target { background: #1a1a1a; color: white; border-radius: 6px; padding: 0.8rem 1rem; font-size: 0.9rem; font-weight: 500; margin-top: 1rem; }
+
+    .open ul { padding-left: 1rem; }
+    .open li { font-size: 0.88rem; line-height: 1.6; margin-bottom: 0.3rem; }
+
+    footer { font-size: 0.74rem; color: #aaa; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+
+<div class="nav">
+  <a href="../index.html">← SDM Instrument</a>
+  <span>/</span>
+  <span>Meeting 2026-06-06</span>
+</div>
+
+<h1>Action Plan — T-A-H Meeting</h1>
+<p class="meta">2026-06-06 &nbsp;·&nbsp; Participants: Thomas, Arnaldo, Helena</p>
+
+<h2>Decisions</h2>
+<div class="decisions">
+  <ol>
+    <li><strong>Target: Research Policy Research Note</strong> — confirmed, stay the course.</li>
+    <li><strong>Drop formative instrument framing</strong> — reframe entirely as composite index (Bloom &amp; Van Reenen tradition). No more reflective CFA table in main text. No formative/reflective language.</li>
+    <li><strong>Connection to RP</strong>: not through innovation outcomes (we don't have them) but through <em>science itself</em> — RP is about the science↔business interface; we measure whether managers use the scientific method. This is the Trojan horse for RP.</li>
+    <li><strong>Style</strong>: econ-like, not OB. Brevity over thoroughness in text; details go to appendix.</li>
+    <li><strong>New external validation</strong>: LLM annotation of RCT transcripts (see Task 4).</li>
+    <li><strong>Template</strong>: Daniela Scur &amp; Sarah Wolfolds "Revisiting the World Management Survey" — study the structure especially the back-end.</li>
+  </ol>
+</div>
+
+<h2>Action Items</h2>
+
+<div class="task">
+  <div class="task-header">
+    <span class="task-tag">Task 1</span>
+    <span class="task-title">Rewrite framing — intro + conclusion</span>
+    <span class="task-owner">Helena</span>
+  </div>
+  <p>New intro argument: science increasingly informs management practice → we need tools to measure whether individuals <em>inside firms</em> make decisions scientifically → SDM is that tool.</p>
+  <ul>
+    <li>Key sentence: "Several decisions within firms still rest with an individual" — product management, project decisions, etc.</li>
+    <li>Individual-level variance &gt; firm-level variance is the key empirical finding → reinforces the framing</li>
+    <li>Connection to RP in intro AND conclusion AND cover letter</li>
+    <li>Cut or rewrite any sentence that sounds like it belongs in OBHDP or JPSP</li>
+  </ul>
+</div>
+
+<div class="task">
+  <div class="task-header">
+    <span class="task-tag">Task 2</span>
+    <span class="task-title">Restructure main text (~5,000 words)</span>
+    <span class="task-owner">Helena</span>
+  </div>
+  <table>
+    <tr><th>Section</th><th>Words</th><th>Content</th></tr>
+    <tr><td>Introduction + background</td><td>~1,000</td><td>Science↔management framing, what we do, brief lit</td></tr>
+    <tr><td>Validation</td><td>~1,500</td><td>1 paragraph per test. Not CFA-heavy. Content validity, non-redundancy (VIF), robustness to alt weights, experimental sensitivity, nomological pattern.</td></tr>
+    <tr><td>Empirical patterns</td><td>~1,500</td><td>Show the distributions. Figures. Heterogeneity across firm tiers, industries, countries. The data IS the paper.</td></tr>
+    <tr><td>Back-end: implications for innovation research</td><td>~1,000</td><td>What can this data/tool be used for? Connect to RP. See WMS paper for template.</td></tr>
+  </table>
+  <p style="margin-top:0.6rem; font-size:0.82rem; color:#888;">Move to appendix: CFA table, ICC details, acquiescence analysis, formative/reflective discussion, most robustness numbers.</p>
+</div>
+
+<div class="task">
+  <div class="task-header">
+    <span class="task-tag">Task 3</span>
+    <span class="task-title">Write back-end section</span>
+    <span class="task-owner">Helena</span>
+  </div>
+  <p>Read Scur &amp; Wolfolds "Revisiting the World Management Survey." List 4–6 concrete research questions that SDM data opens up for innovation/RP readership. Frame as: "this tool is now available; here is what innovation researchers can do with it."</p>
+</div>
+
+<div class="task">
+  <div class="task-header">
+    <span class="task-tag">Task 4</span>
+    <span class="task-title">LLM validation on RCT transcripts</span>
+    <span class="task-owner">Helena + Arnaldo's method</span>
+  </div>
+  <p>Get transcripts of entrepreneurs from Diego's RCT data (treated vs. control). Convert 24 SDM items into annotation rubric → LLM scores each transcript → LLM-derived SDM score per person. Test: treated group score &gt; control group score ("boiling water from another pot").</p>
+  <ul style="margin-top:0.5rem;">
+    <li>Method: robust annotation approach (Arnaldo, Abi, Said, Alfonso paper)</li>
+    <li>Backup for reviewers: persona generation from transcripts — leave for R&amp;R</li>
+  </ul>
+  <div class="blocking">
+    <p>Blocking questions before starting:</p>
+    <ul>
+      <li>Do we have access to Diego's transcripts? (Check with Arnaldo/Diego)</li>
+      <li>Which RCT? Which treated vs. control condition maps cleanest onto SDM?</li>
+      <li>IRB/consent covers secondary LLM use of interview transcripts?</li>
+    </ul>
+  </div>
+</div>
+
+<div class="task">
+  <div class="task-header">
+    <span class="task-tag">Task 5</span>
+    <span class="task-title">Circulate minutes + propose submission timeline</span>
+    <span class="task-owner">Helena → Arnaldo + Thomas</span>
+  </div>
+  <p>Send this action plan to both. Propose timeline: estimate weeks for Tasks 1–4, then propose submission date.</p>
+</div>
+
+<h2>What We Are Not Doing</h2>
+<div class="not-doing">
+  <ul>
+    <li>No Prolific convergent battery (AOT/NFC) — not needed for RP Note</li>
+    <li>No Orbis linkage — not needed for RP Note; if we do it, it's a different paper</li>
+    <li>No additional survey data collection — too slow, too costly</li>
+    <li>No persona generation (LLM) — leave for reviewer response</li>
+    <li>No trying to be an OB/formative instrument paper</li>
+  </ul>
+</div>
+
+<h2>Open Items</h2>
+<div class="open">
+  <ul>
+    <li>Rita: no response yet. Thomaz and Arnaldo to follow up separately.</li>
+    <li>Submission deadline: Helena to propose after estimating task timelines.</li>
+  </ul>
+</div>
+
+<h2>Timeline</h2>
+<div class="timeline">
+  <table>
+    <tr><th>Week</th><th>Dates</th><th>What happens</th></tr>
+    <tr><td><strong>Week 1</strong></td><td>Jun 9–13</td><td>Request Diego's transcripts (Day 1). Read Scur &amp; Wolfolds. Start rewriting: intro + framing + conclusion (Tasks 1, 3).</td></tr>
+    <tr><td><strong>Week 2</strong></td><td>Jun 16–20</td><td>Restructure main text, move things to appendix, finish back-end section (Tasks 2, 3). If transcripts arrived: start rubric + LLM annotation (Task 4).</td></tr>
+    <tr><td><strong>Week 3</strong></td><td>Jun 23–27</td><td>Finish LLM analysis if not done. Full pass clean draft. Internal review. Buffer for slippage.</td></tr>
+    <tr><td><strong>Submission-ready</strong></td><td>~Jun 29</td><td>Clean draft ready to share with Thomaz and Arnaldo before sending to RP.</td></tr>
+  </table>
+  <p style="font-size:0.82rem; color:#888; margin-top:0.6rem;">Key dependency: transcripts from Diego gate Task 4 but NOT Tasks 1–3. Rewriting starts immediately regardless.</p>
+  <div class="target">Target submission date: end of June 2026</div>
+</div>
+
+<footer>SDM Paper 1 · T-A-H Meeting · 2026-06-06</footer>
+
+</body>
+</html>
