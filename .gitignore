@@ -1,2 +1,6 @@
 .DS_Store
 **/.DS_Store
+
+# Original photos, kept locally only: full-resolution HEIC/JPEG that the
+# site does not use. Not worth committing to a Pages repo (~25 MB).
+/images/
