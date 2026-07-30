@@ -1,7 +1,2 @@
 .DS_Store
 **/.DS_Store
-
-# Original photos (HEIC/full-resolution, ~25 MB). Browsers cannot display
-# HEIC, so only the optimized JPEGs in assets/img/ are published.
-# Keep the originals locally; do not commit them to a Pages repo.
-/images/

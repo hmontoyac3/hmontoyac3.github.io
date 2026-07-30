@@ -40,9 +40,6 @@
   --c-cv: #A07A2C;
   --c-cv-soft: #F8F2E4;
   --c-cv-ring: rgba(160, 122, 44, 0.18);
-  --c-beyond: #7A5C8E;
-  --c-beyond-soft: #F3EFF7;
-  --c-beyond-ring: rgba(122, 92, 142, 0.16);
 
   /* Project states */
   --paused: #B8B4AC;
@@ -56,7 +53,6 @@
 body.research { --accent: var(--c-research); --accent-soft: var(--c-research-soft); --accent-ring: var(--c-research-ring); }
 body.teaching { --accent: var(--c-teaching); --accent-soft: var(--c-teaching-soft); --accent-ring: var(--c-teaching-ring); }
 body.projects { --accent: var(--c-projects); --accent-soft: var(--c-projects-soft); --accent-ring: var(--c-projects-ring); }
-body.beyond   { --accent: var(--c-beyond);   --accent-soft: var(--c-beyond-soft);   --accent-ring: var(--c-beyond-ring); }
 body.cv       { --accent: var(--c-cv);       --accent-soft: var(--c-cv-soft);       --accent-ring: var(--c-cv-ring); }
 
 /* ---------- Reset & base ---------- */
@@ -177,8 +173,8 @@ body.home .bio {
   font-size: 1.02rem;
   color: var(--prose);
   line-height: 1.75;
+  margin-bottom: 1.2rem;
 }
-body.home .intro .bio { margin-top: 1.3rem; }
 body.home .tags { margin-top: 1.2rem; margin-bottom: 2.8rem; }
 
 body.home a.card {
@@ -221,7 +217,6 @@ body.home a.to-research { --hue: var(--c-research); }
 body.home a.to-teaching { --hue: var(--c-teaching); }
 body.home a.to-projects { --hue: var(--c-projects); }
 body.home a.to-cv       { --hue: var(--c-cv); }
-body.home a.to-beyond   { --hue: var(--c-beyond); }
 
 body.home .quote {
   margin-top: 2.6rem;
@@ -242,80 +237,6 @@ body.home .footer {
 }
 body.home .footer a { color: var(--muted); text-decoration: none; }
 body.home .footer a:hover { color: var(--c-research); }
-
-/* Home: name block beside the portrait */
-body.home .intro {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.8rem;
-  margin-bottom: 1.2rem;
-}
-body.home .intro-text { flex: 1; min-width: 0; }
-/* height:auto is required on every sized <img>: the HTML width/height
-   attributes become presentational hints that would otherwise beat
-   aspect-ratio and render the image at full natural height. */
-body.home .portrait {
-  width: 118px;
-  height: auto;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  object-position: 50% 20%;
-  flex-shrink: 0;
-  filter: grayscale(0.12);
-}
-
-/* ============================================================
-   PHOTOS — talks and the "beyond research" gallery
-   ============================================================ */
-
-/* Talk entries: small photo beside the citation line */
-.talk {
-  display: flex;
-  gap: 1.2rem;
-  align-items: flex-start;
-  border-top: 1px solid var(--rule);
-  padding: 1.4rem 0 1.3rem;
-}
-body.research .section .talk:last-child,
-.talk:last-of-type { border-bottom: 1px solid var(--rule); }
-.talk-photo {
-  width: 104px;
-  height: auto;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-.talk-body { flex: 1; min-width: 0; }
-.talk-title { font-size: 1.05rem; font-weight: 500; line-height: 1.4; margin-bottom: 0.2rem; }
-.talk-meta { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); }
-.talk-note { font-size: 0.95rem; color: var(--prose); line-height: 1.7; margin-top: 0.5rem; }
-
-/* Gallery */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.4rem 1.1rem;
-  align-items: start;
-  margin-top: 2rem;
-}
-.shot { margin: 0; }
-.shot img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  display: block;
-  background: var(--rule-soft);
-}
-.shot figcaption {
-  font-family: var(--sans);
-  font-size: 0.74rem;
-  color: var(--muted);
-  margin-top: 0.5rem;
-  line-height: 1.5;
-}
-.shot.wide { grid-column: span 2; }
-.shot.wide img { aspect-ratio: 8 / 5; }
 
 /* ============================================================
    RESEARCH INDEX — paper entries
@@ -844,12 +765,6 @@ section > .doc-link { margin-right: 1.3rem; margin-bottom: 0.6rem; display: inli
   .status-grid { grid-template-columns: 1fr; }
   .stat-row { grid-template-columns: 1fr 1fr; gap: 1.1rem; }
   .modules, .category-grid, .two-col { grid-template-columns: 1fr; }
-  .gallery { grid-template-columns: 1fr 1fr; gap: 1.1rem 0.8rem; }
-  .shot.wide { grid-column: span 2; }
-  body.home .intro { gap: 1.2rem; }
-  body.home .portrait { width: 92px; }
-  .talk { gap: 1rem; }
-  .talk-photo { width: 84px; }
   .entry-head { flex-direction: column; gap: 0.1rem; }
   .doc-row { gap: 1.6rem; }
 }
