@@ -4,202 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Heterogeneous Effects — Research Update</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #fafafa;
-      color: #1a1a1a;
-      min-height: 100vh;
-      padding: 2rem;
-    }
-
-    /* --- Password screen --- */
-    #lock {
-      max-width: 360px;
-      margin: 15vh auto 0;
-      text-align: center;
-    }
-    #lock h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
-    #lock p { font-size: 0.85rem; color: #888; margin-bottom: 1.5rem; }
-    #lock input {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      margin-bottom: 0.8rem;
-      outline: none;
-    }
-    #lock input:focus { border-color: #999; }
-    #lock button {
-      width: 100%;
-      padding: 0.7rem;
-      background: #1a1a1a;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.9rem;
+    /* Page-local: onepager version list inside the Documents cluster */
+    .doc-cluster details { margin-top: 0.1rem; }
+    .doc-cluster summary {
+      font-family: var(--sans);
+      font-size: 0.74rem;
+      color: var(--faint);
       cursor: pointer;
+      list-style: none;
+      padding: 0.15rem 0;
     }
-    #lock button:hover { background: #333; }
-    #lock-error { font-size: 0.82rem; color: #dc2626; margin-top: 0.6rem; display: none; }
-
-    /* --- Content --- */
-    #content { display: none; max-width: 700px; margin: 0 auto; }
-    .back { font-size: 0.85rem; color: #888; text-decoration: none; display: inline-block; margin-bottom: 2rem; }
-    .back:hover { color: #333; }
-    .header { margin-bottom: 2rem; }
-    .header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.3rem; }
-
-    section { margin-bottom: 2.2rem; }
-    section h2 {
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #888;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 0.4rem;
-    }
-
-    /* --- Phases --- */
-    .phases {
-      display: flex;
-      align-items: flex-start;
-      gap: 0;
-      overflow-x: auto;
-      padding-bottom: 0.5rem;
-    }
-    .phase {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 1;
-      min-width: 72px;
-      position: relative;
-    }
-    .phase:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      width: 100%;
-      height: 2px;
-      background: #e5e5e5;
-      z-index: 0;
-    }
-    .phase.done:not(:last-child)::after { background: #1a1a1a; }
-    .phase.active:not(:last-child)::after { background: #e5e5e5; }
-    .phase-dot {
-      width: 20px; height: 20px;
-      border-radius: 50%;
-      background: #e5e5e5;
-      border: 2px solid #e5e5e5;
-      z-index: 1; position: relative;
-    }
-    .phase.done .phase-dot { background: #1a1a1a; border-color: #1a1a1a; }
-    .phase.active .phase-dot {
-      background: white; border-color: #1a1a1a;
-      box-shadow: 0 0 0 3px rgba(0,0,0,0.08);
-    }
-    .phase-label {
-      font-size: 0.7rem; color: #aaa;
-      margin-top: 0.4rem; text-align: center; line-height: 1.3;
-    }
-    .phase.done .phase-label { color: #555; }
-    .phase.active .phase-label { color: #1a1a1a; font-weight: 600; }
-
-    /* --- Stat boxes --- */
-    .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; }
-    .stat-box {
-      background: white; border: 1px solid #e5e5e5; border-radius: 6px;
-      padding: 0.9rem 1rem; text-align: center;
-    }
-    .stat-num { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.02em; }
-    .stat-label { font-size: 0.72rem; color: #888; margin-top: 0.2rem; }
-
-    /* --- Data coverage rows --- */
-    .coverage-table { width: 100%; border-collapse: collapse; }
-    .coverage-table tr { border-bottom: 1px solid #f0f0f0; }
-    .coverage-table tr:last-child { border-bottom: none; }
-    .coverage-table td { padding: 0.65rem 0; vertical-align: middle; }
-    .cov-name { font-size: 0.85rem; width: 44%; }
-    .cov-bar-wrap { width: 32%; padding-right: 1rem; }
-    .cov-bar-bg {
-      height: 5px; border-radius: 3px; background: #f0f0f0; overflow: hidden;
-    }
-    .cov-bar-fill { height: 100%; border-radius: 3px; background: #1a1a1a; }
-    .cov-bar-fill.partial { background: #aaa; }
-    .cov-bar-fill.pending { background: #e5e5e5; }
-    .cov-tag {
-      font-size: 0.72rem;
-      padding: 0.15rem 0.45rem;
-      border-radius: 4px;
-      display: inline-block;
-      white-space: nowrap;
-    }
-    .tag-ready { background: #f0f0f0; color: #555; }
-    .tag-partial { background: #fff7ed; color: #92400e; }
-    .tag-pending { background: #fef2f2; color: #991b1b; }
-    .cov-vars { font-size: 0.75rem; color: #888; margin-top: 0.15rem; }
-
-    /* --- Two-col layout for available/missing --- */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-    .col-box {
-      background: white; border: 1px solid #e5e5e5; border-radius: 6px; padding: 1rem;
-    }
-    .col-box h3 { font-size: 0.75rem; font-weight: 600; margin-bottom: 0.7rem; }
-    .col-box ul { list-style: none; }
-    .col-box ul li { font-size: 0.8rem; color: #555; padding: 0.2rem 0; padding-left: 0.9rem; position: relative; }
-    .col-box ul li::before { content: "·"; position: absolute; left: 0; color: #bbb; }
-    .col-box ul li.high::before { color: #dc2626; content: "▲"; font-size: 0.6rem; top: 0.25rem; }
-
-    /* --- Category grid --- */
-    .category-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; }
-    .category-item {
-      background: white; border: 1px solid #e5e5e5; border-radius: 6px; padding: 1rem;
-    }
-    .category-label { font-size: 0.75rem; font-weight: 600; margin-bottom: 0.4rem; }
-    .category-vars { font-size: 0.78rem; color: #666; line-height: 1.6; }
-
-    /* --- Log --- */
-    .log-entry { padding: 0.8rem 0; border-bottom: 1px solid #f0f0f0; }
-    .log-entry:last-child { border-bottom: none; }
-    .log-date { font-size: 0.75rem; color: #888; margin-bottom: 0.2rem; }
-    .log-text { font-size: 0.88rem; line-height: 1.55; }
-
-    /* --- Next steps --- */
-    .next-steps li {
-      font-size: 0.88rem; margin-bottom: 0.5rem;
-      padding-left: 1rem; list-style: none; line-height: 1.4;
-    }
-    .next-steps li::before { content: "→ "; color: #888; }
-
-    /* --- Docs --- */
-    .doc-link {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-size: 0.85rem; color: #1a1a1a; text-decoration: none;
-      background: white; border: 1px solid #e5e5e5; border-radius: 6px;
-      padding: 0.45rem 0.9rem; margin-right: 0.5rem; margin-bottom: 0.5rem;
-    }
-    .doc-link:hover { border-color: #999; }
-    .doc-link.external::after { content: " ↗"; font-size: 0.75rem; color: #aaa; }
-    .doc-row { display: flex; gap: 1.8rem; flex-wrap: wrap; align-items: flex-start; }
-    .doc-cluster { display: flex; flex-direction: column; gap: 0.35rem; }
-    .doc-cluster-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #aaa; margin-bottom: 0.1rem; }
-    .doc-link.disabled { color: #bbb; border-color: #eee; pointer-events: none; cursor: default; }
-    .doc-link.disabled::after { color: #ddd; }
-
-    @media (max-width: 520px) {
-      .stat-row { grid-template-columns: repeat(2, 1fr); }
-      .category-grid { grid-template-columns: 1fr; }
-      .two-col { grid-template-columns: 1fr; }
-    }
+    .doc-cluster summary::-webkit-details-marker { display: none; }
+    .version-list { display: flex; flex-direction: column; gap: 0.4rem; padding-top: 0.5rem; align-items: flex-start; }
   </style>
 </head>
-<body>
+<body class="research">
 
   <div id="lock">
     <h2>Heterogeneous Effects</h2>
@@ -214,8 +39,8 @@
 
     <div class="header">
       <h1>Heterogeneous Effects of Theory-Based Training</h1>
-      <p style="font-size:0.88rem; color:#888; margin-top:0.25rem;">Helena Montoya</p>
-      <p style="font-size:0.88rem; color:#555; margin-top:0.35rem; line-height:1.5;">
+      <p class="byline">Helena Montoya</p>
+      <p class="lede">
         Theory-based entrepreneurship training deposits knowledge uniformly — <em>who converts it into performance?</em><br>
         6 RCTs &middot; N = 1,187 founding teams &middot; 14 outcomes &middot; 26 moderators &middot; GenericML + OLS
       </p>
@@ -266,16 +91,16 @@
         </div>
         <div class="doc-cluster">
           <div class="doc-cluster-label">Analysis log</div>
-          <a class="doc-link external" href="/research/heterogeneity-effects/log.html">RF exploration</a>
-          <a class="doc-link external" href="/research/heterogeneity-effects/dml.html">DML</a>
-          <a class="doc-link external" href="/research/heterogeneity-effects/analysis_map.html">Analysis map</a>
+          <a class="doc-link" href="/research/heterogeneity-effects/log.html">RF exploration</a>
+          <a class="doc-link" href="/research/heterogeneity-effects/dml.html">DML</a>
+          <a class="doc-link" href="/research/heterogeneity-effects/analysis_map.html">Analysis map</a>
         </div>
         <div class="doc-cluster">
           <div class="doc-cluster-label">One-pagers</div>
           <a class="doc-link" href="/research/heterogeneity-effects/onepager_v10_integrated.pdf">v10 — latest</a>
-          <details style="margin-top:0.25rem;">
-            <summary style="font-size:0.75rem;color:#aaa;cursor:pointer;list-style:none;padding:0.15rem 0;">&#x25B8; Previous versions</summary>
-            <div style="display:flex;flex-direction:column;gap:0.3rem;padding-top:0.4rem;">
+          <details>
+            <summary>&#x25B8; Previous versions</summary>
+            <div class="version-list">
               <a class="doc-link" href="/research/heterogeneity-effects/onepager_v9_synthesis.pdf">v9</a>
               <a class="doc-link" href="/research/heterogeneity-effects/onepager_v8_newangles.pdf">v8</a>
               <a class="doc-link" href="/research/heterogeneity-effects/onepager_v7_mechanism_routes.pdf">v7</a>
@@ -315,8 +140,8 @@
         </div>
       </div>
 
-      <p style="font-size:0.82rem; color:#888; margin-top:1rem; line-height:1.6;">
-        Pooled RCT dataset provided by Diego Jannace. Cleaned and merged at baseline (P0). Moderator set covers demographics, experience, venture characteristics, illusion of control, uncertainty beliefs, idea scope, and dosage. <span style="color:#dc2626;">Pending:</span> cognitive battery (ambiguity aversion, risk aversion, learning orientation) — requires recovery from raw country-level files.
+      <p class="note" style="margin-top:1.2rem;">
+        Pooled RCT dataset provided by Diego Jannace. Cleaned and merged at baseline (P0). Moderator set covers demographics, experience, venture characteristics, illusion of control, uncertainty beliefs, idea scope, and dosage. <span class="pending">Pending:</span> cognitive battery (ambiguity aversion, risk aversion, learning orientation) — requires recovery from raw country-level files.
       </p>
     </section>
 
@@ -337,7 +162,7 @@
           <div class="category-vars">Attendance, sessions completed, mentor engagement</div>
         </div>
       </div>
-      <p style="font-size:0.8rem; color:#888; margin-top:0.8rem; line-height:1.5;">
+      <p class="note" style="margin-top:1.1rem;">
         Method: GenericML (Chernozhukov et al., <em>Econometrica</em> 2025) run separately by category &mdash;
         variable importance to select moderators &rarr; interaction OLS. Reference: McKenzie et al., VoxDevLit 2025.
       </p>
@@ -345,14 +170,14 @@
 
     <!-- WORKING ON -->
     <section>
-      <h2>Status — May 2026</h2>
+      <h2>Status</h2>
 
-      <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65;">
+      <p>
         Currently in the analysis phase. Two main analyses complete (learning HTE across sub-indices and periods, performance HTE via full outcome scanner). Writing has not started. Results are being consolidated before any presentation.
       </p>
 
-      <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65; margin-top:0.8rem;"><strong>Analyses running / complete</strong></p>
-      <ul style="font-size:0.88rem; color:#444; line-height:1.7; margin-top:0.4rem; padding-left:1.2rem;">
+      <p class="subhead">Analyses running / complete</p>
+      <ul>
         <li>GenericML scanner — BLP, GATES, CLAN across 14 outcomes &times; 26 moderators &times; 2 comparisons (TE vs EB, TE vs C), 250 splits</li>
         <li>SI sub-index trajectories and mediation analysis (T &rarr; &Delta;SI &rarr; pivot)</li>
         <li>Translation HTE within treated arm (&Delta;SI &rarr; pivot heterogeneity)</li>
@@ -360,8 +185,8 @@
         <li>OLS interaction robustness (TFP &times; moderators)</li>
       </ul>
 
-      <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.65; margin-top:0.8rem;"><strong>Pending</strong></p>
-      <ul style="font-size:0.88rem; color:#444; line-height:1.7; margin-top:0.4rem; padding-left:1.2rem;">
+      <p class="subhead">Pending</p>
+      <ul>
         <li>Mechanism test: T &rarr; &Delta;SI &rarr; performance, heterogeneous by founder type</li>
         <li>Cognitive battery (Diego): risk aversion, uncertainty aversion, learning orientation — only untested moderator family</li>
         <li>P1 behavioral robustness: restrict pivoting outcomes to P1 before attrition diverges</li>

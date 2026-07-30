@@ -1,6 +1,28 @@
 #!/bin/bash
 # update_site.sh — sync latest files and push to GitHub
 # Usage: bash update_site.sh
+#
+# ⚠️  STALE — DO NOT RUN AS-IS (disabled July 2026).
+#
+# The copies under $RESEARCH/website/ are older than what is committed here
+# (April 2026 vs. the current pages), so running this script would OVERWRITE
+# the live research pages with outdated content and undo the redesign.
+# It also only knows about onepager v1–v2, while v3–v10, the methodology note
+# and the seminar slides are already committed here.
+#
+# Deploy manually instead:
+#     cd /Users/helenamontoya/Documents/hmontoyac3.github.io
+#     git add . && git commit -m "..." && git push
+#
+# To repair this script: make the repo the source of truth and delete the
+# cp lines below, or re-point them at directories that are actually newer.
+
+if [ "$FORCE_STALE_SYNC" != "1" ]; then
+  echo "update_site.sh is disabled: its source files are older than the repo."
+  echo "Deploy with: git add . && git commit -m '...' && git push"
+  echo "To override anyway: FORCE_STALE_SYNC=1 bash update_site.sh"
+  exit 1
+fi
 
 REPO="/Users/helenamontoya/Documents/hmontoyac3.github.io"
 RESEARCH="/Users/helenamontoya/Documents/Documentos/Bocconi/Research"

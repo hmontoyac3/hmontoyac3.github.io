@@ -4,72 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Helena Montoya Calero</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #fafafa;
-      color: #1a1a1a;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-    .container { max-width: 560px; width: 100%; }
-    h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .subtitle { font-size: 0.95rem; color: #666; margin-bottom: 1.4rem; }
-    .bio { font-size: 0.9rem; color: #444; line-height: 1.65; margin-bottom: 1.1rem; }
-
-    a.card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: white;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
-      padding: 1.4rem 1.6rem;
-      margin-bottom: 1rem;
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-    a.card:hover { border-color: #5B7FA6; box-shadow: 0 2px 8px rgba(91,127,166,0.08); }
-    .card-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .card-sub { font-size: 0.85rem; color: #888; }
-    .card-arrow { font-size: 0.9rem; color: #ccc; transition: color 0.15s, transform 0.15s; flex-shrink: 0; }
-    a.card:hover .card-arrow { color: #5B7FA6; transform: translateX(3px); }
-
-    .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.1rem; margin-bottom: 2.5rem; }
-    .tag {
-      font-size: 0.75rem; color: #666;
-      border: 1px solid #e0e0e0; border-radius: 4px;
-      padding: 0.2rem 0.6rem; background: white;
-    }
-
-    .quote {
-      margin-top: 2rem;
-      font-size: 0.82rem;
-      color: #aaa;
-      font-style: italic;
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    .footer {
-      margin-top: 1.2rem;
-      font-size: 0.82rem;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      gap: 1.4rem;
-    }
-    .footer a { color: #999; text-decoration: none; }
-    .footer a:hover { color: #5B7FA6; }
-  </style>
+  <meta name="description" content="Helena Montoya Calero — PhD Candidate in Management at Bocconi University. Decision-making under uncertainty, treatment effect heterogeneity.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
+<body class="home">
   <div class="container">
     <h1>Helena Montoya Calero</h1>
     <p class="subtitle">PhD Candidate &middot; Bocconi University &middot; ION Management Science Lab</p>
@@ -78,7 +19,7 @@
       My research focuses on treatment effect heterogeneity — who responds to interventions, and why.
       Advised by Alfonso Gambardella and Arnaldo Camuffo.
     </p>
-    <div class="tags">
+    <div class="tags tag-row">
       <span class="tag">Heterogeneous effects</span>
       <span class="tag">Decision-making</span>
       <span class="tag">Development</span>
@@ -88,28 +29,28 @@
       <span class="tag">Data analysis</span>
     </div>
 
-    <a class="card" href="/research/">
+    <a class="card to-research" href="/research/">
       <div>
         <div class="card-title">Research</div>
         <div class="card-sub">Active projects &amp; working papers</div>
       </div>
       <span class="card-arrow">→</span>
     </a>
-    <a class="card" href="/teaching/">
+    <a class="card to-teaching" href="/teaching/">
       <div>
         <div class="card-title">Teaching</div>
         <div class="card-sub">Seminars &amp; AI in the classroom</div>
       </div>
       <span class="card-arrow">→</span>
     </a>
-    <a class="card" href="/projects/">
+    <a class="card to-projects" href="/projects/">
       <div>
         <div class="card-title">Projects</div>
         <div class="card-sub">Pedagogical design &amp; tools</div>
       </div>
       <span class="card-arrow">→</span>
     </a>
-    <a class="card" href="/cv/">
+    <a class="card to-cv" href="/cv/">
       <div>
         <div class="card-title">CV</div>
         <div class="card-sub">Curriculum vitae</div>
@@ -117,7 +58,7 @@
       <span class="card-arrow">→</span>
     </a>
 
-    <p class="quote">Un mentor me enseñó que salir a aprender del mundo y traer esos aprendizajes de vuelta<br>es una de las maneras más honestas de querer al país. Orgullosamente colombiana.</p>
+    <p class="quote">Un mentor me enseñó que salir a aprender del mundo y traer esos aprendizajes de vuelta es una de las maneras más honestas de querer al país. Orgullosamente colombiana.</p>
 
     <div class="footer">
       <a href="mailto:helena.montoya@phd.unibocconi.it">helena.montoya@phd.unibocconi.it</a>

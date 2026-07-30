@@ -4,133 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SDM Instrument — Research Update</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #fafafa;
-      color: #1a1a1a;
-      min-height: 100vh;
-      padding: 2rem;
-    }
-
-    #lock {
-      max-width: 360px;
-      margin: 15vh auto 0;
-      text-align: center;
-    }
-    #lock h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
-    #lock p { font-size: 0.85rem; color: #888; margin-bottom: 1.5rem; }
-    #lock input {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      margin-bottom: 0.8rem;
-      outline: none;
-    }
-    #lock input:focus { border-color: #999; }
-    #lock button {
-      width: 100%;
-      padding: 0.7rem;
-      background: #1a1a1a;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      cursor: pointer;
-    }
-    #lock button:hover { background: #333; }
-    #lock-error { font-size: 0.82rem; color: #dc2626; margin-top: 0.6rem; display: none; }
-
-    #content { display: none; max-width: 680px; margin: 0 auto; }
-    .back { font-size: 0.85rem; color: #888; text-decoration: none; display: inline-block; margin-bottom: 2rem; }
-    .back:hover { color: #333; }
-    .header { margin-bottom: 2rem; }
-    .header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .header-meta { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.5rem; }
-    .meta { font-size: 0.82rem; color: #888; }
-
-    section { margin-bottom: 2rem; }
-    section h2 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.4rem; }
-
-    /* --- Phases --- */
-    .phases {
-      display: flex;
-      align-items: flex-start;
-      gap: 0;
-      overflow-x: auto;
-      padding-bottom: 0.5rem;
-    }
-    .phase {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 1;
-      min-width: 72px;
-      position: relative;
-    }
-    .phase:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      width: 100%;
-      height: 2px;
-      background: #e5e5e5;
-      z-index: 0;
-    }
-    .phase.done:not(:last-child)::after,
-    .phase.active:not(:last-child)::after { background: #1a1a1a; }
-    .phase-dot {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #e5e5e5;
-      border: 2px solid #e5e5e5;
-      z-index: 1;
-      position: relative;
-    }
-    .phase.done .phase-dot { background: #1a1a1a; border-color: #1a1a1a; }
-    .phase.active .phase-dot {
-      background: white;
-      border-color: #1a1a1a;
-      box-shadow: 0 0 0 3px rgba(0,0,0,0.08);
-    }
-    .phase-label {
-      font-size: 0.7rem;
-      color: #aaa;
-      margin-top: 0.4rem;
-      text-align: center;
-      line-height: 1.3;
-    }
-    .phase.done .phase-label { color: #555; }
-    .phase.active .phase-label { color: #1a1a1a; font-weight: 600; }
-
-    .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-    .status-item { background: white; border: 1px solid #e5e5e5; border-radius: 6px; padding: 1rem; }
-    .status-label { font-size: 0.75rem; color: #888; margin-bottom: 0.2rem; }
-    .status-value { font-size: 0.95rem; font-weight: 500; }
-
-    .log-entry { padding: 0.8rem 0; border-bottom: 1px solid #f0f0f0; }
-    .log-entry:last-child { border-bottom: none; }
-    .log-date { font-size: 0.75rem; color: #888; margin-bottom: 0.2rem; }
-    .log-text { font-size: 0.9rem; }
-
-    .next-steps li { font-size: 0.9rem; margin-bottom: 0.5rem; padding-left: 1rem; list-style: none; }
-    .next-steps li::before { content: "→ "; color: #888; }
-
-    .doc-link {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-size: 0.88rem; color: #1a1a1a; text-decoration: none;
-      background: white; border: 1px solid #e5e5e5; border-radius: 6px;
-      padding: 0.5rem 1rem; margin-right: 0.6rem; margin-bottom: 0.5rem;
-    }
-    .doc-link:hover { border-color: #999; }
-  </style>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
+<body class="research">
 
   <div id="lock">
     <h2>SDM Instrument</h2>
@@ -145,12 +25,12 @@
 
     <div class="header">
       <h1>SDM Instrument</h1>
-      <p style="font-size:0.9rem; color:#555; margin-top:0.3rem;">Developing and validating a survey instrument for scientific decision-making in managers.</p>
+      <p class="lede">Developing and validating a survey instrument for scientific decision-making in managers.</p>
     </div>
 
     <section>
       <h2>Working on</h2>
-      <p style="font-size:0.9rem; color:#1a1a1a; line-height:1.6;">RP Research Note confirmed as target. Rewriting: drop formative framing, reframe as composite index (Bloom &amp; Van Reenen). New external validation via LLM annotation of RCT transcripts. Target submission end of June 2026.</p>
+      <p>Full draft in revision with coauthors. RP Research Note confirmed as target. Reframed as a composite index (Bloom &amp; Van Reenen) rather than a formative construct. New external validation via LLM annotation of RCT transcripts. Closing framing and contribution before the draft circulates.</p>
     </section>
 
     <section>
@@ -172,11 +52,11 @@
           <div class="phase-dot"></div>
           <div class="phase-label">Analysis</div>
         </div>
-        <div class="phase active">
+        <div class="phase done">
           <div class="phase-dot"></div>
           <div class="phase-label">Writing</div>
         </div>
-        <div class="phase">
+        <div class="phase active">
           <div class="phase-dot"></div>
           <div class="phase-label">Revision</div>
         </div>
@@ -228,10 +108,10 @@
     <section>
       <h2>Documents</h2>
       <a class="doc-link" href="draft.pdf" download>Download draft (May 2026)</a>
-      <a class="doc-link" href="https://www.overleaf.com/project" target="_blank">Open in Overleaf</a>
-      <a class="doc-link" href="friendly_reviewers.html">Friendly Reviewers →</a>
-      <a class="doc-link" href="validation_roadmap.html">Validation Roadmap →</a>
-      <a class="doc-link" href="meetings/action_plan_TAH_20260606.html">Action Plan T-A-H (Jun 6) →</a>
+      <a class="doc-link external" href="https://www.overleaf.com/project" target="_blank">Overleaf</a>
+      <a class="doc-link" href="friendly_reviewers.html">Friendly Reviewers &rarr;</a>
+      <a class="doc-link" href="validation_roadmap.html">Validation Roadmap &rarr;</a>
+      <a class="doc-link" href="meetings/action_plan_TAH_20260606.html">Action Plan T-A-H (Jun 6) &rarr;</a>
     </section>
 
     <section>
@@ -277,9 +157,9 @@
     <section>
       <h2>Next Steps</h2>
       <ul class="next-steps">
-        <li>Assess friendly review feedback and define revisions needed</li>
-        <li>Decide journal: Research Policy (Research Note) vs. ORM</li>
-        <li>Final pass on framing aligned with chosen journal</li>
+        <li>Complete the composite-index rewrite (Tasks 1–3 from the Jun 6 action plan)</li>
+        <li>Run the external validation: LLM annotation of RCT transcripts, treated vs. control</li>
+        <li>Final pass on framing and contribution aligned with the RP Research Note format</li>
         <li>Prepare cover letter and submission</li>
       </ul>
     </section>

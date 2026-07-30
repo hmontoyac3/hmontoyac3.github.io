@@ -5,136 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Research — Helena Montoya Calero</title>
   <meta name="description" content="Research projects and working papers by Helena Montoya Calero">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #fafafa;
-      color: #1a1a1a;
-      min-height: 100vh;
-      padding: 2.5rem 2rem;
-    }
-    .container { max-width: 640px; margin: 0 auto; }
-
-    .back { font-size: 0.85rem; color: #888; text-decoration: none; display: inline-block; margin-bottom: 2.5rem; }
-    .back:hover { color: #5B7FA6; }
-
-    .page-header { margin-bottom: 2.5rem; }
-    .page-header h1 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .page-header p { font-size: 0.9rem; color: #888; }
-
-    .paper {
-      background: white;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
-      padding: 1.5rem 1.6rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .paper-title { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; }
-
-    /* Phases */
-    .phases {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 1.2rem;
-    }
-    .phase {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 1;
-      position: relative;
-    }
-    .phase:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      top: 9px;
-      left: 50%;
-      width: 100%;
-      height: 2px;
-      background: #e5e5e5;
-      z-index: 0;
-    }
-    .phase.done:not(:last-child)::after { background: #5B7FA6; }
-    .phase.active:not(:last-child)::after { background: #e5e5e5; }
-    .phase-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #e5e5e5;
-      border: 2px solid #e5e5e5;
-      z-index: 1;
-      position: relative;
-    }
-    .phase.done .phase-dot { background: #5B7FA6; border-color: #5B7FA6; }
-    .phase.active .phase-dot {
-      background: white;
-      border-color: #5B7FA6;
-      box-shadow: 0 0 0 3px rgba(91,127,166,0.12);
-    }
-    .phase-label {
-      font-size: 0.65rem;
-      color: #bbb;
-      margin-top: 0.35rem;
-      text-align: center;
-      line-height: 1.3;
-    }
-    .phase.done .phase-label { color: #666; }
-    .phase.active .phase-label { color: #5B7FA6; font-weight: 600; }
-
-    .now {
-      font-size: 0.83rem;
-      color: #444;
-      background: #f7f7f7;
-      border-left: 3px solid #5B7FA6;
-      padding: 0.5rem 0.8rem;
-      border-radius: 0 4px 4px 0;
-      margin-bottom: 1.1rem;
-    }
-    .now-label { font-size: 0.68rem; color: #888; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
-
-    .paper-footer { display: flex; justify-content: flex-end; }
-    .detail-link {
-      font-size: 0.82rem;
-      color: #888;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .detail-link:hover { color: #5B7FA6; }
-
-    /* Published badge */
-    .published-badge {
-      display: inline-block;
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: #5B7FA6;
-      border: 1px solid #c5d8ed;
-      border-radius: 4px;
-      padding: 0.15rem 0.5rem;
-      margin-bottom: 0.9rem;
-    }
-    .paper-meta { font-size: 0.82rem; color: #888; margin-bottom: 0.5rem; }
-
-    /* Paused state */
-    .paper.paused { opacity: 0.6; }
-    .phase.paused .phase-dot { background: #d4d4d4; border-color: #d4d4d4; }
-    .phase.paused:not(:last-child)::after { background: #e5e5e5; }
-    .paused-badge {
-      display: inline-block;
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: #999;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      padding: 0.15rem 0.5rem;
-      margin-bottom: 0.9rem;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
+<body class="research">
   <div class="container">
     <a class="back" href="/">&larr; Home</a>
 
@@ -152,14 +28,14 @@
         <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Data</div></div>
         <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Exploration</div></div>
         <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Analysis</div></div>
-        <div class="phase active"><div class="phase-dot"></div><div class="phase-label">Writing</div></div>
-        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Revision</div></div>
+        <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Writing</div></div>
+        <div class="phase active"><div class="phase-dot"></div><div class="phase-label">Revision</div></div>
         <div class="phase"><div class="phase-dot"></div><div class="phase-label">Submitted</div></div>
       </div>
 
       <div class="now">
-        <div class="now-label">Working on</div>
-        All sections drafted. Final pass on framing and contribution section.
+        <span class="now-label">Working on</span>
+        Full draft in revision with coauthors. Closing the framing and contribution section before it circulates.
       </div>
 
       <div class="paper-footer">
@@ -182,8 +58,8 @@
       </div>
 
       <div class="now">
-        <div class="now-label">Working on</div>
-        Analysis 02 complete: full scanner across 14 outcomes, 26 moderators, 6 RCTs (N&thinsp;=&thinsp;1,187 founding teams). Paradox confirmed: uniform learning HTE, massive performance HTE. Onepager v10 and seminar slides v2 integrating both analyses. Pending: mechanism test and cognitive battery.
+        <span class="now-label">Working on</span>
+        Full scanner across 14 outcomes and 26 moderators in 6 RCTs (1,187 founding teams). Learning is uniform; performance is not. Pending: mechanism test and cognitive battery.
       </div>
 
       <div class="paper-footer">
@@ -192,24 +68,26 @@
     </div>
 
     <!-- Paper 3: LLMs -->
-    <div class="paper paused">
+    <div class="paper">
       <div class="paper-title">Extracting Interpretable Models from Large Language Models for Organizational Data</div>
-      <div class="paused-badge">Paused</div>
+      <div class="rerouting-badge">Rerouting</div>
 
       <div class="phases">
         <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Concept</div></div>
         <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Data</div></div>
-        <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Exploration</div></div>
-        <div class="phase done"><div class="phase-dot"></div><div class="phase-label">Analysis</div></div>
-        <div class="phase paused"><div class="phase-dot"></div><div class="phase-label">Writing</div></div>
+        <div class="phase rerouting"><div class="phase-dot"></div><div class="phase-label">Exploration</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Analysis</div></div>
+        <div class="phase"><div class="phase-dot"></div><div class="phase-label">Writing</div></div>
         <div class="phase"><div class="phase-dot"></div><div class="phase-label">Revision</div></div>
         <div class="phase"><div class="phase-dot"></div><div class="phase-label">Submitted</div></div>
       </div>
 
-      <div class="now">
-        <div class="now-label">With</div>
-        Said Kazemi
+      <div class="now reroute">
+        <span class="now-label">Working on</span>
+        Back to exploration under a new framing: reworking the research question and the identification strategy before the analysis is rebuilt.
       </div>
+
+      <div class="paper-meta">With Said Kazemi</div>
     </div>
 
     <!-- COVID-19 chapter -->
