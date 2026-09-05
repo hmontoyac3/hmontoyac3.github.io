@@ -293,6 +293,12 @@
   [data-step] { opacity: 0; pointer-events: none; transition: opacity .28s ease; }
   [data-step].shown { opacity: 1; pointer-events: auto; }
 
+  .videocard .pendtag {
+    position: absolute; left: 10px; top: 10px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--card);
+    background: var(--crimson); padding: 4px 8px;
+  }
   .videoframe {
     position: relative; width: 100%; aspect-ratio: 16/9;
     border: 1px solid var(--rule); background: #000; overflow: hidden;
@@ -693,15 +699,30 @@
   </div>
 </section>
 
-<section data-part="2" class="slide" data-s="1" data-b="Bombas" data-notes="El vídeo se reproduce AQUÍ, no salgas del deck. · COMPRUÉBALO ANTES DE CLASE: no pude verificar desde aquí que este clip concreto sea el segmento del pitch ni que YouTube permita incrustarlo. Ábrelo una vez con el proyector. Si no carga o no es el trozo bueno, se cambia solo el ID del vídeo en el src del iframe, está comentado en el código. · Antes de darle al play, di las tres cosas que tienen que buscar, y NO las expliques: quiénes son, qué te hacen sentir, y qué pueden demostrar. Verlo con una tarea es lo que separa mirar de analizar. · No pauses el clip para comentar. El análisis va entero en la slide siguiente. · Contexto por si preguntan: temporada 6, 2014. Pedían 200.000 por el 10 por ciento.">
+<section data-part="2" class="slide" data-s="1" data-b="Bombas" data-notes="EL VÍDEO TODAVÍA NO ESTÁ PUESTO: lo que se ve es un marcador de posición con la etiqueta roja. No se pudo verificar el clip, así que se dejó sin incrustar a propósito. No es un fallo del deck. · PARA ACTIVARLO: en el código, borrar el bloque .videocard y descomentar el .videoframe que hay justo encima, con el identificador del vídeo bueno. Está explicado ahí mismo. · MIENTRAS NO ESTÉ, este bloque no se puede dar: sáltate las dos slides de Bombas y pasa directo al ejercicio de la nube. Y eso además te devuelve los minutos que hoy no cuadran en la sesión 1. · Antes de darle al play, di las tres cosas que tienen que buscar, y NO las expliques: quiénes son, qué te hacen sentir, y qué pueden demostrar. Verlo con una tarea es lo que separa mirar de analizar. · No pauses el clip para comentar. El análisis va entero en la slide siguiente. · Contexto por si preguntan: temporada 6, 2014. Pedían 200.000 por el 10 por ciento.">
   <div class="kicker">Tip 1 in the wild · Shark Tank, 2014</div>
   <h2 style="font-size:clamp(19px,2.4vw,33px)">Two founders, socks, and one room of investors to convince.</h2>
   <div class="cols2" style="gap:clamp(16px,2.4vw,40px);align-items:center">
-    <!-- Para cambiar el vídeo, cambia SOLO el identificador que va después de /embed/ -->
+    <!-- MARCADOR DE POSICIÓN. No se pudo verificar que este clip sea el
+         segmento del pitch ni que YouTube permita incrustarlo.
+         PARA ACTIVARLO: borra el bloque .videocard de abajo, descomenta el
+         .videoframe, y pon el identificador correcto detrás de /embed/.
+         Nada más hay que tocar.
+
     <div class="videoframe">
-      <iframe src="https://www.youtube-nocookie.com/embed/WpPhs7OipzQ?rel=0&modestbranding=1"
+      <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0&modestbranding=1"
               title="Bombas on Shark Tank" allowfullscreen
               allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"></iframe>
+    </div>
+    -->
+    <div class="videocard">
+      <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Video placeholder">
+        <rect width="320" height="180" fill="var(--rule-soft)"/>
+        <rect x="0" y="150" width="320" height="30" fill="var(--rule)"/>
+        <circle cx="160" cy="78" r="34" fill="var(--ink-faint)" opacity=".26"/>
+      </svg>
+      <span class="play" aria-hidden="true"></span>
+      <span class="pendtag">Vídeo pendiente</span>
     </div>
     <div class="stack">
       <p class="body">Watch for three things, and do not write anything down yet.</p>
