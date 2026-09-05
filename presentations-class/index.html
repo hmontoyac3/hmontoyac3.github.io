@@ -293,6 +293,11 @@
   [data-step] { opacity: 0; pointer-events: none; transition: opacity .28s ease; }
   [data-step].shown { opacity: 1; pointer-events: auto; }
 
+  .videoframe {
+    position: relative; width: 100%; aspect-ratio: 16/9;
+    border: 1px solid var(--rule); background: #000; overflow: hidden;
+  }
+  .videoframe iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .appeal { display: flex; flex-direction: column; gap: 7px; }
   .appeal h3 { margin: 0 0 2px; }
   .appeal .k {
@@ -685,6 +690,60 @@
   </div>
   <div class="panel info" data-step="4">
     <p class="body" style="max-width:60ch">All three are necessary. <b>None of them is sufficient on its own.</b></p>
+  </div>
+</section>
+
+<section data-part="2" class="slide" data-s="1" data-b="Bombas" data-notes="El vídeo se reproduce AQUÍ, no salgas del deck. · COMPRUÉBALO ANTES DE CLASE: no pude verificar desde aquí que este clip concreto sea el segmento del pitch ni que YouTube permita incrustarlo. Ábrelo una vez con el proyector. Si no carga o no es el trozo bueno, se cambia solo el ID del vídeo en el src del iframe, está comentado en el código. · Antes de darle al play, di las tres cosas que tienen que buscar, y NO las expliques: quiénes son, qué te hacen sentir, y qué pueden demostrar. Verlo con una tarea es lo que separa mirar de analizar. · No pauses el clip para comentar. El análisis va entero en la slide siguiente. · Contexto por si preguntan: temporada 6, 2014. Pedían 200.000 por el 10 por ciento.">
+  <div class="kicker">Tip 1 in the wild · Shark Tank, 2014</div>
+  <h2 style="font-size:clamp(19px,2.4vw,33px)">Two founders, socks, and one room of investors to convince.</h2>
+  <div class="cols2" style="gap:clamp(16px,2.4vw,40px);align-items:center">
+    <!-- Para cambiar el vídeo, cambia SOLO el identificador que va después de /embed/ -->
+    <div class="videoframe">
+      <iframe src="https://www.youtube-nocookie.com/embed/WpPhs7OipzQ?rel=0&modestbranding=1"
+              title="Bombas on Shark Tank" allowfullscreen
+              allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"></iframe>
+    </div>
+    <div class="stack">
+      <p class="body">Watch for three things, and do not write anything down yet.</p>
+      <p class="body"><b>1.</b> Who are they?</p>
+      <p class="body"><b>2.</b> What do they make you feel?</p>
+      <p class="body"><b>3.</b> What can they prove?</p>
+      <p class="tiny">Season 6. They asked for $200,000 for ten per cent.</p>
+    </div>
+  </div>
+</section>
+
+<section data-part="2" class="slide" data-s="1" data-b="Bombas" data-notes="POR PASOS otra vez: una columna por flecha, después el dato, después la regla. · Antes de sacar cada columna, pregunta tú: ¿quiénes eran? ¿qué te hizo sentir? ¿qué podían demostrar? Que contesten ellos y tú sacas la columna que confirma. · CUIDADO CON LOS DATOS: los 450.000 dólares de ventas, el par donado por cada par vendido, los cuatro tiburones fuera y el trato de Daymond a 200.000 por el 17,5 por ciento están comprobados. Lo que NO puse en pantalla, porque no lo verifiqué, es el origen de la idea: que los calcetines son la prenda que más piden los albergues. Si lo confirmas antes del viernes, dilo en voz alta en la columna de pathos, porque es la parte que más mueve. · EL REMATE, que es el que quieres que se lleven: cuatro tiburones oyeron la donación como un coste y uno la oyó como un mercado. Mismo pitch, mismas tres apelaciones, lecturas opuestas. Por eso conocer a la audiencia es lo que decide dónde cargas el peso. · Y la regla final, dicha despacio: si no los conoces, equilibrio. El equilibrio es lo que se hace cuando no tienes información, no es una postura tibia.">
+  <div class="kicker">What each part of that pitch was doing</div>
+  <div class="cols3">
+
+    <div class="panel appeal" data-step="1" style="padding:13px 16px">
+      <h3>Ethos</h3>
+      <div><div class="k">The move</div><p>They did not walk in as sock salesmen. They walked in as the two people who had re-engineered the thing.</p></div>
+      <div><div class="k">The hard part</div><p>$450,000 in sales before they said a word. A track record is the one kind of credibility nobody argues with.</p></div>
+    </div>
+
+    <div class="panel appeal" data-step="2" style="padding:13px 16px">
+      <h3>Pathos</h3>
+      <div><div class="k">The move</div><p>One pair donated for every pair sold.</p></div>
+      <div><div class="k">The hard part</div><p>It stops being a sock and becomes a reason. Nobody in that room had to be talked into caring.</p></div>
+    </div>
+
+    <div class="panel appeal" data-step="3" style="padding:13px 16px">
+      <h3>Logos</h3>
+      <div><div class="k">The move</div><p>The ask, the equity, the sales, and what the product does that another sock does not.</p></div>
+      <div><div class="k">The hard part</div><p>It is what lets an investor defend the deal to somebody who felt nothing.</p></div>
+    </div>
+
+  </div>
+
+  <div class="panel" data-step="4" style="padding:12px 16px">
+    <p class="body" style="max-width:74ch">In studies of these pitches, <b>pathos is the most used appeal of the three</b>, more than half of everything said. Logos comes second. Ethos is used least of all.</p>
+  </div>
+
+  <div class="panel info" data-step="5" style="padding:12px 16px">
+    <p class="body" style="max-width:74ch">Four sharks heard the donation as a cost. One heard it as a market. <b>Same pitch, same three appeals, opposite readings.</b></p>
+    <p class="body" style="max-width:74ch">Know your audience and you can lean on one of the three. <b>If you do not know them, go for the balance.</b></p>
   </div>
 </section>
 
