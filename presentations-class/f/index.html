@@ -168,7 +168,10 @@
     msg.className = ''; msg.textContent = '';
 
     var slot = slotOf(f);
-    var body = new URLSearchParams({ slot: slot, payload: JSON.stringify(got.values) });
+    /* pack() existe cuando las casillas de la pantalla no son las columnas de
+       la hoja, que es el caso del formulario 1: tres casillas, una columna. */
+    var wire = f.pack ? f.pack(got.values) : got.values;
+    var body = new URLSearchParams({ slot: slot, payload: JSON.stringify(wire) });
 
     /* Se manda como form-urlencoded a propósito: así el navegador NO
        dispara la petición previa de CORS, que es donde Apps Script
@@ -177,7 +180,7 @@
     fetch(ENDPOINT, { method: 'POST', body: body })
       .then(function (r) { if (!r.ok) throw 0; return r.text(); })
       .then(function () { done(f, slot); })
-      .catch(function () { viaIframe(f, slot, got.values); });
+      .catch(function () { viaIframe(f, slot, wire); });
   }
 
   function viaIframe(f, slot, values) {

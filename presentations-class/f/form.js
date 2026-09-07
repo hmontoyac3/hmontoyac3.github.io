@@ -6,6 +6,9 @@
    El ENDPOINT tiene que ser EL MISMO que el de deck_friday.html.
    Si cambias uno, cambia el otro.
 
+   Los nombres de los campos son los de las CABECERAS REALES de la hoja,
+   comprobados uno a uno contra el endpoint el 7 de septiembre de 2026.
+
    CONTRATO CON EL DECK, no se toca a la ligera:
    el deck busca las columnas por NOMBRE y en minúsculas, con
    colOf(rows, 'word') y compañía. Si renombras un campo aquí, la
@@ -46,12 +49,21 @@ var FORMS = [
       { name: 'company3', label: 'Third choice',  type: 'firm' },
       { name: 'timing', label: 'A Bocconi graduate who finds a job: how long from graduating to starting?',
         hint: 'Pick one. Do not look it up.', type: 'radio', options: RANGES }
-    ] },
+    ],
+    /* La hoja tiene UNA columna 'companies', no tres. Las tres casillas son
+       solo de interfaz: se juntan con punto y coma, que es uno de los
+       separadores que el deck parte para contar los votos. */
+    pack: function (v) {
+      return {
+        companies: [v.company1, v.company2, v.company3].filter(Boolean).join('; '),
+        timing: v.timing || ''
+      };
+    } },
 
   { n: 2, slot: 'q2', when: 'Session 1', title: 'Why you stopped listening',
     blurb: 'The last time you were in an audience and you stopped listening. No names, and no courses from this university.',
     fields: [
-      { name: 'stopped', label: 'What made you stop?', type: 'text' },
+      { name: 'what', label: 'What made you stop?', type: 'text' },
       { name: 'word', label: 'In one word: what was missing?', hint: 'One word. It goes straight on the screen.', type: 'word' }
     ] },
 
@@ -106,7 +118,7 @@ var FORMS = [
       scale('awk_real', 'How awkward was it, really?'),
       scale('ok_real',  'How comfortable did you end up?'),
       { name: 'remember', label: 'One thing someone said that you will remember', hint: 'No names.', type: 'text' },
-      { name: 'almost', label: 'Was there something you almost said and did not?', type: 'radio', options: ['yes','no'] }
+      { name: 'held_back', label: 'Was there something you almost said and did not?', type: 'radio', options: ['yes','no'] }
     ] },
 
   { n: 10, slot: 'q10', when: 'Session 3 · last thing', title: 'One thing you will do differently',
