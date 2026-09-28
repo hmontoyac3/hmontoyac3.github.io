@@ -70,7 +70,7 @@
   body[data-step="papers"] .band { animation: fade 800ms var(--ease) both; }
   body[data-step="papers"] .band:nth-child(2) { animation-delay: 120ms; }
   body[data-step="papers"] .band:nth-child(3) { animation-delay: 240ms; }
-  body[data-step="p1"] .bands { grid-template-columns: 5.4fr .8fr .8fr; }
+  body[data-step^="p1"] .bands { grid-template-columns: 5.4fr .8fr .8fr; }
   body[data-step^="p2"] .bands { grid-template-columns: .8fr 5.4fr .8fr; }
   body[data-step="close"] .bands { opacity: 0; pointer-events: none; }
 
@@ -91,27 +91,31 @@
   .fact { display: grid; grid-template-columns: 6.2em 1fr; gap: .8em; align-items: baseline; }
   .fact dt { font-size: .7em; letter-spacing: .18em; text-transform: uppercase; color: var(--deep); font-weight: 400; }
   .fact dd { margin: 0; }
+  .facts { font-size: 1.22em; gap: .7em; }
+  .fact { grid-template-columns: 5.6em 1fr; }
   .ph { color: var(--soft); font-style: italic; }
   .band.three .title, .band.three .facts { opacity: .8; }
   .invite { margin: auto 0 0; font-family: var(--serif); font-style: italic; color: var(--deep); font-size: clamp(15px, 1.2vw, 22px); }
 
   /* collapsed columns: eyebrow and title only */
-  body[data-step="p1"] .band:not(.one) .facts, body[data-step="p1"] .band:not(.one) .invite,
-  body[data-step="p1"] .band:not(.one) .status,
+  body[data-step^="p1"] .band:not(.one) .facts, body[data-step^="p1"] .band:not(.one) .invite,
+  body[data-step^="p1"] .band:not(.one) .status,
   body[data-step^="p2"] .band:not(.two) .facts, body[data-step^="p2"] .band:not(.two) .invite,
   body[data-step^="p2"] .band:not(.two) .status { display: none; }
-  body[data-step="p1"] .band:not(.one) .title,
+  body[data-step^="p1"] .band:not(.one) .title,
   body[data-step^="p2"] .band:not(.two) .title { font-size: clamp(15px, 1.15vw, 21px); }
-  body[data-step="p1"] .band:not(.one),
+  body[data-step^="p1"] .band:not(.one),
   body[data-step^="p2"] .band:not(.two) { opacity: .75; }
 
   /* expanded column: title row, then the feature */
-  body[data-step="p1"] .band.one .facts,
+  body[data-step^="p1"] .band.one .facts,
   body[data-step^="p2"] .band.two .facts { display: none; }
-  body[data-step="p1"] .band.one .headrow,
+  body[data-step^="p1"] .band.one .headrow,
   body[data-step^="p2"] .band.two .headrow { display: flex; align-items: baseline; gap: 1.2em; flex-wrap: wrap; }
   .feature { display: none; min-height: 0; }
-  body[data-step="p1"] .one .f-p1,
+  body[data-step="p1a"] .one .f-p1a,
+  body[data-step="p1b"] .one .f-p1b,
+  body[data-step="p1c"] .one .f-p1c,
   body[data-step="p2a"] .two .f-a,
   body[data-step="p2b"] .two .f-b,
   body[data-step="p2c"] .two .f-c,
@@ -186,6 +190,18 @@
   .card.north { background: var(--b-deep); border-color: var(--b-deep); color: #F4F6FA; }
   .card.north h3 { color: #F4E7BE; }
   .card.north .list li::before { background: #F4E7BE; }
+  .p1say { grid-template-columns: 1fr 1.15fr; gap: clamp(12px, 1.6vw, 28px); }
+  .f-p1b .num, .f-p1c .num { font-size: clamp(26px, 2.5vw, 46px); margin: .15em 0; }
+  .f-p1b .eyebrow, .f-p1c .eyebrow { color: var(--deep); }
+  .lead-card { background: transparent; border-color: transparent; align-content: center; }
+  .lead-card h3 { font-size: clamp(24px, 2.2vw, 40px); }
+  .f-p1c .card, .p1say .card, .f-p1b .card { font-size: 1.14em; }
+  .p1-lead { grid-column: 1 / -1; margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(19px, 1.7vw, 31px); line-height: 1.2; }
+  .p1say .card > p { margin: 0 0 .2em; }
+  .card.north.gold .note-s, .card.north.gold p { color: #FBF6E8; }
+  .card.north.gold { background: var(--y-deep); border-color: var(--y-deep); color: #FBF6E8; }
+  .card.north.gold h3 { color: #FBF6E8; }
+  .card.north.gold .list li::before { background: #F4E7BE; }
   .card.north .quiet { font-family: var(--serif); font-style: italic; color: #DCE4EF; margin-top: .4em; font-size: 1.1em; }
 
   /* ---------------- close ---------------- */
@@ -196,7 +212,7 @@
   }
   body[data-step="close"] .close { opacity: 1; pointer-events: auto; }
   .close h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-style: italic; font-size: clamp(30px, 3.4vw, 62px); line-height: 1.05; }
-  .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(10px, 1.2vw, 20px); }
+  .close .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(10px, 1.2vw, 20px); }
   .take { background: var(--bg); border-radius: 14px; padding: clamp(18px, 2vw, 36px); display: grid; gap: .6em; align-content: start; }
   .take .eyebrow { color: var(--deep); }
   .take p { margin: 0; font-family: var(--serif); font-size: clamp(19px, 1.7vw, 31px); line-height: 1.2; text-wrap: balance; }
@@ -225,8 +241,8 @@
   @media (max-width: 820px) {
     body { overflow: auto; }
     .stage { height: auto; min-height: 100%; }
-    .bands, body[data-step="p1"] .bands, body[data-step^="p2"] .bands { grid-template-columns: 1fr; }
-    .grid3, .finding, .say, .three, .mods, .see { grid-template-columns: 1fr; }
+    .bands, body[data-step^="p1"] .bands, body[data-step^="p2"] .bands { grid-template-columns: 1fr; }
+    .grid3, .finding, .say, .p1say, .close .three, .mods, .see { grid-template-columns: 1fr; }
     .quad { grid-template-columns: 1fr; grid-template-rows: none; } .quad > * { grid-column: auto !important; grid-row: auto !important; } .axis-y, .axis-x { display: none; }
     .span2 { grid-column: auto; }
     .close { position: static; display: none; opacity: 1; }
@@ -255,21 +271,61 @@
     <!-- Paper one: yellow, the most advanced -->
     <article class="band one">
       <div class="headrow">
-        <div class="tag"><span class="eyebrow">Paper one</span><span class="status">Final review, before submission</span></div>
-        <h2 class="title">[Paper one title]</h2>
+        <div class="tag"><span class="eyebrow">Paper one</span><span class="status">Final review, with Arnaldo Camuffo and Thomaz Teodorovicz</span></div>
+        <h2 class="title">Measuring scientific decision-making in organizations</h2>
       </div>
       <dl class="facts">
-        <div class="fact"><dt>Journal</dt><dd class="ph">[target journal]</dd></div>
-        <div class="fact"><dt>Question</dt><dd class="ph">[one line]</dd></div>
-        <div class="fact"><dt>Data</dt><dd class="ph">[pre-survey · sample]</dd></div>
+        <div class="fact"><dt>Journal</dt><dd><i>Research Policy</i>, research note</dd></div>
+        <div class="fact"><dt>Question</dt><dd>Can we measure scientific decision-making with a short survey?</dd></div>
+        <div class="fact"><dt>Data</dt><dd>Validated five ways · 3,178 managers · 54 firms · Italy and Brazil</dd></div>
       </dl>
-      <div class="feature f-p1 grid3">
-        <div class="card"><h3>The idea</h3><p class="ph">[what the paper argues, in two lines]</p></div>
-        <div class="card"><h3>Data and method</h3><p class="ph">[pre-survey · N · design]</p></div>
-        <div class="card"><h3>What we find</h3><p class="ph">[headline result]</p></div>
-        <div class="card"><h3>Why it matters</h3><p class="ph">[contribution]</p></div>
-        <div class="card"><h3>Where it goes</h3><p class="ph">[target journal · timing]</p></div>
-        <div class="card"><h3>One number</h3><p class="num">[__]</p><p class="ph">[what it measures]</p></div>
+      <div class="feature f-p1a p1say">
+        <div class="card">
+          <h3>Why a measure</h3>
+          <ul class="list">
+            <li><span>Camuffo et al.'s RCTs show that founders trained to decide like scientists <b>perform better</b>.</span></li>
+            <li><span>But each study scores reasoning with its own instrument and trained assessors.</span></li>
+            <li><span>And managers inside established firms are <b>almost unstudied</b>.</span></li>
+            <li><span>So: <b>can a short survey measure it</b>, comparably, across managers and firms?</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Years of building it</h3>
+          <ul class="outc">
+            <li><span class="st mid">2022 to 2023</span><span><b>12 interviews</b> with senior managers → a pool of 49 items</span></li>
+            <li><span class="st mid">2023</span><span>Internal and lab review; experts in <b>five countries</b>; a <b>16-expert pilot</b></span></li>
+            <li><span class="st mid">2023</span><span>Three randomized pre-test waves: <b>462 managers</b>, six of eight firms agree to field it</span></li>
+            <li><span class="st mid">2023 to 2026</span><span>Field deployment: <b>3,178 managers, 54 firms</b>, Italy and Brazil</span></li>
+          </ul>
+          <p class="note-s">The result: 24 items on Causal Reasoning, Evidence Evaluation and Adaptive Learning. The field data exist thanks to a long effort by my coauthors and the team.</p>
+        </div>
+      </div>
+
+      <div class="feature f-p1b grid3">
+        <div class="card lead-card">
+          <h3>Does it measure what we want?</h3>
+          <p>Five tests, and each one could have failed.</p>
+        </div>
+        <div class="card"><span class="eyebrow">It moves with the frame</span><p class="num">3.58 · 3.07 · 2.80</p><p>Managers randomly primed to think scientifically, no prime, intuitively</p></div>
+        <div class="card"><span class="eyebrow">It predicts behavior</span><p class="num">53% vs 44%</p><p>Scientific choices in a decision vignette, top fifth vs bottom fifth of the index</p></div>
+        <div class="card"><span class="eyebrow">It agrees with experts</span><p class="num">r = .66</p><p>With expert-coded reasoning in an RCT we did not run</p></div>
+        <div class="card"><span class="eyebrow">Every item counts</span><p class="num">VIF ≤ 1.23</p><p>No two of the 24 items overlap</p></div>
+        <div class="card"><span class="eyebrow">It is stable</span><p class="num">r = .45</p><p>Same respondents, about three months later</p></div>
+      </div>
+
+      <div class="feature f-p1c grid3">
+        <p class="p1-lead">All this effort already shows two patterns worth a closer look, and opens many questions.</p>
+        <div class="card"><span class="eyebrow">Pattern A · Managers, not firms</span><p class="num">≈ 2%</p><p>Share of the variation between firms (ICC 0.018). The differences lie between colleagues in the same firm.</p></div>
+        <div class="card"><span class="eyebrow">Pattern B · One practice tracks hierarchy</span><p class="num">3.58 vs 3.41</p><p>Adaptive Learning, top managers vs frontline. Causal Reasoning and Evidence Evaluation show no gradient.</p></div>
+        <div class="card north gold">
+          <h3>What it opens</h3>
+          <ul class="list">
+            <li><span>Pattern B: who reaches the top, or what the top demands?</span></li>
+            <li><span>Why do colleagues in the same firm decide so differently?</span></li>
+            <li><span>Can training move managers, as it moves founders?</span></li>
+            <li><span>Does it relate to how firms innovate?</span></li>
+          </ul>
+        </div>
       </div>
     </article>
 
@@ -421,7 +477,7 @@
   <section class="close" aria-label="Three things to take with you">
     <h2>Three things to take with you</h2>
     <div class="three">
-      <div class="take" style="--bg: var(--y); --deep: var(--y-deep)"><span class="eyebrow">Paper one</span><p class="ph">[one-line takeaway]</p></div>
+      <div class="take" style="--bg: var(--y); --deep: var(--y-deep)"><span class="eyebrow">Paper one</span><p>A validated tool to measure how managers decide like scientists. First look: the differences lie between managers, not firms.</p></div>
       <div class="take" style="--bg: var(--b); --deep: var(--b-deep)"><span class="eyebrow">Paper two</span><p>The average hides the real story: <i>who</i> benefits. The top fifth gains +1.91; the bottom fifth, nothing.</p></div>
       <div class="take" style="--bg: var(--r); --deep: var(--r-deep)"><span class="eyebrow">Paper three</span><p>A paper waiting for its team. If it sounds like your thesis, let's talk.</p></div>
     </div>
@@ -439,8 +495,8 @@
 </nav>
 
 <script>
-  const STEPS = ["intro", "papers", "p1", "p2a", "p2b", "p2c", "p2d", "close"];
-  const LABELS = ["Hello", "Three papers", "Paper one", "Paper two · why", "Paper two · what we see", "Paper two · who are they", "Paper two · what it means", "Thank you"];
+  const STEPS = ["intro", "papers", "p1a", "p1b", "p1c", "p2a", "p2b", "p2c", "p2d", "close"];
+  const LABELS = ["Hello", "Three papers", "Paper one · why and how", "Paper one · validation", "Paper one · what it shows", "Paper two · why", "Paper two · what we see", "Paper two · who are they", "Paper two · what it means", "Thank you"];
   let i = 0;
   const dots = document.getElementById("dots");
   const where = document.getElementById("where");
