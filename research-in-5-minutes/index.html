@@ -203,6 +203,7 @@
   .card.north.gold h3 { color: #FBF6E8; }
   .card.north.gold .list li::before { background: #F4E7BE; }
   .card.north .quiet { font-family: var(--serif); font-style: italic; color: #DCE4EF; margin-top: .4em; font-size: 1.1em; }
+  .card.north .qa dt { color: #F4E7BE; }
 
   /* ---------------- close ---------------- */
   .close {
@@ -394,26 +395,30 @@
           <span class="eyebrow">What we see</span>
           <p class="pull">Knowing who gains the most in sales tells us nothing about who learns the most.</p>
           <p>The training's effect on sales climbs from the bottom fifth to the top fifth. Its effect on the Theory Score stays flat across the same founders.</p>
-          <p class="note-s">Heterogeneity is detectable in 7 of the 9 outcomes we test; exit is the exception. Correlation between each founder's predicted gain in learning and in sales: 0.02 (−0.05, 0.01 and −0.03 in three robustness checks).</p>
+          <ul class="list">
+            <li><span>Tested formally, with the method's own inference: the sales score does not predict learning gains (<b>0.01 ± 0.05</b>).</span></li>
+            <li><span>It holds with the richer covariate set, with a different learner, and with the overall score.</span></li>
+            <li><span>Heterogeneity is detectable in 7 of the 9 outcomes we test; exit is the exception.</span></li>
+          </ul>
         </div>
         <figure class="fig">
-          <svg class="chart" viewBox="0 0 640 360" role="img" aria-label="Founders sorted into fifths by predicted sales gain. Effect on sales, in standard deviations: -0.17, 0.07, 0.09, 0.25, 0.56. Effect on Theory Score: -0.27, 0.10, 0.03, 0.16, 0.05.">
+          <svg class="chart" viewBox="0 0 640 360" role="img" aria-label="Founders sorted into fifths by predicted sales gain. Effect on sales, in standard deviations: -0.19, 0.07, 0.09, 0.24, 0.58. Effect on Theory Score: -0.09, -0.00, 0.03, 0.01, 0.02.">
             <rect x="30" y="8" width="14" height="14" rx="3" fill="#3F5F8C"/>
             <text x="52" y="20">Effect on sales</text>
             <rect x="210" y="8" width="14" height="14" rx="3" fill="#D9BE6E"/>
             <text x="232" y="20">Effect on Theory Score</text>
             <line x1="20" y1="201.8" x2="630" y2="201.8" stroke="#5E6675" stroke-width="1.5"/>
-            <rect class="bar neg" x="30"  y="201.8" width="44" height="42"    rx="5" fill="#3F5F8C"/>
-            <rect class="bar neg" x="80"  y="201.8" width="44" height="66.3"  rx="5" fill="#D9BE6E"/>
-            <rect class="bar" x="152" y="184.6" width="44" height="17.2"  rx="5" fill="#3F5F8C"/>
-            <rect class="bar" x="202" y="177.2" width="44" height="24.6"  rx="5" fill="#D9BE6E"/>
-            <rect class="bar" x="274" y="179.2" width="44" height="22.6"  rx="5" fill="#3F5F8C"/>
-            <rect class="bar" x="324" y="194.4" width="44" height="7.4"   rx="5" fill="#D9BE6E"/>
-            <rect class="bar" x="396" y="139.4" width="44" height="62.4"  rx="5" fill="#3F5F8C"/>
-            <rect class="bar" x="446" y="162.5" width="44" height="39.3"  rx="5" fill="#D9BE6E"/>
-            <rect class="bar" x="518" y="64.8"  width="44" height="137"   rx="5" fill="#3F5F8C"/>
-            <rect class="bar" x="568" y="189.5" width="44" height="12.3"  rx="5" fill="#D9BE6E"/>
-            <text x="540" y="56" text-anchor="middle" class="hi">+1.91</text>
+            <rect class="bar neg" x="30" y="201.8" width="44" height="45.5" rx="5" fill="#3F5F8C"/>
+            <rect class="bar neg" x="80" y="201.8" width="44" height="22.1" rx="5" fill="#D9BE6E"/>
+            <rect class="bar" x="152" y="183.5" width="44" height="18.3" rx="5" fill="#3F5F8C"/>
+            <rect class="bar neg" x="202" y="201.8" width="44" height="0.6" rx="5" fill="#D9BE6E"/>
+            <rect class="bar" x="274" y="178.6" width="44" height="23.2" rx="5" fill="#3F5F8C"/>
+            <rect class="bar" x="324" y="193.4" width="44" height="8.4" rx="5" fill="#D9BE6E"/>
+            <rect class="bar" x="396" y="143.3" width="44" height="58.5" rx="5" fill="#3F5F8C"/>
+            <rect class="bar" x="446" y="198.7" width="44" height="3.1" rx="5" fill="#D9BE6E"/>
+            <rect class="bar" x="518" y="58.3" width="44" height="143.5" rx="5" fill="#3F5F8C"/>
+            <rect class="bar" x="568" y="197.0" width="44" height="4.8" rx="5" fill="#D9BE6E"/>
+            <text x="540" y="50.3" text-anchor="middle" class="hi">+2.01</text>
             <text x="77"  y="300" text-anchor="middle" style="fill:#5E6675">1</text>
             <text x="199" y="300" text-anchor="middle" style="fill:#5E6675">2</text>
             <text x="321" y="300" text-anchor="middle" style="fill:#5E6675">3</text>
@@ -422,7 +427,7 @@
             <text x="30"  y="328" style="fill:#5E6675">gain least in sales</text>
             <text x="612" y="328" text-anchor="end" style="fill:#5E6675">gain most in sales</text>
           </svg>
-          <figcaption class="note-s">Founders sorted into fifths by how much the training is predicted to raise their sales. Effects in standard deviations. Sales: the main specification's GATES (+1.91 log points in the top fifth). Theory Score: the effect within the same fifths.</figcaption>
+          <figcaption class="note-s">Founders sorted into fifths by how much the training is predicted to raise their sales (250 sample splits). Effects in standard deviations; the top fifth gains +2.01 log points of monthly sales.</figcaption>
         </figure>
       </div>
 
@@ -442,35 +447,35 @@
           <h3>What we can say so far</h3>
           <dl class="qa">
             <div><dt>Does theory add value beyond evidence?</dt><dd>Yes: more sales, and more founders sell.</dd></div>
-            <div><dt>Does everyone gain the same?</dt><dd>No: gains are uneven in 7 of 9 outcomes; exit is the exception.</dd></div>
-            <div><dt>Are those who learn most the ones who sell most?</dt><dd>No: the correlation is 0.02.</dd></div>
+            <div><dt>Does everyone gain the same?</dt><dd>No: gains are uneven in 7 of 9 outcomes.</dd></div>
+            <div><dt>Do the founders who gain most in sales also learn most?</dt><dd>No. Their learning gains are no larger.</dd></div>
             <div><dt>Who learns without selling?</dt><dd>Early-stage, less experienced founders. Experienced founders at later stages sell without learning.</dd></div>
           </dl>
         </div>
         <div class="card north">
-          <h3>Questions it opens</h3>
-          <ul class="list">
-            <li><span><b>Timing:</b> do early-stage learners sell later?</span></li>
-            <li><span><b>Wise exits:</b> do founders who learn but do not sell quit more?</span></li>
-            <li><span><b>Why:</b> absorptive capacity, or experience that substitutes for the method?</span></li>
-          </ul>
-          <p class="quiet">To discuss with Alfonso, then into the draft.</p>
+          <h3>Questions that came up</h3>
+          <dl class="qa">
+            <div><dt>Do those who learn without selling quit more?</dt><dd>No (+4 pp, not significant).</dd></div>
+            <div><dt>Do they start selling later?</dt><dd>Not so far, though few founders remain in the last round.</dd></div>
+            <div><dt>Does the sales effect hold in levels (Poisson)?</dt><dd>Same direction, weaker.</dd></div>
+          </dl>
+          <p class="quiet">Still to test: how we split the sample · why the disconnect happens · Theory + Evidence against Control.</p>
         </div>
       </div>
     </article>
 
-    <!-- Paper three: red, on hold -->
+    <!-- Paper three: red, being reframed -->
     <article class="band three">
       <div class="headrow">
-        <div class="tag"><span class="eyebrow">Paper three</span><span class="status">On hold, with Saeid Kazemi</span></div>
-        <h2 class="title">[Paper three title]</h2>
+        <div class="tag"><span class="eyebrow">Paper three</span><span class="status">Reframing, with Saeid Kazemi</span></div>
+        <h2 class="title">Extracting interpretable models from LLMs for organizational data</h2>
       </div>
       <dl class="facts">
-        <div class="fact"><dt>Question</dt><dd class="ph">[one line]</dd></div>
-        <div class="fact"><dt>Data</dt><dd class="ph">[source · what we have]</dd></div>
-        <div class="fact"><dt>Origin</dt><dd class="ph">[where the idea came from]</dd></div>
+        <div class="fact"><dt>Idea</dt><dd>LLM priors plus survey data to predict a manager's rank from how scientifically they decide</dd></div>
+        <div class="fact"><dt>Tried</dt><dd>No clear link to layers to the CEO; the LLM's priors missed too</dd></div>
+        <div class="fact"><dt>Our read</dt><dd>It depends on the role: middle managers test, the top leans on theory and others' analysis</dd></div>
       </dl>
-      <p class="invite">Open to interns: it could become a thesis. I would love to talk about it.</p>
+      <p class="invite">Rethinking the question. Open to interns: it could become a thesis.</p>
     </article>
   </section>
 
