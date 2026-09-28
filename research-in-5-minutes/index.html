@@ -114,7 +114,8 @@
   body[data-step="p1"] .one .f-p1,
   body[data-step="p2a"] .two .f-a,
   body[data-step="p2b"] .two .f-b,
-  body[data-step="p2c"] .two .f-c { display: grid; animation: fade 700ms var(--ease) both 250ms; }
+  body[data-step="p2c"] .two .f-c,
+  body[data-step="p2d"] .two .f-d { display: grid; animation: fade 700ms var(--ease) both 250ms; }
 
   .grid3 { grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.2vw, 20px); }
   .card { background: rgba(255, 255, 255, .55); border: 1px solid rgba(255, 255, 255, .8); border-radius: 12px; padding: clamp(12px, 1.2vw, 22px); display: grid; gap: .4em; align-content: start; min-width: 0; }
@@ -154,6 +155,30 @@
   .qa { display: grid; gap: .8em; margin: 0; }
   .qa dt { font-family: var(--serif); font-style: italic; font-size: 1.12em; color: var(--deep); line-height: 1.2; }
   .qa dd { margin: .1em 0 0; }
+  .see { grid-template-columns: 1fr 1.25fr; gap: clamp(16px, 2.4vw, 44px); align-items: center; }
+  .fig { margin: 0; display: grid; gap: .5em; }
+  .quad-head { margin: 0; color: var(--soft); }
+  .quad-head .eyebrow { color: var(--b-deep); margin-right: .8em; }
+  .span-top { grid-column: 1 / -1; grid-row: 1; }
+  .see .lead { display: grid; gap: .7em; }
+  .outc { list-style: none; margin: 0; padding: 0; display: grid; gap: .6em; }
+  .outc li { display: grid; grid-template-columns: 7.2em 1fr; gap: .8em; align-items: baseline; }
+  .st { font-size: .7em; letter-spacing: .16em; text-transform: uppercase; }
+  .st.yes { color: var(--b-deep); } .st.mid { color: var(--y-deep); } .st.no { color: var(--r-deep); }
+  .note-s { margin: 0; font-size: .85em; color: var(--soft); }
+  .quad { grid-template-columns: auto 1fr 1fr; grid-template-rows: auto 1fr 1fr auto auto; gap: clamp(8px, 1vw, 16px); }
+  .axis-y { grid-row: 2 / 4; grid-column: 1; display: flex; flex-direction: column; justify-content: space-around; writing-mode: vertical-rl; transform: rotate(180deg); font-size: .72em; letter-spacing: .2em; text-transform: uppercase; color: var(--soft); }
+  .axis-x { grid-row: 4; grid-column: 2 / 4; display: grid; grid-template-columns: 1fr 1fr; text-align: center; font-size: .72em; letter-spacing: .2em; text-transform: uppercase; color: var(--soft); }
+  .q { border-radius: 12px; padding: clamp(12px, 1.3vw, 22px); display: grid; gap: .35em; align-content: start; background: rgba(255,255,255,.55); }
+  .q h3 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: clamp(19px, 1.6vw, 30px); line-height: 1.1; }
+  .q p { margin: 0; color: var(--soft); }
+  .q .share { font-family: var(--serif); font-size: clamp(20px, 1.8vw, 32px); color: var(--b-deep); }
+  .q11 { grid-column: 2; grid-row: 2; background: #F4F6FA; }
+  .q10 { grid-column: 3; grid-row: 2; background: #FBF1DA; }
+  .q01 { grid-column: 2; grid-row: 3; background: #F6E5E4; }
+  .q00 { grid-column: 3; grid-row: 3; }
+  .q10 h3 { color: var(--y-deep); } .q01 h3 { color: var(--r-deep); } .q11 h3 { color: var(--b-deep); }
+  .span-all { grid-column: 1 / -1; grid-row: 5; }
   .say { grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 28px); }
   .list { display: grid; gap: .6em; margin: 0; padding: 0; list-style: none; }
   .list li { display: grid; grid-template-columns: 1.1em 1fr; gap: .4em; }
@@ -181,6 +206,7 @@
   .thanks { display: flex; align-items: baseline; gap: 1em; flex-wrap: wrap; }
   .thanks .t { font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2vw, 36px); }
   .thanks .n { color: var(--soft); }
+  .wip { margin: 0; font-size: .8em; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
 
   /* ---------------- controls ---------------- */
   .controls {
@@ -200,7 +226,8 @@
     body { overflow: auto; }
     .stage { height: auto; min-height: 100%; }
     .bands, body[data-step="p1"] .bands, body[data-step^="p2"] .bands { grid-template-columns: 1fr; }
-    .grid3, .finding, .say, .three, .mods { grid-template-columns: 1fr; }
+    .grid3, .finding, .say, .three, .mods, .see { grid-template-columns: 1fr; }
+    .quad { grid-template-columns: 1fr; grid-template-rows: none; } .quad > * { grid-column: auto !important; grid-row: auto !important; } .axis-y, .axis-x { display: none; }
     .span2 { grid-column: auto; }
     .close { position: static; display: none; opacity: 1; }
     body[data-step="close"] .close { display: flex; padding-block: 20px 90px; }
@@ -306,54 +333,72 @@
         </div>
       </div>
 
-      <div class="feature f-b finding">
+      <div class="feature f-b see">
         <div class="lead">
-          <span class="eyebrow">What we find so far</span>
-          <p class="pull">When we sort founders by the model's score of how much the training should help them, the top fifth gains a lot and the bottom fifth gains nothing.</p>
-          <p class="figure">+1.91<small>log points of monthly sales, top fifth (p = .002)</small></p>
-          <ul class="list">
-            <li><span>Bottom fifth: about zero. Average: +0.55.</span></li>
-            <li><span>Heterogeneity in <b>7 of 9</b> outcomes; none in exit.</span></li>
-            <li><span>Holds across covariate sets, groupings and 140 variants.</span></li>
-          </ul>
+          <span class="eyebrow">What we see</span>
+          <p class="pull">Knowing who gains the most in sales tells us nothing about who learns the most.</p>
+          <p>The training's effect on sales climbs from the bottom fifth to the top fifth. Its effect on the Theory Score stays flat across the same founders.</p>
+          <p class="note-s">Heterogeneity is detectable in 7 of the 9 outcomes we test; exit is the exception. Correlation between each founder's predicted gain in learning and in sales: 0.02 (−0.05, 0.01 and −0.03 in three robustness checks).</p>
         </div>
-        <svg class="chart" viewBox="0 0 600 340" role="img" aria-label="Effect on log monthly sales by fifth of predicted gain: -0.59, 0.24, 0.32, 0.87, 1.91. Average 0.55.">
-          <line x1="0" y1="225.3" x2="600" y2="225.3" stroke="#5E6675" stroke-width="1.5"/>
-          <rect class="bar neg" x="40"  y="225.3" width="80" height="55.1"  rx="6" fill="#A9BAD1"/>
-          <rect class="bar" x="156" y="202.9" width="80" height="22.4"  rx="6" fill="#A9BAD1"/>
-          <rect class="bar" x="272" y="195.4" width="80" height="29.9"  rx="6" fill="#A9BAD1"/>
-          <rect class="bar" x="388" y="144.1" width="80" height="81.2"  rx="6" fill="#8FA4C2"/>
-          <rect class="bar" x="504" y="47.1"  width="80" height="178.2" rx="6" fill="#3F5F8C"/>
-          <line x1="0" y1="174" x2="600" y2="174" stroke="#8C6B1F" stroke-width="1.5" stroke-dasharray="6 6"/>
-          <text x="4" y="164" style="fill:#8C6B1F">average +0.55</text>
-          <text x="80"  y="302" text-anchor="middle">−0.59</text>
-          <text x="196" y="193" text-anchor="middle">+0.24</text>
-          <text x="312" y="186" text-anchor="middle">+0.32</text>
-          <text x="428" y="135" text-anchor="middle">+0.87</text>
-          <text x="544" y="36"  text-anchor="middle" class="hi">+1.91</text>
-          <text x="80"  y="330" text-anchor="middle" style="fill:#5E6675">gain least</text>
-          <text x="544" y="330" text-anchor="middle" style="fill:#5E6675">gain most</text>
-        </svg>
+        <figure class="fig">
+          <svg class="chart" viewBox="0 0 640 360" role="img" aria-label="Founders sorted into fifths by predicted sales gain. Effect on sales, in standard deviations: -0.17, 0.07, 0.09, 0.25, 0.56. Effect on Theory Score: -0.27, 0.10, 0.03, 0.16, 0.05.">
+            <rect x="30" y="8" width="14" height="14" rx="3" fill="#3F5F8C"/>
+            <text x="52" y="20">Effect on sales</text>
+            <rect x="210" y="8" width="14" height="14" rx="3" fill="#D9BE6E"/>
+            <text x="232" y="20">Effect on Theory Score</text>
+            <line x1="20" y1="201.8" x2="630" y2="201.8" stroke="#5E6675" stroke-width="1.5"/>
+            <rect class="bar neg" x="30"  y="201.8" width="44" height="42"    rx="5" fill="#3F5F8C"/>
+            <rect class="bar neg" x="80"  y="201.8" width="44" height="66.3"  rx="5" fill="#D9BE6E"/>
+            <rect class="bar" x="152" y="184.6" width="44" height="17.2"  rx="5" fill="#3F5F8C"/>
+            <rect class="bar" x="202" y="177.2" width="44" height="24.6"  rx="5" fill="#D9BE6E"/>
+            <rect class="bar" x="274" y="179.2" width="44" height="22.6"  rx="5" fill="#3F5F8C"/>
+            <rect class="bar" x="324" y="194.4" width="44" height="7.4"   rx="5" fill="#D9BE6E"/>
+            <rect class="bar" x="396" y="139.4" width="44" height="62.4"  rx="5" fill="#3F5F8C"/>
+            <rect class="bar" x="446" y="162.5" width="44" height="39.3"  rx="5" fill="#D9BE6E"/>
+            <rect class="bar" x="518" y="64.8"  width="44" height="137"   rx="5" fill="#3F5F8C"/>
+            <rect class="bar" x="568" y="189.5" width="44" height="12.3"  rx="5" fill="#D9BE6E"/>
+            <text x="540" y="56" text-anchor="middle" class="hi">+1.91</text>
+            <text x="77"  y="300" text-anchor="middle" style="fill:#5E6675">1</text>
+            <text x="199" y="300" text-anchor="middle" style="fill:#5E6675">2</text>
+            <text x="321" y="300" text-anchor="middle" style="fill:#5E6675">3</text>
+            <text x="443" y="300" text-anchor="middle" style="fill:#5E6675">4</text>
+            <text x="565" y="300" text-anchor="middle" style="fill:#5E6675">5</text>
+            <text x="30"  y="328" style="fill:#5E6675">gain least in sales</text>
+            <text x="612" y="328" text-anchor="end" style="fill:#5E6675">gain most in sales</text>
+          </svg>
+          <figcaption class="note-s">Founders sorted into fifths by how much the training is predicted to raise their sales. Effects in standard deviations. Sales: the main specification's GATES (+1.91 log points in the top fifth). Theory Score: the effect within the same fifths.</figcaption>
+        </figure>
       </div>
 
-      <div class="feature f-c say">
+      <div class="feature f-c quad">
+        <p class="quad-head span-top"><span class="eyebrow">Who are they?</span> Founders placed by how much they are predicted to learn and to sell.</p>
+        <div class="axis-y"><span>learns less</span><span>learns more</span></div>
+        <div class="q q11"><span class="share">25%</span><h3>Learns and sells</h3><p>Higher sales at baseline · later stage · more startups founded</p></div>
+        <div class="q q10"><span class="share">25%</span><h3>Learns, does not sell</h3><p>Early stage · fewer years of experience · younger venture · rarely full-time · more likely to consider quitting · more theory before training</p></div>
+        <div class="q q01"><span class="share">25%</span><h3>Sells without learning</h3><p>Later stage · more experience · more startups founded · already used evidence · higher ambition · fewer women</p></div>
+        <div class="q q00"><span class="share">25%</span><h3>Neither</h3><p>Less likely to pivot · fewer startups founded</p></div>
+        <div class="axis-x"><span>sells more</span><span>sells less</span></div>
+        <p class="note-s span-all">Above or below the median predicted gain from Theory + Evidence training. Traits over-represented in each cell, not causes.</p>
+      </div>
+
+      <div class="feature f-d say">
         <div class="card">
           <h3>What we can say so far</h3>
           <dl class="qa">
             <div><dt>Does theory add value beyond evidence?</dt><dd>Yes: more sales, and more founders sell.</dd></div>
-            <div><dt>Does everyone gain?</dt><dd>No: the top fifth gains a lot, the bottom fifth nothing.</dd></div>
-            <div><dt>Who gains most?</dt><dd>Experienced founders are over-represented.</dd></div>
-            <div><dt>Does the approach lead to wiser exits?</dt><dd>Both trainings raise exits (+8 pp vs control); theory adds none, and no subgroup differs.</dd></div>
+            <div><dt>Does everyone gain the same?</dt><dd>No: gains are uneven in 7 of 9 outcomes; exit is the exception.</dd></div>
+            <div><dt>Are those who learn most the ones who sell most?</dt><dd>No: the correlation is 0.02.</dd></div>
+            <div><dt>Who learns without selling?</dt><dd>Early-stage, less experienced founders. Experienced founders at later stages sell without learning.</dd></div>
           </dl>
         </div>
         <div class="card north">
-          <h3>Next: choosing the north</h3>
+          <h3>Questions it opens</h3>
           <ul class="list">
-            <li><span><b>Who benefits:</b> from a portrait to a theory of why.</span></li>
-            <li><span><b>Absorbing and selling:</b> are those who absorb more theory the ones who sell more?</span></li>
-            <li><span><b>Robustness:</b> the spread against repeated observations of the same firm.</span></li>
+            <li><span><b>Timing:</b> do early-stage learners sell later?</span></li>
+            <li><span><b>Wise exits:</b> do founders who learn but do not sell quit more?</span></li>
+            <li><span><b>Why:</b> absorptive capacity, or experience that substitutes for the method?</span></li>
           </ul>
-          <p class="quiet">To be decided with Alfonso, then into the draft.</p>
+          <p class="quiet">To discuss with Alfonso, then into the draft.</p>
         </div>
       </div>
     </article>
@@ -381,6 +426,7 @@
       <div class="take" style="--bg: var(--r); --deep: var(--r-deep)"><span class="eyebrow">Paper three</span><p>A paper waiting for its team. If it sounds like your thesis, let's talk.</p></div>
     </div>
     <div class="thanks"><span class="t">Thank you.</span><span class="n">Helena Montoya Calero · Bocconi University</span></div>
+    <p class="wip">Work in progress. Please do not cite or circulate.</p>
   </section>
 </main>
 
@@ -393,8 +439,8 @@
 </nav>
 
 <script>
-  const STEPS = ["intro", "papers", "p1", "p2a", "p2b", "p2c", "close"];
-  const LABELS = ["Hello", "Three papers", "Paper one", "Paper two · why", "Paper two · the finding", "Paper two · what's next", "Thank you"];
+  const STEPS = ["intro", "papers", "p1", "p2a", "p2b", "p2c", "p2d", "close"];
+  const LABELS = ["Hello", "Three papers", "Paper one", "Paper two · why", "Paper two · what we see", "Paper two · who are they", "Paper two · what it means", "Thank you"];
   let i = 0;
   const dots = document.getElementById("dots");
   const where = document.getElementById("where");
