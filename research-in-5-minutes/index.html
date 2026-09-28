@@ -73,6 +73,7 @@
   body[data-step="papers"] .band:nth-child(3) { animation-delay: 240ms; }
   body[data-step^="p1"] .bands { grid-template-columns: 5.4fr .8fr .8fr; }
   body[data-step^="p2"] .bands { grid-template-columns: .8fr 5.4fr .8fr; }
+  body[data-step="p3"] .bands { grid-template-columns: .8fr .8fr 5.4fr; }
   body[data-step="close"] .bands { opacity: 0; pointer-events: none; }
 
   .band {
@@ -102,11 +103,24 @@
   body[data-step^="p1"] .band:not(.one) .facts, body[data-step^="p1"] .band:not(.one) .invite,
   body[data-step^="p1"] .band:not(.one) .status,
   body[data-step^="p2"] .band:not(.two) .facts, body[data-step^="p2"] .band:not(.two) .invite,
-  body[data-step^="p2"] .band:not(.two) .status { display: none; }
+  body[data-step^="p2"] .band:not(.two) .status,
+  body[data-step="p3"] .band:not(.three) .facts, body[data-step="p3"] .band:not(.three) .invite,
+  body[data-step="p3"] .band:not(.three) .status { display: none; }
   body[data-step^="p1"] .band:not(.one) .title,
-  body[data-step^="p2"] .band:not(.two) .title { font-size: clamp(15px, 1.15vw, 21px); }
+  body[data-step^="p2"] .band:not(.two) .title,
+  body[data-step="p3"] .band:not(.three) .title { font-size: clamp(15px, 1.15vw, 21px); }
   body[data-step^="p1"] .band:not(.one),
-  body[data-step^="p2"] .band:not(.two) { opacity: .75; }
+  body[data-step^="p2"] .band:not(.two),
+  body[data-step="p3"] .band:not(.three) { opacity: .75; }
+  /* paper three enlarged: the same facts, larger */
+  body[data-step="p3"] .band.three { justify-content: center; gap: clamp(18px, 3.4vh, 40px); padding: clamp(24px, 3vw, 56px); }
+  body[data-step="p3"] .band.three .headrow { display: grid; gap: .6em; }
+  body[data-step="p3"] .band.three .title { font-size: clamp(30px, 3.2vw, 58px); opacity: 1; max-width: 26ch; }
+  body[data-step="p3"] .band.three .status { font-size: clamp(18px, 1.6vw, 28px); }
+  body[data-step="p3"] .band.three .facts { opacity: 1; gap: clamp(14px, 2.6vh, 30px); max-width: 62em; animation: fade 700ms var(--ease) both 250ms; }
+  body[data-step="p3"] .band.three .fact { grid-template-columns: 8em 1fr; }
+  body[data-step="p3"] .band.three .fact dd { font-family: var(--serif); font-size: clamp(20px, 1.9vw, 34px); line-height: 1.25; }
+  body[data-step="p3"] .band.three .invite { margin: 0; font-size: clamp(19px, 1.7vw, 30px); }
 
   /* expanded column: title row, then the feature */
   body[data-step^="p1"] .band.one .facts,
@@ -120,7 +134,8 @@
   body[data-step="p2a"] .two .f-a,
   body[data-step="p2b"] .two .f-b,
   body[data-step="p2c"] .two .f-c,
-  body[data-step="p2d"] .two .f-d { display: grid; animation: fade 700ms var(--ease) both 250ms; }
+  body[data-step="p2d"] .two .f-d,
+  body[data-step="p2e"] .two .f-e { display: grid; animation: fade 700ms var(--ease) both 250ms; }
 
   .grid3 { grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.2vw, 20px); }
   .card { background: rgba(255, 255, 255, .55); border: 1px solid rgba(255, 255, 255, .8); border-radius: 12px; padding: clamp(12px, 1.2vw, 22px); display: grid; gap: .4em; align-content: start; min-width: 0; }
@@ -184,6 +199,26 @@
   .q00 { grid-column: 3; grid-row: 3; }
   .q10 h3 { color: var(--y-deep); } .q01 h3 { color: var(--r-deep); } .q11 h3 { color: var(--b-deep); }
   .span-all { grid-column: 1 / -1; grid-row: 5; }
+  .deeper { gap: clamp(10px, 1.8vh, 22px); align-content: start; }
+  .deep-head { margin: 0; color: var(--soft); }
+  .deep-head .eyebrow { color: var(--b-deep); margin-right: .8em; }
+  .deep-row { display: grid; grid-template-columns: minmax(8em, 16em) 1fr; gap: clamp(12px, 2vw, 36px); align-items: baseline; padding: clamp(12px, 2vh, 24px) 0; border-top: 1px solid rgba(63, 95, 140, .25); }
+  .who-lbl { font-family: var(--serif); font-style: italic; font-size: clamp(20px, 1.9vw, 34px); color: var(--b-deep); line-height: 1.1; }
+  .deep-row p { margin: 0; font-family: var(--serif); font-size: clamp(20px, 1.9vw, 34px); line-height: 1.25; text-wrap: balance; }
+  .deep-row b { font-weight: 500; color: var(--b-deep); }
+  .map { grid-template-columns: minmax(12em, .8fr) 2.2fr; grid-template-rows: 1fr auto; gap: clamp(12px, 1.6vw, 26px) clamp(16px, 2.4vw, 44px); align-items: center; }
+  .root { display: grid; gap: .5em; padding-right: clamp(12px, 1.6vw, 28px); border-right: 2px solid var(--b-deep); }
+  .root .eyebrow { color: var(--b-deep); }
+  .root p { margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(20px, 1.9vw, 34px); line-height: 1.2; }
+  .paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(8px, 1vw, 16px); }
+  .path { background: rgba(255,255,255,.55); border-radius: 12px; padding: clamp(10px, 1.1vw, 18px); display: grid; gap: .3em; align-content: start; }
+  .path h3 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: clamp(18px, 1.5vw, 27px); line-height: 1.1; }
+  .path p { margin: 0; color: var(--soft); }
+  .tag-s { justify-self: start; font-size: .68em; letter-spacing: .16em; text-transform: uppercase; padding: .2em .6em; border-radius: 999px; }
+  .tag-s.open { background: #DCE4EF; color: var(--b-deep); }
+  .tag-s.done { background: #EFE8D6; color: var(--y-deep); }
+  .tag-s.next { background: #EFD9D8; color: var(--r-deep); }
+  .map-foot { grid-column: 1 / -1; margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(18px, 1.5vw, 27px); color: var(--ink); }
   .say { grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 28px); }
   .list { display: grid; gap: .6em; margin: 0; padding: 0; list-style: none; }
   .list li { display: grid; grid-template-columns: 1.1em 1fr; gap: .4em; }
@@ -243,8 +278,9 @@
   @media (max-width: 820px) {
     body { overflow: auto; }
     .stage { height: auto; min-height: 100%; }
-    .bands, body[data-step^="p1"] .bands, body[data-step^="p2"] .bands { grid-template-columns: 1fr; }
-    .grid3, .finding, .say, .p1say, .close .three, .mods, .see { grid-template-columns: 1fr; }
+    .bands, body[data-step^="p1"] .bands, body[data-step^="p2"] .bands, body[data-step="p3"] .bands { grid-template-columns: 1fr; }
+    .grid3, .finding, .say, .p1say, .close .three, .mods, .see, .map, .paths, .deep-row { grid-template-columns: 1fr; }
+    .root { border-right: 0; padding-right: 0; }
     .quad { grid-template-columns: 1fr; grid-template-rows: none; } .quad > * { grid-column: auto !important; grid-row: auto !important; } .axis-y, .axis-x { display: none; }
     .span2 { grid-column: auto; }
     .close { position: static; display: none; opacity: 1; }
@@ -443,25 +479,36 @@
         <p class="note-s span-all">Above or below the median predicted gain from Theory + Evidence training. Traits over-represented in each cell, not causes.</p>
       </div>
 
-      <div class="feature f-d say">
-        <div class="card">
-          <h3>What we can say so far</h3>
-          <dl class="qa">
-            <div><dt>Does theory add value beyond evidence?</dt><dd>Yes: more sales, and more founders sell.</dd></div>
-            <div><dt>Does everyone gain the same?</dt><dd>No: gains are uneven in 7 of 9 outcomes.</dd></div>
-            <div><dt>Do the founders who gain most in sales also learn most?</dt><dd>No. Their learning gains are no larger.</dd></div>
-            <div><dt>Who learns without selling?</dt><dd>Early-stage, less experienced founders. Experienced founders at later stages sell without learning.</dd></div>
-          </dl>
+      <div class="feature f-d deeper">
+        <p class="deep-head"><span class="eyebrow">Digging deeper</span> Eight measured channels, 250 sample splits, two covariate sets.</p>
+        <div class="deep-row">
+          <span class="who-lbl">Those who learn</span>
+          <p>change their whole decision process: <b>hypotheses, evaluation of evidence, decisions</b>, and they work a little more.</p>
         </div>
-        <div class="card north">
-          <h3>Questions that came up</h3>
-          <dl class="qa">
-            <div><dt>Do those who learn without selling quit more?</dt><dd>No (+4 pp, not significant).</dd></div>
-            <div><dt>Do they start selling later?</dt><dd>Not so far, though few founders remain in the last round.</dd></div>
-            <div><dt>Does the sales effect hold in levels (Poisson)?</dt><dd>Same direction, weaker.</dd></div>
-          </dl>
-          <p class="quiet">Still to test: how we split the sample · why the disconnect happens · Theory + Evidence against Control.</p>
+        <div class="deep-row">
+          <span class="who-lbl">Those whose sales grow</span>
+          <p>change <b>nothing we measure</b>: no more tests, no more pivots, no new process.</p>
         </div>
+        <div class="deep-row">
+          <span class="who-lbl">The average</span>
+          <p>The average mediation from theory to sales <b>combines two different groups of founders</b>.</p>
+        </div>
+      </div>
+
+      <div class="feature f-e map">
+        <div class="root">
+          <span class="eyebrow">Where this leads</span>
+          <p>The founders who learn and the founders who sell are not necessarily the same.</p>
+        </div>
+        <div class="paths">
+          <div class="path"><span class="tag-s open">open</span><h3>The hidden channel</h3><p>What drives the sales gains, if not learning? Focus, confidence, commitment…</p></div>
+          <div class="path"><span class="tag-s open">open</span><h3>Measurement</h3><p>Does the Theory Score capture using a theory, or articulating one?</p></div>
+          <div class="path"><span class="tag-s done">not so far</span><h3>Timing</h3><p>Do those who learn start selling later?</p></div>
+          <div class="path"><span class="tag-s done">tested: no</span><h3>Wise exits</h3><p>Do those who learn without selling quit more?</p></div>
+          <div class="path"><span class="tag-s open">open</span><h3>Targeting</h3><p>Who should receive the theory module?</p></div>
+          <div class="path"><span class="tag-s next">to test</span><h3>Design</h3><p>How robust is all this to how we split the sample?</p></div>
+        </div>
+        <p class="map-foot">Choosing the one to follow is the next step.</p>
       </div>
     </article>
 
@@ -501,8 +548,8 @@
 </nav>
 
 <script>
-  const STEPS = ["intro", "papers", "p1a", "p1b", "p1c", "p2a", "p2b", "p2c", "p2d", "close"];
-  const LABELS = ["Hello", "Three papers", "Paper one · why and how", "Paper one · validation", "Paper one · what it shows", "Paper two · why", "Paper two · what we see", "Paper two · who are they", "Paper two · what it means", "Thank you"];
+  const STEPS = ["intro", "papers", "p1a", "p1b", "p1c", "p2a", "p2b", "p2c", "p2d", "p2e", "p3", "close"];
+  const LABELS = ["Hello", "Three papers", "Paper one · why and how", "Paper one · validation", "Paper one · what it shows", "Paper two · why", "Paper two · what we see", "Paper two · who are they", "Paper two · digging deeper", "Paper two · where this leads", "Paper three", "Thank you"];
   let i = 0;
   const dots = document.getElementById("dots");
   const where = document.getElementById("where");
