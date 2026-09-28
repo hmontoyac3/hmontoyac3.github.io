@@ -219,6 +219,45 @@
   .tag-s.done { background: #EFE8D6; color: var(--y-deep); }
   .tag-s.next { background: #EFD9D8; color: var(--r-deep); }
   .map-foot { grid-column: 1 / -1; margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(18px, 1.5vw, 27px); color: var(--ink); }
+  .lean .card { gap: .7em; padding: clamp(18px, 2vw, 36px); }
+  .lean .card p { font-family: var(--serif); font-size: clamp(20px, 1.9vw, 34px); line-height: 1.25; }
+  .lean .card .q { font-style: italic; color: var(--b-deep); }
+  .lean .cite { font-size: .7em; color: var(--soft); }
+  .lean a.lit { font-family: var(--sans); font-size: .62em; }
+  .see .pull { font-size: clamp(24px, 2.4vw, 44px); }
+  .quad2 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto 1fr; gap: clamp(10px, 1.6vw, 28px); align-items: center; }
+  .qhead { grid-column: 1 / -1; color: var(--soft); }
+  .qhead .eyebrow { color: var(--b-deep); margin-right: .8em; }
+  .qfig { margin: 0; display: flex; justify-content: center; }
+  .scatter { width: 100%; height: auto; max-height: 58vh; display: block; }
+  .scatter text { font-family: var(--sans); font-weight: 300; fill: var(--soft); font-size: 16px; }
+  .qlegend { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(10px, 1.4vw, 24px); align-content: center; }
+  .ql { display: grid; gap: .3em; padding: clamp(10px, 1.2vw, 20px); border-radius: 12px; background: rgba(255,255,255,.55); border-top: 4px solid var(--c); }
+  .ql .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--c); }
+  .ql h3 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: clamp(18px, 1.6vw, 29px); line-height: 1.1; }
+  .ql p { margin: 0; color: var(--soft); }
+  .qnote { grid-column: 1 / -1; }
+  .quad3 { grid-template-columns: auto 1fr 1fr; grid-template-rows: auto 1fr 1fr auto; gap: clamp(8px, 1vw, 16px); min-height: 52vh; }
+  .quad3 .qhead { grid-column: 1 / -1; grid-row: 1; }
+  .quad3 .qhead .eyebrow { color: var(--b-deep); }
+  .ax { font-size: .74em; letter-spacing: .2em; text-transform: uppercase; color: var(--soft); align-self: center; justify-self: center; }
+  .ax-y1, .ax-y2 { grid-column: 1; writing-mode: vertical-rl; transform: rotate(180deg); }
+  .ax-y1 { grid-row: 2; } .ax-y2 { grid-row: 3; }
+  .ax-x1, .ax-x2 { grid-row: 4; } .ax-x1 { grid-column: 2; } .ax-x2 { grid-column: 3; }
+  .tile { border-radius: 16px; padding: clamp(16px, 2vw, 36px); display: grid; align-content: center; gap: .5em; }
+  .tile h3 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: clamp(24px, 2.4vw, 44px); line-height: 1.05; }
+  .tile p { margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(19px, 1.7vw, 30px); color: var(--soft); }
+  .t-ln { grid-column: 2; grid-row: 2; background: #F4E7BE; } .t-ln h3 { color: #8C6B1F; }
+  .t-ls { grid-column: 3; grid-row: 2; background: #C9D6E8; } .t-ls h3 { color: #2F4F7F; }
+  .t-nn { grid-column: 2; grid-row: 3; background: #E6E8EC; } .t-nn h3 { color: #5E6675; }
+  .t-sn { grid-column: 3; grid-row: 3; background: #EFD9D8; } .t-sn h3 { color: #9C4A4F; }
+  .vars { list-style: none; margin: 0; padding: 0; display: grid; gap: .35em; }
+  .vars li { display: flex; justify-content: space-between; gap: 1em; align-items: baseline; border-top: 1px solid rgba(45, 51, 64, .12); padding-top: .35em; }
+  .vars li span:first-child { font-family: var(--serif); font-size: clamp(19px, 1.7vw, 30px); color: var(--ink); }
+  .vars li .v { color: var(--soft); }
+  .vars .v { font-family: var(--serif); font-size: 1.05em; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .quad3 .qhead { color: var(--soft); }
+  .quad3 .qhead .eyebrow { margin-right: .8em; }
   .say { grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 28px); }
   .list { display: grid; gap: .6em; margin: 0; padding: 0; list-style: none; }
   .list li { display: grid; grid-template-columns: 1.1em 1fr; gap: .4em; }
@@ -279,7 +318,8 @@
     body { overflow: auto; }
     .stage { height: auto; min-height: 100%; }
     .bands, body[data-step^="p1"] .bands, body[data-step^="p2"] .bands, body[data-step="p3"] .bands { grid-template-columns: 1fr; }
-    .grid3, .finding, .say, .p1say, .close .three, .mods, .see, .map, .paths, .deep-row { grid-template-columns: 1fr; }
+    .grid3, .finding, .say, .p1say, .close .three, .mods, .see, .map, .paths, .deep-row, .quad2, .qlegend { grid-template-columns: 1fr; }
+    .quad3 { grid-template-columns: 1fr; grid-template-rows: none; min-height: 0; } .quad3 > * { grid-column: auto !important; grid-row: auto !important; } .ax { display: none; }
     .root { border-right: 0; padding-right: 0; }
     .quad { grid-template-columns: 1fr; grid-template-rows: none; } .quad > * { grid-column: auto !important; grid-row: auto !important; } .axis-y, .axis-x { display: none; }
     .span2 { grid-column: auto; }
@@ -380,50 +420,21 @@
         <div class="fact"><dt>North</dt><dd>Still under discussion</dd></div>
       </dl>
 
-      <div class="feature f-a grid3">
+      <div class="feature f-a grid3 lean">
         <div class="card">
           <h3>Why it matters</h3>
-          <ul class="list">
-            <li><span>Deciding like a scientist raises founders' performance <b>on average</b>.</span></li>
-            <li><span><a class="lit" href="/research-in-5-minutes/literature.html" target="_blank" rel="noopener">Camuffo et al. 2020 <span>(+8 papers)</span> ↗</a></span></li>
-            <li><span>The open question: <b>for whom?</b></span></li>
-          </ul>
+          <p>Works <b>on average</b> · <a class="lit" href="/research-in-5-minutes/literature.html" target="_blank" rel="noopener">Camuffo et al. 2020 <span>(+8 papers)</span> ↗</a></p>
+          <p class="q">For whom?</p>
         </div>
         <div class="card">
           <h3>The data</h3>
-          <ul class="list">
-            <li><span><b>6 RCTs</b>: Netherlands, Italy, Colombia, UK, Spain, India</span></li>
-            <li><span><b>1,184</b> early-stage startups</span></li>
-            <li><span>Control · Evidence · <b>Theory + Evidence</b></span></li>
-            <li><span>About 14 months of follow-up</span></li>
-          </ul>
+          <p><b>6 RCTs</b> · 1,184 startups</p>
+          <p>Control · Evidence · Theory + Evidence</p>
         </div>
         <div class="card">
-          <h3>The model</h3>
-          <ul class="list">
-            <li><span>Generic ML inference: Chernozhukov, Demirer, Duflo &amp; Fernández-Val, <i>Econometrica</i> 2025</span></li>
-            <li><span>Lets us identify <b>who gains most</b> from the training, with valid inference</span></li>
-            <li><span>250 splits · 7 learners · 212 specifications</span></li>
-          </ul>
-        </div>
-        <div class="card span2">
-          <h3>36 moderators, in six families</h3>
-          <div class="mods">
-            <p><b>The founder</b> gender · degree · STEM · business studies</p>
-            <p><b>Experience</b> work · managerial · industry · startups founded · prior training</p>
-            <p><b>Beliefs</b> chance of quitting or pivoting · how innovative the idea is and could be</p>
-            <p><b>Scientific approach before training</b> theory · hypotheses · evidence · evaluation · decision</p>
-            <p><b>The venture</b> stage · months operating · full-time · sales at baseline</p>
-            <p><b>Cognition</b> illusion of control · planning horizon · perceived uncertainty · team</p>
-          </div>
-        </div>
-        <div class="card">
-          <h3>The questions it answers</h3>
-          <ul class="list">
-            <li><span>Does the training work <b>differently</b> across founders?</span></li>
-            <li><span>How large is the gap between who gains <b>most</b> and <b>least</b>?</span></li>
-            <li><span>Which traits are <b>over-represented</b> among those who gain most?</span></li>
-          </ul>
+          <h3>The method</h3>
+          <p>Generic ML <span class="cite">(Chernozhukov et al., <i>Econometrica</i> 2025)</span></p>
+          <p>36 founder and venture traits</p>
         </div>
       </div>
 
@@ -431,12 +442,7 @@
         <div class="lead">
           <span class="eyebrow">What we see</span>
           <p class="pull">The founders whose sales grow the most are not necessarily the ones who learn the most.</p>
-          <p>The training's effect on sales climbs from the bottom fifth to the top fifth. Its effect on the Theory Score stays flat across the same founders.</p>
-          <ul class="list">
-            <li><span>Tested formally, with the method's own inference: the sales score does not predict learning gains (<b>0.01 ± 0.05</b>).</span></li>
-            <li><span>It holds with the richer covariate set, with a different learner, and with the overall score.</span></li>
-            <li><span>Heterogeneity is detectable in 7 of the 9 outcomes we test; exit is the exception.</span></li>
-          </ul>
+          <p class="note-s">Tested formally and robust across covariates and learners.</p>
         </div>
         <figure class="fig">
           <svg class="chart" viewBox="0 0 640 360" role="img" aria-label="Founders sorted into fifths by predicted sales gain. Effect on sales, in standard deviations: -0.19, 0.07, 0.09, 0.24, 0.58. Effect on Theory Score: -0.09, -0.00, 0.03, 0.01, 0.02.">
@@ -464,19 +470,20 @@
             <text x="30"  y="328" style="fill:#5E6675">gain least in sales</text>
             <text x="612" y="328" text-anchor="end" style="fill:#5E6675">gain most in sales</text>
           </svg>
-          <figcaption class="note-s">Founders sorted into fifths by how much the training is predicted to raise their sales (250 sample splits). Effects in standard deviations; the top fifth gains +2.01 log points of monthly sales.</figcaption>
+          <figcaption class="note-s">Founders sorted by predicted sales gain · effects in standard deviations.</figcaption>
         </figure>
       </div>
 
-      <div class="feature f-c quad">
-        <p class="quad-head span-top"><span class="eyebrow">Who are they?</span> Founders placed by how much they are predicted to learn and to sell.</p>
-        <div class="axis-y"><span>learns less</span><span>learns more</span></div>
-        <div class="q q11"><span class="share">25%</span><h3>Learns and sells</h3><p>Higher sales at baseline · later stage · more startups founded</p></div>
-        <div class="q q10"><span class="share">25%</span><h3>Learns, does not sell</h3><p>Early stage · fewer years of experience · younger venture · rarely full-time · more likely to consider quitting · more theory before training</p></div>
-        <div class="q q01"><span class="share">25%</span><h3>Sells without learning</h3><p>Later stage · more experience · more startups founded · already used evidence · higher ambition · fewer women</p></div>
-        <div class="q q00"><span class="share">25%</span><h3>Neither</h3><p>Less likely to pivot · fewer startups founded</p></div>
-        <div class="axis-x"><span>sells more</span><span>sells less</span></div>
-        <p class="note-s span-all">Above or below the median predicted gain from Theory + Evidence training. Traits over-represented in each cell, not causes.</p>
+      <div class="feature f-c quad3">
+        <div class="qhead"><span class="eyebrow">Who are they?</span> Average in each cell vs the rest of the startups.</div>
+        <span class="ax ax-y1">learns more</span>
+        <span class="ax ax-y2">learns less</span>
+        <div class="tile t-ln"><h3>Learns, does not sell</h3><ul class="vars"><li><span>Earlier stage</span><span class="v">1.7 vs 2.5</span></li><li><span>Less work experience</span><span class="v">8 vs 11 yrs</span></li></ul></div>
+        <div class="tile t-ls"><h3>Learns and sells</h3><ul class="vars"><li><span>Already selling</span><span class="v">33% vs 19%</span></li></ul></div>
+        <div class="tile t-nn"><h3>Neither</h3><ul class="vars"><li><span>Fewer past startups</span><span class="v">0.3 vs 0.6</span></li></ul></div>
+        <div class="tile t-sn"><h3>Sells without learning</h3><ul class="vars"><li><span>More work experience</span><span class="v">13 vs 10 yrs</span></li><li><span>Already ran tests</span><span class="v">73% vs 56%</span></li></ul></div>
+        <span class="ax ax-x1">sells less</span>
+        <span class="ax ax-x2">sells more</span>
       </div>
 
       <div class="feature f-d deeper">
