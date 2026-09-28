@@ -213,6 +213,32 @@ body.home a.card:hover .card-title,
 body.home a.card:hover .card-arrow { color: var(--hue, var(--accent)); }
 body.home a.card:hover .card-arrow { transform: translateX(4px); }
 
+/* "My research in 5 minutes" — link to the one-screen talk */
+body.home a.five-min {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: -1.2rem 0 2.6rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--surface);
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+body.home a.five-min .flag { display: inline-flex; width: 28px; height: 3px; }
+body.home a.five-min .flag i { display: block; height: 100%; }
+body.home a.five-min .flag i:nth-child(1) { flex: 2; background: #D9BE6E; }
+body.home a.five-min .flag i:nth-child(2) { flex: 1; background: #3F5F8C; }
+body.home a.five-min .flag i:nth-child(3) { flex: 1; background: #9C4A4F; }
+body.home a.five-min .five-arrow { font-family: var(--sans); font-style: normal; font-size: 0.85rem; color: var(--faint); transition: transform 0.18s ease, color 0.18s ease; }
+body.home a.five-min:hover { border-color: var(--c-research); color: var(--c-research); }
+body.home a.five-min:hover .five-arrow { color: var(--c-research); transform: translateX(4px); }
+body.home a.five-min:focus-visible { outline: 2px solid var(--c-research); outline-offset: 3px; }
+
 body.home a.to-research { --hue: var(--c-research); }
 body.home a.to-teaching { --hue: var(--c-teaching); }
 body.home a.to-projects { --hue: var(--c-projects); }

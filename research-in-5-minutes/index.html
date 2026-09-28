@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>My research in 5 minutes · Helena Montoya Calero</title>
+<meta name="description" content="Helena Montoya Calero: three papers in progress, with the heterogeneous-effects paper at the centre.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --paper: #F8F7F3;
+    --ink: #2D3340;
+    --soft: #5E6675;
+    --line: #DAD7CF;
+    --y: #F4E7BE; --y-deep: #8C6B1F; --y-mid: #D9BE6E;
+    --b: #DCE4EF; --b-deep: #3F5F8C; --b-mid: #A9BAD1;
+    --r: #EFD9D8; --r-deep: #9C4A4F; --r-mid: #CF9A9C;
+    --serif: 'Cormorant Garamond', 'Garamond', Georgia, serif;
+    --sans: 'Jost', 'Avenir Next', 'Segoe UI', Arial, sans-serif;
+    --ease: cubic-bezier(.6, 0, .2, 1);
+    --t: 850ms;
+  }
+  html, body { height: 100%; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: var(--sans); font-weight: 300;
+    font-size: clamp(14px, 1.08vw, 19px); line-height: 1.5;
+    overflow: hidden;
+  }
+  b, strong { font-weight: 500; }
+  .stage {
+    position: relative; height: 100%;
+    padding-inline: clamp(16px, 4.2vw, 80px);
+    padding-block: clamp(16px, 3.4vh, 44px) clamp(52px, 7.5vh, 80px);
+    display: grid; grid-template-rows: auto 1fr; gap: clamp(12px, 2.4vh, 28px);
+  }
+  .eyebrow { font-size: .72em; letter-spacing: .24em; text-transform: uppercase; color: var(--soft); font-weight: 400; }
+
+  /* ---------------- header / intro ---------------- */
+  .head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5em; transition: all var(--t) var(--ease); }
+  .who { display: grid; gap: .35em; }
+  .name { font-family: var(--serif); font-weight: 400; line-height: 1; letter-spacing: .005em; font-size: clamp(24px, 2.2vw, 40px); transition: font-size var(--t) var(--ease); }
+  .flagline { display: flex; width: clamp(120px, 12vw, 220px); height: 3px; transition: all var(--t) var(--ease); }
+  .flagline i { display: block; height: 100%; }
+  .flagline i:nth-child(1) { flex: 2; background: var(--y-mid); }
+  .flagline i:nth-child(2) { flex: 1; background: var(--b-deep); }
+  .flagline i:nth-child(3) { flex: 1; background: var(--r-deep); }
+  .tagline { display: none; }
+
+  body[data-step="intro"] .head { align-items: center; justify-content: center; padding-top: 22vh; flex-direction: column; text-align: center; }
+  body[data-step="intro"] .who { justify-items: center; gap: .9em; }
+  body[data-step="intro"] .name { font-size: clamp(44px, 5.6vw, 104px); }
+  body[data-step="intro"] .flagline { width: clamp(180px, 22vw, 380px); height: 4px; }
+  body[data-step="intro"] .tagline { display: block; margin: .4em 0 0; font-family: var(--serif); font-style: italic; font-size: clamp(19px, 1.8vw, 32px); color: var(--soft); max-width: 36ch; text-wrap: balance; animation: fade 900ms var(--ease) both 300ms; }
+  @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  /* ---------------- the three columns ---------------- */
+  .bands {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(10px, 1.2vw, 20px); min-height: 0;
+    transition: grid-template-columns var(--t) var(--ease), opacity var(--t) var(--ease);
+  }
+  body[data-step="intro"] .bands { display: none; }
+  body[data-step="papers"] .band { animation: fade 800ms var(--ease) both; }
+  body[data-step="papers"] .band:nth-child(2) { animation-delay: 120ms; }
+  body[data-step="papers"] .band:nth-child(3) { animation-delay: 240ms; }
+  body[data-step="p1"] .bands { grid-template-columns: 5.4fr .8fr .8fr; }
+  body[data-step^="p2"] .bands { grid-template-columns: .8fr 5.4fr .8fr; }
+  body[data-step="close"] .bands { opacity: 0; pointer-events: none; }
+
+  .band {
+    --bg: var(--y); --deep: var(--y-deep); --mid: var(--y-mid);
+    background: var(--bg); min-height: 0; min-width: 0; overflow: hidden; border-radius: 14px;
+    padding: clamp(14px, 1.7vw, 32px);
+    display: flex; flex-direction: column; gap: clamp(10px, 1.6vh, 20px);
+  }
+  .band.two { --bg: var(--b); --deep: var(--b-deep); --mid: var(--b-mid); }
+  .band.three { --bg: var(--r); --deep: var(--r-deep); --mid: var(--r-mid); }
+  .headrow { display: grid; gap: .6em; }
+  .tag { display: grid; gap: .2em; }
+  .tag .eyebrow { color: var(--deep); }
+  .status { font-family: var(--serif); font-style: italic; font-size: clamp(15px, 1.2vw, 22px); color: var(--ink); }
+  .title { margin: 0; font-family: var(--serif); font-weight: 500; font-size: clamp(22px, 2.1vw, 40px); line-height: 1.08; text-wrap: balance; }
+  .facts { display: grid; gap: .55em; margin: 0; }
+  .fact { display: grid; grid-template-columns: 6.2em 1fr; gap: .8em; align-items: baseline; }
+  .fact dt { font-size: .7em; letter-spacing: .18em; text-transform: uppercase; color: var(--deep); font-weight: 400; }
+  .fact dd { margin: 0; }
+  .ph { color: var(--soft); font-style: italic; }
+  .band.three .title, .band.three .facts { opacity: .8; }
+  .invite { margin: auto 0 0; font-family: var(--serif); font-style: italic; color: var(--deep); font-size: clamp(15px, 1.2vw, 22px); }
+
+  /* collapsed columns: eyebrow and title only */
+  body[data-step="p1"] .band:not(.one) .facts, body[data-step="p1"] .band:not(.one) .invite,
+  body[data-step="p1"] .band:not(.one) .status,
+  body[data-step^="p2"] .band:not(.two) .facts, body[data-step^="p2"] .band:not(.two) .invite,
+  body[data-step^="p2"] .band:not(.two) .status { display: none; }
+  body[data-step="p1"] .band:not(.one) .title,
+  body[data-step^="p2"] .band:not(.two) .title { font-size: clamp(15px, 1.15vw, 21px); }
+  body[data-step="p1"] .band:not(.one),
+  body[data-step^="p2"] .band:not(.two) { opacity: .75; }
+
+  /* expanded column: title row, then the feature */
+  body[data-step="p1"] .band.one .facts,
+  body[data-step^="p2"] .band.two .facts { display: none; }
+  body[data-step="p1"] .band.one .headrow,
+  body[data-step^="p2"] .band.two .headrow { display: flex; align-items: baseline; gap: 1.2em; flex-wrap: wrap; }
+  .feature { display: none; min-height: 0; }
+  body[data-step="p1"] .one .f-p1,
+  body[data-step="p2a"] .two .f-a,
+  body[data-step="p2b"] .two .f-b,
+  body[data-step="p2c"] .two .f-c { display: grid; animation: fade 700ms var(--ease) both 250ms; }
+
+  .grid3 { grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.2vw, 20px); }
+  .card { background: rgba(255, 255, 255, .55); border: 1px solid rgba(255, 255, 255, .8); border-radius: 12px; padding: clamp(12px, 1.2vw, 22px); display: grid; gap: .4em; align-content: start; min-width: 0; }
+  .card h3 { margin: 0; font-family: var(--serif); font-weight: 500; font-style: italic; font-size: clamp(18px, 1.45vw, 27px); color: var(--deep); line-height: 1.1; }
+  .card p { margin: 0; }
+  .num { font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 3vw, 56px); line-height: 1; color: var(--deep); font-variant-numeric: tabular-nums; }
+
+  .finding { grid-template-columns: 1fr 1.1fr; gap: clamp(16px, 2.4vw, 44px); align-items: center; }
+  .finding .lead { display: grid; gap: .6em; }
+  .finding .lead p { margin: 0; }
+  .figure { font-family: var(--serif); font-weight: 500; font-size: clamp(56px, 6.4vw, 120px); line-height: .95; color: var(--b-deep); }
+  .figure small { font-family: var(--sans); font-weight: 300; font-size: .16em; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); display: block; margin-top: .6em; }
+  .pull { font-family: var(--serif); font-style: italic; font-size: clamp(19px, 1.7vw, 31px); line-height: 1.2; }
+  .chart { width: 100%; height: auto; max-width: 100%; max-height: 52vh; display: block; }
+  .chart text { font-family: var(--sans); font-weight: 400; fill: var(--ink); font-size: 15px; }
+  .chart .hi { fill: var(--b-deep); font-weight: 500; font-size: 17px; }
+  .bar { transform-box: fill-box; transform-origin: 50% 100%; }
+  .bar.neg { transform-origin: 50% 0%; }
+  body[data-step="p2b"] .bar { animation: grow 1000ms var(--ease) both; }
+  body[data-step="p2b"] .bar:nth-of-type(2) { animation-delay: 100ms; }
+  body[data-step="p2b"] .bar:nth-of-type(3) { animation-delay: 200ms; }
+  body[data-step="p2b"] .bar:nth-of-type(4) { animation-delay: 300ms; }
+  body[data-step="p2b"] .bar:nth-of-type(5) { animation-delay: 450ms; }
+  @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+  .say { grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 28px); }
+  .list { display: grid; gap: .6em; margin: 0; padding: 0; list-style: none; }
+  .list li { display: grid; grid-template-columns: 1.1em 1fr; gap: .4em; }
+  .list li::before { content: ""; width: .45em; height: .45em; border-radius: 50%; background: var(--deep); margin-top: .55em; }
+  .card.north { background: var(--b-deep); border-color: var(--b-deep); color: #F4F6FA; }
+  .card.north h3 { color: #F4E7BE; }
+  .card.north .list li::before { background: #F4E7BE; }
+  .card.north .quiet { font-family: var(--serif); font-style: italic; color: #DCE4EF; margin-top: .4em; font-size: 1.1em; }
+
+  /* ---------------- close ---------------- */
+  .close {
+    position: absolute; inset: 0; padding-inline: clamp(16px, 4.2vw, 80px);
+    display: flex; flex-direction: column; justify-content: center; gap: clamp(16px, 3.4vh, 40px);
+    opacity: 0; pointer-events: none; transition: opacity var(--t) var(--ease);
+  }
+  body[data-step="close"] .close { opacity: 1; pointer-events: auto; }
+  .close h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-style: italic; font-size: clamp(30px, 3.4vw, 62px); line-height: 1.05; }
+  .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(10px, 1.2vw, 20px); }
+  .take { background: var(--bg); border-radius: 14px; padding: clamp(18px, 2vw, 36px); display: grid; gap: .6em; align-content: start; }
+  .take .eyebrow { color: var(--deep); }
+  .take p { margin: 0; font-family: var(--serif); font-size: clamp(19px, 1.7vw, 31px); line-height: 1.2; text-wrap: balance; }
+  body[data-step="close"] .take { animation: fade 800ms var(--ease) both; }
+  body[data-step="close"] .take:nth-child(2) { animation-delay: 150ms; }
+  body[data-step="close"] .take:nth-child(3) { animation-delay: 300ms; }
+  .thanks { display: flex; align-items: baseline; gap: 1em; flex-wrap: wrap; }
+  .thanks .t { font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2vw, 36px); }
+  .thanks .n { color: var(--soft); }
+
+  /* ---------------- controls ---------------- */
+  .controls {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    padding: 10px clamp(16px, 4.2vw, 80px) calc(12px + env(safe-area-inset-bottom, 0px));
+    display: flex; align-items: center; gap: 14px; background: var(--paper);
+  }
+  .dots { display: flex; gap: 8px; flex: 1; align-items: center; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--soft); background: transparent; padding: 0; cursor: pointer; transition: all 300ms; }
+  .dot[aria-current="step"] { background: var(--ink); border-color: var(--ink); width: 26px; border-radius: 4px; }
+  .where { font-family: var(--serif); font-style: italic; color: var(--soft); font-size: 17px; }
+  .btn { font-family: var(--sans); font-weight: 400; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--soft); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+  .btn:hover { color: var(--ink); border-color: var(--soft); }
+  button:focus-visible { outline: 2px solid var(--b-deep); outline-offset: 3px; }
+
+  @media (max-width: 820px) {
+    body { overflow: auto; }
+    .stage { height: auto; min-height: 100%; }
+    .bands, body[data-step="p1"] .bands, body[data-step^="p2"] .bands { grid-template-columns: 1fr; }
+    .grid3, .finding, .say, .three { grid-template-columns: 1fr; }
+    .close { position: static; display: none; opacity: 1; }
+    body[data-step="close"] .close { display: flex; padding-block: 20px 90px; }
+    body[data-step="close"] .bands { display: none; }
+    .where { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :root { --t: 1ms; }
+    *, *::before, *::after { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<main class="stage" id="stage">
+  <header class="head">
+    <div class="who">
+      <span class="eyebrow">PhD Candidate · Bocconi University</span>
+      <span class="name">Helena Montoya Calero</span>
+      <span class="flagline" aria-hidden="true"><i></i><i></i><i></i></span>
+      <p class="tagline">I study how founders make decisions, and who gains when they decide like scientists.</p>
+    </div>
+  </header>
+
+  <section class="bands" aria-label="Papers in progress">
+    <!-- Paper one: yellow, the most advanced -->
+    <article class="band one">
+      <div class="headrow">
+        <div class="tag"><span class="eyebrow">Paper one</span><span class="status">Final review, before submission</span></div>
+        <h2 class="title">[Paper one title]</h2>
+      </div>
+      <dl class="facts">
+        <div class="fact"><dt>Journal</dt><dd class="ph">[target journal]</dd></div>
+        <div class="fact"><dt>Question</dt><dd class="ph">[one line]</dd></div>
+        <div class="fact"><dt>Data</dt><dd class="ph">[pre-survey · sample]</dd></div>
+      </dl>
+      <div class="feature f-p1 grid3">
+        <div class="card"><h3>The idea</h3><p class="ph">[what the paper argues, in two lines]</p></div>
+        <div class="card"><h3>Data and method</h3><p class="ph">[pre-survey · N · design]</p></div>
+        <div class="card"><h3>What we find</h3><p class="ph">[headline result]</p></div>
+        <div class="card"><h3>Why it matters</h3><p class="ph">[contribution]</p></div>
+        <div class="card"><h3>Where it goes</h3><p class="ph">[target journal · timing]</p></div>
+        <div class="card"><h3>One number</h3><p class="num">[__]</p><p class="ph">[what it measures]</p></div>
+      </div>
+    </article>
+
+    <!-- Paper two: blue, heterogeneous effects -->
+    <article class="band two">
+      <div class="headrow">
+        <div class="tag"><span class="eyebrow">Paper two</span><span class="status">In analysis, with Alfonso Gambardella</span></div>
+        <h2 class="title">Who benefits from thinking like a scientist?</h2>
+      </div>
+      <dl class="facts">
+        <div class="fact"><dt>Data</dt><dd>6 RCTs · 1,184 early-stage startups · 3 arms</dd></div>
+        <div class="fact"><dt>Model</dt><dd>Generic ML inference (Chernozhukov, Demirer, Duflo &amp; Fernández-Val, <i>Econometrica</i> 2025)</dd></div>
+        <div class="fact"><dt>North</dt><dd>Still under discussion</dd></div>
+      </dl>
+
+      <div class="feature f-a grid3">
+        <div class="card"><h3>Why it matters</h3><p>Teaching founders to build a theory and test it raises sales <b>on average</b>. Nobody has mapped <b>for whom</b>; moderators are tested one at a time.</p></div>
+        <div class="card"><h3>The data</h3><p>Six RCTs in the Netherlands, Italy, Colombia, the UK, Spain and India. Control, Evidence, and <b>Theory + Evidence</b> training, followed for about fourteen months.</p></div>
+        <div class="card"><h3>The model</h3><p>Machine learning predicts each founder's gain on half of the sample, and the other half checks it. 250 splits, 7 learners, 212 specifications.</p></div>
+        <div class="card"><h3>A careful start</h3><p class="num">0.605 · 0.607</p><p>The CGJ appendix code and the <i>Econometrica</i> code, replicated on our data, give the same average effect.</p></div>
+        <div class="card"><h3>Thirty-six moderators</h3><p>Founder and venture traits, each tied to published theory: experience, cognition, beliefs, stage.</p></div>
+        <div class="card"><h3>Outcomes</h3><p>Monthly sales, selling at all, Theory and Empirics scores, effort, team size, and exit.</p></div>
+      </div>
+
+      <div class="feature f-b finding">
+        <div class="lead">
+          <span class="eyebrow">Theory + Evidence, compared with Evidence only</span>
+          <p class="figure">+1.91<small>log points of monthly sales</small></p>
+          <p class="pull">for the fifth of founders who gain the most (p = .002).</p>
+          <p>The fifth who gain the least: about zero. Average: +0.55. The pattern holds across covariate sets, groupings, 140 variants and both implementations.</p>
+        </div>
+        <svg class="chart" viewBox="0 0 600 340" role="img" aria-label="Effect on log monthly sales by fifth of predicted gain: -0.59, 0.24, 0.32, 0.87, 1.91. Average 0.55.">
+          <line x1="0" y1="225.3" x2="600" y2="225.3" stroke="#5E6675" stroke-width="1.5"/>
+          <rect class="bar neg" x="40"  y="225.3" width="80" height="55.1"  rx="6" fill="#A9BAD1"/>
+          <rect class="bar" x="156" y="202.9" width="80" height="22.4"  rx="6" fill="#A9BAD1"/>
+          <rect class="bar" x="272" y="195.4" width="80" height="29.9"  rx="6" fill="#A9BAD1"/>
+          <rect class="bar" x="388" y="144.1" width="80" height="81.2"  rx="6" fill="#8FA4C2"/>
+          <rect class="bar" x="504" y="47.1"  width="80" height="178.2" rx="6" fill="#3F5F8C"/>
+          <line x1="0" y1="174" x2="600" y2="174" stroke="#8C6B1F" stroke-width="1.5" stroke-dasharray="6 6"/>
+          <text x="4" y="164" style="fill:#8C6B1F">average +0.55</text>
+          <text x="80"  y="302" text-anchor="middle">−0.59</text>
+          <text x="196" y="193" text-anchor="middle">+0.24</text>
+          <text x="312" y="186" text-anchor="middle">+0.32</text>
+          <text x="428" y="135" text-anchor="middle">+0.87</text>
+          <text x="544" y="36"  text-anchor="middle" class="hi">+1.91</text>
+          <text x="80"  y="330" text-anchor="middle" style="fill:#5E6675">gain least</text>
+          <text x="544" y="330" text-anchor="middle" style="fill:#5E6675">gain most</text>
+        </svg>
+      </div>
+
+      <div class="feature f-c say">
+        <div class="card">
+          <h3>What we can say so far</h3>
+          <ul class="list">
+            <li><span><b>Theory adds sales</b> beyond evidence alone, and more founders sell.</span></li>
+            <li><span>The gain is <b>concentrated</b>: the top fifth gains a lot, the bottom fifth nothing.</span></li>
+            <li><span><b>Experienced founders</b> are over-represented among those who gain most.</span></li>
+            <li><span>Both trainings teach founders to <b>use evidence</b> and to <b>quit more</b> (+8 pp compared with control).</span></li>
+          </ul>
+        </div>
+        <div class="card north">
+          <h3>Next: choosing the north</h3>
+          <ul class="list">
+            <li><span><b>Who benefits:</b> from a portrait to a theory of why.</span></li>
+            <li><span><b>Absorbing and selling:</b> are those who absorb more theory the ones who sell more?</span></li>
+            <li><span><b>Robustness:</b> the spread against repeated observations of the same firm.</span></li>
+          </ul>
+          <p class="quiet">To be decided with Alfonso, then into the draft.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Paper three: red, on hold -->
+    <article class="band three">
+      <div class="headrow">
+        <div class="tag"><span class="eyebrow">Paper three</span><span class="status">On hold, with Saeid Kazemi</span></div>
+        <h2 class="title">[Paper three title]</h2>
+      </div>
+      <dl class="facts">
+        <div class="fact"><dt>Question</dt><dd class="ph">[one line]</dd></div>
+        <div class="fact"><dt>Data</dt><dd class="ph">[source · what we have]</dd></div>
+        <div class="fact"><dt>Origin</dt><dd class="ph">[where the idea came from]</dd></div>
+      </dl>
+      <p class="invite">Open to interns: it could become a thesis. I would love to talk about it.</p>
+    </article>
+  </section>
+
+  <section class="close" aria-label="Three things to take with you">
+    <h2>Three things to take with you</h2>
+    <div class="three">
+      <div class="take" style="--bg: var(--y); --deep: var(--y-deep)"><span class="eyebrow">Paper one</span><p class="ph">[one-line takeaway]</p></div>
+      <div class="take" style="--bg: var(--b); --deep: var(--b-deep)"><span class="eyebrow">Paper two</span><p>The average hides the real story: <i>who</i> benefits. The top fifth gains +1.91; the bottom fifth, nothing.</p></div>
+      <div class="take" style="--bg: var(--r); --deep: var(--r-deep)"><span class="eyebrow">Paper three</span><p>A paper waiting for its team. If it sounds like your thesis, let's talk.</p></div>
+    </div>
+    <div class="thanks"><span class="t">Thank you.</span><span class="n">Helena Montoya Calero · Bocconi University</span></div>
+  </section>
+</main>
+
+<nav class="controls" aria-label="Presentation controls">
+  <div class="dots" id="dots"></div>
+  <span class="where" id="where">Hello</span>
+  <button class="btn" id="prev" type="button">Back</button>
+  <button class="btn" id="next" type="button">Next</button>
+  <button class="btn" id="fs" type="button">Full screen</button>
+</nav>
+
+<script>
+  const STEPS = ["intro", "papers", "p1", "p2a", "p2b", "p2c", "close"];
+  const LABELS = ["Hello", "Three papers", "Paper one", "Paper two · why", "Paper two · the finding", "Paper two · what's next", "Thank you"];
+  let i = 0;
+  const dots = document.getElementById("dots");
+  const where = document.getElementById("where");
+  STEPS.forEach((s, k) => {
+    const b = document.createElement("button");
+    b.className = "dot"; b.type = "button"; b.setAttribute("aria-label", LABELS[k]);
+    b.addEventListener("click", e => { e.stopPropagation(); go(k); });
+    dots.appendChild(b);
+  });
+  function go(k) {
+    i = Math.max(0, Math.min(STEPS.length - 1, k));
+    document.body.dataset.step = STEPS[i];
+    where.textContent = LABELS[i];
+    [...dots.children].forEach((d, n) => n === i ? d.setAttribute("aria-current", "step") : d.removeAttribute("aria-current"));
+  }
+  document.getElementById("next").addEventListener("click", e => { e.stopPropagation(); go(i + 1); });
+  document.getElementById("prev").addEventListener("click", e => { e.stopPropagation(); go(i - 1); });
+  document.getElementById("fs").addEventListener("click", e => {
+    e.stopPropagation();
+    const el = document.documentElement;
+    if (!document.fullscreenElement && el.requestFullscreen) el.requestFullscreen().catch(() => {});
+    else if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+  });
+  document.addEventListener("keydown", e => {
+    if (["ArrowRight", "PageDown", " ", "Enter"].includes(e.key)) { e.preventDefault(); go(i + 1); }
+    if (["ArrowLeft", "PageUp", "Backspace"].includes(e.key)) { e.preventDefault(); go(i - 1); }
+    if (e.key === "Home") go(0);
+    if (e.key === "End") go(STEPS.length - 1);
+  });
+  document.getElementById("stage").addEventListener("click", e => {
+    if (window.matchMedia("(max-width: 820px)").matches) return;
+    go(e.clientX > window.innerWidth * 0.33 ? i + 1 : i - 1);
+  });
+  go(0);
+</script>
+<p style="position:fixed; top:14px; right:clamp(16px,4.2vw,80px); margin:0; font-family:'Jost',Arial,sans-serif; font-size:12px; letter-spacing:.16em; text-transform:uppercase;"><a href="/" style="color:#5E6675; text-decoration:none;">← helenamontoyacalero.com</a></p>
+</body>
+</html>
