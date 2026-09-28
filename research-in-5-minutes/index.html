@@ -140,6 +140,20 @@
   body[data-step="p2b"] .bar:nth-of-type(5) { animation-delay: 450ms; }
   @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 
+  .span2 { grid-column: span 2; }
+  .mods { display: grid; grid-template-columns: 1fr 1fr; gap: .45em 1.6em; }
+  .mods p { margin: 0; color: var(--soft); }
+  .mods b { display: block; color: var(--ink); font-weight: 500; }
+  .card .list { gap: .45em; }
+  a.lit { color: var(--b-deep); text-decoration: none; border-bottom: 1px solid var(--b-mid); font-weight: 400; }
+  a.lit:hover { border-bottom-color: var(--b-deep); }
+  a.lit span { color: var(--soft); }
+  .finding .lead .list { margin-top: .2em; }
+  .say .card { font-size: 1.18em; }
+  .say .card h3 { font-size: clamp(22px, 1.8vw, 34px); }
+  .qa { display: grid; gap: .8em; margin: 0; }
+  .qa dt { font-family: var(--serif); font-style: italic; font-size: 1.12em; color: var(--deep); line-height: 1.2; }
+  .qa dd { margin: .1em 0 0; }
   .say { grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 28px); }
   .list { display: grid; gap: .6em; margin: 0; padding: 0; list-style: none; }
   .list li { display: grid; grid-template-columns: 1.1em 1fr; gap: .4em; }
@@ -186,7 +200,8 @@
     body { overflow: auto; }
     .stage { height: auto; min-height: 100%; }
     .bands, body[data-step="p1"] .bands, body[data-step^="p2"] .bands { grid-template-columns: 1fr; }
-    .grid3, .finding, .say, .three { grid-template-columns: 1fr; }
+    .grid3, .finding, .say, .three, .mods { grid-template-columns: 1fr; }
+    .span2 { grid-column: auto; }
     .close { position: static; display: none; opacity: 1; }
     body[data-step="close"] .close { display: flex; padding-block: 20px 90px; }
     body[data-step="close"] .bands { display: none; }
@@ -240,24 +255,67 @@
       <dl class="facts">
         <div class="fact"><dt>Data</dt><dd>6 RCTs · 1,184 early-stage startups · 3 arms</dd></div>
         <div class="fact"><dt>Model</dt><dd>Generic ML inference (Chernozhukov, Demirer, Duflo &amp; Fernández-Val, <i>Econometrica</i> 2025)</dd></div>
+        <div class="fact"><dt>Outcomes</dt><dd>9 tested: sales, selling at all, Theory and Empirics scores, effort, team size, exit</dd></div>
         <div class="fact"><dt>North</dt><dd>Still under discussion</dd></div>
       </dl>
 
       <div class="feature f-a grid3">
-        <div class="card"><h3>Why it matters</h3><p>Teaching founders to build a theory and test it raises sales <b>on average</b>. Nobody has mapped <b>for whom</b>; moderators are tested one at a time.</p></div>
-        <div class="card"><h3>The data</h3><p>Six RCTs in the Netherlands, Italy, Colombia, the UK, Spain and India. Control, Evidence, and <b>Theory + Evidence</b> training, followed for about fourteen months.</p></div>
-        <div class="card"><h3>The model</h3><p>Machine learning predicts each founder's gain on half of the sample, and the other half checks it. 250 splits, 7 learners, 212 specifications.</p></div>
-        <div class="card"><h3>A careful start</h3><p class="num">0.605 · 0.607</p><p>The CGJ appendix code and the <i>Econometrica</i> code, replicated on our data, give the same average effect.</p></div>
-        <div class="card"><h3>Thirty-six moderators</h3><p>Founder and venture traits, each tied to published theory: experience, cognition, beliefs, stage.</p></div>
-        <div class="card"><h3>Outcomes</h3><p>Monthly sales, selling at all, Theory and Empirics scores, effort, team size, and exit.</p></div>
+        <div class="card">
+          <h3>Why it matters</h3>
+          <ul class="list">
+            <li><span>Deciding like a scientist raises founders' performance <b>on average</b>.</span></li>
+            <li><span><a class="lit" href="/research-in-5-minutes/literature.html" target="_blank" rel="noopener">Camuffo et al. 2020 <span>(+8 papers)</span> ↗</a></span></li>
+            <li><span>The open question: <b>for whom?</b></span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>The data</h3>
+          <ul class="list">
+            <li><span><b>6 RCTs</b>: Netherlands, Italy, Colombia, UK, Spain, India</span></li>
+            <li><span><b>1,184</b> early-stage startups</span></li>
+            <li><span>Control · Evidence · <b>Theory + Evidence</b></span></li>
+            <li><span>About 14 months of follow-up</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>The model</h3>
+          <ul class="list">
+            <li><span>Generic ML inference: Chernozhukov, Demirer, Duflo &amp; Fernández-Val, <i>Econometrica</i> 2025</span></li>
+            <li><span>Lets us identify <b>who gains most</b> from the training, with valid inference</span></li>
+            <li><span>250 splits · 7 learners · 212 specifications</span></li>
+          </ul>
+        </div>
+        <div class="card span2">
+          <h3>36 moderators, in six families</h3>
+          <div class="mods">
+            <p><b>The founder</b> gender · degree · STEM · business studies</p>
+            <p><b>Experience</b> work · managerial · industry · startups founded · prior training</p>
+            <p><b>Beliefs</b> chance of quitting or pivoting · how innovative the idea is and could be</p>
+            <p><b>Scientific approach before training</b> theory · hypotheses · evidence · evaluation · decision</p>
+            <p><b>The venture</b> stage · months operating · full-time · sales at baseline</p>
+            <p><b>Cognition</b> illusion of control · planning horizon · perceived uncertainty · team</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>The questions it answers</h3>
+          <ul class="list">
+            <li><span>Does the training work <b>differently</b> across founders?</span></li>
+            <li><span>How large is the gap between who gains <b>most</b> and <b>least</b>?</span></li>
+            <li><span>Which traits are <b>over-represented</b> among those who gain most?</span></li>
+          </ul>
+        </div>
       </div>
 
       <div class="feature f-b finding">
         <div class="lead">
-          <span class="eyebrow">Theory + Evidence, compared with Evidence only</span>
-          <p class="figure">+1.91<small>log points of monthly sales</small></p>
-          <p class="pull">for the fifth of founders who gain the most (p = .002).</p>
-          <p>The fifth who gain the least: about zero. Average: +0.55. The pattern holds across covariate sets, groupings, 140 variants and both implementations.</p>
+          <span class="eyebrow">What we find so far</span>
+          <p class="pull">When we sort founders by the model's score of how much the training should help them, the top fifth gains a lot and the bottom fifth gains nothing.</p>
+          <p class="figure">+1.91<small>log points of monthly sales, top fifth (p = .002)</small></p>
+          <ul class="list">
+            <li><span>Bottom fifth: about zero. Average: +0.55.</span></li>
+            <li><span>Heterogeneity in <b>7 of 9</b> outcomes; none in exit.</span></li>
+            <li><span>Holds across covariate sets, groupings and 140 variants.</span></li>
+          </ul>
         </div>
         <svg class="chart" viewBox="0 0 600 340" role="img" aria-label="Effect on log monthly sales by fifth of predicted gain: -0.59, 0.24, 0.32, 0.87, 1.91. Average 0.55.">
           <line x1="0" y1="225.3" x2="600" y2="225.3" stroke="#5E6675" stroke-width="1.5"/>
@@ -281,12 +339,12 @@
       <div class="feature f-c say">
         <div class="card">
           <h3>What we can say so far</h3>
-          <ul class="list">
-            <li><span><b>Theory adds sales</b> beyond evidence alone, and more founders sell.</span></li>
-            <li><span>The gain is <b>concentrated</b>: the top fifth gains a lot, the bottom fifth nothing.</span></li>
-            <li><span><b>Experienced founders</b> are over-represented among those who gain most.</span></li>
-            <li><span>Both trainings teach founders to <b>use evidence</b> and to <b>quit more</b> (+8 pp compared with control).</span></li>
-          </ul>
+          <dl class="qa">
+            <div><dt>Does theory add value beyond evidence?</dt><dd>Yes: more sales, and more founders sell.</dd></div>
+            <div><dt>Does everyone gain?</dt><dd>No: the top fifth gains a lot, the bottom fifth nothing.</dd></div>
+            <div><dt>Who gains most?</dt><dd>Experienced founders are over-represented.</dd></div>
+            <div><dt>Does the approach lead to wiser exits?</dt><dd>Both trainings raise exits (+8 pp vs control); theory adds none, and no subgroup differs.</dd></div>
+          </dl>
         </div>
         <div class="card north">
           <h3>Next: choosing the north</h3>
@@ -368,6 +426,7 @@
   });
   document.getElementById("stage").addEventListener("click", e => {
     if (window.matchMedia("(max-width: 820px)").matches) return;
+    if (e.target.closest("a")) return;
     go(e.clientX > window.innerWidth * 0.33 ? i + 1 : i - 1);
   });
   go(0);
