@@ -258,6 +258,14 @@
   .vars .v { font-family: var(--serif); font-size: 1.05em; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
   .quad3 .qhead { color: var(--soft); }
   .quad3 .qhead .eyebrow { margin-right: .8em; }
+  .mech { grid-template-columns: 1fr 1fr; gap: clamp(14px, 2vw, 36px); align-items: start; }
+  .mq { display: grid; gap: .6em; background: rgba(255,255,255,.55); border-radius: 14px; padding: clamp(16px, 1.8vw, 32px); }
+  .mq .eyebrow { color: var(--b-deep); }
+  .mq h3 { margin: 0 0 .2em; font-family: var(--serif); font-weight: 500; font-size: clamp(22px, 2.1vw, 38px); line-height: 1.1; text-wrap: balance; }
+  .ml { list-style: none; margin: 0; padding: 0; display: grid; gap: .6em; }
+  .ml li { display: grid; grid-template-columns: 7.4em 1fr; gap: .8em; align-items: baseline; }
+  .ml li > span:last-child { font-family: var(--serif); font-size: clamp(18px, 1.55vw, 28px); line-height: 1.2; }
+  .tag-s.gone { background: #E6E8EC; color: #5E6675; }
   .say { grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 28px); }
   .list { display: grid; gap: .6em; margin: 0; padding: 0; list-style: none; }
   .list li { display: grid; grid-template-columns: 1.1em 1fr; gap: .4em; }
@@ -318,7 +326,7 @@
     body { overflow: auto; }
     .stage { height: auto; min-height: 100%; }
     .bands, body[data-step^="p1"] .bands, body[data-step^="p2"] .bands, body[data-step="p3"] .bands { grid-template-columns: 1fr; }
-    .grid3, .finding, .say, .p1say, .close .three, .mods, .see, .map, .paths, .deep-row, .quad2, .qlegend { grid-template-columns: 1fr; }
+    .grid3, .finding, .say, .p1say, .close .three, .mods, .see, .map, .paths, .deep-row, .quad2, .qlegend, .mech, .ml li { grid-template-columns: 1fr; }
     .quad3 { grid-template-columns: 1fr; grid-template-rows: none; min-height: 0; } .quad3 > * { grid-column: auto !important; grid-row: auto !important; } .ax { display: none; }
     .root { border-right: 0; padding-right: 0; }
     .quad { grid-template-columns: 1fr; grid-template-rows: none; } .quad > * { grid-column: auto !important; grid-row: auto !important; } .axis-y, .axis-x { display: none; }
@@ -486,19 +494,27 @@
         <span class="ax ax-x2">sells more</span>
       </div>
 
-      <div class="feature f-d deeper">
-        <p class="deep-head"><span class="eyebrow">Digging deeper</span> Eight measured channels, 250 sample splits, two covariate sets.</p>
-        <div class="deep-row">
-          <span class="who-lbl">Those who learn</span>
-          <p>change their whole decision process: <b>hypotheses, evaluation of evidence, decisions</b>, and they work a little more.</p>
+      <div class="feature f-d mech">
+        <div class="mq">
+          <span class="eyebrow">Mechanisms · question 1</span>
+          <h3>Why do some founders sell more without learning more?</h3>
+          <ul class="ml">
+            <li><span class="tag-s gone">ruled out</span><span>Everything the program measures: theory, hypotheses, tests, evaluation, decisions, pivots, effort, team</span></li>
+            <li><span class="tag-s open">to test</span><span>Subtracting to focus</span></li>
+            <li><span class="tag-s open">to test</span><span>Stronger conviction in the idea</span></li>
+            <li><span class="tag-s open">to test</span><span>Formalization and commitment</span></li>
+            <li><span class="tag-s open">to test</span><span>Many small changes to the business model</span></li>
+            <li><span class="tag-s open">to test</span><span>The score captures articulating a theory, not using it</span></li>
+          </ul>
         </div>
-        <div class="deep-row">
-          <span class="who-lbl">Those whose sales grow</span>
-          <p>change <b>nothing we measure</b>: no more tests, no more pivots, no new process.</p>
-        </div>
-        <div class="deep-row">
-          <span class="who-lbl">The average</span>
-          <p>The average mediation from theory to sales <b>combines two different groups of founders</b>.</p>
+        <div class="mq">
+          <span class="eyebrow">Mechanisms · question 2</span>
+          <h3>Why do some founders learn more without selling more?</h3>
+          <ul class="ml">
+            <li><span class="tag-s done">not so far</span><span>They start selling later</span></li>
+            <li><span class="tag-s done">tested: no</span><span>They realise the idea does not work and quit</span></li>
+            <li><span class="tag-s open">to test</span><span>They are too early to turn learning into sales</span></li>
+          </ul>
         </div>
       </div>
 
@@ -508,12 +524,9 @@
           <p>The founders who learn and the founders who sell are not necessarily the same.</p>
         </div>
         <div class="paths">
-          <div class="path"><span class="tag-s open">open</span><h3>The hidden channel</h3><p>What drives the sales gains, if not learning? Focus, confidence, commitment…</p></div>
-          <div class="path"><span class="tag-s open">open</span><h3>Measurement</h3><p>Does the Theory Score capture using a theory, or articulating one?</p></div>
-          <div class="path"><span class="tag-s done">not so far</span><h3>Timing</h3><p>Do those who learn start selling later?</p></div>
-          <div class="path"><span class="tag-s done">tested: no</span><h3>Wise exits</h3><p>Do those who learn without selling quit more?</p></div>
           <div class="path"><span class="tag-s open">open</span><h3>Targeting</h3><p>Who should receive the theory module?</p></div>
           <div class="path"><span class="tag-s next">to test</span><h3>Design</h3><p>How robust is all this to how we split the sample?</p></div>
+          <div class="path"><span class="tag-s open">open</span><h3>Against Control</h3><p>Does the same disconnect appear against no training at all?</p></div>
         </div>
         <p class="map-foot">Choosing the one to follow is the next step.</p>
       </div>
@@ -555,7 +568,7 @@
 
 <script>
   const STEPS = ["intro", "papers", "p1a", "p1b", "p1c", "p2a", "p2b", "p2c", "p2d", "p2e", "p3", "close"];
-  const LABELS = ["Hello", "Three papers", "Paper one · why and how", "Paper one · validation", "Paper one · what it shows", "Paper two · why", "Paper two · what we see", "Paper two · who are they", "Paper two · digging deeper", "Paper two · where this leads", "Paper three", "Thank you"];
+  const LABELS = ["Hello", "Three papers", "Paper one · why and how", "Paper one · validation", "Paper one · what it shows", "Paper two · why", "Paper two · what we see", "Paper two · who are they", "Paper two · mechanisms", "Paper two · where this leads", "Paper three", "Thank you"];
   let i = 0;
   const dots = document.getElementById("dots");
   const where = document.getElementById("where");
