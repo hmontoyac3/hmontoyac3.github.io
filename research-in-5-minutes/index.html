@@ -134,8 +134,7 @@
   body[data-step="p2a"] .two .f-a,
   body[data-step="p2b"] .two .f-b,
   body[data-step="p2c"] .two .f-c,
-  body[data-step="p2d"] .two .f-d,
-  body[data-step="p2e"] .two .f-e { display: grid; animation: fade 700ms var(--ease) both 250ms; }
+  body[data-step="p2d"] .two .f-d { display: grid; animation: fade 700ms var(--ease) both 250ms; }
 
   .grid3 { grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.2vw, 20px); }
   .card { background: rgba(255, 255, 255, .55); border: 1px solid rgba(255, 255, 255, .8); border-radius: 12px; padding: clamp(12px, 1.2vw, 22px); display: grid; gap: .4em; align-content: start; min-width: 0; }
@@ -524,18 +523,6 @@
         </div>
       </div>
 
-      <div class="feature f-e map">
-        <div class="root">
-          <span class="eyebrow">Where this leads</span>
-          <p>The founders who learn and the founders who sell are not necessarily the same.</p>
-        </div>
-        <div class="paths">
-          <div class="path"><span class="tag-s open">open</span><h3>Targeting</h3><p>Who should receive the theory module?</p></div>
-          <div class="path"><span class="tag-s next">to test</span><h3>Design</h3><p>How robust is all this to how we split the sample?</p></div>
-          <div class="path"><span class="tag-s open">open</span><h3>Against Control</h3><p>Does the same disconnect appear against no training at all?</p></div>
-        </div>
-        <p class="map-foot">Choosing the one to follow is the next step.</p>
-      </div>
     </article>
 
     <!-- Paper three: red, being reframed -->
@@ -573,8 +560,8 @@
 </nav>
 
 <script>
-  const STEPS = ["intro", "papers", "p1a", "p1b", "p1c", "p2a", "p2b", "p2c", "p2d", "p2e", "p3", "close"];
-  const LABELS = ["Hello", "Three papers", "Paper one · why and how", "Paper one · validation", "Paper one · what it shows", "Paper two · why", "Paper two · what we see", "Paper two · who are they", "Paper two · mechanisms", "Paper two · where this leads", "Paper three", "Thank you"];
+  const STEPS = ["intro", "papers", "p1a", "p1b", "p1c", "p2a", "p2b", "p2c", "p2d", "p3", "close"];
+  const LABELS = ["Hello", "Three papers", "Paper one · why and how", "Paper one · validation", "Paper one · what it shows", "Paper two · why", "Paper two · what we see", "Paper two · who are they", "Paper two · mechanisms", "Paper three", "Thank you"];
   let i = 0;
   const dots = document.getElementById("dots");
   const where = document.getElementById("where");
