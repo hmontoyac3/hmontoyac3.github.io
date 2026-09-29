@@ -279,7 +279,10 @@
   .lead-card { background: transparent; border-color: transparent; align-content: center; }
   .lead-card h3 { font-size: clamp(24px, 2.2vw, 40px); }
   .f-p1c .card, .p1say .card, .f-p1b .card { font-size: 1.3em; }
-  .means { line-height: 1.35; }
+  .card.rev { align-content: start; gap: .5em; }
+  .card.rev .claim { margin: 0; font-family: var(--serif); font-weight: 500; font-size: clamp(20px, 1.75vw, 32px); line-height: 1.12; color: var(--ink); }
+  .card.rev .num { font-size: clamp(20px, 1.6vw, 30px); margin: 0; }
+  .card.rev .eyebrow { color: var(--soft); }
   .p1say .outc li { grid-template-columns: 6em 1fr; }
   .p1-lead { grid-column: 1 / -1; margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(19px, 1.7vw, 31px); line-height: 1.2; }
   .p1say .card > p { margin: 0 0 .2em; }
@@ -393,17 +396,17 @@
           <h3>Does it measure what we want?</h3>
           <p>Five tests. Each could have failed.</p>
         </div>
-        <div class="card"><span class="eyebrow">Randomized primes</span><p class="num">3.58 · 3.07 · 2.80</p><p class="means">Scores follow the frame → it captures how managers reason</p></div>
-        <div class="card"><span class="eyebrow">Decision vignette</span><p class="num">53% vs 44%</p><p class="means">High scorers choose more scientifically → it tracks behavior</p></div>
-        <div class="card"><span class="eyebrow">Expert coding, external RCT</span><p class="num">r = .66</p><p class="means">Matches trained coders → it measures what experts see</p></div>
-        <div class="card"><span class="eyebrow">Collinearity</span><p class="num">VIF ≤ 1.23</p><p class="means">No item duplicates another → every item is needed</p></div>
-        <div class="card"><span class="eyebrow">Retest</span><p class="num">r = .45</p><p class="means">Same people, three months later → scores hold</p></div>
+        <div class="card rev"><p class="claim">It captures how managers reason</p><p class="num">3.58 · 3.07 · 2.80</p><span class="eyebrow">Randomized primes</span></div>
+        <div class="card rev"><p class="claim">It tracks behavior</p><p class="num">53% vs 44%</p><span class="eyebrow">Decision vignette</span></div>
+        <div class="card rev"><p class="claim">It measures what experts see</p><p class="num">r = .66</p><span class="eyebrow">Expert coding, external RCT</span></div>
+        <div class="card rev"><p class="claim">Each item adds distinct information</p><p class="num">VIF ≤ 1.23</p><span class="eyebrow">Collinearity</span></div>
+        <div class="card rev"><p class="claim">Scores hold over time</p><p class="num">r = .45</p><span class="eyebrow">Test-retest, three months</span></div>
       </div>
 
       <div class="feature f-p1c grid3">
         <p class="p1-lead">Two patterns, and many questions.</p>
-        <div class="card"><span class="eyebrow">A · Within firms, not between</span><p class="num">≈ 2%</p><p class="means">of the variation lies between firms. The rest lies between colleagues in the same firm.</p></div>
-        <div class="card"><span class="eyebrow">B · Top management and Adaptive Learning</span><p class="num">3.58 vs 3.41</p><p class="means">Top managers score significantly higher than frontline managers, only on Adaptive Learning</p></div>
+<div class="card rev"><p class="claim">A · Variation lies within firms, not between them</p><p class="num">≈ 2% between firms</p><span class="eyebrow">Intraclass correlation (ICC 0.018)</span></div>
+        <div class="card rev"><p class="claim">B · Top managers score significantly higher on Adaptive Learning</p><p class="num">3.58 vs 3.41 frontline</p><span class="eyebrow">Tier means · holds with firm fixed effects</span></div>
         <div class="card north gold">
           <h3>What it opens</h3>
           <ul class="list">
