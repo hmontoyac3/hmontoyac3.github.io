@@ -279,6 +279,7 @@
   .lead-card { background: transparent; border-color: transparent; align-content: center; }
   .lead-card h3 { font-size: clamp(24px, 2.2vw, 40px); }
   .f-p1c .card, .p1say .card, .f-p1b .card { font-size: 1.3em; }
+  .means { line-height: 1.35; }
   .p1say .outc li { grid-template-columns: 6em 1fr; }
   .p1-lead { grid-column: 1 / -1; margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(19px, 1.7vw, 31px); line-height: 1.2; }
   .p1say .card > p { margin: 0 0 .2em; }
@@ -371,8 +372,8 @@
           <h3>Why a measure</h3>
           <ul class="list">
             <li><span>RCTs (Camuffo et al.): founders who decide like scientists <b>perform better</b></span></li>
-            <li><span>Inside firms, <b>no way to measure it</b></span></li>
-            <li><span>Can a <b>short survey</b> do it?</span></li>
+            <li><span>Inside firms, <b>no scalable way</b> to measure it: each study codes reasoning by hand</span></li>
+            <li><span>A <b>short survey</b> scales: any manager, any firm, repeatable</span></li>
           </ul>
         </div>
         <div class="card">
@@ -392,17 +393,17 @@
           <h3>Does it measure what we want?</h3>
           <p>Five tests. Each could have failed.</p>
         </div>
-        <div class="card"><span class="eyebrow">Moves with the frame</span><p class="num">3.58 · 3.07 · 2.80</p><p>Scientific · no · intuitive prime</p></div>
-        <div class="card"><span class="eyebrow">Predicts behavior</span><p class="num">53% vs 44%</p><p>Scientific choices, top vs bottom fifth</p></div>
-        <div class="card"><span class="eyebrow">Agrees with experts</span><p class="num">r = .66</p><p>Expert-coded reasoning, external RCT</p></div>
-        <div class="card"><span class="eyebrow">Every item counts</span><p class="num">VIF ≤ 1.23</p><p>No overlapping items</p></div>
-        <div class="card"><span class="eyebrow">Stable</span><p class="num">r = .45</p><p>Retaken three months later</p></div>
+        <div class="card"><span class="eyebrow">Randomized primes</span><p class="num">3.58 · 3.07 · 2.80</p><p class="means">Scores follow the frame → it captures how managers reason</p></div>
+        <div class="card"><span class="eyebrow">Decision vignette</span><p class="num">53% vs 44%</p><p class="means">High scorers choose more scientifically → it tracks behavior</p></div>
+        <div class="card"><span class="eyebrow">Expert coding, external RCT</span><p class="num">r = .66</p><p class="means">Matches trained coders → it measures what experts see</p></div>
+        <div class="card"><span class="eyebrow">Collinearity</span><p class="num">VIF ≤ 1.23</p><p class="means">No item duplicates another → every item is needed</p></div>
+        <div class="card"><span class="eyebrow">Retest</span><p class="num">r = .45</p><p class="means">Same people, three months later → scores hold</p></div>
       </div>
 
       <div class="feature f-p1c grid3">
         <p class="p1-lead">Two patterns, and many questions.</p>
-        <div class="card"><span class="eyebrow">A · Managers, not firms</span><p class="num">≈ 2%</p><p>of the variation lies between firms</p></div>
-        <div class="card"><span class="eyebrow">B · Only one practice tracks hierarchy</span><p class="num">3.58 vs 3.41</p><p>Adaptive Learning, top vs frontline</p></div>
+        <div class="card"><span class="eyebrow">A · Within firms, not between</span><p class="num">≈ 2%</p><p class="means">of the variation lies between firms. The rest lies between colleagues in the same firm.</p></div>
+        <div class="card"><span class="eyebrow">B · Top management and Adaptive Learning</span><p class="num">3.58 vs 3.41</p><p class="means">Top managers score significantly higher than frontline managers, only on Adaptive Learning</p></div>
         <div class="card north gold">
           <h3>What it opens</h3>
           <ul class="list">
