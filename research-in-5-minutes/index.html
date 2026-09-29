@@ -278,7 +278,8 @@
   .f-p1b .eyebrow, .f-p1c .eyebrow { color: var(--deep); }
   .lead-card { background: transparent; border-color: transparent; align-content: center; }
   .lead-card h3 { font-size: clamp(24px, 2.2vw, 40px); }
-  .f-p1c .card, .p1say .card, .f-p1b .card { font-size: 1.14em; }
+  .f-p1c .card, .p1say .card, .f-p1b .card { font-size: 1.3em; }
+  .p1say .outc li { grid-template-columns: 6em 1fr; }
   .p1-lead { grid-column: 1 / -1; margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(19px, 1.7vw, 31px); line-height: 1.2; }
   .p1say .card > p { margin: 0 0 .2em; }
   .card.north.gold .note-s, .card.north.gold p { color: #FBF6E8; }
@@ -369,47 +370,46 @@
         <div class="card">
           <h3>Why a measure</h3>
           <ul class="list">
-            <li><span>Camuffo et al.'s RCTs show that founders trained to decide like scientists <b>perform better</b>.</span></li>
-            <li><span>But each study scores reasoning with its own instrument and trained assessors.</span></li>
-            <li><span>And managers inside established firms are <b>almost unstudied</b>.</span></li>
-            <li><span>So: <b>can a short survey measure it</b>, comparably, across managers and firms?</span></li>
+            <li><span>RCTs (Camuffo et al.): founders who decide like scientists <b>perform better</b></span></li>
+            <li><span>Inside firms, <b>no way to measure it</b></span></li>
+            <li><span>Can a <b>short survey</b> do it?</span></li>
           </ul>
         </div>
         <div class="card">
           <h3>Years of building it</h3>
           <ul class="outc">
-            <li><span class="st mid">2022 to 2023</span><span><b>12 interviews</b> with senior managers → a pool of 49 items</span></li>
-            <li><span class="st mid">2023</span><span>Internal and lab review; experts in <b>five countries</b>; a <b>16-expert pilot</b></span></li>
-            <li><span class="st mid">2023</span><span>Three randomized pre-test waves: <b>462 managers</b>, six of eight firms agree to field it</span></li>
-            <li><span class="st mid">2023 to 2026</span><span>Field deployment: <b>3,178 managers, 54 firms</b>, Italy and Brazil</span></li>
+            <li><span class="st mid">Design</span><span><b>12</b> manager interviews · <b>49</b> candidate items</span></li>
+            <li><span class="st mid">Review</span><span>Experts in <b>5</b> countries · <b>16</b>-expert pilot</span></li>
+            <li><span class="st mid">Pre-test</span><span><b>462</b> managers, randomized</span></li>
+            <li><span class="st mid">Field</span><span><b>3,178</b> managers · <b>54</b> firms · 2023 to 2026</span></li>
           </ul>
-          <p class="note-s">The result: 24 items on Causal Reasoning, Evidence Evaluation and Adaptive Learning. The field data exist thanks to a long effort by my coauthors and the team.</p>
+          <p class="note-s">24 items. Thanks to my coauthors and the team.</p>
         </div>
       </div>
 
       <div class="feature f-p1b grid3">
         <div class="card lead-card">
           <h3>Does it measure what we want?</h3>
-          <p>Five tests, and each one could have failed.</p>
+          <p>Five tests. Each could have failed.</p>
         </div>
-        <div class="card"><span class="eyebrow">It moves with the frame</span><p class="num">3.58 · 3.07 · 2.80</p><p>Managers randomly primed to think scientifically, no prime, intuitively</p></div>
-        <div class="card"><span class="eyebrow">It predicts behavior</span><p class="num">53% vs 44%</p><p>Scientific choices in a decision vignette, top fifth vs bottom fifth of the index</p></div>
-        <div class="card"><span class="eyebrow">It agrees with experts</span><p class="num">r = .66</p><p>With expert-coded reasoning in an RCT we did not run</p></div>
-        <div class="card"><span class="eyebrow">Every item counts</span><p class="num">VIF ≤ 1.23</p><p>No two of the 24 items overlap</p></div>
-        <div class="card"><span class="eyebrow">It is stable</span><p class="num">r = .45</p><p>Same respondents, about three months later</p></div>
+        <div class="card"><span class="eyebrow">Moves with the frame</span><p class="num">3.58 · 3.07 · 2.80</p><p>Scientific · no · intuitive prime</p></div>
+        <div class="card"><span class="eyebrow">Predicts behavior</span><p class="num">53% vs 44%</p><p>Scientific choices, top vs bottom fifth</p></div>
+        <div class="card"><span class="eyebrow">Agrees with experts</span><p class="num">r = .66</p><p>Expert-coded reasoning, external RCT</p></div>
+        <div class="card"><span class="eyebrow">Every item counts</span><p class="num">VIF ≤ 1.23</p><p>No overlapping items</p></div>
+        <div class="card"><span class="eyebrow">Stable</span><p class="num">r = .45</p><p>Retaken three months later</p></div>
       </div>
 
       <div class="feature f-p1c grid3">
-        <p class="p1-lead">All this effort already shows two patterns worth a closer look, and opens many questions.</p>
-        <div class="card"><span class="eyebrow">Pattern A · Managers, not firms</span><p class="num">≈ 2%</p><p>Share of the variation between firms (ICC 0.018). The differences lie between colleagues in the same firm.</p></div>
-        <div class="card"><span class="eyebrow">Pattern B · One practice tracks hierarchy</span><p class="num">3.58 vs 3.41</p><p>Adaptive Learning, top managers vs frontline. Causal Reasoning and Evidence Evaluation show no gradient.</p></div>
+        <p class="p1-lead">Two patterns, and many questions.</p>
+        <div class="card"><span class="eyebrow">A · Managers, not firms</span><p class="num">≈ 2%</p><p>of the variation lies between firms</p></div>
+        <div class="card"><span class="eyebrow">B · Only one practice tracks hierarchy</span><p class="num">3.58 vs 3.41</p><p>Adaptive Learning, top vs frontline</p></div>
         <div class="card north gold">
           <h3>What it opens</h3>
           <ul class="list">
-            <li><span>Pattern B: who reaches the top, or what the top demands?</span></li>
-            <li><span>Why do colleagues in the same firm decide so differently?</span></li>
-            <li><span>Can training move managers, as it moves founders?</span></li>
-            <li><span>Does it relate to how firms innovate?</span></li>
+            <li><span>Selection or role?</span></li>
+            <li><span>Why do colleagues differ?</span></li>
+            <li><span>Does training move it?</span></li>
+            <li><span>Does it shape innovation?</span></li>
           </ul>
         </div>
       </div>
