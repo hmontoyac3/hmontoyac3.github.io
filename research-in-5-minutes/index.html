@@ -280,6 +280,13 @@
   .lead-card h3 { font-size: clamp(24px, 2.2vw, 40px); }
   .f-p1c .card, .p1say .card, .f-p1b .card { font-size: 1.3em; }
   .card.rev { align-content: start; gap: .5em; }
+  .build { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(10px, 1.2vw, 20px); align-content: start; }
+  .build-head, .build-foot { grid-column: 1 / -1; margin: 0; }
+  .build-head { font-family: var(--serif); font-style: italic; font-size: clamp(20px, 1.7vw, 31px); color: var(--deep); }
+  .build .card.rev .num { font-size: clamp(30px, 2.8vw, 52px); }
+  .claim-sub { margin: 0; font-size: .75em; letter-spacing: .16em; text-transform: uppercase; color: var(--soft); }
+  .f-p1a .lead-card { gap: .7em; font-size: 1.3em; align-content: start; padding-top: 2.2em; }
+  .build-foot { color: var(--soft); font-family: var(--serif); font-style: italic; font-size: clamp(16px, 1.3vw, 24px); }
   .card.rev .claim { margin: 0; font-family: var(--serif); font-weight: 500; font-size: clamp(22px, 2vw, 37px); line-height: 1.1; color: var(--ink); }
   .card.rev .num { font-size: clamp(20px, 1.6vw, 30px); margin: 0; }
   .card.rev .eyebrow { color: var(--soft); font-size: .8em; letter-spacing: .16em; }
@@ -371,23 +378,18 @@
         <div class="fact"><dt>Data</dt><dd>Validated five ways · 3,178 managers · 54 firms · Italy and Brazil</dd></div>
       </dl>
       <div class="feature f-p1a p1say">
-        <div class="card">
-          <h3>Why a measure</h3>
-          <ul class="list">
-            <li><span>RCTs (Camuffo et al.): founders who decide like scientists <b>perform better</b></span></li>
-            <li><span>Inside firms, <b>no scalable way</b> to measure it: each study codes reasoning by hand</span></li>
-            <li><span>A <b>short survey</b> scales: any manager, any firm, repeatable</span></li>
-          </ul>
+        <div class="card lead-card">
+          <h3>Founders who decide like scientists perform better</h3>
+          <p class="claim-sub">Camuffo et al., RCTs</p>
+          <p>Inside firms, <b>no scalable way</b> to measure it.<br>A short survey can do it.</p>
         </div>
-        <div class="card">
-          <h3>Years of building it</h3>
-          <ul class="outc">
-            <li><span class="st mid">Design</span><span><b>12</b> manager interviews · <b>49</b> candidate items</span></li>
-            <li><span class="st mid">Review</span><span>Experts in <b>5</b> countries · <b>16</b>-expert pilot</span></li>
-            <li><span class="st mid">Pre-test</span><span><b>462</b> managers, randomized</span></li>
-            <li><span class="st mid">Field</span><span><b>3,178</b> managers · <b>54</b> firms · 2023 to 2026</span></li>
-          </ul>
-          <p class="note-s">24 items. Thanks to my coauthors and the team.</p>
+        <div class="build">
+          <p class="build-head">Years of building it</p>
+          <div class="card rev"><p class="num">12</p><span class="eyebrow">Manager interviews</span></div>
+          <div class="card rev"><p class="num">16</p><span class="eyebrow">Experts in the pilot</span></div>
+          <div class="card rev"><p class="num">462</p><span class="eyebrow">Managers in the pre-test</span></div>
+          <div class="card rev"><p class="num">3,178</p><span class="eyebrow">Managers in 54 firms</span></div>
+          <p class="build-foot">24 items · thanks to my coauthors and the team</p>
         </div>
       </div>
 
