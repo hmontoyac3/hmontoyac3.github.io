@@ -41,68 +41,24 @@
         Advised by Alfonso Gambardella and Arnaldo Camuffo, at the ION Management Science Lab.
       </p>
       <div class="ctas reveal d3">
-        <a class="btn primary" href="#five"><span class="play">▶</span>My research in 5 minutes</a>
-        <a class="btn ghost" href="#collaborate">Let’s do research together</a>
+        <a class="btn primary" href="#collaborate">Let’s do research together</a>
+        <a class="btn ghost" href="/research/">Research</a>
       </div>
     </div>
 
     <div class="portrait reveal d1">
       <div class="blob" aria-hidden="true"></div>
       <div class="frame"><img src="/assets/img/helena.jpg" alt="Portrait of Helena Montoya Calero" width="900" height="1200"></div>
-      <div class="chip c1"><b data-count="3178">3,178</b>managers measured</div>
-      <div class="chip c2"><b data-count="6">6</b>RCTs · 1,184 startups</div>
-      <div class="chip c3"><b>LLMs</b>× econometrics</div>
     </div>
   </div>
 
-  <!-- ============ RESEARCH IN 5 MINUTES ============ -->
-  <section class="five" id="five">
+  <!-- ============ AGENDA ============ -->
+  <section class="agenda">
     <div class="wrap">
-      <div class="five-head">
-        <div>
-          <p class="eyebrow reveal">My research in 5 minutes</p>
-          <h2 class="h2 reveal d1">Three papers, one question: <em>how do people learn to decide?</em></h2>
-        </div>
-        <p class="timer reveal d2"><b>05:00</b>min</p>
-      </div>
-
-      <div class="papers">
-        <a class="paper one reveal" href="/research-in-5-minutes/">
-          <span class="num">Paper one</span>
-          <span class="status">Final review · Research Policy</span>
-          <h3>Can a short survey measure how scientifically managers decide?</h3>
-          <div class="stat"><b data-count="3178">3,178</b><span>managers in 54 firms, Italy and Brazil, validated five ways</span></div>
-          <span class="go">With Camuffo &amp; Teodorovicz →</span>
-        </a>
-        <a class="paper two reveal d1" href="/research-in-5-minutes/">
-          <span class="num">Paper two</span>
-          <span class="status">In analysis</span>
-          <h3>Who benefits from thinking like a scientist?</h3>
-          <div class="stat"><b data-count="1184">1,184</b><span>startups across 6 RCTs. The founders who sell more are not the ones who learn more.</span></div>
-          <span class="go">With Gambardella →</span>
-        </a>
-        <a class="paper three reveal d2" href="/research-in-5-minutes/">
-          <span class="num">Paper three</span>
-          <span class="status">Reframing</span>
-          <h3>Extracting interpretable models from LLMs for organizational data</h3>
-          <div class="stat"><b class="small">LASSO <span style="font-size:.55em">vs.</span> LLMs</b><span>zero-shot priors vs. fine-tuned posteriors, keeping an interpretable β</span></div>
-          <span class="go">With Kazemi →</span>
-        </a>
-      </div>
-
-      <div class="screen reveal">
-        <div class="bar"><i></i><i></i><i></i><span>helenamontoyacalero.com/research-in-5-minutes</span><a href="/research-in-5-minutes/" target="_blank" rel="noopener">Full screen ↗</a></div>
-        <div class="stage" id="deck">
-          <button class="poster" type="button" aria-label="Play my research in 5 minutes">
-            <div>
-              <span class="big-play">▶</span>
-              <div class="t">Watch it here</div>
-              <div class="s">Click, then use ← → to move through the slides</div>
-            </div>
-          </button>
-        </div>
-      </div>
-      <p class="screen-note">Work in progress. Please do not cite or circulate.</p>
+      <p class="eyebrow reveal">Research agenda</p>
+      <h2 class="h2 reveal d1">One question runs through my work: <em>how do people learn to decide?</em></h2>
+      <p class="sub reveal d2">I measure how scientifically managers make decisions, study which founders benefit from learning to decide like scientists, and explore what language models can reveal about decisions inside organizations.</p>
+      <a class="quiet reveal d3" href="/research-in-5-minutes/">My research in 5 minutes <span>→</span></a>
     </div>
   </section>
 
@@ -173,35 +129,6 @@
       entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-
-    // Count numbers up when they come into view
-    const fmt = new Intl.NumberFormat('en-US');
-    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const counter = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        counter.unobserve(e.target);
-        if (still) return;
-        const el = e.target, end = +el.dataset.count, t0 = performance.now(), dur = 1400;
-        const step = (t) => {
-          const p = Math.min((t - t0) / dur, 1), k = 1 - Math.pow(1 - p, 3);
-          el.textContent = fmt.format(Math.round(end * k));
-          if (p < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-      });
-    }, { threshold: 0.6 });
-    document.querySelectorAll('[data-count]').forEach((el) => counter.observe(el));
-
-    // Load the deck only when asked, then give it keyboard focus
-    document.querySelector('#deck .poster').addEventListener('click', function () {
-      const f = document.createElement('iframe');
-      f.src = '/research-in-5-minutes/';
-      f.title = 'My research in 5 minutes';
-      f.allow = 'fullscreen';
-      this.replaceWith(f);
-      f.addEventListener('load', () => f.focus());
-    });
   </script>
 </body>
 </html>
